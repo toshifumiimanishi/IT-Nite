@@ -1,11 +1,11 @@
 import React from "react"
-import { Link } from "gatsby"
+import { Link, graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
 
-const IndexPage = () => (
+const IndexPage = ({ data }) => (
   <Layout>
     <SEO title="Home" />
     <h1>Hi people</h1>
@@ -15,7 +15,40 @@ const IndexPage = () => (
       <Image />
     </div>
     <Link to="/page-2/">Go to page 2</Link>
+    <ul>
+      { data.allMicrocmsPosts.edges.map((edge) => {
+        return (
+          <li key={ edge.node.slug }>
+            <div>{ edge.node.title }</div>
+            <div dangerouslySetInnerHTML={{
+              __html: edge.node.content
+            }} />
+            <img
+              src={ edge.node._embedded.url }
+              alt=""
+            />
+          </li>
+        )
+      }) }
+    </ul>
   </Layout>
 )
 
 export default IndexPage
+
+export const pageQuery = graphql`
+  query HomeQuery {
+    allMicrocmsPosts(sort: {fields: createdAt}) {
+      edges {
+        node {
+          id
+          title
+          content
+          _embedded {
+            url
+          }
+        }
+      }
+    }
+  }
+`
