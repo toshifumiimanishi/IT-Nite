@@ -18,15 +18,15 @@ const Card = styled.li`
   display: flex;
   flex-direction: column;
   width: 300px;
-  border-radius: 0.25rem;
+  border-radius: 2px;
   overflow: hidden;
 
   &:hover {
-    box-shadow: 0 0 0 0.25rem;
+    box-shadow: 0 0 0 2px;
   }
 
   &:focus-within {
-    box-shadow: 0 0 0 0.25rem;
+    box-shadow: 0 0 0 2px;
   }
 `
 
@@ -34,10 +34,38 @@ const CardHeader = styled.div`
   flex-shrink: 0;
 `
 
+const CardBody = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 20px;
+
+  > * + * {
+    margin-top: 10px;
+  }
+
+  :nth-last-child(2) {
+    margin-bottom: 10px;
+  }
+
+  :last-child {
+    margin-top: auto;
+  }
+
+  time {
+    font-size: 12px;
+    text-align: right;
+  }
+`
+
+const toLocaleDate = (date) => {
+  return new Date(date).toLocaleDateString()
+}
+
 const IndexPage = ({ data }) => (
   <Layout>
     <SEO title="Home" />
-    <h1>Hi people</h1>
+    <h1>IT Nite</h1>
     <p>Welcome to your new Gatsby site.</p>
     <p>Now go build something great.</p>
     <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
@@ -47,16 +75,19 @@ const IndexPage = ({ data }) => (
     <Cards>
       { data.allMicrocmsPosts.edges.map((edge) => {
         return (
-          <Card key={ edge.node.slug }>
-            <a href="">
+          <Card key={ edge.node.id }>
+            <Link to={`/posts/${edge.node.id}`}>
               <CardHeader>
                 <img
                   src={ edge.node._embedded.url }
                   alt=""
                 />
               </CardHeader>
-              <div>{ edge.node.title }</div>
-            </a>
+              <CardBody>
+                <div>{ edge.node.title }</div>
+                <time dateTime={ edge.node.createdAt }>{ toLocaleDate(edge.node.createdAt) }</time>
+              </CardBody>
+            </Link>
           </Card>
         )
       }) }
@@ -68,12 +99,12 @@ export default IndexPage
 
 export const pageQuery = graphql`
   query HomeQuery {
-    allMicrocmsPosts(sort: {fields: createdAt}) {
+    allMicrocmsPosts(sort: { fields: [createdAt], order: DESC }) {
       edges {
         node {
           id
           title
-          content
+          createdAt
           _embedded {
             url
           }

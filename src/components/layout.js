@@ -224,18 +224,16 @@ const Layout = ({ children }) => {
     <>
       <ResetStyle />
       <BaseStyle />
-      <Header siteTitle={data.site.siteMetadata.title} />
+      <Header siteTitle={ data.site.siteMetadata.title } />
       <div
         style={{
           margin: `0 auto`,
           maxWidth: 960,
         }}
       >
-        <main>{children}</main>
+        <main>{ children }</main>
         <footer>
-          &copy; {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
+          <p><small>&copy; 2020 IT Nite.</small></p>
         </footer>
       </div>
     </>
