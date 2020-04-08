@@ -1,9 +1,38 @@
 import React from "react"
+import styled from "styled-components"
 import { Link, graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
+
+const Cards = styled.ul`
+  display: grid;
+  grid-gap: 30px;
+  grid-template-rows: auto auto;
+  grid-template-columns: repeat(3, 1fr);
+`
+
+const Card = styled.li`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  border-radius: 0.25rem;
+  overflow: hidden;
+
+  &:hover {
+    box-shadow: 0 0 0 0.25rem;
+  }
+
+  &:focus-within {
+    box-shadow: 0 0 0 0.25rem;
+  }
+`
+
+const CardHeader = styled.div`
+  flex-shrink: 0;
+`
 
 const IndexPage = ({ data }) => (
   <Layout>
@@ -15,22 +44,23 @@ const IndexPage = ({ data }) => (
       <Image />
     </div>
     <Link to="/page-2/">Go to page 2</Link>
-    <ul>
+    <Cards>
       { data.allMicrocmsPosts.edges.map((edge) => {
         return (
-          <li key={ edge.node.slug }>
-            <div>{ edge.node.title }</div>
-            <div dangerouslySetInnerHTML={{
-              __html: edge.node.content
-            }} />
-            <img
-              src={ edge.node._embedded.url }
-              alt=""
-            />
-          </li>
+          <Card key={ edge.node.slug }>
+            <a href="">
+              <CardHeader>
+                <img
+                  src={ edge.node._embedded.url }
+                  alt=""
+                />
+              </CardHeader>
+              <div>{ edge.node.title }</div>
+            </a>
+          </Card>
         )
       }) }
-    </ul>
+    </Cards>
   </Layout>
 )
 
