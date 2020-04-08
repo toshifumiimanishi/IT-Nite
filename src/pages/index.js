@@ -3,7 +3,6 @@ import styled from "styled-components"
 import { Link, graphql } from "gatsby"
 
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
 
 const Cards = styled.ul`
@@ -65,10 +64,6 @@ const toLocaleDate = (date) => {
 const IndexPage = ({ data }) => (
   <Layout>
     <SEO title="Home" />
-    <h1>IT Nite</h1>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
     <Cards>
       { data.allMicrocmsPosts.edges.map((edge) => {
         return (
