@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-import { createGlobalStyle } from "styled-components"
+import styled, { createGlobalStyle } from "styled-components"
 
 import Header from "./header"
 
@@ -177,14 +177,34 @@ const ResetStyle = createGlobalStyle`
 `
 
 const BaseStyle = createGlobalStyle`
+  @font-face {
+    font-family: "icomoon";
+    src:  url("../../assets/fonts/icomoon.eot?yzl28n");
+    src:  url("../../assets/fonts/icomoon.eot?yzl28n#iefix") format("embedded-opentype"),
+      url("../../assets/fonts/icomoon.ttf?yzl28n") format("truetype"),
+      url("../../assets/fonts/icomoon.woff?yzl28n") format("woff"),
+      url("../../assets/fonts/icomoon.svg?yzl28n#icomoon") format("svg");
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+  }
+
   :root {
     --color-white: #fff;
     --color-black: #000;
     --color-black-light: #353535;
+    --color-aqua: #90caf9;
+    --base-border-radius: 4px;
     --base-background-color: var(--color-black-light);
     --base-font-color: var(--color-white);
-    --base-font-family: "Hiragino Kaku Gothic ProN", "Segoe UI", "BIZ UDPGothic", Meiryo, sans-serif;
+    --base-font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "BIZ UDPGothic", Meiryo, sans-serif;
     --base-line-height: 1.6875;
+    --base-letter-spacing: 0.05em;
+    --base-duration: 0.2s;
+    --base-timing-function: ease;
+    --link-color: var(--color-aqua);
+    --header-background-color: var(--color-black);
+    --footer-background-color: var(--color-black);
   }
 
   body {
@@ -194,6 +214,7 @@ const BaseStyle = createGlobalStyle`
     line-height: var(--base-line-height);
     word-wrap: break-word;
     -webkit-text-size-adjust: 100%;
+    letter-spacing: var(--base-letter-spacing);
   }
 
   a {
@@ -207,6 +228,21 @@ const BaseStyle = createGlobalStyle`
       animation: unset !important;
     }
   }
+`
+
+const Main = styled.main`
+  margin: auto;
+  max-width: 960px;
+`
+
+const Footer = styled.footer`
+  padding: 10px 0;
+  background-color: var(--footer-background-color);
+`
+
+const Copyright = styled.p`
+  font-size: 14px;
+  text-align: center;
 `
 
 const Layout = ({ children }) => {
@@ -225,17 +261,12 @@ const Layout = ({ children }) => {
       <ResetStyle />
       <BaseStyle />
       <Header siteTitle={ data.site.siteMetadata.title } />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-        }}
-      >
-        <main>{ children }</main>
-        <footer>
-          <p><small>&copy; 2020 IT Nite.</small></p>
-        </footer>
-      </div>
+      <Main>{ children }</Main>
+      <Footer>
+        <Copyright>
+          <small>&copy; 2020 IT Nite.</small>
+        </Copyright>
+      </Footer>
     </>
   )
 }
