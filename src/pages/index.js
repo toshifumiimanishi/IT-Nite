@@ -10,27 +10,35 @@ const Cards = styled.ul`
   grid-gap: 30px;
   grid-template-rows: auto auto;
   grid-template-columns: repeat(3, 1fr);
+  padding: 40px 0;
 `
 
 const Card = styled.li`
   position: relative;
   display: flex;
   flex-direction: column;
+  border-radius: var(--base-border-radius);
   width: 300px;
-  border-radius: 2px;
   overflow: hidden;
+  transition: all var(--base-duration) var(--base-timing-function);
 
   &:hover {
+    color: var(--link-color);
     box-shadow: 0 0 0 2px;
   }
 
   &:focus-within {
+    color: var(--link-color);
     box-shadow: 0 0 0 2px;
   }
 `
 
 const CardHeader = styled.div`
   flex-shrink: 0;
+
+  > img {
+    border-radius: var(--base-border-radius);
+  }
 `
 
 const CardBody = styled.div`
