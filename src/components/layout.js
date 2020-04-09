@@ -1,9 +1,9 @@
-import React from "react"
-import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
-import styled, { createGlobalStyle } from "styled-components"
+import React from 'react'
+import PropTypes from 'prop-types'
+import { useStaticQuery, graphql } from 'gatsby'
+import styled, { createGlobalStyle } from 'styled-components'
 
-import Header from "./header"
+import Header from './header'
 
 const ResetStyle = createGlobalStyle`
   body,
@@ -260,8 +260,8 @@ const Layout = ({ children }) => {
     <>
       <ResetStyle />
       <BaseStyle />
-      <Header siteTitle={ data.site.siteMetadata.title } />
-      <Main>{ children }</Main>
+      <Header siteTitle={data.site.siteMetadata.title} />
+      <Main>{children}</Main>
       <Footer>
         <Copyright>
           <small>&copy; 2020 IT Nite.</small>

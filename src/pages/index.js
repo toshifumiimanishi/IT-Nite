@@ -1,9 +1,9 @@
-import React from "react"
-import styled from "styled-components"
-import { Link, graphql } from "gatsby"
+import React from 'react'
+import styled from 'styled-components'
+import { Link, graphql } from 'gatsby'
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Layout from '../components/layout'
+import SEO from '../components/seo'
 
 const Cards = styled.ul`
   display: grid;
@@ -65,7 +65,7 @@ const CardBody = styled.div`
   }
 `
 
-const toLocaleDate = (date) => {
+const toLocaleDate = date => {
   return new Date(date).toLocaleDateString()
 }
 
@@ -73,24 +73,23 @@ const IndexPage = ({ data }) => (
   <Layout>
     <SEO title="Home" />
     <Cards>
-      { data.allMicrocmsPosts.edges.map((edge) => {
+      {data.allMicrocmsPosts.edges.map(edge => {
         return (
-          <Card key={ edge.node.id }>
+          <Card key={edge.node.id}>
             <Link to={`${edge.node.id}`}>
               <CardHeader>
-                <img
-                  src={ edge.node._embedded.url }
-                  alt=""
-                />
+                <img src={edge.node._embedded.url} alt="" />
               </CardHeader>
               <CardBody>
-                <div>{ edge.node.title }</div>
-                <time dateTime={ edge.node.createdAt }>{ toLocaleDate(edge.node.createdAt) }</time>
+                <div>{edge.node.title}</div>
+                <time dateTime={edge.node.createdAt}>
+                  {toLocaleDate(edge.node.createdAt)}
+                </time>
               </CardBody>
             </Link>
           </Card>
         )
-      }) }
+      })}
     </Cards>
   </Layout>
 )

@@ -26,8 +26,8 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
       path: node.id,
       component: path.resolve(`src/templates/blog-post.js`),
       context: {
-        slug: node.id
-      }
+        slug: node.id,
+      },
     })
   })
 }

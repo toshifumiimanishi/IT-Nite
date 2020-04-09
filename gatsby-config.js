@@ -1,5 +1,5 @@
 require('dotenv').config({
-  path: `.env.${process.env.NODE_ENV}`
+  path: `.env.${process.env.NODE_ENV}`,
 })
 
 module.exports = {
@@ -37,9 +37,9 @@ module.exports = {
       options: {
         apiKey: `${process.env.MICROCMS_API_KEY}`,
         serviceId: `toshifumiimanishi`,
-        endpoint: `posts`
+        endpoint: `posts`,
       },
-    }
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
