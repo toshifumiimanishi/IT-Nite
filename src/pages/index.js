@@ -4,13 +4,17 @@ import { Link, graphql } from 'gatsby'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
+import Qiita from '../components/qiita'
+
+const Container = styled.div`
+  padding: 40px 0;
+`
 
 const Cards = styled.ul`
   display: grid;
   grid-gap: 30px;
   grid-template-rows: auto auto;
   grid-template-columns: repeat(3, 1fr);
-  padding: 40px 0;
 `
 
 const Card = styled.li`
@@ -23,12 +27,12 @@ const Card = styled.li`
   transition: all var(--base-duration) var(--base-timing-function);
 
   &:hover {
-    color: var(--link-color);
+    color: var(--base-link-color);
     box-shadow: 0 0 0 2px;
   }
 
   &:focus-within {
-    color: var(--link-color);
+    color: var(--base-link-color);
     box-shadow: 0 0 0 2px;
   }
 `
@@ -74,25 +78,28 @@ const toLocaleDate = date => {
 const IndexPage = ({ data }) => (
   <Layout>
     <SEO title="Home" />
-    <Cards>
-      {data.allMicrocmsPosts.edges.map(edge => {
-        return (
-          <Card key={edge.node.id}>
-            <Link to={`${edge.node.id}`}>
-              <CardHeader>
-                <img src={edge.node._embedded.url} alt="" />
-              </CardHeader>
-              <CardBody>
-                <div>{edge.node.title}</div>
-                <time dateTime={edge.node.createdAt}>
-                  {toLocaleDate(edge.node.createdAt)}
-                </time>
-              </CardBody>
-            </Link>
-          </Card>
-        )
-      })}
-    </Cards>
+    <Container>
+      <Cards>
+        {data.allMicrocmsPosts.edges.map(({ node }) => {
+          return (
+            <Card key={node.id}>
+              <Link to={`${node.id}`}>
+                <CardHeader>
+                  <img src={node._embedded.url} alt="" />
+                </CardHeader>
+                <CardBody>
+                  <div>{node.title}</div>
+                  <time dateTime={node.createdAt}>
+                    {toLocaleDate(node.createdAt)}
+                  </time>
+                </CardBody>
+              </Link>
+            </Card>
+          )
+        })}
+      </Cards>
+      <Qiita post={data.allQiitaPost} />
+    </Container>
   </Layout>
 )
 
@@ -109,6 +116,17 @@ export const pageQuery = graphql`
           _embedded {
             url
           }
+        }
+      }
+    }
+    allQiitaPost {
+      edges {
+        node {
+          id
+          title
+          url
+          likes_count
+          created_at
         }
       }
     }
