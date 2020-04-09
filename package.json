@@ -1,7 +1,7 @@
 {
   "name": "portfolio",
   "private": true,
-  "description": "",
+  "description": "HTML や CSS、JavaScript を中心としたフロントエンドの技術を紹介するメディア兼ポートフォリオ。",
   "version": "0.1.0",
   "author": "Toshifumi Imanishi <toshifumi.imanishi@gmail.com>",
   "dependencies": {
