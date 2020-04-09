@@ -38,6 +38,8 @@ const CardHeader = styled.div`
 
   > img {
     border-radius: var(--base-border-radius);
+    object-fit: cover;
+    height: 160px;
   }
 `
 

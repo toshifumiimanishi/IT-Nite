@@ -8,6 +8,14 @@ import SEO from '../components/seo'
 export default ({ data }) => {
   const { title, body, createdAt, _embedded } = data.microcmsPosts
 
+  const Hero = styled.div`
+    img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+    }
+  `
+
   const Title = styled.h1`
     font-size: 36px;
     text-align: center;
@@ -52,9 +60,9 @@ export default ({ data }) => {
   return (
     <Layout>
       <SEO title={title} />
-      <div>
+      <Hero>
         <img src={_embedded.url} alt="" />
-      </div>
+      </Hero>
       <Article>
         <Title>{title}</Title>
         <Time>
