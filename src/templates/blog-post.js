@@ -6,7 +6,7 @@ import Layout from '../components/layout'
 import SEO from '../components/seo'
 
 export default ({ data }) => {
-  const { title, body, createdAt, _embedded } = data.microcmsPosts
+  const { title, body, createdAt, updatedAt, _embedded } = data.microcmsPosts
 
   const Hero = styled.div`
     img {
@@ -25,7 +25,7 @@ export default ({ data }) => {
     padding: 20px 0;
 
     a {
-      color: var(--link-color);
+      color: var(--base-link-color);
 
       &[target='_blank'] {
         &::after {
@@ -57,6 +57,10 @@ export default ({ data }) => {
     return new Date(date).toLocaleDateString()
   }
 
+  const isUpdated = (() => {
+    return new Date(updatedAt) - new Date(createdAt)
+  })()
+
   return (
     <Layout>
       <SEO title={title} />
@@ -66,7 +70,11 @@ export default ({ data }) => {
       <Article>
         <Title>{title}</Title>
         <Time>
-          <time dateTime={createdAt}>{toLocaleDate(createdAt)} 公開</time>
+          {isUpdated ? (
+            <time dateTime={updatedAt}>{toLocaleDate(updatedAt)} 更新</time>
+          ) : (
+            <time dateTime={createdAt}>{toLocaleDate(createdAt)} 公開</time>
+          )}
         </Time>
         <div
           dangerouslySetInnerHTML={{
@@ -84,6 +92,7 @@ export const pageQuery = graphql`
       title
       body
       createdAt
+      updatedAt
       _embedded {
         url
       }
