@@ -40,6 +40,13 @@ module.exports = {
         endpoint: `posts`,
       },
     },
+    {
+      resolve: `gatsby-source-qiita`,
+      options: {
+        accessToken: `${process.env.QIITA_ACCESS_TOKEN}`,
+        userName: `toshifumiimanishi`,
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
