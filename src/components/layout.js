@@ -192,17 +192,27 @@ const BaseStyle = createGlobalStyle`
   :root {
     --color-white: #fff;
     --color-black: #000;
-    --color-black-light: #353535;
+    --color-gray-100: #f8f9fa;
+    --color-gray-200: #e9ecef;
+    --color-gray-300: #dee2e6;
+    --color-gray-400: #ced4da;
+    --color-gray-500: #adb5bd;
+    --color-gray-600: #6c757d;
+    --color-gray-700: #495057;
+    --color-gray-800: #343a40;
+    --color-gray-900: #212529;
     --color-aqua: #90caf9;
+    --color-qiita: #55c500;
     --base-border-radius: 4px;
-    --base-background-color: var(--color-black-light);
+    --base-background-color: var(--color-gray-800);
     --base-font-color: var(--color-white);
     --base-font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "BIZ UDPGothic", Meiryo, sans-serif;
     --base-line-height: 1.6875;
     --base-letter-spacing: 0.05em;
     --base-duration: 0.2s;
     --base-timing-function: ease;
-    --link-color: var(--color-aqua);
+    --base-border-color: var(--color-gray-600);
+    --base-link-color: var(--color-aqua);
     --header-background-color: var(--color-black);
     --footer-background-color: var(--color-black);
   }
