@@ -242,6 +242,7 @@ const BaseStyle = createGlobalStyle`
 
 const Main = styled.main`
   margin: auto;
+  padding-bottom: 100px;
   max-width: 960px;
 `
 

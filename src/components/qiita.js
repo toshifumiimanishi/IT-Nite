@@ -48,12 +48,21 @@ const Qiita = ({ post }) => (
       {post.edges.map(({ node }) => {
         return (
           <li key={node.id}>
-            <a href={node.url} target="_blank" rel="noopener noreferrer">
+            <a
+              href={node.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Qiitaサイトへ"
+            >
               <Media>
                 <dt>{node.title}</dt>
                 <dd>
-                  <span><strong>LGTM</strong> {node.likes_count}</span>
-                  <time dateTime={node.created_at}>{toLocaleDate(node.created_at)}</time>
+                  <span>
+                    <strong>LGTM</strong> {node.likes_count}
+                  </span>
+                  <time dateTime={node.created_at}>
+                    {toLocaleDate(node.created_at)}
+                  </time>
                 </dd>
               </Media>
             </a>
