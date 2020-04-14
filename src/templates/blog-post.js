@@ -53,12 +53,12 @@ export default ({ data }) => {
   `
 
   const Article = styled.article`
-    padding: 20px 0;
+    padding: 40px 100px;
   `
 
   const Time = styled.div`
     margin: 12px 0;
-    font-size: 12px;
+    font-size: 14px;
     text-align: center;
   `
 

@@ -204,8 +204,6 @@ const BaseStyle = createGlobalStyle`
     --color-aqua: #90caf9;
     --color-qiita: #55c500;
     --base-border-radius: 4px;
-    --base-background-color: var(--color-gray-800);
-    --base-font-color: var(--color-white);
     --base-font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "BIZ UDPGothic", Meiryo, sans-serif;
     --base-line-height: 1.6875;
     --base-letter-spacing: 0.05em;
@@ -214,12 +212,28 @@ const BaseStyle = createGlobalStyle`
     --base-border-color: var(--color-gray-600);
     --base-link-color: var(--color-aqua);
     --header-background-color: var(--color-black);
+    --header-color: var(--color-white);
     --footer-background-color: var(--color-black);
+    --footer-color: var(--color-white);
+    --theme-light-background-color: var(--color-white);
+    --theme-light-color: var(--color-gray-800);
+    --theme-dark-background-color: var(--color-gray-800);
+    --theme-dark-color: var(--color-white);
+
+    @media (prefers-color-scheme: light) {
+      --base-background-color: var(--theme-light-background-color);
+      --base-color: var(--theme-light-color);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      --base-background-color: var(--theme-dark-background-color);
+      --base-color: var(--theme-dark-color);
+    }
   }
 
   body {
     background-color: var(--base-background-color);
-    color: var(--base-font-color);
+    color: var(--base-color);
     font-family: var(--base-font-family);
     line-height: var(--base-line-height);
     word-wrap: break-word;
@@ -247,6 +261,7 @@ const Main = styled.main`
 `
 
 const Footer = styled.footer`
+  color: var(--footer-color);
   padding: 10px 0;
   background-color: var(--footer-background-color);
 `
