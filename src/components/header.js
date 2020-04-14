@@ -1,6 +1,6 @@
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
 const Header = ({ siteTitle }) => {
@@ -75,23 +75,45 @@ const Header = ({ siteTitle }) => {
 
   const [theme, setTheme] = useState(defaultTheme)
 
-  const toggleTheme = () => {
-    const rootElement = document.documentElement
+  useEffect(() => {
+    const theme = localStorage.getItem('theme')
 
     if (theme === 'light') {
-      rootElement.style.setProperty(
-        '--base-background-color',
-        'var(--theme-dark-background-color)'
-      )
-      rootElement.style.setProperty('--base-color', 'var(--theme-dark-color)')
-      setTheme('dark')
+      activateLightMode()
     } else if (theme === 'dark') {
-      rootElement.style.setProperty(
-        '--base-background-color',
-        'var(--theme-light-background-color)'
-      )
-      rootElement.style.setProperty('--base-color', 'var(--theme-light-color)')
-      setTheme('light')
+      activateDarkMode()
+    }
+  }, [])
+
+  const activateLightMode = () => {
+    const rootElement = document.documentElement
+
+    rootElement.style.setProperty(
+      '--base-background-color',
+      'var(--theme-light-background-color)'
+    )
+    rootElement.style.setProperty('--base-color', 'var(--theme-light-color)')
+    setTheme('light')
+  }
+
+  const activateDarkMode = () => {
+    const rootElement = document.documentElement
+
+    rootElement.style.setProperty(
+      '--base-background-color',
+      'var(--theme-dark-background-color)'
+    )
+    rootElement.style.setProperty('--base-color', 'var(--theme-dark-color)')
+    setTheme('dark')
+  }
+
+  const toggleTheme = () => {
+    if (theme === 'light') {
+      activateDarkMode()
+      localStorage.setItem('theme', 'dark')
+    } else if (theme === 'dark') {
+      activateLightMode()
+      localStorage.setItem('theme', 'light')
     }
   }
 
