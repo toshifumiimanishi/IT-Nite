@@ -54,6 +54,15 @@ export default ({ data }) => {
 
   const Article = styled.article`
     padding: 40px 100px;
+
+    ul {
+      margin: 1em 0;
+      padding-left: 40px;
+    }
+
+    li {
+      list-style: inside;
+    }
   `
 
   const Time = styled.div`
