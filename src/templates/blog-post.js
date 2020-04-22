@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import styled from 'styled-components'
-
+import toLocaleDateJA from '../utils/toLocaleDateJA'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 
@@ -109,10 +109,6 @@ export default ({ data }) => {
     }
   `
 
-  const toLocaleDate = date => {
-    return new Date(date).toLocaleDateString()
-  }
-
   const isUpdated = (() => {
     return new Date(updatedAt) - new Date(createdAt)
   })()
@@ -128,9 +124,9 @@ export default ({ data }) => {
           <Title>{title}</Title>
           <Time>
             {isUpdated ? (
-              <time dateTime={updatedAt}>{toLocaleDate(updatedAt)} 更新</time>
+              <time dateTime={updatedAt}>{toLocaleDateJA(updatedAt)} 更新</time>
             ) : (
-              <time dateTime={createdAt}>{toLocaleDate(createdAt)} 公開</time>
+              <time dateTime={createdAt}>{toLocaleDateJA(createdAt)} 公開</time>
             )}
           </Time>
           <div

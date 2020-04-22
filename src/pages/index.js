@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link, graphql } from 'gatsby'
-
+import toLocaleDateJA from '../utils/toLocaleDateJA'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import Qiita from '../components/qiita'
@@ -72,10 +72,6 @@ const CardBody = styled.div`
   }
 `
 
-const toLocaleDate = date => {
-  return new Date(date).toLocaleDateString()
-}
-
 const IndexPage = ({ data }) => (
   <Layout>
     <SEO title="Home" />
@@ -91,7 +87,7 @@ const IndexPage = ({ data }) => (
                 <CardBody>
                   <div>{node.title}</div>
                   <time dateTime={node.createdAt}>
-                    {toLocaleDate(node.createdAt)}
+                    {toLocaleDateJA(node.createdAt)}
                   </time>
                 </CardBody>
               </Link>

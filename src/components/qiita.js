@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import toLocaleDateJA from '../utils/toLocaleDateJA'
 
 const Heading = styled.h2`
   margin-bottom: 24px;
@@ -37,10 +38,6 @@ const Media = styled.dl`
   }
 `
 
-const toLocaleDate = date => {
-  return new Date(date).toLocaleDateString()
-}
-
 const Qiita = ({ post }) => (
   <>
     <Heading>Qiita</Heading>
@@ -61,7 +58,7 @@ const Qiita = ({ post }) => (
                     <strong>LGTM</strong> {node.likes_count}
                   </span>
                   <time dateTime={node.created_at}>
-                    {toLocaleDate(node.created_at)}
+                    {toLocaleDateJA(node.created_at)}
                   </time>
                 </dd>
               </Media>
