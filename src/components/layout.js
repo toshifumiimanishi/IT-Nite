@@ -202,6 +202,7 @@ const BaseStyle = createGlobalStyle`
     --color-gray-800: #343a40;
     --color-gray-900: #212529;
     --color-aqua: #90caf9;
+    --color-pink: #ff4081;
     --color-qiita: #55c500;
     --base-border-radius: 4px;
     --base-font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "BIZ UDPGothic", Meiryo, sans-serif;
@@ -211,6 +212,8 @@ const BaseStyle = createGlobalStyle`
     --base-timing-function: ease;
     --base-border-color: var(--color-gray-600);
     --base-link-color: var(--color-aqua);
+    --base-selection-background-color: var(--color-pink);
+    --base-selection-color: var(--color-white);
     --header-background-color: var(--color-black);
     --header-color: var(--color-white);
     --footer-background-color: var(--color-black);
@@ -244,6 +247,11 @@ const BaseStyle = createGlobalStyle`
   a {
     color: inherit;
     text-decoration: none;
+  }
+
+  ::selection {
+    background: var(--base-selection-background-color);
+    color: var(--base-selection-color);
   }
 
   @media (prefers-reduced-motion: reduce) {
