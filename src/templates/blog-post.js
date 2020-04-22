@@ -55,6 +55,16 @@ export default ({ data }) => {
   const Article = styled.article`
     padding: 40px 100px;
 
+    h2 {
+      margin: 1em 0;
+      font-size: 24px;
+    }
+
+    h3 {
+      margin: 1em 0;
+      font-size: 20px;
+    }
+
     ul {
       margin: 1em 0;
       padding-left: 40px;
@@ -62,6 +72,10 @@ export default ({ data }) => {
 
     li {
       list-style: inside;
+    }
+
+    img {
+      margin: 1em 0;
     }
   `
 
