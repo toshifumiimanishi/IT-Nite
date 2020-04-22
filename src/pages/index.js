@@ -7,14 +7,20 @@ import SEO from '../components/seo'
 import Qiita from '../components/qiita'
 
 const Container = styled.div`
-  padding: 40px 0;
+  padding: 40px;
+
+  @media screen and (max-width: 767.8px) {
+    padding-right: 6.25%;
+    padding-left: 6.25%;
+  }
 `
 
 const Cards = styled.ul`
   display: grid;
   grid-gap: 30px;
   grid-template-rows: auto auto;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(280px, auto));
+  justify-content: center;
 `
 
 const Card = styled.li`
@@ -22,18 +28,19 @@ const Card = styled.li`
   display: flex;
   flex-direction: column;
   border-radius: var(--base-border-radius);
-  width: 300px;
   overflow: hidden;
   transition: all var(--base-duration) var(--base-timing-function);
-
-  &:hover {
-    color: var(--base-link-color);
-    box-shadow: 0 0 0 2px;
-  }
 
   &:focus-within {
     color: var(--base-link-color);
     box-shadow: 0 0 0 2px;
+  }
+
+  @media screen and (min-width: 768px) {
+    &:hover {
+      color: var(--base-link-color);
+      box-shadow: 0 0 0 2px;
+    }
   }
 `
 

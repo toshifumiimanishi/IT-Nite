@@ -44,30 +44,54 @@ export default ({ data }) => {
       width: 100%;
       height: 500px;
       object-fit: cover;
+
+      @media screen and (max-width: 767.8px) {
+        height: 250px;
+      }
     }
   `
 
   const Title = styled.h1`
     font-size: 36px;
     text-align: center;
+
+    @media screen and (max-width: 767.8px) {
+      font-size: 20px;
+    }
   `
 
   const Article = styled.article`
     padding: 40px 100px;
 
+    @media screen and (max-width: 767.8px) {
+      padding: 20px 6.25%;
+    }
+
     h2 {
       margin: 1em 0;
       font-size: 24px;
+
+      @media screen and (max-width: 767.8px) {
+        font-size: 18px;
+      }
     }
 
     h3 {
       margin: 1em 0;
       font-size: 20px;
+
+      @media screen and (max-width: 767.8px) {
+        font-size: 16px;
+      }
     }
 
     ul {
       margin: 1em 0;
       padding-left: 40px;
+
+      @media screen and (max-width: 767.8px) {
+        padding-left: 20px;
+      }
     }
 
     li {
@@ -83,21 +107,39 @@ export default ({ data }) => {
     margin: 12px 0;
     font-size: 14px;
     text-align: center;
+
+    @media screen and (max-width: 767.8px) {
+      font-size: 10px;
+    }
   `
 
   const Profile = styled.div`
     display: flex;
     align-items: flex-start;
     margin: 40px auto 0;
-    width: 640px;
+    max-width: 640px;
+
+    @media screen and (max-width: 767.8px) {
+      margin: 20px auto 0;
+      padding: 0 6.25%;
+    }
 
     dt {
       margin-bottom: 12px;
       font-size: 20px;
+
+      @media screen and (max-width: 767.8px) {
+        margin-bottom: 6px;
+        font-size: 16px;
+      }
     }
 
     dd {
       font-size: 14px;
+
+      @media screen and (max-width: 767.8px) {
+        font-size: 12px;
+      }
     }
 
     img {
@@ -106,6 +148,11 @@ export default ({ data }) => {
       padding-top: 6px;
       width: 100px;
       object-fit: contain;
+
+      @media screen and (max-width: 767.8px) {
+        margin-right: 20px;
+        width: 80px;
+      }
     }
   `
 

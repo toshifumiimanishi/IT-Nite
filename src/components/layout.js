@@ -242,6 +242,10 @@ const BaseStyle = createGlobalStyle`
     word-wrap: break-word;
     -webkit-text-size-adjust: 100%;
     letter-spacing: var(--base-letter-spacing);
+
+    @media screen and (max-width: 767.8px) {
+      font-size: 14px;
+    }
   }
 
   a {
@@ -265,7 +269,7 @@ const BaseStyle = createGlobalStyle`
 const Main = styled.main`
   margin: auto;
   padding-bottom: 100px;
-  max-width: 960px;
+  max-width: 1040px;
 `
 
 const Footer = styled.footer`
