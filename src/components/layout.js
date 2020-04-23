@@ -137,15 +137,14 @@ const ResetStyle = createGlobalStyle`
     background: transparent;
   }
 
-  [type="text"],
   [type="number"],
   [type="search"],
   textarea {
-    border: 0;
     -webkit-appearance: none;
   }
 
   input {
+    border: 0;
     line-height: normal;
   }
 
@@ -203,6 +202,7 @@ const BaseStyle = createGlobalStyle`
     --color-gray-900: #212529;
     --color-aqua: #90caf9;
     --color-pink: #ff4081;
+    --color-orange: #ff9800;
     --color-qiita: #55c500;
     --base-border-radius: 4px;
     --base-font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "BIZ UDPGothic", Meiryo, sans-serif;
@@ -214,6 +214,9 @@ const BaseStyle = createGlobalStyle`
     --base-link-color: var(--color-aqua);
     --base-selection-background-color: var(--color-pink);
     --base-selection-color: var(--color-white);
+    --base-button-background-color: var(--color-black);
+    --prime-color: var(--color-orange);
+    --prime-border-color: var(--color-orange);
     --header-background-color: var(--color-black);
     --header-color: var(--color-white);
     --footer-background-color: var(--color-black);
