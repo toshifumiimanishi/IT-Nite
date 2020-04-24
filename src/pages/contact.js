@@ -78,7 +78,7 @@ const SubmitButton = styled.button`
 const ContactPage = () => (
   <Layout>
     <SEO title="Contact" />
-    <Form method="post" netlify-honeypot="bot-field" data-netlify="true">
+    <Form name="contact" method="post" netlify-honeypot="bot-field" data-netlify="true">
       <Fieldset>
         <input type="hidden" name="bot-field" />
         <p>
