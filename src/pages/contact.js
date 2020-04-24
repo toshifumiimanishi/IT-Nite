@@ -81,7 +81,6 @@ const ContactPage = () => (
     <Form name="contact" method="post" netlify-honeypot="bot-field" data-netlify="true">
       <Fieldset>
         <input type="hidden" name="form-name" value="contact" />
-        <input type="hidden" name="bot-field" />
         <p>
           <TextField type="text" name="name" id="name" placeholder="お名前" />
           <FloatLabel htmlFor="name">お名前</FloatLabel>
