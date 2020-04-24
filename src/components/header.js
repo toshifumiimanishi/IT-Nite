@@ -63,7 +63,7 @@ const Header = ({ siteTitle }) => {
     }
   `
 
-  const defaultTheme = (() => {
+  const systemSettingTheme = (() => {
     if (typeof window !== 'undefined') {
       return window.matchMedia('(prefers-color-scheme: light)').matches
         ? 'light'
@@ -73,7 +73,7 @@ const Header = ({ siteTitle }) => {
     }
   })()
 
-  const [theme, setTheme] = useState(defaultTheme)
+  const [theme, setTheme] = useState(systemSettingTheme)
 
   useEffect(() => {
     const theme = localStorage.getItem('theme')
