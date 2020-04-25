@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 import styled, { createGlobalStyle } from 'styled-components'
-
 import Header from './header'
+import Footer from './footer'
 
 const ResetStyle = createGlobalStyle`
   body,
@@ -275,17 +275,6 @@ const Main = styled.main`
   max-width: 1040px;
 `
 
-const Footer = styled.footer`
-  color: var(--footer-color);
-  padding: 10px 0;
-  background-color: var(--footer-background-color);
-`
-
-const Copyright = styled.p`
-  font-size: 14px;
-  text-align: center;
-`
-
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -303,11 +292,7 @@ const Layout = ({ children }) => {
       <BaseStyle />
       <Header siteTitle={data.site.siteMetadata.title} />
       <Main>{children}</Main>
-      <Footer>
-        <Copyright>
-          <small>&copy; 2020 IT Nite.</small>
-        </Copyright>
-      </Footer>
+      <Footer />
     </>
   )
 }
