@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import TextBox from '../components/atoms/TextBox';
+import TextArea from '../components/atoms/TextArea';
 
 const Form = styled.form`
   p {
@@ -43,17 +44,8 @@ const FloatLabel = styled.label`
   }
 `
 
-const TextArea = styled.textarea`
+const FormTextArea = styled(TextArea)`
   order: 2;
-  border: 1px solid var(--base-border-color);
-  border-radius: var(--base-border-radius);
-  padding: 8px;
-  width: 100%;
-  background-color: transparent;
-
-  ::placeholder {
-    color: transparent;
-  }
 `
 
 const SubmitButton = styled.button`
@@ -86,7 +78,7 @@ const ContactPage = () => (
           <FloatLabel htmlFor="email">メールアドレス</FloatLabel>
         </p>
         <p>
-          <TextArea name="message" rows="5" id="message" placeholder="お問い合わせ内容" />
+          <FormTextArea name="message" id="message" placeholder="お問い合わせ内容" />
           <FloatLabel htmlFor="message">お問い合わせ内容</FloatLabel>
         </p>
         <SubmitButton type="submit">送信</SubmitButton>
