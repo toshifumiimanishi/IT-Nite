@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const FooterDOM = (props) => (
   <footer className={ props.className }>
-    <p class="copyright">
+    <p className="copyright">
       <small>&copy; 2020 IT Nite.</small>
     </p>
   </footer>
