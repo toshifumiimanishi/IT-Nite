@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
+import TextBox from '../components/atoms/TextBox';
 
 const Form = styled.form`
   p {
@@ -9,6 +10,10 @@ const Form = styled.form`
     flex-direction: column;
     margin-bottom: 20px;
   }
+`
+
+const FormTextBox = styled(TextBox)`
+  order: 2;
 `
 
 const Fieldset = styled.fieldset`
@@ -35,23 +40,6 @@ const FloatLabel = styled.label`
   input:not(:placeholder-shown) ~ &,
   textarea:not(:placeholder-shown) ~ & {
     transform: translateY(0) scale(0.8);
-  }
-`
-
-const TextField = styled.input`
-  order: 2;
-  border: 0;
-  border-bottom: 1px solid var(--base-border-color);
-  padding: 8px;
-  width: 100%;
-  background-color: transparent;
-
-  &::placeholder {
-    color: transparent;
-  }
-
-  &:focus {
-    border-color: var(--primary-border-color);
   }
 `
 
@@ -90,11 +78,11 @@ const ContactPage = () => (
       <Fieldset>
         <input type="hidden" name="form-name" value="contact" />
         <p>
-          <TextField type="text" name="name" id="name" placeholder="お名前" />
+          <FormTextBox id="name" name="name" placeholder="お名前" />
           <FloatLabel htmlFor="name">お名前</FloatLabel>
         </p>
         <p>
-          <TextField type="email" name="email" id="email" placeholder="メールアドレス" />
+          <FormTextBox id="email" type="email" name="email" placeholder="メールアドレス" />
           <FloatLabel htmlFor="email">メールアドレス</FloatLabel>
         </p>
         <p>
