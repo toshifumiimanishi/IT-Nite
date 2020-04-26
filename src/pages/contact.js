@@ -28,7 +28,7 @@ const FloatLabel = styled.label`
   }
 
   p:focus-within & {
-    color: var(--prime-color);
+    color: var(--primary-color);
     transform: translateY(0) scale(0.8);
   }
 
@@ -51,7 +51,7 @@ const TextField = styled.input`
   }
 
   &:focus {
-    border-color: var(--prime-border-color);
+    border-color: var(--primary-border-color);
   }
 `
 
@@ -69,10 +69,18 @@ const TextArea = styled.textarea`
 `
 
 const SubmitButton = styled.button`
+  border-radius: var(--base-border-radius);
   width: 120px;
   height: 40px;
   background-color: var(--base-button-background-color);
   font-weight: bold;
+  transition: background-color var(--base-duration) var(--base-timing-function);
+
+  @media screen and (min-width: 768px) {
+    &:hover {
+      background-color: var(--base-button-hover-background-color);
+    }
+  }
 `
 
 const ContactPage = () => (
