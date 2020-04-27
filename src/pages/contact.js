@@ -4,6 +4,7 @@ import Layout from '../components/layout'
 import SEO from '../components/seo'
 import TextBox from '../components/atoms/TextBox'
 import TextArea from '../components/atoms/TextArea'
+import Button from '../components/atoms/Button'
 import FloatLabel from '../components/molecules/FloatLabel'
 
 const Form = styled.form`
@@ -18,19 +19,9 @@ const Fieldset = styled.fieldset`
   padding: 40px 0;
 `
 
-const SubmitButton = styled.button`
-  border-radius: var(--base-border-radius);
+const SubmitButton = styled(Button)`
   width: 120px;
   height: 40px;
-  background-color: var(--base-button-background-color);
-  font-weight: bold;
-  transition: background-color var(--base-duration) var(--base-timing-function);
-
-  @media screen and (min-width: 768px) {
-    &:hover {
-      background-color: var(--base-button-hover-background-color);
-    }
-  }
 `
 
 const ContactPage = () => (
