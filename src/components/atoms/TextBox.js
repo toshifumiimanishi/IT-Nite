@@ -1,14 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const TextBoxDOM = ({
-  className,
-  id,
-  type = "text",
-  name,
-  placeholder,
-}) => (
-  <input className={ className } id={ id } type={type} name={ name } placeholder={ placeholder } />
+const TextBoxDOM = ({ className, id, type = 'text', name, placeholder }) => (
+  <input
+    className={className}
+    id={id}
+    type={type}
+    name={name}
+    placeholder={placeholder}
+  />
 )
 
 const PresentationalTextBox = styled(TextBoxDOM)`
@@ -27,15 +27,13 @@ const PresentationalTextBox = styled(TextBoxDOM)`
   }
 `
 
-const ContainerTextBox = ({ presenter, ...props }) => (
-  presenter({ ...props })
-)
+const ContainerTextBox = ({ presenter, ...props }) => presenter({ ...props })
 
-const TextBox = (props) => (
+const TextBox = props => (
   <ContainerTextBox
-    presenter={ presenterProps => <PresentationalTextBox { ...presenterProps } /> }
-    { ...props }
+    presenter={presenterProps => <PresentationalTextBox {...presenterProps} />}
+    {...props}
   />
 )
 
-export default TextBox;
+export default TextBox

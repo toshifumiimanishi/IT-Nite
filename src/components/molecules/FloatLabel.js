@@ -1,15 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const FloatLabelDOM = ({
-  className,
-  htmlFor,
-  children,
-  labelName,
-}) => (
-  <p className={ className }>
-    { children }
-    <label htmlFor={ htmlFor }>{ labelName }</label>
+const FloatLabelDOM = ({ className, htmlFor, children, labelName }) => (
+  <p className={className}>
+    {children}
+    <label htmlFor={htmlFor}>{labelName}</label>
   </p>
 )
 
@@ -43,14 +38,14 @@ const PresentationalFloatLabel = styled(FloatLabelDOM)`
   }
 `
 
-const ContainerFloatLabel = ({ presenter, ...props }) => (
-  presenter({ ...props })
-)
+const ContainerFloatLabel = ({ presenter, ...props }) => presenter({ ...props })
 
-const FloatLabel = (props) => (
+const FloatLabel = props => (
   <ContainerFloatLabel
-    presenter={ presenterProps => <PresentationalFloatLabel { ...presenterProps } /> }
-    { ...props }
+    presenter={presenterProps => (
+      <PresentationalFloatLabel {...presenterProps} />
+    )}
+    {...props}
   />
 )
 

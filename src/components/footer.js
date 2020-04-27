@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const FooterDOM = (props) => (
-  <footer className={ props.className }>
+const FooterDOM = props => (
+  <footer className={props.className}>
     <p className="copyright">
       <small>&copy; 2020 IT Nite.</small>
     </p>
@@ -22,14 +22,14 @@ const PresentationalFooter = styled(FooterDOM)`
   }
 `
 
-const ContainerFooter = ({presenter, ...props}) => (
-  presenter({  ...props })
-)
+const ContainerFooter = ({ presenter, ...props }) => presenter({ ...props })
 
-const Footer = (props) => (
+const Footer = props => (
   <ContainerFooter
-    presenter={ presenterProps => <PresentationalFooter className="footer" { ...presenterProps } /> }
-    { ...props }
+    presenter={presenterProps => (
+      <PresentationalFooter className="footer" {...presenterProps} />
+    )}
+    {...props}
   />
 )
 

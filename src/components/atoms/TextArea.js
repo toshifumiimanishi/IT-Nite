@@ -1,14 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const TextAreaDOM = ({
-  className,
-  id,
-  name,
-  rows = 5,
-  placeholder,
-}) => (
-  <textarea className={ className } id={ id } name={ name } rows={ rows } placeholder={placeholder} />
+const TextAreaDOM = ({ className, id, name, rows = 5, placeholder }) => (
+  <textarea
+    className={className}
+    id={id}
+    name={name}
+    rows={rows}
+    placeholder={placeholder}
+  />
 )
 
 const PresentationTextArea = styled(TextAreaDOM)`
@@ -23,14 +23,12 @@ const PresentationTextArea = styled(TextAreaDOM)`
   }
 `
 
-const ContainerTextArea = ({ presenter, ...props }) => (
-  presenter({ ...props })
-)
+const ContainerTextArea = ({ presenter, ...props }) => presenter({ ...props })
 
-const TextArea = (props) => (
+const TextArea = props => (
   <ContainerTextArea
-    presenter={ presenterProps => <PresentationTextArea { ...presenterProps } /> }
-    { ...props }
+    presenter={presenterProps => <PresentationTextArea {...presenterProps} />}
+    {...props}
   />
 )
 
