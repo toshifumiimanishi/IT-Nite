@@ -29,8 +29,8 @@ const ContainerTextArea = ({ presenter, ...props }) => (
 
 const TextArea = (props) => (
   <ContainerTextArea
-  presenter={ presenterProps => <PresentationTextArea { ...presenterProps } /> }
-  { ...props }
+    presenter={ presenterProps => <PresentationTextArea { ...presenterProps } /> }
+    { ...props }
   />
 )
 
