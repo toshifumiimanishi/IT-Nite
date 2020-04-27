@@ -25,9 +25,9 @@ const PresentationTextArea = styled(TextAreaDOM)`
 
 const ContainerTextArea = ({ presenter, ...props }) => presenter({ ...props })
 
-const TextArea = props => (
+const TextArea = (props) => (
   <ContainerTextArea
-    presenter={presenterProps => <PresentationTextArea {...presenterProps} />}
+    presenter={(presenterProps) => <PresentationTextArea {...presenterProps} />}
     {...props}
   />
 )

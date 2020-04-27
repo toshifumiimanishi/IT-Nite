@@ -29,9 +29,11 @@ const PresentationalTextBox = styled(TextBoxDOM)`
 
 const ContainerTextBox = ({ presenter, ...props }) => presenter({ ...props })
 
-const TextBox = props => (
+const TextBox = (props) => (
   <ContainerTextBox
-    presenter={presenterProps => <PresentationalTextBox {...presenterProps} />}
+    presenter={(presenterProps) => (
+      <PresentationalTextBox {...presenterProps} />
+    )}
     {...props}
   />
 )

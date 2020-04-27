@@ -40,9 +40,9 @@ const PresentationalFloatLabel = styled(FloatLabelDOM)`
 
 const ContainerFloatLabel = ({ presenter, ...props }) => presenter({ ...props })
 
-const FloatLabel = props => (
+const FloatLabel = (props) => (
   <ContainerFloatLabel
-    presenter={presenterProps => (
+    presenter={(presenterProps) => (
       <PresentationalFloatLabel {...presenterProps} />
     )}
     {...props}
