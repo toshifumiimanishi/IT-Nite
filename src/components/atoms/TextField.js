@@ -25,6 +25,10 @@ const PresentationalTextField = styled(TextFieldDOM)`
   &:focus {
     border-color: var(--primary-border-color);
   }
+
+  &:invalid {
+    border-color: var(--error-border-color);
+  }
 `
 
 const ContainerTextField = ({ presenter, ...props }) => presenter({ ...props })

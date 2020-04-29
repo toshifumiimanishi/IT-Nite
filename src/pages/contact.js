@@ -38,7 +38,11 @@ const ContactPage = () => (
         <FloatLabel labelName="お名前" htmlFor="name">
           <TextField id="name" name="name" placeholder="お名前" />
         </FloatLabel>
-        <FloatLabel labelName="メールアドレス" htmlFor="email">
+        <FloatLabel
+          labelName="メールアドレス"
+          htmlFor="email"
+          errorMessage="有効なメールアドレスを入力してください。"
+        >
           <TextField
             id="email"
             type="email"
