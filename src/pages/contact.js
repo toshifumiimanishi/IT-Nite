@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import TextBox from '../components/atoms/TextBox'
+import TextField from '../components/atoms/TextField'
 import TextArea from '../components/atoms/TextArea'
 import Button from '../components/atoms/Button'
 import FloatLabel from '../components/molecules/FloatLabel'
@@ -36,10 +36,10 @@ const ContactPage = () => (
       <Fieldset>
         <input type="hidden" name="form-name" value="contact" />
         <FloatLabel labelName="お名前" htmlFor="name">
-          <TextBox id="name" name="name" placeholder="お名前" />
+          <TextField id="name" name="name" placeholder="お名前" />
         </FloatLabel>
         <FloatLabel labelName="メールアドレス" htmlFor="email">
-          <TextBox
+          <TextField
             id="email"
             type="email"
             name="email"
