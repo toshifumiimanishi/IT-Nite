@@ -16,6 +16,9 @@ const FloatLabelDOM = ({
 )
 
 const PresentationalFloatLabel = styled(FloatLabelDOM)`
+  display: flex;
+  flex-direction: column;
+
   > label {
     display: block;
     transition-property: transform, color;
