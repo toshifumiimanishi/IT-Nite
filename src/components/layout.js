@@ -200,6 +200,7 @@ const BaseStyle = createGlobalStyle`
     --color-gray-700: #495057;
     --color-gray-800: #343a40;
     --color-gray-900: #212529;
+    --color-red: #d32f2f;
     --color-aqua: #90caf9;
     --color-pink: #ff4081;
     --color-orange: #ff9800;
@@ -218,6 +219,8 @@ const BaseStyle = createGlobalStyle`
     --base-button-hover-background-color: var(--color-aqua);
     --primary-color: var(--color-orange);
     --primary-border-color: var(--color-orange);
+    --error-color: var(--color-red);
+    --error-border-color: var(--color-red);
     --header-background-color: var(--color-black);
     --header-color: var(--color-white);
     --footer-background-color: var(--color-black);

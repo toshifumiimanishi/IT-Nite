@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const TextBoxDOM = ({ className, id, type = 'text', name, placeholder }) => (
+const TextFieldDOM = ({ className, id, type = 'text', name, placeholder }) => (
   <input
     className={className}
     id={id}
@@ -11,7 +11,7 @@ const TextBoxDOM = ({ className, id, type = 'text', name, placeholder }) => (
   />
 )
 
-const PresentationalTextBox = styled(TextBoxDOM)`
+const PresentationalTextField = styled(TextFieldDOM)`
   border: 0;
   border-bottom: 1px solid var(--base-border-color);
   padding: 8px;
@@ -25,17 +25,21 @@ const PresentationalTextBox = styled(TextBoxDOM)`
   &:focus {
     border-color: var(--primary-border-color);
   }
+
+  &:invalid {
+    border-color: var(--error-border-color);
+  }
 `
 
-const ContainerTextBox = ({ presenter, ...props }) => presenter({ ...props })
+const ContainerTextField = ({ presenter, ...props }) => presenter({ ...props })
 
-const TextBox = (props) => (
-  <ContainerTextBox
+const TextField = (props) => (
+  <ContainerTextField
     presenter={(presenterProps) => (
-      <PresentationalTextBox {...presenterProps} />
+      <PresentationalTextField {...presenterProps} />
     )}
     {...props}
   />
 )
 
-export default TextBox
+export default TextField
