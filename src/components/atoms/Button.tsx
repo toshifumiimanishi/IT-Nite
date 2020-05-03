@@ -1,7 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const ButtonDOM = ({ className, type = 'button', children }) => (
+type DOMProps = {
+  className?: string
+} & JSX.IntrinsicElements['button']
+
+const ButtonDOM: React.FC<DOMProps> = ({ className, type = 'button', children }) => (
   <button className={className} type={type}>
     {children}
   </button>
@@ -20,9 +24,9 @@ const PresentationalButton = styled(ButtonDOM)`
   }
 `
 
-const ContainerButton = ({ presenter, ...props }) => presenter({ ...props })
+const ContainerButton = ({ presenter, ...props }: { presenter: React.FC }) => presenter({ ...props })
 
-const Button = ({ ...props }) => (
+const Button: React.FC = ({ ...props }) => (
   <ContainerButton
     presenter={(presenterProps) => <PresentationalButton {...presenterProps} />}
     {...props}
