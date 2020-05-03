@@ -1,13 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const ToggleButtonDOM = ({className, onClickToggleButton, theme}) => (
+const ToggleButtonDOM = ({ className, onClickToggleButton, theme }) => (
   <button className={className} type="button" onClick={onClickToggleButton}>
-    <svg
-      version="1.1"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-    >
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
       {theme === 'dark' ? (
         <>
           <title>Activate light mode</title>
@@ -35,13 +31,14 @@ const PresentationalToggleButton = styled(ToggleButtonDOM)`
   }
 `
 
-const ContainerToggleButton = ({ presenter, ...props }) => (
-  presenter({...props})
-)
+const ContainerToggleButton = ({ presenter, ...props }) =>
+  presenter({ ...props })
 
 const ToggleButton = (props) => (
   <ContainerToggleButton
-    presenter={(presenterProps) => <PresentationalToggleButton {...presenterProps} />}
+    presenter={(presenterProps) => (
+      <PresentationalToggleButton {...presenterProps} />
+    )}
     {...props}
   />
 )

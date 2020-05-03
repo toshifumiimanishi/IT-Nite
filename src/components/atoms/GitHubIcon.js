@@ -1,9 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const GitHubIconDOM = ({
-  className,
-}) => (
+const GitHubIconDOM = ({ className }) => (
   <svg
     className={className}
     version="1.1"
@@ -19,13 +17,13 @@ const PresentationalGitHubIcon = styled(GitHubIconDOM)`
   fill: currentColor;
 `
 
-const ContainerGitHubIcon = ({ presenter, ...props }) => (
-  presenter({...props})
-)
+const ContainerGitHubIcon = ({ presenter, ...props }) => presenter({ ...props })
 
 const GitHubIcon = (props) => (
   <ContainerGitHubIcon
-    presenter={(presenterProps) => <PresentationalGitHubIcon {...presenterProps} />}
+    presenter={(presenterProps) => (
+      <PresentationalGitHubIcon {...presenterProps} />
+    )}
     {...props}
   />
 )

@@ -5,12 +5,16 @@ import styled from 'styled-components'
 import ToggleButton from './atoms/ToggleButton'
 import GitHubIcon from './atoms/GitHubIcon'
 
-const HeaderDOM = ({className, siteTitle, theme, onClickToggleButton}) => (
+const HeaderDOM = ({ className, siteTitle, theme, onClickToggleButton }) => (
   <header className={className}>
     <div className="header_container">
-      <h1 className="header_title"><Link to="/">{siteTitle}</Link></h1>
+      <h1 className="header_title">
+        <Link to="/">{siteTitle}</Link>
+      </h1>
       <ul className="header_list">
-        <li><Link to="/contact/">Contact</Link></li>
+        <li>
+          <Link to="/contact/">Contact</Link>
+        </li>
       </ul>
       <ul className="header_widget">
         <li className="header_widgetitem">
@@ -155,7 +159,7 @@ const ContainerHeader = ({ presenter, ...props }) => {
 
   const onClickToggleButton = useCallback(toggleTheme, [theme])
 
-  return presenter({theme, onClickToggleButton, ...props})
+  return presenter({ theme, onClickToggleButton, ...props })
 }
 
 const Header = (props) => (
