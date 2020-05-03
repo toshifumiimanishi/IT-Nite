@@ -1,11 +1,32 @@
 import { Link } from 'gatsby'
-import PropTypes from 'prop-types'
 import React, { useState, useEffect, useCallback } from 'react'
 import styled from 'styled-components'
 import ToggleButton from './atoms/ToggleButton'
 import GitHubIcon from './atoms/GitHubIcon'
 
-const HeaderDOM = ({ className, siteTitle, theme, onClickToggleButton }) => (
+type DOMProps = {
+  className: string
+  siteTitle: string
+  theme: string | null
+  onClickToggleButton: () => void
+}
+
+type ContainerProps = {
+  siteTitle: string
+  theme: string | null
+  onClickToggleButton: () => void
+}
+
+type Props = {
+  siteTitle: string
+}
+
+const HeaderDOM: React.FC<DOMProps> = ({
+  className,
+  siteTitle,
+  theme,
+  onClickToggleButton,
+}) => (
   <header className={className}>
     <div className="header_container">
       <h1 className="header_title">
@@ -102,7 +123,14 @@ const PresentationalHeader = styled(HeaderDOM)`
   }
 `
 
-const ContainerHeader = ({ presenter, ...props }) => {
+const ContainerHeader = ({
+  presenter,
+  siteTitle,
+  ...props
+}: {
+  presenter: React.FC<ContainerProps>
+  siteTitle: string
+}) => {
   const systemSettingTheme = (() => {
     if (typeof window !== 'undefined') {
       return window.matchMedia('(prefers-color-scheme: light)').matches
@@ -159,24 +187,17 @@ const ContainerHeader = ({ presenter, ...props }) => {
 
   const onClickToggleButton = useCallback(toggleTheme, [theme])
 
-  return presenter({ theme, onClickToggleButton, ...props })
+  return presenter({ siteTitle, theme, onClickToggleButton, ...props })
 }
 
-const Header = (props) => (
+const Header: React.FC<Props> = ({ siteTitle, ...props }) => (
   <ContainerHeader
     presenter={(presenterProps) => (
       <PresentationalHeader className="header" {...presenterProps} />
     )}
+    siteTitle={siteTitle}
     {...props}
   />
 )
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
-}
 
 export default Header

@@ -1,7 +1,28 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const ToggleButtonDOM = ({ className, onClickToggleButton, theme }) => (
+type DOMProps = {
+  className?: string
+  theme: string | null
+  onClickToggleButton: () => void
+}
+
+type ContainerProps = {
+  theme: string | null
+  onClickToggleButton: () => void
+}
+
+type Props = {
+  className?: string
+  theme: string | null
+  onClickToggleButton: () => void
+}
+
+const ToggleButtonDOM: React.FC<DOMProps> = ({
+  className,
+  onClickToggleButton,
+  theme,
+}) => (
   <button className={className} type="button" onClick={onClickToggleButton}>
     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
       {theme === 'dark' ? (
@@ -31,14 +52,28 @@ const PresentationalToggleButton = styled(ToggleButtonDOM)`
   }
 `
 
-const ContainerToggleButton = ({ presenter, ...props }) =>
-  presenter({ ...props })
+const ContainerToggleButton = ({
+  presenter,
+  theme,
+  onClickToggleButton,
+  ...props
+}: {
+  presenter: React.FC<ContainerProps>
+  theme: string | null
+  onClickToggleButton: () => void
+}) => presenter({ theme, onClickToggleButton, ...props })
 
-const ToggleButton = (props) => (
+const ToggleButton: React.FC<Props> = ({
+  theme,
+  onClickToggleButton,
+  ...props
+}) => (
   <ContainerToggleButton
     presenter={(presenterProps) => (
       <PresentationalToggleButton {...presenterProps} />
     )}
+    theme={theme}
+    onClickToggleButton={onClickToggleButton}
     {...props}
   />
 )
