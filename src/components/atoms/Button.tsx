@@ -3,7 +3,9 @@ import styled from 'styled-components'
 
 type DOMProps = {
   className?: string
-} & JSX.IntrinsicElements['button']
+} & Props
+
+type Props = JSX.IntrinsicElements['button']
 
 const ButtonDOM: React.FC<DOMProps> = ({
   className,
@@ -31,7 +33,7 @@ const PresentationalButton = styled(ButtonDOM)`
 const ContainerButton = ({ presenter, ...props }: { presenter: React.FC }) =>
   presenter({ ...props })
 
-const Button: React.FC = ({ ...props }) => (
+const Button: React.FC<Props> = ({ ...props }) => (
   <ContainerButton
     presenter={(presenterProps) => <PresentationalButton {...presenterProps} />}
     {...props}

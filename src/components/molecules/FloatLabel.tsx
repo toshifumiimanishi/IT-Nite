@@ -3,12 +3,15 @@ import styled from 'styled-components'
 
 type DOMProps = {
   className?: string
-} & PresenterProps
+  htmlFor: string
+  labelName: string
+  errorMessage?: string
+}
 
 type PresenterProps = {
   htmlFor: string
   labelName: string
-  errorMessage: string
+  errorMessage?: string
 }
 
 type ContainerProps = {
@@ -16,9 +19,10 @@ type ContainerProps = {
 } & Props
 
 type Props = {
+  className?: string
   htmlFor: string
   labelName: string
-  errorMessage: string
+  errorMessage?: string
 }
 
 const FloatLabelDOM: React.FC<DOMProps> = ({

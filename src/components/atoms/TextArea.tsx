@@ -3,7 +3,9 @@ import styled from 'styled-components'
 
 type DOMProps = {
   className?: string
-} & JSX.IntrinsicElements['textarea']
+} & Props
+
+type Props = JSX.IntrinsicElements['textarea']
 
 const TextAreaDOM: React.FC<DOMProps> = ({
   className,
@@ -36,7 +38,7 @@ const PresentationalTextArea = styled(TextAreaDOM)`
 const ContainerTextArea = ({ presenter, ...props }: { presenter: React.FC }) =>
   presenter({ ...props })
 
-const TextArea: React.FC = (props) => (
+const TextArea: React.FC<Props> = (props) => (
   <ContainerTextArea
     presenter={(presenterProps) => (
       <PresentationalTextArea {...presenterProps} />

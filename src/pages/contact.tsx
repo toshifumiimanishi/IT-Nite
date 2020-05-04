@@ -34,7 +34,7 @@ const SubmitButton = styled(Button)`
   height: 40px;
 `
 
-const ContactPage = () => (
+const ContactPage: React.FC = () => (
   <Layout>
     <SEO title="Contact" />
     <Form

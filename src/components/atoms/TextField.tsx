@@ -3,7 +3,9 @@ import styled from 'styled-components'
 
 type DOMProps = {
   className?: string
-} & JSX.IntrinsicElements['input']
+} & Props
+
+type Props = JSX.IntrinsicElements['input']
 
 const TextFieldDOM: React.FC<DOMProps> = ({
   className,
@@ -44,7 +46,7 @@ const PresentationalTextField = styled(TextFieldDOM)`
 const ContainerTextField = ({ presenter, ...props }: { presenter: React.FC }) =>
   presenter({ ...props })
 
-const TextField: React.FC = (props) => (
+const TextField: React.FC<Props> = (props) => (
   <ContainerTextField
     presenter={(presenterProps) => (
       <PresentationalTextField {...presenterProps} />
