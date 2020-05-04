@@ -1,4 +1,4 @@
-const toLocaleDateJA = (locale) => {
+const toLocaleDateJA = (locale: string) => {
   const date = new Date(locale)
   const year = date.getFullYear()
   const month = date.getMonth() + 1
