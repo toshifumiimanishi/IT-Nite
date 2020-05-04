@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Link, graphql } from 'gatsby'
 import toLocaleDateJA from '../utils/toLocaleDateJA'
 import Layout from '../components/layout'
-import SEO from '../components/seo'
+import SEO from '../components/SEO'
 import Qiita from '../components/qiita'
 
 const Container = styled.div`
