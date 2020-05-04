@@ -5,7 +5,13 @@ type DOMProps = {
   className?: string
 } & JSX.IntrinsicElements['input']
 
-const TextFieldDOM: React.FC<DOMProps> = ({ className, id, type = 'text', name, placeholder }) => (
+const TextFieldDOM: React.FC<DOMProps> = ({
+  className,
+  id,
+  type = 'text',
+  name,
+  placeholder,
+}) => (
   <input
     className={className}
     id={id}
@@ -35,7 +41,8 @@ const PresentationalTextField = styled(TextFieldDOM)`
   }
 `
 
-const ContainerTextField = ({ presenter, ...props }: { presenter: React.FC }) => presenter({ ...props })
+const ContainerTextField = ({ presenter, ...props }: { presenter: React.FC }) =>
+  presenter({ ...props })
 
 const TextField: React.FC = (props) => (
   <ContainerTextField

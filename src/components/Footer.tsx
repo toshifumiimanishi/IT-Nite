@@ -26,7 +26,8 @@ const PresentationalFooter = styled(FooterDOM)`
   }
 `
 
-const ContainerFooter = ({ presenter, ...props }: { presenter: React.FC }) => presenter({ ...props })
+const ContainerFooter = ({ presenter, ...props }: { presenter: React.FC }) =>
+  presenter({ ...props })
 
 const Footer: React.FC = (props) => (
   <ContainerFooter

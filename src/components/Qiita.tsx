@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import toLocaleDateJA from '../utils/toLocaleDateJA'
-import { QiitaPostConnection } from '../../types/graphql-types';
+import { QiitaPostConnection } from '../../types/graphql-types'
 
 type Props = {
   post: QiitaPostConnection

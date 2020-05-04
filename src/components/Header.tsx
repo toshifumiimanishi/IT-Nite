@@ -11,7 +11,7 @@ type DOMProps = {
   onClickToggleButton: () => void
 }
 
-type ContainerProps = {
+type PresenterProps = {
   siteTitle: string
   theme: string | null
   onClickToggleButton: () => void
@@ -128,7 +128,7 @@ const ContainerHeader = ({
   siteTitle,
   ...props
 }: {
-  presenter: React.FC<ContainerProps>
+  presenter: React.FC<PresenterProps>
   siteTitle: string
 }) => {
   const systemSettingTheme = (() => {
