@@ -3085,6 +3085,14 @@ export type Unnamed_1_QueryVariables = {};
 
 export type Unnamed_1_Query = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
 
+export type HomeQueryQueryVariables = {};
+
+
+export type HomeQueryQuery = { allMicrocmsPosts: { edges: Array<{ node: (
+        Pick<MicrocmsPosts, 'id' | 'title' | 'createdAt'>
+        & { _embedded?: Maybe<Pick<MicrocmsPosts_Embedded, 'url'>> }
+      ) }> }, allQiitaPost: { edges: Array<{ node: Pick<QiitaPost, 'id' | 'title' | 'url' | 'likes_count' | 'created_at'> }> } };
+
 export type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
 export type GatsbyImageSharpFixed_TracedSvgFragment = Pick<ImageSharpFixed, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet'>;

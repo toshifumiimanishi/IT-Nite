@@ -5,6 +5,11 @@ import toLocaleDateJA from '../utils/toLocaleDateJA'
 import Layout from '../components/layout'
 import SEO from '../components/SEO'
 import Qiita from '../components/qiita'
+import { Query } from '../../types/graphql-types';
+
+type Props = {
+  data: Query
+}
 
 const Container = styled.div`
   padding: 40px;
@@ -79,7 +84,7 @@ const CardBody = styled.div`
   }
 `
 
-const IndexPage = ({ data }) => (
+const IndexPage: React.FC<Props> = ({ data }) => (
   <Layout>
     <SEO title="Home" />
     <Container>
@@ -89,7 +94,7 @@ const IndexPage = ({ data }) => (
             <Card key={node.id}>
               <Link to={`${node.id}`}>
                 <CardHeader>
-                  <img src={node._embedded.url} alt="" />
+                  <img src={node._embedded?.url as string | undefined} alt="" />
                 </CardHeader>
                 <CardBody>
                   <div>{node.title}</div>
