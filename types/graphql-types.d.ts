@@ -3093,6 +3093,19 @@ export type HomeQueryQuery = { allMicrocmsPosts: { edges: Array<{ node: (
         & { _embedded?: Maybe<Pick<MicrocmsPosts_Embedded, 'url'>> }
       ) }> }, allQiitaPost: { edges: Array<{ node: Pick<QiitaPost, 'id' | 'title' | 'url' | 'likes_count' | 'created_at'> }> } };
 
+export type Unnamed_2_QueryVariables = {
+  slug: Scalars['String'];
+};
+
+
+export type Unnamed_2_Query = { microcmsPosts?: Maybe<(
+    Pick<MicrocmsPosts, 'title' | 'body' | 'createdAt' | 'updatedAt'>
+    & { _embedded?: Maybe<Pick<MicrocmsPosts_Embedded, 'url'>>, author?: Maybe<(
+      Pick<MicrocmsPostsAuthor, 'name' | 'text'>
+      & { image?: Maybe<Pick<MicrocmsPostsAuthorImage, 'url'>> }
+    )> }
+  )> };
+
 export type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
 export type GatsbyImageSharpFixed_TracedSvgFragment = Pick<ImageSharpFixed, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet'>;
