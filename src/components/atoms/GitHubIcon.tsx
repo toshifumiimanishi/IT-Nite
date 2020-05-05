@@ -1,7 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const GitHubIconDOM = ({ className }) => (
+type DOMProps = {
+  className?: string
+}
+
+type Props = {
+  className: string
+}
+
+const GitHubIconDOM: React.FC<DOMProps> = ({ className }) => (
   <svg
     className={className}
     version="1.1"
@@ -17,9 +25,14 @@ const PresentationalGitHubIcon = styled(GitHubIconDOM)`
   fill: currentColor;
 `
 
-const ContainerGitHubIcon = ({ presenter, ...props }) => presenter({ ...props })
+const ContainerGitHubIcon = ({
+  presenter,
+  ...props
+}: {
+  presenter: React.FC
+}) => presenter({ ...props })
 
-const GitHubIcon = (props) => (
+const GitHubIcon: React.FC<Props> = (props) => (
   <ContainerGitHubIcon
     presenter={(presenterProps) => (
       <PresentationalGitHubIcon {...presenterProps} />

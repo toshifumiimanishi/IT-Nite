@@ -1,7 +1,19 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const TextAreaDOM = ({ className, id, name, rows = 5, placeholder }) => (
+type DOMProps = {
+  className?: string
+} & Props
+
+type Props = JSX.IntrinsicElements['textarea']
+
+const TextAreaDOM: React.FC<DOMProps> = ({
+  className,
+  id,
+  name,
+  rows = 5,
+  placeholder,
+}) => (
   <textarea
     className={className}
     id={id}
@@ -23,9 +35,10 @@ const PresentationalTextArea = styled(TextAreaDOM)`
   }
 `
 
-const ContainerTextArea = ({ presenter, ...props }) => presenter({ ...props })
+const ContainerTextArea = ({ presenter, ...props }: { presenter: React.FC }) =>
+  presenter({ ...props })
 
-const TextArea = (props) => (
+const TextArea: React.FC<Props> = (props) => (
   <ContainerTextArea
     presenter={(presenterProps) => (
       <PresentationalTextArea {...presenterProps} />

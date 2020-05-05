@@ -1,7 +1,31 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const FloatLabelDOM = ({
+type DOMProps = {
+  className?: string
+  htmlFor: string
+  labelName: string
+  errorMessage?: string
+}
+
+type PresenterProps = {
+  htmlFor: string
+  labelName: string
+  errorMessage?: string
+}
+
+type ContainerProps = {
+  presenter: React.FC<PresenterProps>
+} & Props
+
+type Props = {
+  className?: string
+  htmlFor: string
+  labelName: string
+  errorMessage?: string
+}
+
+const FloatLabelDOM: React.FC<DOMProps> = ({
   className,
   htmlFor,
   children,
@@ -64,13 +88,27 @@ const PresentationalFloatLabel = styled(FloatLabelDOM)`
   }
 `
 
-const ContainerFloatLabel = ({ presenter, ...props }) => presenter({ ...props })
+const ContainerFloatLabel = ({
+  presenter,
+  htmlFor,
+  labelName,
+  errorMessage,
+  ...props
+}: ContainerProps) => presenter({ htmlFor, labelName, errorMessage, ...props })
 
-const FloatLabel = (props) => (
+const FloatLabel: React.FC<Props> = ({
+  htmlFor,
+  labelName,
+  errorMessage,
+  ...props
+}) => (
   <ContainerFloatLabel
     presenter={(presenterProps) => (
       <PresentationalFloatLabel {...presenterProps} />
     )}
+    htmlFor={htmlFor}
+    labelName={labelName}
+    errorMessage={errorMessage}
     {...props}
   />
 )

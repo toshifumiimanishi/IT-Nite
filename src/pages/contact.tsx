@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Layout from '../components/layout'
-import SEO from '../components/seo'
+import SEO from '../components/SEO'
 import TextField from '../components/atoms/TextField'
 import TextArea from '../components/atoms/TextArea'
 import Button from '../components/atoms/Button'
@@ -34,7 +34,7 @@ const SubmitButton = styled(Button)`
   height: 40px;
 `
 
-const ContactPage = () => (
+const ContactPage: React.FC = () => (
   <Layout>
     <SEO title="Contact" />
     <Form

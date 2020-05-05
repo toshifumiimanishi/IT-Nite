@@ -3,9 +3,16 @@ import { graphql } from 'gatsby'
 import styled from 'styled-components'
 import toLocaleDateJA from '../utils/toLocaleDateJA'
 import Layout from '../components/layout'
-import SEO from '../components/seo'
+import SEO from '../components/SEO'
+import { MicrocmsPosts } from '../../types/graphql-types';
 
-export default ({ data }) => {
+type Props = {
+  data: {
+    microcmsPosts: MicrocmsPosts
+  }
+}
+
+export default ({ data }: Props) => {
   const {
     title,
     body,
@@ -157,15 +164,15 @@ export default ({ data }) => {
   `
 
   const isUpdated = (() => {
-    return new Date(updatedAt) - new Date(createdAt)
+    return + new Date(updatedAt) - + new Date(createdAt)
   })()
 
   return (
     <Layout>
-      <SEO title={title} />
+      <SEO title={title as string} />
       <Wrapper>
         <Hero>
-          <img src={_embedded.url} alt="" />
+          <img src={_embedded?.url as string | undefined} alt="" />
         </Hero>
         <Article>
           <Title>{title}</Title>
@@ -184,14 +191,14 @@ export default ({ data }) => {
         </Article>
         <Profile>
           <dl>
-            <dt>{author.name}</dt>
+            <dt>{author?.name}</dt>
             <dd
               dangerouslySetInnerHTML={{
-                __html: `${author.text}`,
+                __html: `${author?.text}`,
               }}
             />
           </dl>
-          <img src={author.image.url} alt="" />
+          <img src={author?.image?.url as string | undefined} alt="" />
         </Profile>
       </Wrapper>
     </Layout>

@@ -1,7 +1,11 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import toLocaleDateJA from '../utils/toLocaleDateJA'
+import { QiitaPostConnection } from '../../types/graphql-types'
+
+type Props = {
+  post: QiitaPostConnection
+}
 
 const Heading = styled.h2`
   margin-bottom: 24px;
@@ -38,7 +42,7 @@ const Media = styled.dl`
   }
 `
 
-const Qiita = ({ post }) => (
+const Qiita: React.FC<Props> = ({ post }) => (
   <>
     <Heading>Qiita</Heading>
     <List>
@@ -46,7 +50,7 @@ const Qiita = ({ post }) => (
         return (
           <li key={node.id}>
             <a
-              href={node.url}
+              href={node.url as string | undefined}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Qiitaサイトへ"
@@ -69,9 +73,5 @@ const Qiita = ({ post }) => (
     </List>
   </>
 )
-
-Qiita.propTypes = {
-  post: PropTypes.object.isRequired,
-}
 
 export default Qiita
