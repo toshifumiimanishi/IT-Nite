@@ -9,9 +9,10 @@ type DOMProps = {
 const FooterDOM: React.FC<DOMProps> = ({ className }) => (
   <footer className={className}>
     <div className="footer_container">
+      <h2 className="footer_h">IT Nite について</h2>
       <p className="footer_txt">
       IT Nite（以下「当ポートフォリオ」）は HTML や CSS、JavaScript を中心としたフロントエンドの技術を紹介するメディア兼ポートフォリオです。
-      原則、当ポートフォリオが公開している記事は個人の備忘録であり、当ポートフォリオが掲載している内容をご参考にしていただいた上で、万が一障害が生じた場合でも一切の責任を負いませんので、あらかじめご了承さください。
+      原則、当ポートフォリオが公開している記事は個人の備忘録であり、当ポートフォリオが掲載している内容をご参考にしていただいた上で、万が一障害が生じた場合でも一切の責任を負わないものとします。
       当ポートフォリオや管理人へのお問い合わせをはじめ、記事内容の指摘や訂正などがございましたら、<Link className="footer_link" to="/contact/">お問い合わせページ</Link>よりご連絡ください。
       </p>
       <p className="copyright">
@@ -31,6 +32,15 @@ const PresentationalFooter = styled(FooterDOM)`
     margin: auto;
     padding: 24px 40px;
     max-width: 1040px;
+
+    @media screen and (max-width: 767.8px) {
+      padding: 20px 6.25%;
+    }
+  }
+
+  .footer_h {
+    margin-bottom: 12px;
+    font-size: 20px;
   }
 
   .footer_txt {
