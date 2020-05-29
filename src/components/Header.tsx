@@ -32,11 +32,6 @@ const HeaderDOM: React.FC<DOMProps> = ({
       <h1 className="header_title">
         <Link to="/">{siteTitle}</Link>
       </h1>
-      <ul className="header_list">
-        <li>
-          <Link to="/contact/">Contact</Link>
-        </li>
-      </ul>
       <ul className="header_widget">
         <li className="header_widgetitem">
           <ToggleButton
@@ -74,19 +69,6 @@ const PresentationalHeader = styled(HeaderDOM)`
 
   .header_title {
     font-size: 20px;
-  }
-
-  .header_list {
-    margin-left: 20px;
-
-    a {
-      opacity: 0.6;
-      transition: all var(--base-duration) var(--base-timing-function);
-
-      &:hover {
-        opacity: 1;
-      }
-    }
   }
 
   .header_widget {
