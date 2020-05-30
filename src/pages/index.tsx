@@ -5,11 +5,22 @@ import toLocaleDateJA from '../utils/toLocaleDateJA'
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
 import Qiita from '../components/Qiita'
+import GitHub from '../components/GitHub'
 import { Query } from '../../types/graphql-types';
 
 type Props = {
   data: Query
 }
+
+const Home = styled.div`
+  .home_qiita {
+    margin-top: 70px;
+  }
+
+  .home_github {
+    margin-top: 100px;
+  }
+`
 
 const Container = styled.div`
   padding: 40px;
@@ -85,31 +96,34 @@ const CardBody = styled.div`
 `
 
 const IndexPage: React.FC<Props> = ({ data }) => (
-  <Layout>
-    <SEO title="Home" />
-    <Container>
-      <Cards>
-        {data.allMicrocmsPosts.edges.map(({ node }) => {
-          return (
-            <Card key={node.id}>
-              <Link to={`${node.id}`}>
-                <CardHeader>
-                  <img src={node._embedded?.url as string | undefined} alt="" />
-                </CardHeader>
-                <CardBody>
-                  <div>{node.title}</div>
-                  <time dateTime={node.createdAt}>
-                    {toLocaleDateJA(node.createdAt)}
-                  </time>
-                </CardBody>
-              </Link>
-            </Card>
-          )
-        })}
-      </Cards>
-      <Qiita post={data.allQiitaPost} />
-    </Container>
-  </Layout>
+  <Home className="home">
+    <Layout>
+      <SEO title="Home" />
+      <Container>
+        <Cards>
+          {data.allMicrocmsPosts.edges.map(({ node }) => {
+            return (
+              <Card key={node.id}>
+                <Link to={`${node.id}`}>
+                  <CardHeader>
+                    <img src={node._embedded?.url as string | undefined} alt="" />
+                  </CardHeader>
+                  <CardBody>
+                    <div>{node.title}</div>
+                    <time dateTime={node.createdAt}>
+                      {toLocaleDateJA(node.createdAt)}
+                    </time>
+                  </CardBody>
+                </Link>
+              </Card>
+            )
+          })}
+        </Cards>
+        <Qiita className="home_qiita" post={data.allQiitaPost} />
+        <GitHub className="home_github" viewer={data.github.viewer} />
+      </Container>
+    </Layout>
+  </Home>
 )
 
 export default IndexPage
@@ -136,6 +150,35 @@ export const pageQuery = graphql`
           url
           likes_count
           created_at
+        }
+      }
+    }
+    github {
+      viewer {
+        contributionsCollection {
+          commitContributionsByRepository(maxRepositories: 6) {
+            repository {
+              id
+              url
+              name
+              updatedAt
+              forkCount
+              stargazers {
+                totalCount
+              }
+            }
+            contributions {
+              totalCount
+            }
+          }
+          user {
+            starredRepositories {
+              totalCount
+            }
+            contributionsCollection {
+              totalCommitContributions
+            }
+          }
         }
       }
     }
