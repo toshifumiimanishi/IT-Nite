@@ -5,6 +5,7 @@ import { QiitaPostConnection } from '../../types/graphql-types'
 
 type Props = {
   post: QiitaPostConnection
+  className?: string
 }
 
 const Heading = styled.h2`
@@ -42,8 +43,8 @@ const Media = styled.dl`
   }
 `
 
-const Qiita: React.FC<Props> = ({ post }) => (
-  <>
+const Qiita: React.FC<Props> = ({ post, className }) => (
+  <section className={className}>
     <Heading>Qiita</Heading>
     <List>
       {post.edges.map(({ node }) => {
@@ -71,7 +72,7 @@ const Qiita: React.FC<Props> = ({ post }) => (
         )
       })}
     </List>
-  </>
+  </section>
 )
 
 export default Qiita
