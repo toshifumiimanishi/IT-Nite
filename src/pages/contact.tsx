@@ -6,12 +6,13 @@ import TextField from '../components/atoms/TextField'
 import TextArea from '../components/atoms/TextArea'
 import Button from '../components/atoms/Button'
 import FloatLabel from '../components/molecules/FloatLabel'
+import { breakpointDown } from '../utils/breakpoints'
 
 const Form = styled.form`
   > .form_container {
     padding: 40px;
 
-    @media screen and (max-width: 767.8px) {
+    ${breakpointDown('md')} {
       padding-right: 6.25%;
       padding-left: 6.25%;
     }

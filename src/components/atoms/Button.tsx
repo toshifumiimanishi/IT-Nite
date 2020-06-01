@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { breakpointUp } from '../../utils/breakpoints'
 
 type DOMProps = {
   className?: string
@@ -23,7 +24,7 @@ const PresentationalButton = styled(ButtonDOM)`
   font-weight: bold;
   transition: background-color var(--base-duration) var(--base-timing-function);
 
-  @media screen and (min-width: 768px) {
+  ${breakpointUp('md')} {
     &:hover {
       background-color: var(--base-button-hover-background-color);
     }

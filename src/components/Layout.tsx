@@ -3,6 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 import styled, { createGlobalStyle } from 'styled-components'
 import Header from './Header'
 import Footer from './Footer'
+import { breakpointDown } from '../utils/breakpoints'
 
 const ResetStyle = createGlobalStyle`
   body,
@@ -249,7 +250,7 @@ const BaseStyle = createGlobalStyle`
     -webkit-text-size-adjust: 100%;
     letter-spacing: var(--base-letter-spacing);
 
-    @media screen and (max-width: 767.8px) {
+    ${breakpointDown('md')} {
       font-size: 14px;
     }
   }

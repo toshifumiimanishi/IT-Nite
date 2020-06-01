@@ -6,7 +6,8 @@ import Layout from '../components/Layout'
 import SEO from '../components/SEO'
 import Qiita from '../components/Qiita'
 import GitHub from '../components/GitHub'
-import { Query } from '../../types/graphql-types';
+import { breakpointUp, breakpointDown } from '../utils/breakpoints'
+import { Query } from '../../types/graphql-types'
 
 type Props = {
   data: Query
@@ -25,7 +26,7 @@ const Home = styled.div`
 const Container = styled.div`
   padding: 40px;
 
-  @media screen and (max-width: 767.8px) {
+  ${breakpointDown('md')} {
     padding-right: 6.25%;
     padding-left: 6.25%;
   }
@@ -52,7 +53,7 @@ const Card = styled.li`
     box-shadow: 0 0 0 2px;
   }
 
-  @media screen and (min-width: 768px) {
+  ${breakpointUp('md')} {
     &:hover {
       color: var(--base-link-color);
       box-shadow: 0 0 0 2px;
