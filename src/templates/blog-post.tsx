@@ -4,7 +4,8 @@ import styled from 'styled-components'
 import toLocaleDateJA from '../utils/toLocaleDateJA'
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
-import { MicrocmsPosts } from '../../types/graphql-types';
+import { breakpointDown } from '../utils/breakpoints'
+import { MicrocmsPosts } from '../../types/graphql-types'
 
 type Props = {
   data: {
@@ -52,7 +53,7 @@ export default ({ data }: Props) => {
       height: 500px;
       object-fit: cover;
 
-      @media screen and (max-width: 767.8px) {
+      ${breakpointDown('md')} {
         height: 250px;
       }
     }
@@ -62,7 +63,7 @@ export default ({ data }: Props) => {
     font-size: 36px;
     text-align: center;
 
-    @media screen and (max-width: 767.8px) {
+    ${breakpointDown('md')} {
       font-size: 20px;
     }
   `
@@ -70,7 +71,7 @@ export default ({ data }: Props) => {
   const Article = styled.article`
     padding: 40px 100px;
 
-    @media screen and (max-width: 767.8px) {
+    ${breakpointDown('md')} {
       padding: 20px 6.25%;
     }
 
@@ -78,7 +79,7 @@ export default ({ data }: Props) => {
       margin: 1em 0;
       font-size: 24px;
 
-      @media screen and (max-width: 767.8px) {
+      ${breakpointDown('md')} {
         font-size: 18px;
       }
     }
@@ -87,7 +88,7 @@ export default ({ data }: Props) => {
       margin: 1em 0;
       font-size: 20px;
 
-      @media screen and (max-width: 767.8px) {
+      ${breakpointDown('md')} {
         font-size: 16px;
       }
     }
@@ -96,7 +97,7 @@ export default ({ data }: Props) => {
       margin: 1em 0;
       padding-left: 40px;
 
-      @media screen and (max-width: 767.8px) {
+      ${breakpointDown('md')} {
         padding-left: 20px;
       }
     }
@@ -115,7 +116,7 @@ export default ({ data }: Props) => {
     font-size: 14px;
     text-align: center;
 
-    @media screen and (max-width: 767.8px) {
+    ${breakpointDown('md')} {
       font-size: 10px;
     }
   `
@@ -126,7 +127,7 @@ export default ({ data }: Props) => {
     margin: 40px auto 0;
     max-width: 640px;
 
-    @media screen and (max-width: 767.8px) {
+    ${breakpointDown('md')} {
       margin: 20px auto 0;
       padding: 0 6.25%;
     }
@@ -135,7 +136,7 @@ export default ({ data }: Props) => {
       margin-bottom: 12px;
       font-size: 20px;
 
-      @media screen and (max-width: 767.8px) {
+      ${breakpointDown('md')} {
         margin-bottom: 6px;
         font-size: 16px;
       }
@@ -144,7 +145,7 @@ export default ({ data }: Props) => {
     dd {
       font-size: 14px;
 
-      @media screen and (max-width: 767.8px) {
+      ${breakpointDown('md')} {
         font-size: 12px;
       }
     }
@@ -156,7 +157,7 @@ export default ({ data }: Props) => {
       width: 100px;
       object-fit: contain;
 
-      @media screen and (max-width: 767.8px) {
+      ${breakpointDown('md')} {
         margin-right: 20px;
         width: 80px;
       }

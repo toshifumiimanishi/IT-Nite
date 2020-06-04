@@ -1,6 +1,7 @@
 import { Link } from 'gatsby'
 import React from 'react'
 import styled from 'styled-components'
+import { breakpointDown } from '../utils/breakpoints'
 
 type DOMProps = {
   className?: string
@@ -33,7 +34,7 @@ const PresentationalFooter = styled(FooterDOM)`
     padding: 24px 40px;
     max-width: 1040px;
 
-    @media screen and (max-width: 767.8px) {
+    ${breakpointDown('md')} {
       padding: 20px 6.25%;
     }
   }
