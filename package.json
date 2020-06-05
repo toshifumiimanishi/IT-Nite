@@ -33,6 +33,9 @@
     "styled-components": "^5.1.0"
   },
   "devDependencies": {
+    "babel-jest": "^26.0.1",
+    "babel-preset-gatsby": "^0.4.8",
+    "jest": "^26.0.1",
     "prettier": "^2.0.5"
   },
   "keywords": [
@@ -46,7 +49,7 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
