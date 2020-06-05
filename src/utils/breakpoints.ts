@@ -2,7 +2,7 @@ import { breakpoints } from '../constants/breakpoints'
 
 type Breakpoints = keyof typeof breakpoints
 
-const breakpointNext = (name: Breakpoints) => {
+export const breakpointNext = (name: Breakpoints) => {
   const breakpointNames  = Object.keys(breakpoints) as Breakpoints[]
   const nextIndex = breakpointNames.indexOf(name) + 1
   if (nextIndex < breakpointNames.length) {
@@ -12,12 +12,12 @@ const breakpointNext = (name: Breakpoints) => {
   }
 }
 
-const breakpointMin = (name: Breakpoints) => {
+export const breakpointMin = (name: Breakpoints) => {
   const min = breakpoints[name]
   return min !== 0 ? min : null
 }
 
-const breakpointMax = (name: Breakpoints) => {
+export const breakpointMax = (name: Breakpoints) => {
   const max = breakpoints[name]
   return max && max > 0 ? max - 0.02 : null
 }
