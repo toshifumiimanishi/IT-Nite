@@ -127,7 +127,6 @@ const PresentationalGitHub = styled(GitHubDOM)`
     ${breakpointUp('md')} {
       &:hover {
         color: var(--base-link-color);
-        color: red;
         box-shadow: 0 0 0 2px;
       }
     }
