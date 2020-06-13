@@ -25,6 +25,7 @@
     "gatsby-source-microcms": "^0.1.0",
     "gatsby-source-qiita": "^1.2.4",
     "gatsby-transformer-sharp": "^2.4.3",
+    "moment": "^2.26.0",
     "node-sass": "^4.13.1",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
