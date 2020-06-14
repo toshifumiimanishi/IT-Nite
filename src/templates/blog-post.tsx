@@ -1,9 +1,9 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import styled from 'styled-components'
-import toLocaleDateJA from '../utils/toLocaleDateJA'
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
+import Time from '../components/atoms/Time'
 import { breakpointDown } from '../utils/breakpoints'
 import { MicrocmsPosts } from '../../types/graphql-types'
 
@@ -106,18 +106,22 @@ export default ({ data }: Props) => {
       list-style: inside;
     }
 
+    .time {
+      margin: 12px 0;
+      font-size: 14px;
+      text-align: center;
+
+      ${breakpointDown('md')} {
+        font-size: 10px;
+      }
+
+      > time {
+        margin-right: 0.5em;
+      }
+    }
+
     img {
       margin: 1em 0;
-    }
-  `
-
-  const Time = styled.div`
-    margin: 12px 0;
-    font-size: 14px;
-    text-align: center;
-
-    ${breakpointDown('md')} {
-      font-size: 10px;
     }
   `
 
@@ -177,13 +181,19 @@ export default ({ data }: Props) => {
         </Hero>
         <Article>
           <Title>{title}</Title>
-          <Time>
+          <div className="time">
             {isUpdated ? (
-              <time dateTime={updatedAt}>{toLocaleDateJA(updatedAt)} 更新</time>
+              <>
+                <Time>{updatedAt}</Time>
+                <span>更新</span>
+              </>
             ) : (
-              <time dateTime={createdAt}>{toLocaleDateJA(createdAt)} 公開</time>
+              <>
+                <Time>{createdAt}</Time>
+                <span>公開</span>
+              </>
             )}
-          </Time>
+          </div>
           <div
             dangerouslySetInnerHTML={{
               __html: `${body}`,

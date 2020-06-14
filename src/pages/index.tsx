@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link, graphql } from 'gatsby'
-import toLocaleDateJA from '../utils/toLocaleDateJA'
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
 import Qiita from '../components/Qiita'
 import GitHub from '../components/GitHub'
+import Time from '../components/atoms/Time'
 import { breakpointUp, breakpointDown } from '../utils/breakpoints'
 import { Query } from '../../types/graphql-types'
 
@@ -111,9 +111,7 @@ const IndexPage: React.FC<Props> = ({ data }) => (
                   </CardHeader>
                   <CardBody>
                     <div>{node.title}</div>
-                    <time dateTime={node.createdAt}>
-                      {toLocaleDateJA(node.createdAt)}
-                    </time>
+                    <Time>{node.createdAt}</Time>
                   </CardBody>
                 </Link>
               </Card>

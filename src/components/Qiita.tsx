@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import toLocaleDateJA from '../utils/toLocaleDateJA'
+import Time from '../components/atoms/Time'
 import { QiitaPostConnection } from '../../types/graphql-types'
 
 type Props = {
@@ -62,9 +62,7 @@ const Qiita: React.FC<Props> = ({ post, className }) => (
                   <span>
                     <strong>LGTM</strong> {node.likes_count}
                   </span>
-                  <time dateTime={node.created_at}>
-                    {toLocaleDateJA(node.created_at)}
-                  </time>
+                  <Time>{ node.created_at }</Time>
                 </dd>
               </Media>
             </a>
