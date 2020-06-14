@@ -8584,7 +8584,9 @@ export type GitHub_OrgRemoveMemberAuditEntryReason =
   /** SAML SSO enforcement requires an external identity */
   | 'SAML_SSO_ENFORCEMENT_REQUIRES_EXTERNAL_IDENTITY'
   /** User account has been deleted */
-  | 'USER_ACCOUNT_DELETED';
+  | 'USER_ACCOUNT_DELETED'
+  /** User was removed from organization during account recovery */
+  | 'TWO_FACTOR_ACCOUNT_RECOVERY';
 
 /** Audit log entry for a org.remove_outside_collaborator event. */
 export type GitHub_OrgRemoveOutsideCollaboratorAuditEntry = GitHub_Node & GitHub_AuditEntry & GitHub_OrganizationAuditEntryData & {

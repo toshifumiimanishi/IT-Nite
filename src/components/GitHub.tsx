@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import toLocaleDateJA from '../utils/toLocaleDateJA'
+import Time from '../components/atoms/Time';
 import { breakpointUp } from '../utils/breakpoints'
 import { GitHub_User } from '../../types/graphql-types'
 
@@ -69,7 +69,7 @@ const GitHubDOM: React.FC<DOMProps> = ({
                       </dd>
                     </div>
                     <dd className="github_updatedat">
-                      <time dateTime={node.repository.updatedAt}>{toLocaleDateJA(node.repository.updatedAt)}</time>
+                      <Time>{node.repository.updatedAt}</Time>
                     </dd>
                   </dl>
                 </a>
