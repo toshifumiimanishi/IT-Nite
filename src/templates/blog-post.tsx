@@ -8,23 +8,101 @@ import Time from '../components/atoms/Time'
 import { breakpointUp, breakpointDown } from '../utils/breakpoints'
 import { MicrocmsPosts } from '../../types/graphql-types'
 
+type DOMProps = {
+  className?: string
+} & PresenterProps
+
+type PresenterProps = {
+  agenda: {
+    text: string | undefined
+    id: string
+    tagname: string
+  }[]
+  isAgenda: boolean
+  isUpdated: boolean
+} & Props
+
+type ContainerProps = {
+  presenter: React.FC<PresenterProps>
+} & Props
+
 type Props = {
+  className?: string
   data: {
     microcmsPosts: MicrocmsPosts
   }
 }
 
-export default ({ data }: Props) => {
-  const {
-    title,
-    body,
-    createdAt,
-    updatedAt,
-    _embedded,
-    author,
-  } = data.microcmsPosts
+const BlogDOM: React.FC<DOMProps> = ({
+  data: {
+    microcmsPosts: { title, body, createdAt, updatedAt, _embedded, author },
+  },
+  className,
+  agenda,
+  isAgenda,
+  isUpdated,
+}) => (
+  <Layout>
+    <SEO title={title as string} />
+    <div className={className}>
+      <div className="blog_wrapper">
+        <div className="blog_hero">
+          <img src={_embedded?.url as string | undefined} alt="" />
+        </div>
+        <article className="blog_article">
+          <h1 className="blog_title">{title}</h1>
+          <div className="blog_time">
+            {isUpdated ? (
+              <>
+                <Time>{updatedAt}</Time>
+                <span>更新</span>
+              </>
+            ) : (
+              <>
+                <Time>{createdAt}</Time>
+                <span>公開</span>
+              </>
+            )}
+          </div>
+          <div className="blog_articlecontent">
+            {isAgenda && (
+              <nav className="blog_agenda agenda">
+                <h2>目次</h2>
+                <ul>
+                  {agenda.map((item) => (
+                    <li className={`agenda_${item.tagname}`} key={item.id}>
+                      <a href={`#${item.id}`}>{item.text}</a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            )}
+            <div
+              className="blog_articlebody"
+              dangerouslySetInnerHTML={{
+                __html: `${body}`,
+              }}
+            />
+          </div>
+        </article>
+        <div className="profile">
+          <dl>
+            <dt>{author?.name}</dt>
+            <dd
+              dangerouslySetInnerHTML={{
+                __html: `${author?.text}`,
+              }}
+            />
+          </dl>
+          <img src={author?.image?.url as string | undefined} alt="" />
+        </div>
+      </div>
+    </div>
+  </Layout>
+)
 
-  const Wrapper = styled.div`
+const PresentationalBlog = styled(BlogDOM)`
+  .blog_wrapper {
     a {
       color: var(--base-link-color);
 
@@ -46,9 +124,9 @@ export default ({ data }: Props) => {
         text-decoration: underline;
       }
     }
-  `
+  }
 
-  const Hero = styled.div`
+  .blog_hero {
     img {
       width: 100%;
       height: 500px;
@@ -58,40 +136,41 @@ export default ({ data }: Props) => {
         height: 250px;
       }
     }
-  `
+  }
 
-  const Title = styled.h1`
+  .blog_title {
     font-size: 36px;
     text-align: center;
 
     ${breakpointDown('md')} {
       font-size: 20px;
     }
-  `
+  }
 
-  const Article = styled.article`
+  .blog_article {
     padding: 40px 48px;
 
     ${breakpointDown('md')} {
       padding: 20px 6.25%;
     }
 
-    .time {
-      margin: 12px 0;
-      font-size: 14px;
-      text-align: center;
+  }
 
-      ${breakpointDown('md')} {
-        font-size: 10px;
-      }
+  .blog_time {
+    margin: 12px 0;
+    font-size: 14px;
+    text-align: center;
 
-      > time {
-        margin-right: 0.5em;
-      }
+    ${breakpointDown('md')} {
+      font-size: 10px;
     }
-  `
 
-  const ArticleContent = styled.div`
+    > time {
+      margin-right: 0.5em;
+    }
+  }
+
+  .blog_articlecontent {
     ${breakpointUp('md')} {
       display: flex;
 
@@ -99,9 +178,9 @@ export default ({ data }: Props) => {
         order: 1;
       }
     }
-  `
+  }
 
-  const ArticleBody = styled.div`
+  .blog_articlebody {
     h2 {
       margin: 1em 0;
       font-size: 24px;
@@ -136,9 +215,9 @@ export default ({ data }: Props) => {
     img {
       margin: 1em 0;
     }
-  `
+  }
 
-  const Agenda = styled.nav`
+  .agenda {
     ${breakpointDown('md')} {
       margin-bottom: 40px;
       border-bottom: 1px solid var(--base-border-color);
@@ -176,12 +255,13 @@ export default ({ data }: Props) => {
       color: inherit;
     }
 
-    .agenda_h3 {
-      padding-left: 1em;
-    }
-  `
+  }
 
-  const Profile = styled.div`
+  .agenda_h3 {
+    padding-left: 1em;
+  }
+
+  .profile {
     display: flex;
     align-items: flex-start;
     margin: 40px auto 0 48px;
@@ -222,7 +302,15 @@ export default ({ data }: Props) => {
         width: 80px;
       }
     }
-  `
+  }
+`
+
+const ContainerBlog: React.FC<ContainerProps> = ({
+  data,
+  presenter,
+  ...props
+}) => {
+  const { body, createdAt, updatedAt } = data.microcmsPosts
 
   const createAgenda = () => {
     const $ = cheerio.load(body as string)
@@ -234,71 +322,31 @@ export default ({ data }: Props) => {
     }))
     return agenda
   }
-
-  const isUpdated = (() => {
-    return +new Date(updatedAt) - +new Date(createdAt)
-  })()
-
   const agenda = createAgenda()
   const isAgenda = agenda.length > 0
+  const isUpdated = (() => {
+    return +new Date(updatedAt) - +new Date(createdAt) >= 0 ? true : false
+  })()
 
-  return (
-    <Layout>
-      <SEO title={title as string} />
-      <Wrapper>
-        <Hero>
-          <img src={_embedded?.url as string | undefined} alt="" />
-        </Hero>
-        <Article>
-          <Title>{title}</Title>
-          <div className="time">
-            {isUpdated ? (
-              <>
-                <Time>{updatedAt}</Time>
-                <span>更新</span>
-              </>
-            ) : (
-              <>
-                <Time>{createdAt}</Time>
-                <span>公開</span>
-              </>
-            )}
-          </div>
-          <ArticleContent>
-            {isAgenda && (
-              <Agenda className="agenda">
-                <h2>目次</h2>
-                <ul>
-                  {agenda.map((item) => (
-                    <li className={`agenda_${item.tagname}`} key={item.id}>
-                      <a href={`#${item.id}`}>{item.text}</a>
-                    </li>
-                  ))}
-                </ul>
-              </Agenda>
-            )}
-            <ArticleBody
-              dangerouslySetInnerHTML={{
-                __html: `${body}`,
-              }}
-            />
-          </ArticleContent>
-        </Article>
-        <Profile>
-          <dl>
-            <dt>{author?.name}</dt>
-            <dd
-              dangerouslySetInnerHTML={{
-                __html: `${author?.text}`,
-              }}
-            />
-          </dl>
-          <img src={author?.image?.url as string | undefined} alt="" />
-        </Profile>
-      </Wrapper>
-    </Layout>
-  )
+  return presenter({
+    data,
+    agenda,
+    isAgenda,
+    isUpdated,
+    ...props,
+  })
 }
+
+const Blog: React.FC<Props> = ({ data }) => (
+  <ContainerBlog
+    presenter={(presenterProps) => (
+      <PresentationalBlog className="blog" {...presenterProps} />
+    )}
+    data={data}
+  />
+)
+
+export default Blog
 
 export const pageQuery = graphql`
   query($slug: String!) {
