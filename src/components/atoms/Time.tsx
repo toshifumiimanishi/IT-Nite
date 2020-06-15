@@ -16,7 +16,7 @@ type ContainerProps = {
 
 type Props = {}
 
-const TimeDOM: React.FC<DOMProps> = (props) => <time { ...props } />
+const TimeDOM: React.FC<DOMProps> = (props) => <time {...props} />
 
 const ContainerTime: React.FC<ContainerProps> = ({
   presenter,
@@ -42,10 +42,8 @@ const ContainerTime: React.FC<ContainerProps> = ({
 
 const Time: React.FC<Props> = (props) => (
   <ContainerTime
-    presenter={(presenterProps) => (
-      <TimeDOM {...presenterProps} />
-    )}
-    { ...props }
+    presenter={(presenterProps) => <TimeDOM {...presenterProps} />}
+    {...props}
   />
 )
 
@@ -57,6 +55,9 @@ function isValid(unixtime: moment.MomentInput) {
   return moment(unixtime, 'YYYY-MM-DDTHH:mm').isValid()
 }
 
-function formatDateTime(datetime: moment.MomentInput, format: string = 'YYYY-MM-DDTHH:mm') {
+function formatDateTime(
+  datetime: moment.MomentInput,
+  format: string = 'YYYY-MM-DDTHH:mm'
+) {
   return moment(datetime).format(format)
 }

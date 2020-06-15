@@ -44,7 +44,7 @@ describe('breakpointMin', () => {
 describe('breakpointMax', () => {
   for (const name in breakpoints) {
     if (breakpoints.hasOwnProperty(name)) {
-      const value = breakpoints[name];
+      const value = breakpoints[name]
       if (value !== 0) {
         it(`should return max width if is '${name}'`, () => {
           expect(breakpointMax(name)).toBe(value - 0.02)
@@ -81,7 +81,9 @@ describe('breakpointDown', () => {
       const value = breakpoints[name]
       if (value !== 0) {
         it(`should return max breakpoint value and media query if is '${name}'`, () => {
-          expect(breakpointDown(name)).toBe(`@media (max-width: ${value - 0.02}px)`)
+          expect(breakpointDown(name)).toBe(
+            `@media (max-width: ${value - 0.02}px)`
+          )
         })
       } else {
         it(`should return no media query if is '${name}'`, () => {
@@ -101,15 +103,23 @@ describe('breakpointBetween', () => {
 
       if (next === null) {
         it(`should returns a string containing the value of the minimum and maximum breakpoints and media query if is '${name}'`, () => {
-          expect(breakpointBetween(name, next)).toBe(`@media (min-width: ${value}px)`)
+          expect(breakpointBetween(name, next)).toBe(
+            `@media (min-width: ${value}px)`
+          )
         })
       } else if (value !== 0) {
         it(`should returns a string containing the value of the minimum and maximum breakpoints and media query if is '${name}' and '${next}'`, () => {
-          expect(breakpointBetween(name, next)).toBe(`@media (min-width: ${value}px) and (max-width: ${nextValue - 0.02}px)`)
+          expect(breakpointBetween(name, next)).toBe(
+            `@media (min-width: ${value}px) and (max-width: ${
+              nextValue - 0.02
+            }px)`
+          )
         })
       } else {
         it(`should returns a string containing the value of the minimum and maximum breakpoints and media query if is '${name}' and '${next}'`, () => {
-          expect(breakpointBetween(name, next)).toBe(`@media (max-width: ${nextValue - 0.02}px)`)
+          expect(breakpointBetween(name, next)).toBe(
+            `@media (max-width: ${nextValue - 0.02}px)`
+          )
         })
       }
     }
@@ -129,11 +139,17 @@ describe('breakpointOnly', () => {
         })
       } else if (value !== 0) {
         it(`should returns a string containing the minimum and maximum values of the '${name}' breakpoint and media query`, () => {
-          expect(breakpointOnly(name)).toBe(`@media (min-width: ${value}px) and (max-width: ${nextValue - 0.02}px)`)
+          expect(breakpointOnly(name)).toBe(
+            `@media (min-width: ${value}px) and (max-width: ${
+              nextValue - 0.02
+            }px)`
+          )
         })
       } else {
         it(`should returns a string containing the minimum and maximum values of the '${name}' breakpoint and media query`, () => {
-          expect(breakpointOnly(name)).toBe(`@media (max-width: ${nextValue - 0.02}px)`)
+          expect(breakpointOnly(name)).toBe(
+            `@media (max-width: ${nextValue - 0.02}px)`
+          )
         })
       }
     }

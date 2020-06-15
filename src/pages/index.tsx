@@ -107,7 +107,10 @@ const IndexPage: React.FC<Props> = ({ data }) => (
               <Card key={node.id}>
                 <Link to={`${node.id}`}>
                   <CardHeader>
-                    <img src={node._embedded?.url as string | undefined} alt="" />
+                    <img
+                      src={node._embedded?.url as string | undefined}
+                      alt=""
+                    />
                   </CardHeader>
                   <CardBody>
                     <div>{node.title}</div>
