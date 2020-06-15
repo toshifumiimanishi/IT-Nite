@@ -1,10 +1,11 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import cheerio from 'cheerio'
 import styled from 'styled-components'
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
 import Time from '../components/atoms/Time'
-import { breakpointDown } from '../utils/breakpoints'
+import { breakpointUp, breakpointDown } from '../utils/breakpoints'
 import { MicrocmsPosts } from '../../types/graphql-types'
 
 type Props = {
@@ -69,12 +70,38 @@ export default ({ data }: Props) => {
   `
 
   const Article = styled.article`
-    padding: 40px 100px;
+    padding: 40px 48px;
 
     ${breakpointDown('md')} {
       padding: 20px 6.25%;
     }
 
+    .time {
+      margin: 12px 0;
+      font-size: 14px;
+      text-align: center;
+
+      ${breakpointDown('md')} {
+        font-size: 10px;
+      }
+
+      > time {
+        margin-right: 0.5em;
+      }
+    }
+  `
+
+  const ArticleContent = styled.div`
+    ${breakpointUp('md')} {
+      display: flex;
+
+      .agenda {
+        order: 1;
+      }
+    }
+  `
+
+  const ArticleBody = styled.div`
     h2 {
       margin: 1em 0;
       font-size: 24px;
@@ -106,29 +133,58 @@ export default ({ data }: Props) => {
       list-style: inside;
     }
 
-    .time {
-      margin: 12px 0;
+    img {
+      margin: 1em 0;
+    }
+  `
+
+  const Agenda = styled.nav`
+    ${breakpointDown('md')} {
+      margin-bottom: 40px;
+      border-bottom: 1px solid var(--base-border-color);
+      padding-bottom: 40px;
+    }
+
+    ${breakpointUp('md')} {
+      position: sticky;
+      top: 24px;
+      margin-left: 48px;
+      max-width: 320px;
+      max-height: 200px;
+    }
+
+    > h2 {
+      margin-bottom: 24px;
       font-size: 14px;
-      text-align: center;
 
       ${breakpointDown('md')} {
-        font-size: 10px;
-      }
-
-      > time {
-        margin-right: 0.5em;
+        margin-bottom: 12px;
       }
     }
 
-    img {
-      margin: 1em 0;
+    li {
+      margin-bottom: 12px;
+      list-style: none;
+      font-size: 14px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .agenda_h3 {
+      padding-left: 1em;
     }
   `
 
   const Profile = styled.div`
     display: flex;
     align-items: flex-start;
-    margin: 40px auto 0;
+    margin: 40px auto 0 48px;
     max-width: 640px;
 
     ${breakpointDown('md')} {
@@ -168,9 +224,23 @@ export default ({ data }: Props) => {
     }
   `
 
+  const createAgenda = () => {
+    const $ = cheerio.load(body as string)
+    const headings = $('h1, h2, h3').toArray()
+    const agenda = headings.map((heading) => ({
+      text: heading.children[0].data,
+      id: heading.attribs.id,
+      tagname: heading.name,
+    }))
+    return agenda
+  }
+
   const isUpdated = (() => {
-    return + new Date(updatedAt) - + new Date(createdAt)
+    return +new Date(updatedAt) - +new Date(createdAt)
   })()
+
+  const agenda = createAgenda()
+  const isAgenda = agenda.length > 0
 
   return (
     <Layout>
@@ -194,11 +264,25 @@ export default ({ data }: Props) => {
               </>
             )}
           </div>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: `${body}`,
-            }}
-          />
+          <ArticleContent>
+            {isAgenda && (
+              <Agenda className="agenda">
+                <h2>目次</h2>
+                <ul>
+                  {agenda.map((item) => (
+                    <li className={`agenda_${item.tagname}`} key={item.id}>
+                      <a href={`#${item.id}`}>{item.text}</a>
+                    </li>
+                  ))}
+                </ul>
+              </Agenda>
+            )}
+            <ArticleBody
+              dangerouslySetInnerHTML={{
+                __html: `${body}`,
+              }}
+            />
+          </ArticleContent>
         </Article>
         <Profile>
           <dl>

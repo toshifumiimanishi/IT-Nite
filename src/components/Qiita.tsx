@@ -62,7 +62,7 @@ const Qiita: React.FC<Props> = ({ post, className }) => (
                   <span>
                     <strong>LGTM</strong> {node.likes_count}
                   </span>
-                  <Time>{ node.created_at }</Time>
+                  <Time>{node.created_at}</Time>
                 </dd>
               </Media>
             </a>

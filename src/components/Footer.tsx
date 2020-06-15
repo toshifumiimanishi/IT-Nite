@@ -12,9 +12,14 @@ const FooterDOM: React.FC<DOMProps> = ({ className }) => (
     <div className="footer_container">
       <h2 className="footer_h">IT Nite について</h2>
       <p className="footer_txt">
-      IT Nite（以下「当ポートフォリオ」）は HTML や CSS、JavaScript を中心としたフロントエンドの技術を紹介するメディア兼ポートフォリオです。
-      原則、当ポートフォリオが公開している記事は個人の備忘録であり、当ポートフォリオが掲載している内容をご参考にしていただいた上で、万が一障害が生じた場合でも一切の責任を負わないものとします。
-      当ポートフォリオや管理人へのお問い合わせをはじめ、記事内容の指摘や訂正などがございましたら、<Link className="footer_link" to="/contact/">お問い合わせページ</Link>よりご連絡ください。
+        IT Nite（以下「当ポートフォリオ」）は HTML や CSS、JavaScript
+        を中心としたフロントエンドの技術を紹介するメディア兼ポートフォリオです。
+        原則、当ポートフォリオが公開している記事は個人の備忘録であり、当ポートフォリオが掲載している内容をご参考にしていただいた上で、万が一障害が生じた場合でも一切の責任を負わないものとします。
+        当ポートフォリオや管理人へのお問い合わせをはじめ、記事内容の指摘や訂正などがございましたら、
+        <Link className="footer_link" to="/contact/">
+          お問い合わせページ
+        </Link>
+        よりご連絡ください。
       </p>
       <p className="copyright">
         <small>&copy; 2020 IT Nite.</small>
