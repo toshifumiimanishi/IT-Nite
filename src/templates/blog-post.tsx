@@ -95,7 +95,7 @@ export default ({ data }: Props) => {
     ${breakpointUp('md')} {
       display: flex;
 
-      .outline {
+      .agenda {
         order: 1;
       }
     }
@@ -138,7 +138,7 @@ export default ({ data }: Props) => {
     }
   `
 
-  const Outline = styled.nav`
+  const Agenda = styled.nav`
     ${breakpointDown('md')} {
       margin-bottom: 40px;
       border-bottom: 1px solid var(--base-border-color);
@@ -176,7 +176,7 @@ export default ({ data }: Props) => {
       color: inherit;
     }
 
-    .outline_h3 {
+    .agenda_h3 {
       padding-left: 1em;
     }
   `
@@ -224,22 +224,23 @@ export default ({ data }: Props) => {
     }
   `
 
-  const createOutline = () => {
+  const createAgenda = () => {
     const $ = cheerio.load(body as string)
     const headings = $('h1, h2, h3').toArray()
-    const outline = headings.map((heading) => ({
+    const agenda = headings.map((heading) => ({
       text: heading.children[0].data,
       id: heading.attribs.id,
       tagname: heading.name,
     }))
-    return outline
+    return agenda
   }
 
   const isUpdated = (() => {
     return +new Date(updatedAt) - +new Date(createdAt)
   })()
 
-  const outline = createOutline()
+  const agenda = createAgenda()
+  const isAgenda = agenda.length > 0
 
   return (
     <Layout>
@@ -264,17 +265,17 @@ export default ({ data }: Props) => {
             )}
           </div>
           <ArticleContent>
-            {outline.length > 0 && (
-              <Outline className="outline">
+            {isAgenda && (
+              <Agenda className="agenda">
                 <h2>目次</h2>
                 <ul>
-                  {outline.map((item) => (
-                    <li className={`outline_${item.tagname}`} key={item.id}>
+                  {agenda.map((item) => (
+                    <li className={`agenda_${item.tagname}`} key={item.id}>
                       <a href={`#${item.id}`}>{item.text}</a>
                     </li>
                   ))}
                 </ul>
-              </Outline>
+              </Agenda>
             )}
             <ArticleBody
               dangerouslySetInnerHTML={{
