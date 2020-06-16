@@ -153,7 +153,6 @@ const PresentationalBlog = styled(BlogDOM)`
     ${breakpointDown('md')} {
       padding: 20px 6.25%;
     }
-
   }
 
   .blog_time {
@@ -254,7 +253,6 @@ const PresentationalBlog = styled(BlogDOM)`
     a {
       color: inherit;
     }
-
   }
 
   .agenda_h3 {
