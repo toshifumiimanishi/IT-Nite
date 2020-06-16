@@ -1,8 +1,10 @@
 import { Link } from 'gatsby'
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useCallback, useContext } from 'react'
 import styled from 'styled-components'
 import ToggleButton from './atoms/ToggleButton'
 import GitHubIcon from './atoms/GitHubIcon'
+import { Theme} from '../../types'
+import ThemeContext from '../contexts/ThemeContext'
 
 type DOMProps = {
   className: string
@@ -13,7 +15,7 @@ type DOMProps = {
 
 type PresenterProps = {
   siteTitle: string
-  theme: string | null
+  theme: Theme['theme']
   onClickToggleButton: () => void
 }
 
@@ -113,49 +115,7 @@ const ContainerHeader = ({
   presenter: React.FC<PresenterProps>
   siteTitle: string
 }) => {
-  const systemSettingTheme = (() => {
-    if (typeof window !== 'undefined') {
-      return window.matchMedia('(prefers-color-scheme: light)').matches
-        ? 'light'
-        : 'dark'
-    } else {
-      return null
-    }
-  })()
-
-  const [theme, setTheme] = useState(systemSettingTheme)
-
-  useEffect(() => {
-    const theme = localStorage.getItem('theme')
-
-    if (theme === 'light') {
-      activateLightMode()
-    } else if (theme === 'dark') {
-      activateDarkMode()
-    }
-  }, [])
-
-  const activateLightMode = () => {
-    const rootElement = document.documentElement
-
-    rootElement.style.setProperty(
-      '--base-background-color',
-      'var(--theme-light-background-color)'
-    )
-    rootElement.style.setProperty('--base-color', 'var(--theme-light-color)')
-    setTheme('light')
-  }
-
-  const activateDarkMode = () => {
-    const rootElement = document.documentElement
-
-    rootElement.style.setProperty(
-      '--base-background-color',
-      'var(--theme-dark-background-color)'
-    )
-    rootElement.style.setProperty('--base-color', 'var(--theme-dark-color)')
-    setTheme('dark')
-  }
+  const { theme, activateLightMode, activateDarkMode } = useContext(ThemeContext)
 
   const toggleTheme = () => {
     if (theme === 'light') {
