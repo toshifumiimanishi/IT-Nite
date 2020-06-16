@@ -1,13 +1,17 @@
-import React from 'react'
-import styled from 'styled-components'
+import React, { useContext } from 'react'
+import styled, { css } from 'styled-components'
 import { Link } from 'gatsby'
 import Time from '../atoms/Time'
 import { breakpointUp } from '../../utils/breakpoints'
+import { Theme} from '../../../types'
 import { MicrocmsPosts } from '../../../types/graphql-types'
+import ThemeContext from '../../contexts/ThemeContext'
 
 type DOMProps = {} & Props
 
-type PresenterProps = {} & Props
+type PresenterProps = {
+  theme: Theme['theme']
+} & Props
 
 type ContainerProps = {
   presenter: React.FC<PresenterProps>
@@ -44,6 +48,10 @@ const PresentationalCard = styled(CardDOM)`
   border-radius: var(--base-border-radius);
   overflow: hidden;
   transition: all var(--base-duration) var(--base-timing-function);
+
+  ${props => props.theme === 'light' && css`
+    box-shadow: var(--base-card-box-shadow);
+  `}
 
   &:focus-within {
     color: var(--base-link-color);
@@ -99,9 +107,12 @@ const ContainerCard: React.FC<ContainerProps> = ({
   tagname,
   ...props
 }) => {
+  const { theme } = useContext(ThemeContext)
+
   return presenter({
     data,
     tagname,
+    theme,
     ...props,
   })
 }
