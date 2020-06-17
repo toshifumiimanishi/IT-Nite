@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
 import Qiita from '../components/Qiita'
 import GitHub from '../components/GitHub'
-import Time from '../components/atoms/Time'
-import { breakpointUp, breakpointDown } from '../utils/breakpoints'
+import Card from '../components/molecules/Card'
+import { breakpointDown } from '../utils/breakpoints'
+import { Theme } from '../../types'
 import { Query } from '../../types/graphql-types'
+import ThemeContext from '../contexts/ThemeContext'
 
 type Props = {
   data: Query
@@ -40,93 +42,72 @@ const Cards = styled.ul`
   justify-content: center;
 `
 
-const Card = styled.li`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  border-radius: var(--base-border-radius);
-  overflow: hidden;
-  transition: all var(--base-duration) var(--base-timing-function);
-
-  &:focus-within {
-    color: var(--base-link-color);
-    box-shadow: 0 0 0 2px;
-  }
-
-  ${breakpointUp('md')} {
-    &:hover {
-      color: var(--base-link-color);
-      box-shadow: 0 0 0 2px;
+const IndexPage: React.FC<Props> = ({ data }) => {
+  const systemSettingTheme = (() => {
+    if (typeof window !== 'undefined') {
+      return window.matchMedia('(prefers-color-scheme: light)').matches
+        ? 'light'
+        : 'dark'
+    } else {
+      return null
     }
-  }
-`
+  })()
 
-const CardHeader = styled.div`
-  flex-shrink: 0;
+  useEffect(() => {
+    const theme = localStorage.getItem('theme')
 
-  > img {
-    border-radius: var(--base-border-radius);
-    object-fit: cover;
-    width: 100%;
-    height: 160px;
-  }
-`
+    if (theme === 'light') {
+      activateLightMode()
+    } else if (theme === 'dark') {
+      activateDarkMode()
+    }
+  }, [])
 
-const CardBody = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  padding: 20px;
+  const [theme, setTheme] = useState<Theme['theme']>(systemSettingTheme)
 
-  > * + * {
-    margin-top: 10px;
-  }
+  const activateLightMode = () => {
+    const rootElement = document.documentElement
 
-  :nth-last-child(2) {
-    margin-bottom: 10px;
+    rootElement.style.setProperty(
+      '--base-background-color',
+      'var(--theme-light-background-color)'
+    )
+    rootElement.style.setProperty('--base-color', 'var(--theme-light-color)')
+    setTheme('light')
   }
 
-  :last-child {
-    margin-top: auto;
+  const activateDarkMode = () => {
+    const rootElement = document.documentElement
+
+    rootElement.style.setProperty(
+      '--base-background-color',
+      'var(--theme-dark-background-color)'
+    )
+    rootElement.style.setProperty('--base-color', 'var(--theme-dark-color)')
+    setTheme('dark')
   }
 
-  time {
-    font-size: 12px;
-    text-align: right;
-  }
-`
-
-const IndexPage: React.FC<Props> = ({ data }) => (
-  <Home className="home">
-    <Layout>
-      <SEO title="Home" />
-      <Container>
-        <Cards>
-          {data.allMicrocmsPosts.edges.map(({ node }) => {
-            return (
-              <Card key={node.id}>
-                <Link to={`${node.id}`}>
-                  <CardHeader>
-                    <img
-                      src={node._embedded?.url as string | undefined}
-                      alt=""
-                    />
-                  </CardHeader>
-                  <CardBody>
-                    <div>{node.title}</div>
-                    <Time>{node.createdAt}</Time>
-                  </CardBody>
-                </Link>
-              </Card>
-            )
-          })}
-        </Cards>
-        <Qiita className="home_qiita" post={data.allQiitaPost} />
-        <GitHub className="home_github" viewer={data.github.viewer} />
-      </Container>
-    </Layout>
-  </Home>
-)
+  return (
+    <ThemeContext.Provider
+      value={{ theme, activateLightMode, activateDarkMode }}
+    >
+      <Home className="home">
+        <Layout>
+          <SEO title="Home" />
+          <Container>
+            <Cards>
+              {data.allMicrocmsPosts.edges.map(({ node }) => {
+                return <Card data={node} key={node.id} />
+              })}
+            </Cards>
+            <Qiita className="home_qiita" post={data.allQiitaPost} />
+            <GitHub className="home_github" viewer={data.github.viewer} />
+          </Container>
+        </Layout>
+      </Home>
+    </ThemeContext.Provider>
+  )
+}
 
 export default IndexPage
 

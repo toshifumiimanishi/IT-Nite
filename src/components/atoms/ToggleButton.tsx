@@ -1,20 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Theme } from '../../../types'
 
-type DOMProps = {
-  className?: string
-  theme: string | null
-  onClickToggleButton: () => void
-}
+type DOMProps = {} & Props
+
+type PresenterProps = {} & Props
 
 type ContainerProps = {
-  theme: string | null
-  onClickToggleButton: () => void
-}
+  presenter: React.FC<PresenterProps>
+} & Props
 
 type Props = {
   className?: string
-  theme: string | null
+  theme: Theme['theme']
   onClickToggleButton: () => void
 }
 
@@ -52,15 +50,11 @@ const PresentationalToggleButton = styled(ToggleButtonDOM)`
   }
 `
 
-const ContainerToggleButton = ({
+const ContainerToggleButton: React.FC<ContainerProps> = ({
   presenter,
   theme,
   onClickToggleButton,
   ...props
-}: {
-  presenter: React.FC<ContainerProps>
-  theme: string | null
-  onClickToggleButton: () => void
 }) => presenter({ theme, onClickToggleButton, ...props })
 
 const ToggleButton: React.FC<Props> = ({
