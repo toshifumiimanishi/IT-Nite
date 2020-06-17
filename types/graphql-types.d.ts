@@ -14913,6 +14913,8 @@ export type GitHub_Team = GitHub_Node & GitHub_Subscribable & GitHub_MemberStatu
   combinedSlug: Scalars['String'];
   /** Identifies the date and time when the object was created. */
   createdAt: Scalars['GitHub_DateTime'];
+  /** Identifies the primary key from the database. */
+  databaseId?: Maybe<Scalars['Int']>;
   /** The description of the team. */
   description?: Maybe<Scalars['String']>;
   /** Find a team discussion by its number. */
