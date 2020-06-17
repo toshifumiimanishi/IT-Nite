@@ -3,7 +3,7 @@ import React, { useCallback, useContext } from 'react'
 import styled from 'styled-components'
 import ToggleButton from './atoms/ToggleButton'
 import GitHubIcon from './atoms/GitHubIcon'
-import { Theme} from '../../types'
+import { Theme } from '../../types'
 import ThemeContext from '../contexts/ThemeContext'
 
 type DOMProps = {
@@ -115,7 +115,9 @@ const ContainerHeader = ({
   presenter: React.FC<PresenterProps>
   siteTitle: string
 }) => {
-  const { theme, activateLightMode, activateDarkMode } = useContext(ThemeContext)
+  const { theme, activateLightMode, activateDarkMode } = useContext(
+    ThemeContext
+  )
 
   const toggleTheme = () => {
     if (theme === 'light') {

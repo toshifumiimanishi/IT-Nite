@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 import { Link } from 'gatsby'
 import Time from '../atoms/Time'
 import { breakpointUp } from '../../utils/breakpoints'
-import { Theme} from '../../../types'
+import { Theme } from '../../../types'
 import { MicrocmsPosts } from '../../../types/graphql-types'
 import ThemeContext from '../../contexts/ThemeContext'
 
@@ -49,9 +49,11 @@ const PresentationalCard = styled(CardDOM)`
   overflow: hidden;
   transition: all var(--base-duration) var(--base-timing-function);
 
-  ${props => props.theme === 'light' && css`
-    box-shadow: var(--base-card-box-shadow);
-  `}
+  ${(props) =>
+    props.theme === 'light' &&
+    css`
+      box-shadow: var(--base-card-box-shadow);
+    `}
 
   &:focus-within {
     color: var(--base-link-color);

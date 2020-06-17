@@ -88,7 +88,9 @@ const IndexPage: React.FC<Props> = ({ data }) => {
   }
 
   return (
-    <ThemeContext.Provider value={{ theme, activateLightMode, activateDarkMode }}>
+    <ThemeContext.Provider
+      value={{ theme, activateLightMode, activateDarkMode }}
+    >
       <Home className="home">
         <Layout>
           <SEO title="Home" />
