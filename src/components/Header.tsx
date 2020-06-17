@@ -9,7 +9,7 @@ import ThemeContext from '../contexts/ThemeContext'
 type DOMProps = {
   className: string
   siteTitle: string
-  theme: string | null
+  theme: Theme['theme']
   onClickToggleButton: () => void
 }
 
@@ -85,13 +85,13 @@ const PresentationalHeader = styled(HeaderDOM)`
   }
 
   .header_togglebutton {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
   }
 
   .header_icon {
     width: 24px;
-    height: 24px;
+    height: 28px;
   }
 
   a,
