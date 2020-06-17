@@ -75,6 +75,7 @@ const PresentationalHeader = styled(HeaderDOM)`
 
   .header_widget {
     display: flex;
+    align-items: center;
     margin-left: auto;
   }
 
@@ -85,13 +86,13 @@ const PresentationalHeader = styled(HeaderDOM)`
   }
 
   .header_togglebutton {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
   }
 
   .header_icon {
     width: 24px;
-    height: 28px;
+    height: 24px;
   }
 
   a,
