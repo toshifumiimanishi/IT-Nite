@@ -2,7 +2,7 @@ import { Link } from 'gatsby'
 import React, { useCallback, useContext } from 'react'
 import styled from 'styled-components'
 import ToggleButton from './atoms/ToggleButton'
-import GitHubIcon from './atoms/GitHubIcon'
+import Icon from './atoms/Icon'
 import { Theme } from '../../types'
 import ThemeContext from '../contexts/ThemeContext'
 
@@ -48,7 +48,7 @@ const HeaderDOM: React.FC<DOMProps> = ({
             target="_blank"
             rel="noopener noreferrer"
           >
-            <GitHubIcon className="header_icon" />
+            <Icon className="header_icon" icon="faGithub" />
           </a>
         </li>
       </ul>
