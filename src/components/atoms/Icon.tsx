@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { config } from '@fortawesome/fontawesome-svg-core'
 import { faMoon } from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon, FontAwesomeIconProps } from '@fortawesome/react-fontawesome'
@@ -40,6 +41,7 @@ const ContainerIcon: React.FC<ContainerProps> = ({
     faGithub,
   }
   const icon = iconMap[name as keyof typeof iconMap]
+  config.autoAddCss = false // Font Awesome のランタイムでの CSS 追加を無効にする
   return presenter({ icon, ...props})
 }
 
