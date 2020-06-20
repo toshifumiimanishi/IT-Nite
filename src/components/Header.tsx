@@ -2,14 +2,14 @@ import { Link } from 'gatsby'
 import React, { useCallback, useContext } from 'react'
 import styled from 'styled-components'
 import ToggleButton from './atoms/ToggleButton'
-import GitHubIcon from './atoms/GitHubIcon'
+import Icon from './atoms/Icon'
 import { Theme } from '../../types'
 import ThemeContext from '../contexts/ThemeContext'
 
 type DOMProps = {
   className: string
   siteTitle: string
-  theme: string | null
+  theme: Theme['theme']
   onClickToggleButton: () => void
 }
 
@@ -48,7 +48,7 @@ const HeaderDOM: React.FC<DOMProps> = ({
             target="_blank"
             rel="noopener noreferrer"
           >
-            <GitHubIcon className="header_icon" />
+            <Icon className="header_icon" icon="faGithub" />
           </a>
         </li>
       </ul>
@@ -75,6 +75,7 @@ const PresentationalHeader = styled(HeaderDOM)`
 
   .header_widget {
     display: flex;
+    align-items: center;
     margin-left: auto;
   }
 
