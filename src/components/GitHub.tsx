@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Time from '../components/atoms/Time'
+import Image from '../components/atoms/Image';
 import { breakpointUp } from '../utils/breakpoints'
 import { GitHub_User } from '../../types/graphql-types'
 
@@ -42,7 +43,7 @@ const GitHubDOM: React.FC<DOMProps> = ({ className, viewer }) => (
         </div>
         <div className="github_contribution github_activity">
           <i className="github_icon">
-            <img src="/assets/images/icon_contribution.png" alt="" />
+            <Image filename="icon_contribution.png" alt="" />
           </i>
           コントリビューション
           <br />
