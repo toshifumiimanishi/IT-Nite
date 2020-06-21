@@ -7255,7 +7255,7 @@ export type GitHub_OrgAddMemberAuditEntryPermission =
   | 'ADMIN';
 
 /** An account on GitHub, with one or more owners, that has repositories, members and teams. */
-export type GitHub_Organization = GitHub_Node & GitHub_Actor & GitHub_RegistryPackageOwner & GitHub_RegistryPackageSearch & GitHub_ProjectOwner & GitHub_RepositoryOwner & GitHub_UniformResourceLocatable & GitHub_MemberStatusable & GitHub_ProfileOwner & GitHub_Sponsorable & {
+export type GitHub_Organization = GitHub_Node & GitHub_Actor & GitHub_PackageOwner & GitHub_ProjectOwner & GitHub_RepositoryOwner & GitHub_UniformResourceLocatable & GitHub_MemberStatusable & GitHub_ProfileOwner & GitHub_Sponsorable & {
   /** Determine if this repository owner has any items that can be pinned to their profile. */
   anyPinnableItems: Scalars['Boolean'];
   /** Audit log entries of the organization */
@@ -7300,6 +7300,8 @@ export type GitHub_Organization = GitHub_Node & GitHub_Actor & GitHub_RegistryPa
   newTeamUrl: Scalars['GitHub_URI'];
   /** The billing email for the organization. */
   organizationBillingEmail?: Maybe<Scalars['String']>;
+  /** A list of packages under the owner. */
+  packages: GitHub_PackageConnection;
   /** A list of users who have been invited to join this organization. */
   pendingMembers: GitHub_UserConnection;
   /** A list of repositories and gists this profile owner can pin to their profile. */
@@ -7316,16 +7318,6 @@ export type GitHub_Organization = GitHub_Node & GitHub_Actor & GitHub_RegistryPa
   projectsResourcePath: Scalars['GitHub_URI'];
   /** The HTTP URL listing organization's projects */
   projectsUrl: Scalars['GitHub_URI'];
-  /**
-   * A list of registry packages under the owner.
-   * @deprecated Renaming GitHub Packages fields and objects. Use the `PackageOwner` object instead. Removal on 2020-04-01 UTC.
-   */
-  registryPackages: GitHub_RegistryPackageConnection;
-  /**
-   * A list of registry packages for a particular search query.
-   * @deprecated Renaming GitHub Packages fields and objects. Use the `PackageSearch` object instead. Removal on 2020-04-01 UTC.
-   */
-  registryPackagesForQuery: GitHub_RegistryPackageConnection;
   /** A list of repositories that the user owns. */
   repositories: GitHub_RepositoryConnection;
   /** Find Repository. */
@@ -7429,6 +7421,19 @@ export type GitHub_OrganizationMembersWithRoleArgs = {
 
 
 /** An account on GitHub, with one or more owners, that has repositories, members and teams. */
+export type GitHub_OrganizationPackagesArgs = {
+  after?: Maybe<Scalars['String']>;
+  before?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+  names?: Maybe<Array<Maybe<Scalars['String']>>>;
+  repositoryId?: Maybe<Scalars['ID']>;
+  packageType?: Maybe<GitHub_PackageType>;
+  orderBy?: Maybe<GitHub_PackageOrder>;
+};
+
+
+/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
 export type GitHub_OrganizationPendingMembersArgs = {
   after?: Maybe<Scalars['String']>;
   before?: Maybe<Scalars['String']>;
@@ -7472,32 +7477,6 @@ export type GitHub_OrganizationProjectsArgs = {
   before?: Maybe<Scalars['String']>;
   first?: Maybe<Scalars['Int']>;
   last?: Maybe<Scalars['Int']>;
-};
-
-
-/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
-export type GitHub_OrganizationRegistryPackagesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  name?: Maybe<Scalars['String']>;
-  names?: Maybe<Array<Maybe<Scalars['String']>>>;
-  repositoryId?: Maybe<Scalars['ID']>;
-  packageType?: Maybe<GitHub_RegistryPackageType>;
-  registryPackageType?: Maybe<Scalars['String']>;
-  publicOnly?: Maybe<Scalars['Boolean']>;
-};
-
-
-/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
-export type GitHub_OrganizationRegistryPackagesForQueryArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  query?: Maybe<Scalars['String']>;
-  packageType?: Maybe<GitHub_RegistryPackageType>;
 };
 
 
@@ -8986,6 +8965,252 @@ export type GitHub_OrgUpdateMemberRepositoryInvitationPermissionAuditEntry = Git
   userResourcePath?: Maybe<Scalars['GitHub_URI']>;
   /** The HTTP URL for the user. */
   userUrl?: Maybe<Scalars['GitHub_URI']>;
+};
+
+/** Information for an uploaded package. */
+export type GitHub_Package = GitHub_Node & {
+  id: Scalars['ID'];
+  /** Find the latest version for the package. */
+  latestVersion?: Maybe<GitHub_PackageVersion>;
+  /** Identifies the name of the package. */
+  name: Scalars['String'];
+  /** Identifies the type of the package. */
+  packageType: GitHub_PackageType;
+  /** The repository this package belongs to. */
+  repository?: Maybe<GitHub_Repository>;
+  /** Statistics about package activity. */
+  statistics?: Maybe<GitHub_PackageStatistics>;
+  /** Find package version by version string. */
+  version?: Maybe<GitHub_PackageVersion>;
+  /** list of versions for this package */
+  versions: GitHub_PackageVersionConnection;
+};
+
+
+/** Information for an uploaded package. */
+export type GitHub_PackageVersionArgs = {
+  version: Scalars['String'];
+};
+
+
+/** Information for an uploaded package. */
+export type GitHub_PackageVersionsArgs = {
+  orderBy?: Maybe<GitHub_PackageVersionOrder>;
+  after?: Maybe<Scalars['String']>;
+  before?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+};
+
+/** The connection type for Package. */
+export type GitHub_PackageConnection = {
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<GitHub_PackageEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<GitHub_Package>>>;
+  /** Information to aid in pagination. */
+  pageInfo: GitHub_PageInfo;
+  /** Identifies the total count of items in the connection. */
+  totalCount: Scalars['Int'];
+};
+
+/** An edge in a connection. */
+export type GitHub_PackageEdge = {
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node?: Maybe<GitHub_Package>;
+};
+
+/** A file in a package version. */
+export type GitHub_PackageFile = GitHub_Node & {
+  id: Scalars['ID'];
+  /** MD5 hash of the file. */
+  md5?: Maybe<Scalars['String']>;
+  /** Name of the file. */
+  name: Scalars['String'];
+  /** The package version this file belongs to. */
+  packageVersion?: Maybe<GitHub_PackageVersion>;
+  /** SHA1 hash of the file. */
+  sha1?: Maybe<Scalars['String']>;
+  /** SHA256 hash of the file. */
+  sha256?: Maybe<Scalars['String']>;
+  /** Size of the file in bytes. */
+  size?: Maybe<Scalars['Int']>;
+  /** Identifies the date and time when the object was last updated. */
+  updatedAt: Scalars['GitHub_DateTime'];
+  /** URL to download the asset. */
+  url?: Maybe<Scalars['GitHub_URI']>;
+};
+
+/** The connection type for PackageFile. */
+export type GitHub_PackageFileConnection = {
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<GitHub_PackageFileEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<GitHub_PackageFile>>>;
+  /** Information to aid in pagination. */
+  pageInfo: GitHub_PageInfo;
+  /** Identifies the total count of items in the connection. */
+  totalCount: Scalars['Int'];
+};
+
+/** An edge in a connection. */
+export type GitHub_PackageFileEdge = {
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node?: Maybe<GitHub_PackageFile>;
+};
+
+/** Ways in which lists of package files can be ordered upon return. */
+export type GitHub_PackageFileOrder = {
+  /** The field in which to order package files by. */
+  field?: Maybe<GitHub_PackageFileOrderField>;
+  /** The direction in which to order package files by the specified field. */
+  direction?: Maybe<GitHub_OrderDirection>;
+};
+
+/** Properties by which package file connections can be ordered. */
+export type GitHub_PackageFileOrderField = 
+  /** Order package files by creation time */
+  | 'CREATED_AT';
+
+/** Ways in which lists of packages can be ordered upon return. */
+export type GitHub_PackageOrder = {
+  /** The field in which to order packages by. */
+  field?: Maybe<GitHub_PackageOrderField>;
+  /** The direction in which to order packages by the specified field. */
+  direction?: Maybe<GitHub_OrderDirection>;
+};
+
+/** Properties by which package connections can be ordered. */
+export type GitHub_PackageOrderField = 
+  /** Order packages by creation time */
+  | 'CREATED_AT';
+
+/** Represents an owner of a package. */
+export type GitHub_PackageOwner = {
+  id: Scalars['ID'];
+  /** A list of packages under the owner. */
+  packages: GitHub_PackageConnection;
+};
+
+
+/** Represents an owner of a package. */
+export type GitHub_PackageOwnerPackagesArgs = {
+  after?: Maybe<Scalars['String']>;
+  before?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+  names?: Maybe<Array<Maybe<Scalars['String']>>>;
+  repositoryId?: Maybe<Scalars['ID']>;
+  packageType?: Maybe<GitHub_PackageType>;
+  orderBy?: Maybe<GitHub_PackageOrder>;
+};
+
+/** Represents a object that contains package activity statistics such as downloads. */
+export type GitHub_PackageStatistics = {
+  /** Number of times the package was downloaded since it was created. */
+  downloadsTotalCount: Scalars['Int'];
+};
+
+/** A version tag contains the mapping between a tag name and a version. */
+export type GitHub_PackageTag = GitHub_Node & {
+  id: Scalars['ID'];
+  /** Identifies the tag name of the version. */
+  name: Scalars['String'];
+  /** Version that the tag is associated with. */
+  version?: Maybe<GitHub_PackageVersion>;
+};
+
+/** The possible types of a package. */
+export type GitHub_PackageType = 
+  /** An npm package. */
+  | 'NPM'
+  /** A rubygems package. */
+  | 'RUBYGEMS'
+  /** A maven package. */
+  | 'MAVEN'
+  /** A docker image. */
+  | 'DOCKER'
+  /** A debian package. */
+  | 'DEBIAN'
+  /** A nuget package. */
+  | 'NUGET'
+  /** A python package. */
+  | 'PYPI';
+
+/** Information about a specific package version. */
+export type GitHub_PackageVersion = GitHub_Node & {
+  /** List of files associated with this package version */
+  files: GitHub_PackageFileConnection;
+  id: Scalars['ID'];
+  /** The package associated with this version. */
+  package?: Maybe<GitHub_Package>;
+  /** The platform this version was built for. */
+  platform?: Maybe<Scalars['String']>;
+  /** Whether or not this version is a pre-release. */
+  preRelease: Scalars['Boolean'];
+  /** The README of this package version. */
+  readme?: Maybe<Scalars['String']>;
+  /** The release associated with this package version. */
+  release?: Maybe<GitHub_Release>;
+  /** Statistics about package activity. */
+  statistics?: Maybe<GitHub_PackageVersionStatistics>;
+  /** The package version summary. */
+  summary?: Maybe<Scalars['String']>;
+  /** The version string. */
+  version: Scalars['String'];
+};
+
+
+/** Information about a specific package version. */
+export type GitHub_PackageVersionFilesArgs = {
+  orderBy?: Maybe<GitHub_PackageFileOrder>;
+  after?: Maybe<Scalars['String']>;
+  before?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+};
+
+/** The connection type for PackageVersion. */
+export type GitHub_PackageVersionConnection = {
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<GitHub_PackageVersionEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<GitHub_PackageVersion>>>;
+  /** Information to aid in pagination. */
+  pageInfo: GitHub_PageInfo;
+  /** Identifies the total count of items in the connection. */
+  totalCount: Scalars['Int'];
+};
+
+/** An edge in a connection. */
+export type GitHub_PackageVersionEdge = {
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node?: Maybe<GitHub_PackageVersion>;
+};
+
+/** Ways in which lists of package versions can be ordered upon return. */
+export type GitHub_PackageVersionOrder = {
+  /** The field in which to order package versions by. */
+  field?: Maybe<GitHub_PackageVersionOrderField>;
+  /** The direction in which to order package versions by the specified field. */
+  direction?: Maybe<GitHub_OrderDirection>;
+};
+
+/** Properties by which package version connections can be ordered. */
+export type GitHub_PackageVersionOrderField = 
+  /** Order package versions by creation time */
+  | 'CREATED_AT';
+
+/** Represents a object that contains package version activity statistics such as downloads. */
+export type GitHub_PackageVersionStatistics = {
+  /** Number of times the package was downloaded since it was created. */
+  downloadsTotalCount: Scalars['Int'];
 };
 
 /** Information about pagination in a connection. */
@@ -11061,18 +11286,6 @@ export type GitHub_RegistryPackageVersionsByMetadatumArgs = {
   last?: Maybe<Scalars['Int']>;
 };
 
-/** The connection type for RegistryPackage. */
-export type GitHub_RegistryPackageConnection = {
-  /** A list of edges. */
-  edges?: Maybe<Array<Maybe<GitHub_RegistryPackageEdge>>>;
-  /** A list of nodes. */
-  nodes?: Maybe<Array<Maybe<GitHub_RegistryPackage>>>;
-  /** Information to aid in pagination. */
-  pageInfo: GitHub_PageInfo;
-  /** Identifies the total count of items in the connection. */
-  totalCount: Scalars['Int'];
-};
-
 /** A package dependency contains the information needed to satisfy a dependency. */
 export type GitHub_RegistryPackageDependency = GitHub_Node & {
   /**
@@ -11127,14 +11340,6 @@ export type GitHub_RegistryPackageDependencyType =
   | 'OPTIONAL'
   /** An optional registry package dependency type. */
   | 'BUNDLED';
-
-/** An edge in a connection. */
-export type GitHub_RegistryPackageEdge = {
-  /** A cursor for use in pagination. */
-  cursor: Scalars['String'];
-  /** The item at the end of the edge. */
-  node?: Maybe<GitHub_RegistryPackage>;
-};
 
 /** A file in a specific registry package version. */
 export type GitHub_RegistryPackageFile = GitHub_Node & {
@@ -11216,52 +11421,6 @@ export type GitHub_RegistryPackageMetadatum = {
   value: Scalars['String'];
   /** True, if the metadatum can be updated if it already exists */
   update?: Maybe<Scalars['Boolean']>;
-};
-
-/** Represents an owner of a registry package. */
-export type GitHub_RegistryPackageOwner = {
-  id: Scalars['ID'];
-  /**
-   * A list of registry packages under the owner.
-   * @deprecated Renaming GitHub Packages fields and objects. Use the `PackageOwner` object instead. Removal on 2020-04-01 UTC.
-   */
-  registryPackages: GitHub_RegistryPackageConnection;
-};
-
-
-/** Represents an owner of a registry package. */
-export type GitHub_RegistryPackageOwnerRegistryPackagesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  name?: Maybe<Scalars['String']>;
-  names?: Maybe<Array<Maybe<Scalars['String']>>>;
-  repositoryId?: Maybe<Scalars['ID']>;
-  packageType?: Maybe<GitHub_RegistryPackageType>;
-  registryPackageType?: Maybe<Scalars['String']>;
-  publicOnly?: Maybe<Scalars['Boolean']>;
-};
-
-/** Represents an interface to search packages on an object. */
-export type GitHub_RegistryPackageSearch = {
-  id: Scalars['ID'];
-  /**
-   * A list of registry packages for a particular search query.
-   * @deprecated Renaming GitHub Packages fields and objects. Use the `PackageSearch` object instead. Removal on 2020-04-01 UTC.
-   */
-  registryPackagesForQuery: GitHub_RegistryPackageConnection;
-};
-
-
-/** Represents an interface to search packages on an object. */
-export type GitHub_RegistryPackageSearchRegistryPackagesForQueryArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  query?: Maybe<Scalars['String']>;
-  packageType?: Maybe<GitHub_RegistryPackageType>;
 };
 
 /** Represents a object that contains package activity statistics such as downloads. */
@@ -12869,7 +13028,7 @@ export type GitHub_ReportedContentClassifiers =
   | 'RESOLVED';
 
 /** A repository contains the content for a project. */
-export type GitHub_Repository = GitHub_Node & GitHub_ProjectOwner & GitHub_RegistryPackageOwner & GitHub_RegistryPackageSearch & GitHub_Subscribable & GitHub_Starrable & GitHub_UniformResourceLocatable & GitHub_RepositoryInfo & {
+export type GitHub_Repository = GitHub_Node & GitHub_ProjectOwner & GitHub_PackageOwner & GitHub_Subscribable & GitHub_Starrable & GitHub_UniformResourceLocatable & GitHub_RepositoryInfo & {
   /** A list of users that can be assigned to issues in this repository. */
   assignableUsers: GitHub_UserConnection;
   /** A list of branch protection rules for this repository. */
@@ -12963,6 +13122,8 @@ export type GitHub_Repository = GitHub_Node & GitHub_ProjectOwner & GitHub_Regis
   openGraphImageUrl: Scalars['GitHub_URI'];
   /** The User owner of the repository. */
   owner: GitHub_RepositoryOwner;
+  /** A list of packages under the owner. */
+  packages: GitHub_PackageConnection;
   /** The repository parent, if this is a fork. */
   parent?: Maybe<GitHub_Repository>;
   /** The primary language of the repository's code. */
@@ -12987,16 +13148,6 @@ export type GitHub_Repository = GitHub_Node & GitHub_ProjectOwner & GitHub_Regis
   ref?: Maybe<GitHub_Ref>;
   /** Fetch a list of refs from the repository */
   refs?: Maybe<GitHub_RefConnection>;
-  /**
-   * A list of registry packages under the owner.
-   * @deprecated Renaming GitHub Packages fields and objects. Use the `PackageOwner` object instead. Removal on 2020-04-01 UTC.
-   */
-  registryPackages: GitHub_RegistryPackageConnection;
-  /**
-   * A list of registry packages for a particular search query.
-   * @deprecated Renaming GitHub Packages fields and objects. Use the `PackageSearch` object instead. Removal on 2020-04-01 UTC.
-   */
-  registryPackagesForQuery: GitHub_RegistryPackageConnection;
   /** Lookup a single release given various criteria. */
   release?: Maybe<GitHub_Release>;
   /** List of releases which are dependent on this repository. */
@@ -13209,6 +13360,19 @@ export type GitHub_RepositoryObjectArgs = {
 
 
 /** A repository contains the content for a project. */
+export type GitHub_RepositoryPackagesArgs = {
+  after?: Maybe<Scalars['String']>;
+  before?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+  names?: Maybe<Array<Maybe<Scalars['String']>>>;
+  repositoryId?: Maybe<Scalars['ID']>;
+  packageType?: Maybe<GitHub_PackageType>;
+  orderBy?: Maybe<GitHub_PackageOrder>;
+};
+
+
+/** A repository contains the content for a project. */
 export type GitHub_RepositoryProjectArgs = {
   number: Scalars['Int'];
 };
@@ -13262,32 +13426,6 @@ export type GitHub_RepositoryRefsArgs = {
   refPrefix: Scalars['String'];
   direction?: Maybe<GitHub_OrderDirection>;
   orderBy?: Maybe<GitHub_RefOrder>;
-};
-
-
-/** A repository contains the content for a project. */
-export type GitHub_RepositoryRegistryPackagesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  name?: Maybe<Scalars['String']>;
-  names?: Maybe<Array<Maybe<Scalars['String']>>>;
-  repositoryId?: Maybe<Scalars['ID']>;
-  packageType?: Maybe<GitHub_RegistryPackageType>;
-  registryPackageType?: Maybe<Scalars['String']>;
-  publicOnly?: Maybe<Scalars['Boolean']>;
-};
-
-
-/** A repository contains the content for a project. */
-export type GitHub_RepositoryRegistryPackagesForQueryArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  query?: Maybe<Scalars['String']>;
-  packageType?: Maybe<GitHub_RegistryPackageType>;
 };
 
 
@@ -16913,7 +17051,7 @@ export type GitHub_UpdateTopicsPayload = {
 
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
-export type GitHub_User = GitHub_Node & GitHub_Actor & GitHub_RegistryPackageOwner & GitHub_RegistryPackageSearch & GitHub_ProjectOwner & GitHub_RepositoryOwner & GitHub_UniformResourceLocatable & GitHub_ProfileOwner & GitHub_Sponsorable & {
+export type GitHub_User = GitHub_Node & GitHub_Actor & GitHub_PackageOwner & GitHub_ProjectOwner & GitHub_RepositoryOwner & GitHub_UniformResourceLocatable & GitHub_ProfileOwner & GitHub_Sponsorable & {
   /** Determine if this repository owner has any items that can be pinned to their profile. */
   anyPinnableItems: Scalars['Boolean'];
   /** A URL pointing to the user's public avatar. */
@@ -16984,6 +17122,8 @@ export type GitHub_User = GitHub_Node & GitHub_Actor & GitHub_RegistryPackageOwn
   organizationVerifiedDomainEmails: Array<Scalars['String']>;
   /** A list of organizations the user belongs to. */
   organizations: GitHub_OrganizationConnection;
+  /** A list of packages under the owner. */
+  packages: GitHub_PackageConnection;
   /** A list of repositories and gists this profile owner can pin to their profile. */
   pinnableItems: GitHub_PinnableItemConnection;
   /** A list of repositories and gists this profile owner has pinned to their profile */
@@ -17002,16 +17142,6 @@ export type GitHub_User = GitHub_Node & GitHub_Actor & GitHub_RegistryPackageOwn
   publicKeys: GitHub_PublicKeyConnection;
   /** A list of pull requests associated with this user. */
   pullRequests: GitHub_PullRequestConnection;
-  /**
-   * A list of registry packages under the owner.
-   * @deprecated Renaming GitHub Packages fields and objects. Use the `PackageOwner` object instead. Removal on 2020-04-01 UTC.
-   */
-  registryPackages: GitHub_RegistryPackageConnection;
-  /**
-   * A list of registry packages for a particular search query.
-   * @deprecated Renaming GitHub Packages fields and objects. Use the `PackageSearch` object instead. Removal on 2020-04-01 UTC.
-   */
-  registryPackagesForQuery: GitHub_RegistryPackageConnection;
   /** A list of repositories that the user owns. */
   repositories: GitHub_RepositoryConnection;
   /** A list of repositories that the user recently contributed to. */
@@ -17178,6 +17308,19 @@ export type GitHub_UserOrganizationsArgs = {
 
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
+export type GitHub_UserPackagesArgs = {
+  after?: Maybe<Scalars['String']>;
+  before?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+  names?: Maybe<Array<Maybe<Scalars['String']>>>;
+  repositoryId?: Maybe<Scalars['ID']>;
+  packageType?: Maybe<GitHub_PackageType>;
+  orderBy?: Maybe<GitHub_PackageOrder>;
+};
+
+
+/** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type GitHub_UserPinnableItemsArgs = {
   types?: Maybe<Array<GitHub_PinnableItemType>>;
   after?: Maybe<Scalars['String']>;
@@ -17235,32 +17378,6 @@ export type GitHub_UserPullRequestsArgs = {
   before?: Maybe<Scalars['String']>;
   first?: Maybe<Scalars['Int']>;
   last?: Maybe<Scalars['Int']>;
-};
-
-
-/** A user is an individual's account on GitHub that owns repositories and can make new content. */
-export type GitHub_UserRegistryPackagesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  name?: Maybe<Scalars['String']>;
-  names?: Maybe<Array<Maybe<Scalars['String']>>>;
-  repositoryId?: Maybe<Scalars['ID']>;
-  packageType?: Maybe<GitHub_RegistryPackageType>;
-  registryPackageType?: Maybe<Scalars['String']>;
-  publicOnly?: Maybe<Scalars['Boolean']>;
-};
-
-
-/** A user is an individual's account on GitHub that owns repositories and can make new content. */
-export type GitHub_UserRegistryPackagesForQueryArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  query?: Maybe<Scalars['String']>;
-  packageType?: Maybe<GitHub_RegistryPackageType>;
 };
 
 
@@ -18943,6 +19060,8 @@ export type QueryAllSitePageArgs = {
 export type QuerySiteArgs = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
+  port?: Maybe<IntQueryOperatorInput>;
+  host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -19097,6 +19216,8 @@ export type QueryAllSitePluginArgs = {
 export type Site = Node & {
   buildTime?: Maybe<Scalars['Date']>;
   siteMetadata?: Maybe<SiteSiteMetadata>;
+  port?: Maybe<Scalars['Int']>;
+  host?: Maybe<Scalars['String']>;
   polyfill?: Maybe<Scalars['Boolean']>;
   pathPrefix?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
@@ -19299,6 +19420,8 @@ export type SiteFieldsEnum =
   | 'siteMetadata___title'
   | 'siteMetadata___description'
   | 'siteMetadata___author'
+  | 'port'
+  | 'host'
   | 'polyfill'
   | 'pathPrefix'
   | 'id'
@@ -19391,6 +19514,8 @@ export type SiteFieldsEnum =
 export type SiteFilterInput = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
+  port?: Maybe<IntQueryOperatorInput>;
+  host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -20031,6 +20156,14 @@ export type Unnamed_1_QueryVariables = {};
 
 export type Unnamed_1_Query = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
 
+export type Unnamed_2_QueryVariables = {};
+
+
+export type Unnamed_2_Query = { allFile: { nodes: Array<(
+      Pick<File, 'relativePath'>
+      & { childImageSharp?: Maybe<{ fluid?: Maybe<GatsbyImageSharpFluid_NoBase64Fragment> }> }
+    )> } };
+
 export type HomeQueryQueryVariables = {};
 
 
@@ -20042,12 +20175,12 @@ export type HomeQueryQuery = { allMicrocmsPosts: { edges: Array<{ node: (
             & { stargazers: Pick<GitHub_StargazerConnection, 'totalCount'> }
           ), contributions: Pick<GitHub_CreatedCommitContributionConnection, 'totalCount'> }>, user: { starredRepositories: Pick<GitHub_StarredRepositoryConnection, 'totalCount'>, contributionsCollection: Pick<GitHub_ContributionsCollection, 'totalCommitContributions'> } } } } };
 
-export type Unnamed_2_QueryVariables = {
+export type Unnamed_3_QueryVariables = {
   slug: Scalars['String'];
 };
 
 
-export type Unnamed_2_Query = { microcmsPosts?: Maybe<(
+export type Unnamed_3_Query = { microcmsPosts?: Maybe<(
     Pick<MicrocmsPosts, 'title' | 'body' | 'createdAt' | 'updatedAt'>
     & { _embedded?: Maybe<Pick<MicrocmsPosts_Embedded, 'url'>>, author?: Maybe<(
       Pick<MicrocmsPostsAuthor, 'name' | 'text'>
