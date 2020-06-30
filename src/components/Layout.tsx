@@ -4,7 +4,11 @@ import styled, { createGlobalStyle } from 'styled-components'
 import Header from './Header'
 import Footer from './Footer'
 import { breakpointDown } from '../utils/breakpoints'
-import { rgba, cssVar } from 'polished'
+import { colors } from '../constants/colors'
+import { typography } from '../constants/typography'
+import { transitions } from '../constants/transitions'
+import { components } from '../constants/components'
+import { theme } from '../constants/theme'
 
 const ResetStyle = createGlobalStyle`
   body,
@@ -190,67 +194,41 @@ const BaseStyle = createGlobalStyle`
   }
 
   :root {
-    --color-white: #fff;
-    --color-black: #000;
-    --color-gray-100: #f8f9fa;
-    --color-gray-200: #e9ecef;
-    --color-gray-300: #dee2e6;
-    --color-gray-400: #ced4da;
-    --color-gray-500: #adb5bd;
-    --color-gray-600: #6c757d;
-    --color-gray-700: #495057;
-    --color-gray-800: #343a40;
-    --color-gray-900: #212529;
-    --color-red: #d32f2f;
-    --color-aqua: #90caf9;
-    --color-pink: #ff4081;
-    --color-orange: #ff9800;
-    --color-qiita: #55c500;
-    --base-font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "BIZ UDPGothic", Meiryo, sans-serif;
-    --base-line-height: 1.6875;
-    --base-letter-spacing: 0.05em;
-    --base-duration: 0.2s;
-    --base-timing-function: ease;
-    --base-border-color: var(--color-gray-600);
-    --base-border-radius: 4px;
-    --base-link-color: var(--color-aqua);
-    --base-selection-background-color: var(--color-pink);
-    --base-selection-color: var(--color-white);
-    --base-button-background-color: var(--color-black);
-    --base-button-hover-background-color: var(--color-aqua);
-    --base-card-box-shadow: 0 1px 3px 1px ${rgba(cssVar('--color-gray-800'), 0.2)}, 0 2px 8px 4px ${rgba(cssVar('--color-gray-800'), 0.1)};
-    --primary-color: var(--color-orange);
-    --primary-border-color: var(--color-orange);
-    --error-color: var(--color-red);
-    --error-border-color: var(--color-red);
-    --header-background-color: var(--color-black);
-    --header-color: var(--color-white);
-    --footer-background-color: var(--color-black);
-    --footer-color: var(--color-white);
-    --theme-light-background-color: var(--color-white);
-    --theme-light-color: var(--color-gray-800);
-    --theme-dark-background-color: var(--color-gray-800);
-    --theme-dark-color: var(--color-white);
+    --base-duration: ${transitions.duration};
+    --base-timing-function: ${transitions.timingFunctions};
+    --base-border-color: ${colors.gray[600]};
+    --base-border-radius: ${components.border.radius};
+    --base-link-color: ${colors.blue[200]};
+    --base-button-background-color: ${colors.black};
+    --base-button-hover-background-color: ${colors.blue[200]};
+    --primary-color: ${colors.orange[500]};
+    --primary-border-color: ${colors.orange[500]};
+    --error-color: ${colors.red[700]};
+    --error-border-color: ${colors.red[700]};
+    --theme-light-background-color: ${colors.white};
+    --theme-light-color: ${colors.gray[800]};
+    --theme-dark-background-color: ${colors.gray[800]};
+    --theme-dark-color: ${colors.white};
 
     @media (prefers-color-scheme: light) {
-      --base-background-color: var(--theme-light-background-color);
-      --base-color: var(--theme-light-color);
+      --base-background-color: ${theme.light.backgroundColor};
+      --base-color: ${theme.light.color};
     }
 
     @media (prefers-color-scheme: dark) {
-      --base-background-color: var(--theme-dark-background-color);
-      --base-color: var(--theme-dark-color);
+      --base-background-color: ${theme.dark.backgroundColor};
+      --base-color: ${theme.dark.color};
     }
   }
 
   body {
     background-color: var(--base-background-color);
     color: var(--base-color);
-    font-family: var(--base-font-family);
-    line-height: var(--base-line-height);
+    font-family: ${typography.fontFamily};
+    line-height: ${typography.lineHeight};
     word-wrap: break-word;
     -webkit-text-size-adjust: 100%;
-    letter-spacing: var(--base-letter-spacing);
+    letter-spacing: ${typography.letterSpacing};
 
     ${breakpointDown('md')} {
       font-size: 14px;
@@ -259,12 +237,12 @@ const BaseStyle = createGlobalStyle`
 
   a {
     color: inherit;
-    text-decoration: none;
+    text-decoration: ${components.link.decoration};
   }
 
   ::selection {
-    background: var(--base-selection-background-color);
-    color: var(--base-selection-color);
+    background-color: ${components.selection.backgroundColor};
+    color: ${components.selection.color};
   }
 
   @media (prefers-reduced-motion: reduce) {

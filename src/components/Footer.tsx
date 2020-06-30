@@ -1,9 +1,19 @@
 import { Link } from 'gatsby'
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { breakpointDown } from '../utils/breakpoints'
 
 type DOMProps = {
+  className?: string
+}
+
+type presenterProps = {}
+
+type ContainerProps = {
+  presenter: React.FC<presenterProps>
+}
+
+type Props = {
   className?: string
 }
 
@@ -30,8 +40,9 @@ const FooterDOM: React.FC<DOMProps> = ({ className }) => (
 
 const PresentationalFooter = styled(FooterDOM)`
   &.footer {
-    background-color: var(--footer-background-color);
-    color: var(--footer-color);
+    background-color: ${(props) =>
+      props.theme.components.footer.backgroundColor};
+    color: ${(props) => props.theme.components.footer.color};
   }
 
   .footer_container {
@@ -54,7 +65,7 @@ const PresentationalFooter = styled(FooterDOM)`
   }
 
   .footer_link {
-    color: var(--base-link-color);
+    color: ${(props) => props.theme.components.link.color};
 
     &:hover {
       text-decoration: underline;
@@ -68,10 +79,11 @@ const PresentationalFooter = styled(FooterDOM)`
   }
 `
 
-const ContainerFooter = ({ presenter, ...props }: { presenter: React.FC }) =>
-  presenter({ ...props })
+const ContainerFooter: React.FC<ContainerProps> = ({ presenter, ...props }) => {
+  return presenter({ ...props })
+}
 
-const Footer: React.FC = (props) => (
+const Footer: React.FC<Props> = (props) => (
   <ContainerFooter
     presenter={(presenterProps) => (
       <PresentationalFooter className="footer" {...presenterProps} />

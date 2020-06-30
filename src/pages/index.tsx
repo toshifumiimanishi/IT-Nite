@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import styled from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
@@ -10,9 +10,20 @@ import { breakpointDown } from '../utils/breakpoints'
 import { Theme } from '../../types'
 import { Query } from '../../types/graphql-types'
 import ThemeContext from '../contexts/ThemeContext'
+import { components } from '../constants/components'
+import { transitions } from '../constants/transitions'
 
 type Props = {
   data: Query
+}
+
+type IndexTheme = {
+  components: typeof components
+  transitions: typeof transitions
+}
+
+declare module 'styled-components' {
+  interface DefaultTheme extends IndexTheme {}
 }
 
 const Home = styled.div`
@@ -88,24 +99,26 @@ const IndexPage: React.FC<Props> = ({ data }) => {
   }
 
   return (
-    <ThemeContext.Provider
-      value={{ theme, activateLightMode, activateDarkMode }}
-    >
-      <Home className="home">
-        <Layout>
-          <SEO title="Home" />
-          <Container>
-            <Cards>
-              {data.allMicrocmsPosts.edges.map(({ node }) => {
-                return <Card data={node} key={node.id} />
-              })}
-            </Cards>
-            <Qiita className="home_qiita" post={data.allQiitaPost} />
-            <GitHub className="home_github" viewer={data.github.viewer} />
-          </Container>
-        </Layout>
-      </Home>
-    </ThemeContext.Provider>
+    <ThemeProvider theme={{ components, transitions }}>
+      <ThemeContext.Provider
+        value={{ theme, activateLightMode, activateDarkMode }}
+      >
+        <Home className="home">
+          <Layout>
+            <SEO title="Home" />
+            <Container>
+              <Cards>
+                {data.allMicrocmsPosts.edges.map(({ node }) => {
+                  return <Card data={node} key={node.id} />
+                })}
+              </Cards>
+              <Qiita className="home_qiita" post={data.allQiitaPost} />
+              <GitHub className="home_github" viewer={data.github.viewer} />
+            </Container>
+          </Layout>
+        </Home>
+      </ThemeContext.Provider>
+    </ThemeProvider>
   )
 }
 

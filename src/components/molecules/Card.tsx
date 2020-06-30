@@ -6,6 +6,8 @@ import { breakpointUp } from '../../utils/breakpoints'
 import { Theme } from '../../../types'
 import { MicrocmsPosts } from '../../../types/graphql-types'
 import ThemeContext from '../../contexts/ThemeContext'
+import { components } from '../../constants/components'
+import { transitions } from '../../constants/transitions'
 
 type DOMProps = {} & Props
 
@@ -45,24 +47,24 @@ const PresentationalCard = styled(CardDOM)`
   position: relative;
   display: flex;
   flex-direction: column;
-  border-radius: var(--base-border-radius);
+  border-radius: ${components.border.radius};
   overflow: hidden;
-  transition: all var(--base-duration) var(--base-timing-function);
+  transition: all ${transitions.duration} ${transitions.timingFunctions};
 
   ${(props) =>
     props.theme === 'light' &&
     css`
-      box-shadow: var(--base-card-box-shadow);
+      box-shadow: ${components.card.boxShadow};
     `}
 
   &:focus-within {
-    color: var(--base-link-color);
+    color: ${components.link.color};
     box-shadow: 0 0 0 2px;
   }
 
   ${breakpointUp('md')} {
     &:hover {
-      color: var(--base-link-color);
+      color: ${components.link.color};
       box-shadow: 0 0 0 2px;
     }
   }
@@ -71,7 +73,7 @@ const PresentationalCard = styled(CardDOM)`
     flex-shrink: 0;
 
     > img {
-      border-radius: var(--base-border-radius);
+      border-radius: ${components.border.radius} ${components.border.radius} 0 0;
       object-fit: cover;
       width: 100%;
       height: 160px;

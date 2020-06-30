@@ -5,6 +5,8 @@ import ToggleButton from './atoms/ToggleButton'
 import Icon from './atoms/Icon'
 import { Theme } from '../../types'
 import ThemeContext from '../contexts/ThemeContext'
+import { components } from '../constants/components'
+import { transitions } from '../constants/transitions'
 
 type DOMProps = {
   className: string
@@ -59,8 +61,8 @@ const HeaderDOM: React.FC<DOMProps> = ({
 const PresentationalHeader = styled(HeaderDOM)`
   &.header {
     position: relative;
-    background-color: var(--header-background-color);
-    color: var(--header-color);
+    background-color: ${components.header.backgroundColor};
+    color: ${components.header.color};
   }
 
   .header_container {
@@ -99,7 +101,7 @@ const PresentationalHeader = styled(HeaderDOM)`
   button {
     .header_icon {
       opacity: 0.6;
-      transition: all var(--base-duration) var(--base-timing-function);
+      transition: all ${transitions.duration} ${transitions.timingFunctions};
     }
 
     &:hover .header_icon {

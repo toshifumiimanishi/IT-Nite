@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Time from '../components/atoms/Time'
 import { QiitaPostConnection } from '../../types/graphql-types'
+import { brandColors } from '../constants/colors'
 
 type Props = {
   post: QiitaPostConnection
@@ -10,7 +11,7 @@ type Props = {
 
 const Heading = styled.h2`
   margin-bottom: 24px;
-  color: var(--color-qiita);
+  color: ${brandColors.qiita};
   font-size: 24px;
 `
 
@@ -39,7 +40,7 @@ const Media = styled.dl`
   }
 
   strong {
-    color: var(--color-qiita);
+    color: ${brandColors.qiita};
   }
 `
 
