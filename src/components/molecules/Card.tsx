@@ -55,6 +55,12 @@ const PresentationalCard = styled(CardDOM)`
       box-shadow: var(--base-card-box-shadow);
     `}
 
+  ${(props) =>
+    props.theme === 'dark' &&
+    css`
+      background-color: rgba(255, 255, 255, 0.05);
+    `}
+
   &:focus-within {
     color: var(--base-link-color);
     box-shadow: 0 0 0 2px;
@@ -71,7 +77,7 @@ const PresentationalCard = styled(CardDOM)`
     flex-shrink: 0;
 
     > img {
-      border-radius: var(--base-border-radius);
+      border-radius: var(--base-border-radius) var(--base-border-radius) 0 0;
       object-fit: cover;
       width: 100%;
       height: 160px;
