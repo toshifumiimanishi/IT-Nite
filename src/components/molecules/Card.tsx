@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import styled, { css } from 'styled-components'
+import { rgba, cssVar } from 'polished'
 import { Link } from 'gatsby'
 import Time from '../atoms/Time'
 import { breakpointUp } from '../../utils/breakpoints'
@@ -58,7 +59,7 @@ const PresentationalCard = styled(CardDOM)`
   ${(props) =>
     props.theme === 'dark' &&
     css`
-      background-color: rgba(255, 255, 255, 0.05);
+      background-color: ${rgba(cssVar('--color-white'), 0.05)};
     `}
 
   &:focus-within {
