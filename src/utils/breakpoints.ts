@@ -3,7 +3,7 @@ import { breakpoints } from '../constants/breakpoints'
 type Breakpoints = keyof typeof breakpoints
 
 export const breakpointNext = (name: Breakpoints) => {
-  const breakpointNames  = Object.keys(breakpoints) as Breakpoints[]
+  const breakpointNames = Object.keys(breakpoints) as Breakpoints[]
   const nextIndex = breakpointNames.indexOf(name) + 1
   if (nextIndex < breakpointNames.length) {
     return breakpointNames[nextIndex]
@@ -26,7 +26,7 @@ export const breakpointUp = (name: Breakpoints) => {
   const min = breakpointMin(name)
   if (min) {
     return `@media (min-width: ${min}px)`
-  } else  {
+  } else {
     return '&'
   }
 }
