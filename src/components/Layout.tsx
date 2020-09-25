@@ -219,9 +219,9 @@ const BaseStyle = createGlobalStyle`
     --base-button-background-color: var(--color-black);
     --base-button-hover-background-color: var(--color-aqua);
     --base-card-box-shadow: 0 1px 3px 1px ${rgba(
-      cssVar('--color-gray-800'),
+      '#343a40',
       0.2
-    )}, 0 2px 8px 4px ${rgba(cssVar('--color-gray-800'), 0.1)};
+    )}, 0 2px 8px 4px ${rgba('#343a40', 0.1)};
     --primary-color: var(--color-orange);
     --primary-border-color: var(--color-orange);
     --error-color: var(--color-red);
