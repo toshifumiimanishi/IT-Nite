@@ -289,15 +289,18 @@ const PresentationalBlog = styled(BlogDOM)`
     }
 
     img {
+      flex-shrink: 0;
       order: -1;
       margin-right: 40px;
       padding-top: 6px;
       width: 100px;
-      object-fit: contain;
+      height: 100px;
+      object-fit: cover;
 
       ${breakpointDown('md')} {
         margin-right: 20px;
         width: 80px;
+        height: 80px;
       }
     }
   }
