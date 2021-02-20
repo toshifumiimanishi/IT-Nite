@@ -18100,6 +18100,7 @@ export type MicrocmsPosts = Node & {
   internal: Internal;
   createdAt?: Maybe<Scalars['Date']>;
   updatedAt?: Maybe<Scalars['Date']>;
+  revisedAt?: Maybe<Scalars['Date']>;
   title?: Maybe<Scalars['String']>;
   body?: Maybe<Scalars['String']>;
   _embedded?: Maybe<MicrocmsPosts_Embedded>;
@@ -18123,18 +18124,31 @@ export type MicrocmsPostsUpdatedAtArgs = {
   locale?: Maybe<Scalars['String']>;
 };
 
+
+export type MicrocmsPostsRevisedAtArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
 export type MicrocmsPosts_Embedded = {
   url?: Maybe<Scalars['String']>;
+  height?: Maybe<Scalars['Int']>;
+  width?: Maybe<Scalars['Int']>;
 };
 
 export type MicrocmsPosts_EmbeddedFilterInput = {
   url?: Maybe<StringQueryOperatorInput>;
+  height?: Maybe<IntQueryOperatorInput>;
+  width?: Maybe<IntQueryOperatorInput>;
 };
 
 export type MicrocmsPostsAuthor = {
   id?: Maybe<Scalars['String']>;
   createdAt?: Maybe<Scalars['Date']>;
   updatedAt?: Maybe<Scalars['Date']>;
+  revisedAt?: Maybe<Scalars['Date']>;
   name?: Maybe<Scalars['String']>;
   text?: Maybe<Scalars['String']>;
   image?: Maybe<MicrocmsPostsAuthorImage>;
@@ -18156,10 +18170,19 @@ export type MicrocmsPostsAuthorUpdatedAtArgs = {
   locale?: Maybe<Scalars['String']>;
 };
 
+
+export type MicrocmsPostsAuthorRevisedAtArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
 export type MicrocmsPostsAuthorFilterInput = {
   id?: Maybe<StringQueryOperatorInput>;
   createdAt?: Maybe<DateQueryOperatorInput>;
   updatedAt?: Maybe<DateQueryOperatorInput>;
+  revisedAt?: Maybe<DateQueryOperatorInput>;
   name?: Maybe<StringQueryOperatorInput>;
   text?: Maybe<StringQueryOperatorInput>;
   image?: Maybe<MicrocmsPostsAuthorImageFilterInput>;
@@ -18167,10 +18190,14 @@ export type MicrocmsPostsAuthorFilterInput = {
 
 export type MicrocmsPostsAuthorImage = {
   url?: Maybe<Scalars['String']>;
+  height?: Maybe<Scalars['Int']>;
+  width?: Maybe<Scalars['Int']>;
 };
 
 export type MicrocmsPostsAuthorImageFilterInput = {
   url?: Maybe<StringQueryOperatorInput>;
+  height?: Maybe<IntQueryOperatorInput>;
+  width?: Maybe<IntQueryOperatorInput>;
 };
 
 export type MicrocmsPostsConnection = {
@@ -18289,15 +18316,21 @@ export type MicrocmsPostsFieldsEnum =
   | 'internal___type'
   | 'createdAt'
   | 'updatedAt'
+  | 'revisedAt'
   | 'title'
   | 'body'
   | '_embedded___url'
+  | '_embedded___height'
+  | '_embedded___width'
   | 'author___id'
   | 'author___createdAt'
   | 'author___updatedAt'
+  | 'author___revisedAt'
   | 'author___name'
   | 'author___text'
   | 'author___image___url'
+  | 'author___image___height'
+  | 'author___image___width'
   | 'postsId';
 
 export type MicrocmsPostsFilterInput = {
@@ -18307,6 +18340,7 @@ export type MicrocmsPostsFilterInput = {
   internal?: Maybe<InternalFilterInput>;
   createdAt?: Maybe<DateQueryOperatorInput>;
   updatedAt?: Maybe<DateQueryOperatorInput>;
+  revisedAt?: Maybe<DateQueryOperatorInput>;
   title?: Maybe<StringQueryOperatorInput>;
   body?: Maybe<StringQueryOperatorInput>;
   _embedded?: Maybe<MicrocmsPosts_EmbeddedFilterInput>;
@@ -18934,6 +18968,7 @@ export type QueryMicrocmsPostsArgs = {
   internal?: Maybe<InternalFilterInput>;
   createdAt?: Maybe<DateQueryOperatorInput>;
   updatedAt?: Maybe<DateQueryOperatorInput>;
+  revisedAt?: Maybe<DateQueryOperatorInput>;
   title?: Maybe<StringQueryOperatorInput>;
   body?: Maybe<StringQueryOperatorInput>;
   _embedded?: Maybe<MicrocmsPosts_EmbeddedFilterInput>;
