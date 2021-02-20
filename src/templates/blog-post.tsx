@@ -292,10 +292,11 @@ const PresentationalBlog = styled(BlogDOM)`
       flex-shrink: 0;
       order: -1;
       margin-right: 40px;
-      padding-top: 6px;
       width: 100px;
       height: 100px;
       object-fit: cover;
+      border-radius: 50%;
+      transform: translateY(6px);
 
       ${breakpointDown('md')} {
         margin-right: 20px;
