@@ -208,7 +208,17 @@ const PresentationalBlog = styled(BlogDOM)`
     }
 
     li {
-      list-style: inside;
+      padding-left: 1em;
+      text-indent: -1em;
+
+      &::before {
+        content: "・";
+        font-weight: bold;
+      }
+
+      + li {
+        margin-top: 0.5em;
+      }
     }
 
     img {
