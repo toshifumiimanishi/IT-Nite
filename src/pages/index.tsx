@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
@@ -7,9 +7,7 @@ import Qiita from '../components/Qiita'
 import GitHub from '../components/GitHub'
 import Card from '../components/molecules/Card'
 import { breakpointDown } from '../utils/breakpoints'
-import { Theme } from '../../types'
 import { Query } from '../../types/graphql-types'
-import ThemeContext from '../contexts/ThemeContext'
 
 type Props = {
   data: Query
@@ -43,69 +41,21 @@ const Cards = styled.ul`
 `
 
 const IndexPage: React.FC<Props> = ({ data }) => {
-  const systemSettingTheme = (() => {
-    if (typeof window !== 'undefined') {
-      return window.matchMedia('(prefers-color-scheme: light)').matches
-        ? 'light'
-        : 'dark'
-    } else {
-      return null
-    }
-  })()
-
-  useEffect(() => {
-    const theme = localStorage.getItem('theme')
-
-    if (theme === 'light') {
-      activateLightMode()
-    } else if (theme === 'dark') {
-      activateDarkMode()
-    }
-  }, [])
-
-  const [theme, setTheme] = useState<Theme['theme']>(systemSettingTheme)
-
-  const activateLightMode = () => {
-    const rootElement = document.documentElement
-
-    rootElement.style.setProperty(
-      '--base-background-color',
-      'var(--theme-light-background-color)'
-    )
-    rootElement.style.setProperty('--base-color', 'var(--theme-light-color)')
-    setTheme('light')
-  }
-
-  const activateDarkMode = () => {
-    const rootElement = document.documentElement
-
-    rootElement.style.setProperty(
-      '--base-background-color',
-      'var(--theme-dark-background-color)'
-    )
-    rootElement.style.setProperty('--base-color', 'var(--theme-dark-color)')
-    setTheme('dark')
-  }
-
   return (
-    <ThemeContext.Provider
-      value={{ theme, activateLightMode, activateDarkMode }}
-    >
-      <Home className="home">
-        <Layout>
-          <SEO title="Home" />
-          <Container>
-            <Cards>
-              {data.allMicrocmsPosts.edges.map(({ node }) => {
-                return <Card data={node} key={node.id} />
-              })}
-            </Cards>
-            <Qiita className="home_qiita" post={data.allQiitaPost} />
-            <GitHub className="home_github" viewer={data.github.viewer} />
-          </Container>
-        </Layout>
-      </Home>
-    </ThemeContext.Provider>
+    <Home className="home">
+      <Layout>
+        <SEO title="Home" />
+        <Container>
+          <Cards>
+            {data.allMicrocmsPosts.edges.map(({ node }) => {
+              return <Card data={node} key={node.id} />
+            })}
+          </Cards>
+          <Qiita className="home_qiita" post={data.allQiitaPost} />
+          <GitHub className="home_github" viewer={data.github.viewer} />
+        </Container>
+      </Layout>
+    </Home>
   )
 }
 
