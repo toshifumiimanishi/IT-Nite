@@ -2,7 +2,7 @@
   "name": "it-nite",
   "private": true,
   "description": "HTML や CSS、JavaScript を中心としたフロントエンドの技術を紹介するメディア兼ポートフォリオ。",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "author": "Toshifumi Imanishi <toshifumi.imanishi@gmail.com>",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.28",

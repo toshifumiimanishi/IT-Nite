@@ -1,10 +1,12 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import styled, { createGlobalStyle } from 'styled-components'
-import { rgba, cssVar } from 'polished'
+import { rgba } from 'polished'
 import Header from './Header'
 import Footer from './Footer'
 import { breakpointDown } from '../utils/breakpoints'
+import { useTheme } from '../hooks/useTheme'
+import ThemeContext from '../contexts/ThemeContext'
 
 const ResetStyle = createGlobalStyle`
   body,
@@ -295,14 +297,18 @@ const Layout: React.FC = ({ children }) => {
     }
   `)
 
+  const { theme, activateLightMode, activateDarkMode } = useTheme()
+
   return (
-    <>
+    <ThemeContext.Provider
+      value={{ theme, activateLightMode, activateDarkMode }}
+    >
       <ResetStyle />
       <BaseStyle />
       <Header siteTitle={data.site.siteMetadata.title} />
       <Main>{children}</Main>
       <Footer />
-    </>
+    </ThemeContext.Provider>
   )
 }
 
