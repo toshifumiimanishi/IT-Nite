@@ -208,6 +208,7 @@ const BaseStyle = createGlobalStyle`
     --color-pink: #ff4081;
     --color-orange: #ff9800;
     --color-qiita: #55c500;
+    --font-family-biz-udgothic: "BIZ UDGothic";
     --base-font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "BIZ UDPGothic", Meiryo, sans-serif;
     --base-line-height: 1.6875;
     --base-letter-spacing: 0.05em;
