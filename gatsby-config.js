@@ -44,7 +44,11 @@ module.exports = {
       options: {
         apiKey: `${process.env.MICROCMS_API_KEY}`,
         serviceId: `toshifumiimanishi`,
-        endpoint: `posts`,
+        apis: [
+          {
+            endpoint: `posts`,
+          },
+        ],
       },
     },
     {

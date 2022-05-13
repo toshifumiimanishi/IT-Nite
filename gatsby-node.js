@@ -1,4 +1,5 @@
 const path = require(`path`)
+const webpack = require(`webpack`)
 
 exports.createPages = async ({ graphql, actions: { createPage } }) => {
   const sources = await graphql(
@@ -29,5 +30,22 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
         slug: node.id,
       },
     })
+  })
+}
+
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      fallback: {
+        buffer: require.resolve(`buffer/`),
+        stream: require.resolve(`stream-browserify`),
+        util: require.resolve(`util/`),
+      },
+    },
+    plugins: [
+      new webpack.ProvidePlugin({
+          Buffer: ['buffer', 'Buffer'],
+      }),
+    ],
   })
 }
