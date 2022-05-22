@@ -1,373 +1,44 @@
 export type Maybe<T> = T | null;
+export type InputMaybe<T> = Maybe<T>;
+export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
+  /** The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID. */
   ID: string;
+  /** The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text. */
   String: string;
+  /** The `Boolean` scalar type represents `true` or `false`. */
   Boolean: boolean;
+  /** The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. */
   Int: number;
+  /** The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](https://en.wikipedia.org/wiki/IEEE_floating_point). */
   Float: number;
-  /**
-   * A date string, such as 2007-12-03, compliant with the ISO 8601 standard for
-   * representation of dates and times using the Gregorian calendar.
-   */
+  /** A date string, such as 2007-12-03, compliant with the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
   Date: any;
-  /** An RFC 3986, RFC 3987, and RFC 6570 (level 4) compliant URI string. */
-  GitHub_URI: any;
-  /** An ISO-8601 encoded UTC date string. */
-  GitHub_DateTime: any;
-  /** A string containing HTML code. */
-  GitHub_HTML: any;
-  /** A Git object ID. */
-  GitHub_GitObjectID: any;
-  /** An ISO-8601 encoded date string. Unlike the DateTime type, GitTimestamp is not converted in UTC. */
-  GitHub_GitTimestamp: any;
-  /** Git SSH string */
-  GitHub_GitSSHRemote: any;
-  /** An ISO-8601 encoded date string. */
-  GitHub_Date: any;
-  /** An ISO-8601 encoded UTC date string with millisecond precision. */
-  GitHub_PreciseDateTime: any;
-  /** A valid x509 certificate string */
-  GitHub_X509Certificate: any;
-  /** A (potentially binary) string encoded using base64. */
-  GitHub_Base64String: any;
   /** The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
   JSON: any;
-};
-
-
-
-
-
-
-
-
-
-
-
-export type BooleanQueryOperatorInput = {
-  eq?: Maybe<Scalars['Boolean']>;
-  ne?: Maybe<Scalars['Boolean']>;
-  in?: Maybe<Array<Maybe<Scalars['Boolean']>>>;
-  nin?: Maybe<Array<Maybe<Scalars['Boolean']>>>;
-};
-
-
-export type DateQueryOperatorInput = {
-  eq?: Maybe<Scalars['Date']>;
-  ne?: Maybe<Scalars['Date']>;
-  gt?: Maybe<Scalars['Date']>;
-  gte?: Maybe<Scalars['Date']>;
-  lt?: Maybe<Scalars['Date']>;
-  lte?: Maybe<Scalars['Date']>;
-  in?: Maybe<Array<Maybe<Scalars['Date']>>>;
-  nin?: Maybe<Array<Maybe<Scalars['Date']>>>;
-};
-
-export type Directory = Node & {
-  sourceInstanceName: Scalars['String'];
-  absolutePath: Scalars['String'];
-  relativePath: Scalars['String'];
-  extension: Scalars['String'];
-  size: Scalars['Int'];
-  prettySize: Scalars['String'];
-  modifiedTime: Scalars['Date'];
-  accessTime: Scalars['Date'];
-  changeTime: Scalars['Date'];
-  birthTime: Scalars['Date'];
-  root: Scalars['String'];
-  dir: Scalars['String'];
-  base: Scalars['String'];
-  ext: Scalars['String'];
-  name: Scalars['String'];
-  relativeDirectory: Scalars['String'];
-  dev: Scalars['Int'];
-  mode: Scalars['Int'];
-  nlink: Scalars['Int'];
-  uid: Scalars['Int'];
-  gid: Scalars['Int'];
-  rdev: Scalars['Int'];
-  ino: Scalars['Float'];
-  atimeMs: Scalars['Float'];
-  mtimeMs: Scalars['Float'];
-  ctimeMs: Scalars['Float'];
-  atime: Scalars['Date'];
-  mtime: Scalars['Date'];
-  ctime: Scalars['Date'];
-  /** @deprecated Use `birthTime` instead */
-  birthtime?: Maybe<Scalars['Date']>;
-  /** @deprecated Use `birthTime` instead */
-  birthtimeMs?: Maybe<Scalars['Float']>;
-  blksize?: Maybe<Scalars['Int']>;
-  blocks?: Maybe<Scalars['Int']>;
-  id: Scalars['ID'];
-  parent?: Maybe<Node>;
-  children: Array<Node>;
-  internal: Internal;
-};
-
-
-export type DirectoryModifiedTimeArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-};
-
-
-export type DirectoryAccessTimeArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-};
-
-
-export type DirectoryChangeTimeArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-};
-
-
-export type DirectoryBirthTimeArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-};
-
-
-export type DirectoryAtimeArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-};
-
-
-export type DirectoryMtimeArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-};
-
-
-export type DirectoryCtimeArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-};
-
-export type DirectoryConnection = {
-  totalCount: Scalars['Int'];
-  edges: Array<DirectoryEdge>;
-  nodes: Array<Directory>;
-  pageInfo: PageInfo;
-  distinct: Array<Scalars['String']>;
-  group: Array<DirectoryGroupConnection>;
-};
-
-
-export type DirectoryConnectionDistinctArgs = {
-  field: DirectoryFieldsEnum;
-};
-
-
-export type DirectoryConnectionGroupArgs = {
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-  field: DirectoryFieldsEnum;
-};
-
-export type DirectoryEdge = {
-  next?: Maybe<Directory>;
-  node: Directory;
-  previous?: Maybe<Directory>;
-};
-
-export type DirectoryFieldsEnum = 
-  | 'sourceInstanceName'
-  | 'absolutePath'
-  | 'relativePath'
-  | 'extension'
-  | 'size'
-  | 'prettySize'
-  | 'modifiedTime'
-  | 'accessTime'
-  | 'changeTime'
-  | 'birthTime'
-  | 'root'
-  | 'dir'
-  | 'base'
-  | 'ext'
-  | 'name'
-  | 'relativeDirectory'
-  | 'dev'
-  | 'mode'
-  | 'nlink'
-  | 'uid'
-  | 'gid'
-  | 'rdev'
-  | 'ino'
-  | 'atimeMs'
-  | 'mtimeMs'
-  | 'ctimeMs'
-  | 'atime'
-  | 'mtime'
-  | 'ctime'
-  | 'birthtime'
-  | 'birthtimeMs'
-  | 'blksize'
-  | 'blocks'
-  | 'id'
-  | 'parent___id'
-  | 'parent___parent___id'
-  | 'parent___parent___parent___id'
-  | 'parent___parent___parent___children'
-  | 'parent___parent___children'
-  | 'parent___parent___children___id'
-  | 'parent___parent___children___children'
-  | 'parent___parent___internal___content'
-  | 'parent___parent___internal___contentDigest'
-  | 'parent___parent___internal___description'
-  | 'parent___parent___internal___fieldOwners'
-  | 'parent___parent___internal___ignoreType'
-  | 'parent___parent___internal___mediaType'
-  | 'parent___parent___internal___owner'
-  | 'parent___parent___internal___type'
-  | 'parent___children'
-  | 'parent___children___id'
-  | 'parent___children___parent___id'
-  | 'parent___children___parent___children'
-  | 'parent___children___children'
-  | 'parent___children___children___id'
-  | 'parent___children___children___children'
-  | 'parent___children___internal___content'
-  | 'parent___children___internal___contentDigest'
-  | 'parent___children___internal___description'
-  | 'parent___children___internal___fieldOwners'
-  | 'parent___children___internal___ignoreType'
-  | 'parent___children___internal___mediaType'
-  | 'parent___children___internal___owner'
-  | 'parent___children___internal___type'
-  | 'parent___internal___content'
-  | 'parent___internal___contentDigest'
-  | 'parent___internal___description'
-  | 'parent___internal___fieldOwners'
-  | 'parent___internal___ignoreType'
-  | 'parent___internal___mediaType'
-  | 'parent___internal___owner'
-  | 'parent___internal___type'
-  | 'children'
-  | 'children___id'
-  | 'children___parent___id'
-  | 'children___parent___parent___id'
-  | 'children___parent___parent___children'
-  | 'children___parent___children'
-  | 'children___parent___children___id'
-  | 'children___parent___children___children'
-  | 'children___parent___internal___content'
-  | 'children___parent___internal___contentDigest'
-  | 'children___parent___internal___description'
-  | 'children___parent___internal___fieldOwners'
-  | 'children___parent___internal___ignoreType'
-  | 'children___parent___internal___mediaType'
-  | 'children___parent___internal___owner'
-  | 'children___parent___internal___type'
-  | 'children___children'
-  | 'children___children___id'
-  | 'children___children___parent___id'
-  | 'children___children___parent___children'
-  | 'children___children___children'
-  | 'children___children___children___id'
-  | 'children___children___children___children'
-  | 'children___children___internal___content'
-  | 'children___children___internal___contentDigest'
-  | 'children___children___internal___description'
-  | 'children___children___internal___fieldOwners'
-  | 'children___children___internal___ignoreType'
-  | 'children___children___internal___mediaType'
-  | 'children___children___internal___owner'
-  | 'children___children___internal___type'
-  | 'children___internal___content'
-  | 'children___internal___contentDigest'
-  | 'children___internal___description'
-  | 'children___internal___fieldOwners'
-  | 'children___internal___ignoreType'
-  | 'children___internal___mediaType'
-  | 'children___internal___owner'
-  | 'children___internal___type'
-  | 'internal___content'
-  | 'internal___contentDigest'
-  | 'internal___description'
-  | 'internal___fieldOwners'
-  | 'internal___ignoreType'
-  | 'internal___mediaType'
-  | 'internal___owner'
-  | 'internal___type';
-
-export type DirectoryFilterInput = {
-  sourceInstanceName?: Maybe<StringQueryOperatorInput>;
-  absolutePath?: Maybe<StringQueryOperatorInput>;
-  relativePath?: Maybe<StringQueryOperatorInput>;
-  extension?: Maybe<StringQueryOperatorInput>;
-  size?: Maybe<IntQueryOperatorInput>;
-  prettySize?: Maybe<StringQueryOperatorInput>;
-  modifiedTime?: Maybe<DateQueryOperatorInput>;
-  accessTime?: Maybe<DateQueryOperatorInput>;
-  changeTime?: Maybe<DateQueryOperatorInput>;
-  birthTime?: Maybe<DateQueryOperatorInput>;
-  root?: Maybe<StringQueryOperatorInput>;
-  dir?: Maybe<StringQueryOperatorInput>;
-  base?: Maybe<StringQueryOperatorInput>;
-  ext?: Maybe<StringQueryOperatorInput>;
-  name?: Maybe<StringQueryOperatorInput>;
-  relativeDirectory?: Maybe<StringQueryOperatorInput>;
-  dev?: Maybe<IntQueryOperatorInput>;
-  mode?: Maybe<IntQueryOperatorInput>;
-  nlink?: Maybe<IntQueryOperatorInput>;
-  uid?: Maybe<IntQueryOperatorInput>;
-  gid?: Maybe<IntQueryOperatorInput>;
-  rdev?: Maybe<IntQueryOperatorInput>;
-  ino?: Maybe<FloatQueryOperatorInput>;
-  atimeMs?: Maybe<FloatQueryOperatorInput>;
-  mtimeMs?: Maybe<FloatQueryOperatorInput>;
-  ctimeMs?: Maybe<FloatQueryOperatorInput>;
-  atime?: Maybe<DateQueryOperatorInput>;
-  mtime?: Maybe<DateQueryOperatorInput>;
-  ctime?: Maybe<DateQueryOperatorInput>;
-  birthtime?: Maybe<DateQueryOperatorInput>;
-  birthtimeMs?: Maybe<FloatQueryOperatorInput>;
-  blksize?: Maybe<IntQueryOperatorInput>;
-  blocks?: Maybe<IntQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-};
-
-export type DirectoryGroupConnection = {
-  totalCount: Scalars['Int'];
-  edges: Array<DirectoryEdge>;
-  nodes: Array<Directory>;
-  pageInfo: PageInfo;
-  field: Scalars['String'];
-  fieldValue?: Maybe<Scalars['String']>;
-};
-
-export type DirectorySortInput = {
-  fields?: Maybe<Array<Maybe<DirectoryFieldsEnum>>>;
-  order?: Maybe<Array<Maybe<SortOrderEnum>>>;
-};
-
-export type DuotoneGradient = {
-  highlight: Scalars['String'];
-  shadow: Scalars['String'];
-  opacity?: Maybe<Scalars['Int']>;
+  /** A (potentially binary) string encoded using base64. */
+  GitHub_Base64String: any;
+  /** An ISO-8601 encoded date string. */
+  GitHub_Date: any;
+  /** An ISO-8601 encoded UTC date string. */
+  GitHub_DateTime: any;
+  /** A Git object ID. */
+  GitHub_GitObjectID: any;
+  /** Git SSH string */
+  GitHub_GitSSHRemote: any;
+  /** An ISO-8601 encoded date string. Unlike the DateTime type, GitTimestamp is not converted in UTC. */
+  GitHub_GitTimestamp: any;
+  /** A string containing HTML code. */
+  GitHub_HTML: any;
+  /** An ISO-8601 encoded UTC date string with millisecond precision. */
+  GitHub_PreciseDateTime: any;
+  /** An RFC 3986, RFC 3987, and RFC 6570 (level 4) compliant URI string. */
+  GitHub_URI: any;
+  /** A valid x509 certificate string */
+  GitHub_X509Certificate: any;
 };
 
 export type File = Node & {
@@ -408,6 +79,9 @@ export type File = Node & {
   blocks?: Maybe<Scalars['Int']>;
   /** Copy file to static directory and return public url to it */
   publicURL?: Maybe<Scalars['String']>;
+  /** Returns all children nodes filtered by type ImageSharp */
+  childrenImageSharp?: Maybe<Array<Maybe<ImageSharp>>>;
+  /** Returns the first child node of type ImageSharp or null if there are no children of given type on this node */
   childImageSharp?: Maybe<ImageSharp>;
   id: Scalars['ID'];
   parent?: Maybe<Node>;
@@ -417,610 +91,689 @@ export type File = Node & {
 
 
 export type FileModifiedTimeArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  difference?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
 };
 
 
 export type FileAccessTimeArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  difference?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
 };
 
 
 export type FileChangeTimeArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  difference?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
 };
 
 
 export type FileBirthTimeArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  difference?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
 };
 
 
 export type FileAtimeArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  difference?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
 };
 
 
 export type FileMtimeArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  difference?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
 };
 
 
 export type FileCtimeArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  difference?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
 };
 
-export type FileConnection = {
-  totalCount: Scalars['Int'];
-  edges: Array<FileEdge>;
-  nodes: Array<File>;
-  pageInfo: PageInfo;
-  distinct: Array<Scalars['String']>;
-  group: Array<FileGroupConnection>;
-};
-
-
-export type FileConnectionDistinctArgs = {
-  field: FileFieldsEnum;
-};
-
-
-export type FileConnectionGroupArgs = {
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-  field: FileFieldsEnum;
-};
-
-export type FileEdge = {
-  next?: Maybe<File>;
-  node: File;
-  previous?: Maybe<File>;
-};
-
-export type FileFieldsEnum = 
-  | 'sourceInstanceName'
-  | 'absolutePath'
-  | 'relativePath'
-  | 'extension'
-  | 'size'
-  | 'prettySize'
-  | 'modifiedTime'
-  | 'accessTime'
-  | 'changeTime'
-  | 'birthTime'
-  | 'root'
-  | 'dir'
-  | 'base'
-  | 'ext'
-  | 'name'
-  | 'relativeDirectory'
-  | 'dev'
-  | 'mode'
-  | 'nlink'
-  | 'uid'
-  | 'gid'
-  | 'rdev'
-  | 'ino'
-  | 'atimeMs'
-  | 'mtimeMs'
-  | 'ctimeMs'
-  | 'atime'
-  | 'mtime'
-  | 'ctime'
-  | 'birthtime'
-  | 'birthtimeMs'
-  | 'blksize'
-  | 'blocks'
-  | 'publicURL'
-  | 'childImageSharp___fixed___base64'
-  | 'childImageSharp___fixed___tracedSVG'
-  | 'childImageSharp___fixed___aspectRatio'
-  | 'childImageSharp___fixed___width'
-  | 'childImageSharp___fixed___height'
-  | 'childImageSharp___fixed___src'
-  | 'childImageSharp___fixed___srcSet'
-  | 'childImageSharp___fixed___srcWebp'
-  | 'childImageSharp___fixed___srcSetWebp'
-  | 'childImageSharp___fixed___originalName'
-  | 'childImageSharp___resolutions___base64'
-  | 'childImageSharp___resolutions___tracedSVG'
-  | 'childImageSharp___resolutions___aspectRatio'
-  | 'childImageSharp___resolutions___width'
-  | 'childImageSharp___resolutions___height'
-  | 'childImageSharp___resolutions___src'
-  | 'childImageSharp___resolutions___srcSet'
-  | 'childImageSharp___resolutions___srcWebp'
-  | 'childImageSharp___resolutions___srcSetWebp'
-  | 'childImageSharp___resolutions___originalName'
-  | 'childImageSharp___fluid___base64'
-  | 'childImageSharp___fluid___tracedSVG'
-  | 'childImageSharp___fluid___aspectRatio'
-  | 'childImageSharp___fluid___src'
-  | 'childImageSharp___fluid___srcSet'
-  | 'childImageSharp___fluid___srcWebp'
-  | 'childImageSharp___fluid___srcSetWebp'
-  | 'childImageSharp___fluid___sizes'
-  | 'childImageSharp___fluid___originalImg'
-  | 'childImageSharp___fluid___originalName'
-  | 'childImageSharp___fluid___presentationWidth'
-  | 'childImageSharp___fluid___presentationHeight'
-  | 'childImageSharp___sizes___base64'
-  | 'childImageSharp___sizes___tracedSVG'
-  | 'childImageSharp___sizes___aspectRatio'
-  | 'childImageSharp___sizes___src'
-  | 'childImageSharp___sizes___srcSet'
-  | 'childImageSharp___sizes___srcWebp'
-  | 'childImageSharp___sizes___srcSetWebp'
-  | 'childImageSharp___sizes___sizes'
-  | 'childImageSharp___sizes___originalImg'
-  | 'childImageSharp___sizes___originalName'
-  | 'childImageSharp___sizes___presentationWidth'
-  | 'childImageSharp___sizes___presentationHeight'
-  | 'childImageSharp___original___width'
-  | 'childImageSharp___original___height'
-  | 'childImageSharp___original___src'
-  | 'childImageSharp___resize___src'
-  | 'childImageSharp___resize___tracedSVG'
-  | 'childImageSharp___resize___width'
-  | 'childImageSharp___resize___height'
-  | 'childImageSharp___resize___aspectRatio'
-  | 'childImageSharp___resize___originalName'
-  | 'childImageSharp___id'
-  | 'childImageSharp___parent___id'
-  | 'childImageSharp___parent___parent___id'
-  | 'childImageSharp___parent___parent___children'
-  | 'childImageSharp___parent___children'
-  | 'childImageSharp___parent___children___id'
-  | 'childImageSharp___parent___children___children'
-  | 'childImageSharp___parent___internal___content'
-  | 'childImageSharp___parent___internal___contentDigest'
-  | 'childImageSharp___parent___internal___description'
-  | 'childImageSharp___parent___internal___fieldOwners'
-  | 'childImageSharp___parent___internal___ignoreType'
-  | 'childImageSharp___parent___internal___mediaType'
-  | 'childImageSharp___parent___internal___owner'
-  | 'childImageSharp___parent___internal___type'
-  | 'childImageSharp___children'
-  | 'childImageSharp___children___id'
-  | 'childImageSharp___children___parent___id'
-  | 'childImageSharp___children___parent___children'
-  | 'childImageSharp___children___children'
-  | 'childImageSharp___children___children___id'
-  | 'childImageSharp___children___children___children'
-  | 'childImageSharp___children___internal___content'
-  | 'childImageSharp___children___internal___contentDigest'
-  | 'childImageSharp___children___internal___description'
-  | 'childImageSharp___children___internal___fieldOwners'
-  | 'childImageSharp___children___internal___ignoreType'
-  | 'childImageSharp___children___internal___mediaType'
-  | 'childImageSharp___children___internal___owner'
-  | 'childImageSharp___children___internal___type'
-  | 'childImageSharp___internal___content'
-  | 'childImageSharp___internal___contentDigest'
-  | 'childImageSharp___internal___description'
-  | 'childImageSharp___internal___fieldOwners'
-  | 'childImageSharp___internal___ignoreType'
-  | 'childImageSharp___internal___mediaType'
-  | 'childImageSharp___internal___owner'
-  | 'childImageSharp___internal___type'
-  | 'id'
-  | 'parent___id'
-  | 'parent___parent___id'
-  | 'parent___parent___parent___id'
-  | 'parent___parent___parent___children'
-  | 'parent___parent___children'
-  | 'parent___parent___children___id'
-  | 'parent___parent___children___children'
-  | 'parent___parent___internal___content'
-  | 'parent___parent___internal___contentDigest'
-  | 'parent___parent___internal___description'
-  | 'parent___parent___internal___fieldOwners'
-  | 'parent___parent___internal___ignoreType'
-  | 'parent___parent___internal___mediaType'
-  | 'parent___parent___internal___owner'
-  | 'parent___parent___internal___type'
-  | 'parent___children'
-  | 'parent___children___id'
-  | 'parent___children___parent___id'
-  | 'parent___children___parent___children'
-  | 'parent___children___children'
-  | 'parent___children___children___id'
-  | 'parent___children___children___children'
-  | 'parent___children___internal___content'
-  | 'parent___children___internal___contentDigest'
-  | 'parent___children___internal___description'
-  | 'parent___children___internal___fieldOwners'
-  | 'parent___children___internal___ignoreType'
-  | 'parent___children___internal___mediaType'
-  | 'parent___children___internal___owner'
-  | 'parent___children___internal___type'
-  | 'parent___internal___content'
-  | 'parent___internal___contentDigest'
-  | 'parent___internal___description'
-  | 'parent___internal___fieldOwners'
-  | 'parent___internal___ignoreType'
-  | 'parent___internal___mediaType'
-  | 'parent___internal___owner'
-  | 'parent___internal___type'
-  | 'children'
-  | 'children___id'
-  | 'children___parent___id'
-  | 'children___parent___parent___id'
-  | 'children___parent___parent___children'
-  | 'children___parent___children'
-  | 'children___parent___children___id'
-  | 'children___parent___children___children'
-  | 'children___parent___internal___content'
-  | 'children___parent___internal___contentDigest'
-  | 'children___parent___internal___description'
-  | 'children___parent___internal___fieldOwners'
-  | 'children___parent___internal___ignoreType'
-  | 'children___parent___internal___mediaType'
-  | 'children___parent___internal___owner'
-  | 'children___parent___internal___type'
-  | 'children___children'
-  | 'children___children___id'
-  | 'children___children___parent___id'
-  | 'children___children___parent___children'
-  | 'children___children___children'
-  | 'children___children___children___id'
-  | 'children___children___children___children'
-  | 'children___children___internal___content'
-  | 'children___children___internal___contentDigest'
-  | 'children___children___internal___description'
-  | 'children___children___internal___fieldOwners'
-  | 'children___children___internal___ignoreType'
-  | 'children___children___internal___mediaType'
-  | 'children___children___internal___owner'
-  | 'children___children___internal___type'
-  | 'children___internal___content'
-  | 'children___internal___contentDigest'
-  | 'children___internal___description'
-  | 'children___internal___fieldOwners'
-  | 'children___internal___ignoreType'
-  | 'children___internal___mediaType'
-  | 'children___internal___owner'
-  | 'children___internal___type'
-  | 'internal___content'
-  | 'internal___contentDigest'
-  | 'internal___description'
-  | 'internal___fieldOwners'
-  | 'internal___ignoreType'
-  | 'internal___mediaType'
-  | 'internal___owner'
-  | 'internal___type';
-
-export type FileFilterInput = {
-  sourceInstanceName?: Maybe<StringQueryOperatorInput>;
-  absolutePath?: Maybe<StringQueryOperatorInput>;
-  relativePath?: Maybe<StringQueryOperatorInput>;
-  extension?: Maybe<StringQueryOperatorInput>;
-  size?: Maybe<IntQueryOperatorInput>;
-  prettySize?: Maybe<StringQueryOperatorInput>;
-  modifiedTime?: Maybe<DateQueryOperatorInput>;
-  accessTime?: Maybe<DateQueryOperatorInput>;
-  changeTime?: Maybe<DateQueryOperatorInput>;
-  birthTime?: Maybe<DateQueryOperatorInput>;
-  root?: Maybe<StringQueryOperatorInput>;
-  dir?: Maybe<StringQueryOperatorInput>;
-  base?: Maybe<StringQueryOperatorInput>;
-  ext?: Maybe<StringQueryOperatorInput>;
-  name?: Maybe<StringQueryOperatorInput>;
-  relativeDirectory?: Maybe<StringQueryOperatorInput>;
-  dev?: Maybe<IntQueryOperatorInput>;
-  mode?: Maybe<IntQueryOperatorInput>;
-  nlink?: Maybe<IntQueryOperatorInput>;
-  uid?: Maybe<IntQueryOperatorInput>;
-  gid?: Maybe<IntQueryOperatorInput>;
-  rdev?: Maybe<IntQueryOperatorInput>;
-  ino?: Maybe<FloatQueryOperatorInput>;
-  atimeMs?: Maybe<FloatQueryOperatorInput>;
-  mtimeMs?: Maybe<FloatQueryOperatorInput>;
-  ctimeMs?: Maybe<FloatQueryOperatorInput>;
-  atime?: Maybe<DateQueryOperatorInput>;
-  mtime?: Maybe<DateQueryOperatorInput>;
-  ctime?: Maybe<DateQueryOperatorInput>;
-  birthtime?: Maybe<DateQueryOperatorInput>;
-  birthtimeMs?: Maybe<FloatQueryOperatorInput>;
-  blksize?: Maybe<IntQueryOperatorInput>;
-  blocks?: Maybe<IntQueryOperatorInput>;
-  publicURL?: Maybe<StringQueryOperatorInput>;
-  childImageSharp?: Maybe<ImageSharpFilterInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-};
-
-export type FileGroupConnection = {
-  totalCount: Scalars['Int'];
-  edges: Array<FileEdge>;
-  nodes: Array<File>;
-  pageInfo: PageInfo;
-  field: Scalars['String'];
-  fieldValue?: Maybe<Scalars['String']>;
-};
-
-export type FileSortInput = {
-  fields?: Maybe<Array<Maybe<FileFieldsEnum>>>;
-  order?: Maybe<Array<Maybe<SortOrderEnum>>>;
-};
-
-export type FloatQueryOperatorInput = {
-  eq?: Maybe<Scalars['Float']>;
-  ne?: Maybe<Scalars['Float']>;
-  gt?: Maybe<Scalars['Float']>;
-  gte?: Maybe<Scalars['Float']>;
-  lt?: Maybe<Scalars['Float']>;
-  lte?: Maybe<Scalars['Float']>;
-  in?: Maybe<Array<Maybe<Scalars['Float']>>>;
-  nin?: Maybe<Array<Maybe<Scalars['Float']>>>;
-};
-
-/** The query root of GitHub's GraphQL interface. */
-export type GitHub = {
-  /** Look up a code of conduct by its key */
-  codeOfConduct?: Maybe<GitHub_CodeOfConduct>;
-  /** Look up a code of conduct by its key */
-  codesOfConduct?: Maybe<Array<Maybe<GitHub_CodeOfConduct>>>;
-  /** Look up an enterprise by URL slug. */
-  enterprise?: Maybe<GitHub_Enterprise>;
-  /** Look up a pending enterprise administrator invitation by invitee, enterprise and role. */
-  enterpriseAdministratorInvitation?: Maybe<GitHub_EnterpriseAdministratorInvitation>;
-  /** Look up a pending enterprise administrator invitation by invitation token. */
-  enterpriseAdministratorInvitationByToken?: Maybe<GitHub_EnterpriseAdministratorInvitation>;
-  /** Look up an open source license by its key */
-  license?: Maybe<GitHub_License>;
-  /** Return a list of known open source licenses */
-  licenses: Array<Maybe<GitHub_License>>;
-  /** Get alphabetically sorted list of Marketplace categories */
-  marketplaceCategories: Array<GitHub_MarketplaceCategory>;
-  /** Look up a Marketplace category by its slug. */
-  marketplaceCategory?: Maybe<GitHub_MarketplaceCategory>;
-  /** Look up a single Marketplace listing */
-  marketplaceListing?: Maybe<GitHub_MarketplaceListing>;
-  /** Look up Marketplace listings */
-  marketplaceListings: GitHub_MarketplaceListingConnection;
-  /** Return information about the GitHub instance */
-  meta: GitHub_GitHubMetadata;
-  /** Fetches an object given its ID. */
-  node?: Maybe<GitHub_Node>;
-  /** Lookup nodes by a list of IDs. */
-  nodes: Array<Maybe<GitHub_Node>>;
-  /** Lookup a organization by login. */
-  organization?: Maybe<GitHub_Organization>;
-  /** The client's rate limit information. */
-  rateLimit?: Maybe<GitHub_RateLimit>;
-  /** Hack to workaround https://github.com/facebook/relay/issues/112 re-exposing the root query object */
-  relay: Query;
-  /** Lookup a given repository by the owner and repository name. */
-  repository?: Maybe<GitHub_Repository>;
-  /** Lookup a repository owner (ie. either a User or an Organization) by login. */
-  repositoryOwner?: Maybe<GitHub_RepositoryOwner>;
-  /** Lookup resource by a URL. */
-  resource?: Maybe<GitHub_UniformResourceLocatable>;
-  /** Perform a search across resources. */
-  search: GitHub_SearchResultItemConnection;
-  /** GitHub Security Advisories */
-  securityAdvisories: GitHub_SecurityAdvisoryConnection;
-  /** Fetch a Security Advisory by its GHSA ID */
-  securityAdvisory?: Maybe<GitHub_SecurityAdvisory>;
-  /** Software Vulnerabilities documented by GitHub Security Advisories */
-  securityVulnerabilities: GitHub_SecurityVulnerabilityConnection;
-  /** Users and organizations who can be sponsored via GitHub Sponsors. */
-  sponsorables: GitHub_SponsorableItemConnection;
-  /** Look up a topic by name. */
-  topic?: Maybe<GitHub_Topic>;
-  /** Lookup a user by login. */
-  user?: Maybe<GitHub_User>;
-  /** The currently authenticated user. */
-  viewer: GitHub_User;
-};
-
-
-/** The query root of GitHub's GraphQL interface. */
-export type GitHubCodeOfConductArgs = {
-  key: Scalars['String'];
-};
-
-
-/** The query root of GitHub's GraphQL interface. */
-export type GitHubEnterpriseArgs = {
-  slug: Scalars['String'];
-  invitationToken?: Maybe<Scalars['String']>;
-};
-
-
-/** The query root of GitHub's GraphQL interface. */
-export type GitHubEnterpriseAdministratorInvitationArgs = {
-  userLogin: Scalars['String'];
-  enterpriseSlug: Scalars['String'];
-  role: GitHub_EnterpriseAdministratorRole;
-};
-
-
-/** The query root of GitHub's GraphQL interface. */
-export type GitHubEnterpriseAdministratorInvitationByTokenArgs = {
-  invitationToken: Scalars['String'];
-};
-
-
-/** The query root of GitHub's GraphQL interface. */
-export type GitHubLicenseArgs = {
-  key: Scalars['String'];
-};
-
-
-/** The query root of GitHub's GraphQL interface. */
-export type GitHubMarketplaceCategoriesArgs = {
-  includeCategories?: Maybe<Array<Scalars['String']>>;
-  excludeEmpty?: Maybe<Scalars['Boolean']>;
-  excludeSubcategories?: Maybe<Scalars['Boolean']>;
-};
-
-
-/** The query root of GitHub's GraphQL interface. */
-export type GitHubMarketplaceCategoryArgs = {
-  slug: Scalars['String'];
-  useTopicAliases?: Maybe<Scalars['Boolean']>;
-};
-
-
-/** The query root of GitHub's GraphQL interface. */
-export type GitHubMarketplaceListingArgs = {
-  slug: Scalars['String'];
-};
-
-
-/** The query root of GitHub's GraphQL interface. */
-export type GitHubMarketplaceListingsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  categorySlug?: Maybe<Scalars['String']>;
-  useTopicAliases?: Maybe<Scalars['Boolean']>;
-  viewerCanAdmin?: Maybe<Scalars['Boolean']>;
-  adminId?: Maybe<Scalars['ID']>;
-  organizationId?: Maybe<Scalars['ID']>;
-  allStates?: Maybe<Scalars['Boolean']>;
-  slugs?: Maybe<Array<Maybe<Scalars['String']>>>;
-  primaryCategoryOnly?: Maybe<Scalars['Boolean']>;
-  withFreeTrialsOnly?: Maybe<Scalars['Boolean']>;
-};
-
-
-/** The query root of GitHub's GraphQL interface. */
-export type GitHubNodeArgs = {
+/** Node Interface */
+export type Node = {
   id: Scalars['ID'];
+  parent?: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
 };
 
-
-/** The query root of GitHub's GraphQL interface. */
-export type GitHubNodesArgs = {
-  ids: Array<Scalars['ID']>;
-};
-
-
-/** The query root of GitHub's GraphQL interface. */
-export type GitHubOrganizationArgs = {
-  login: Scalars['String'];
-};
-
-
-/** The query root of GitHub's GraphQL interface. */
-export type GitHubRateLimitArgs = {
-  dryRun?: Maybe<Scalars['Boolean']>;
-};
-
-
-/** The query root of GitHub's GraphQL interface. */
-export type GitHubRepositoryArgs = {
+export type Internal = {
+  content?: Maybe<Scalars['String']>;
+  contentDigest: Scalars['String'];
+  description?: Maybe<Scalars['String']>;
+  fieldOwners?: Maybe<Array<Maybe<Scalars['String']>>>;
+  ignoreType?: Maybe<Scalars['Boolean']>;
+  mediaType?: Maybe<Scalars['String']>;
   owner: Scalars['String'];
+  type: Scalars['String'];
+};
+
+export type Directory = Node & {
+  sourceInstanceName: Scalars['String'];
+  absolutePath: Scalars['String'];
+  relativePath: Scalars['String'];
+  extension: Scalars['String'];
+  size: Scalars['Int'];
+  prettySize: Scalars['String'];
+  modifiedTime: Scalars['Date'];
+  accessTime: Scalars['Date'];
+  changeTime: Scalars['Date'];
+  birthTime: Scalars['Date'];
+  root: Scalars['String'];
+  dir: Scalars['String'];
+  base: Scalars['String'];
+  ext: Scalars['String'];
   name: Scalars['String'];
-  followRenames?: Maybe<Scalars['Boolean']>;
+  relativeDirectory: Scalars['String'];
+  dev: Scalars['Int'];
+  mode: Scalars['Int'];
+  nlink: Scalars['Int'];
+  uid: Scalars['Int'];
+  gid: Scalars['Int'];
+  rdev: Scalars['Int'];
+  ino: Scalars['Float'];
+  atimeMs: Scalars['Float'];
+  mtimeMs: Scalars['Float'];
+  ctimeMs: Scalars['Float'];
+  atime: Scalars['Date'];
+  mtime: Scalars['Date'];
+  ctime: Scalars['Date'];
+  /** @deprecated Use `birthTime` instead */
+  birthtime?: Maybe<Scalars['Date']>;
+  /** @deprecated Use `birthTime` instead */
+  birthtimeMs?: Maybe<Scalars['Float']>;
+  id: Scalars['ID'];
+  parent?: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
 };
 
 
-/** The query root of GitHub's GraphQL interface. */
-export type GitHubRepositoryOwnerArgs = {
-  login: Scalars['String'];
+export type DirectoryModifiedTimeArgs = {
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  difference?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
 };
 
 
-/** The query root of GitHub's GraphQL interface. */
-export type GitHubResourceArgs = {
-  url: Scalars['GitHub_URI'];
+export type DirectoryAccessTimeArgs = {
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  difference?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
 };
 
 
-/** The query root of GitHub's GraphQL interface. */
-export type GitHubSearchArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  query: Scalars['String'];
-  type: GitHub_SearchType;
+export type DirectoryChangeTimeArgs = {
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  difference?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
 };
 
 
-/** The query root of GitHub's GraphQL interface. */
-export type GitHubSecurityAdvisoriesArgs = {
-  orderBy?: Maybe<GitHub_SecurityAdvisoryOrder>;
-  identifier?: Maybe<GitHub_SecurityAdvisoryIdentifierFilter>;
-  publishedSince?: Maybe<Scalars['GitHub_DateTime']>;
-  updatedSince?: Maybe<Scalars['GitHub_DateTime']>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+export type DirectoryBirthTimeArgs = {
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  difference?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
 };
 
 
-/** The query root of GitHub's GraphQL interface. */
-export type GitHubSecurityAdvisoryArgs = {
-  ghsaId: Scalars['String'];
+export type DirectoryAtimeArgs = {
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  difference?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
 };
 
 
-/** The query root of GitHub's GraphQL interface. */
-export type GitHubSecurityVulnerabilitiesArgs = {
-  orderBy?: Maybe<GitHub_SecurityVulnerabilityOrder>;
-  ecosystem?: Maybe<GitHub_SecurityAdvisoryEcosystem>;
-  package?: Maybe<Scalars['String']>;
-  severities?: Maybe<Array<GitHub_SecurityAdvisorySeverity>>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+export type DirectoryMtimeArgs = {
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  difference?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
 };
 
 
-/** The query root of GitHub's GraphQL interface. */
-export type GitHubSponsorablesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  orderBy?: Maybe<GitHub_SponsorableOrder>;
-  onlyDependencies?: Maybe<Scalars['Boolean']>;
-  orgLoginForDependencies?: Maybe<Scalars['String']>;
-  dependencyEcosystem?: Maybe<GitHub_SecurityAdvisoryEcosystem>;
-  ecosystem?: Maybe<GitHub_DependencyGraphEcosystem>;
+export type DirectoryCtimeArgs = {
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  difference?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+export type Site = Node & {
+  buildTime?: Maybe<Scalars['Date']>;
+  siteMetadata?: Maybe<SiteSiteMetadata>;
+  port?: Maybe<Scalars['Int']>;
+  host?: Maybe<Scalars['String']>;
+  polyfill?: Maybe<Scalars['Boolean']>;
+  pathPrefix?: Maybe<Scalars['String']>;
+  jsxRuntime?: Maybe<Scalars['String']>;
+  trailingSlash?: Maybe<Scalars['String']>;
+  id: Scalars['ID'];
+  parent?: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
 };
 
 
-/** The query root of GitHub's GraphQL interface. */
-export type GitHubTopicArgs = {
-  name: Scalars['String'];
+export type SiteBuildTimeArgs = {
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  difference?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+export type SiteSiteMetadata = {
+  title?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  author?: Maybe<Scalars['String']>;
+};
+
+export type SiteFunction = Node & {
+  functionRoute: Scalars['String'];
+  pluginName: Scalars['String'];
+  originalAbsoluteFilePath: Scalars['String'];
+  originalRelativeFilePath: Scalars['String'];
+  relativeCompiledFilePath: Scalars['String'];
+  absoluteCompiledFilePath: Scalars['String'];
+  matchPath?: Maybe<Scalars['String']>;
+  id: Scalars['ID'];
+  parent?: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
+};
+
+export type SitePage = Node & {
+  path: Scalars['String'];
+  component: Scalars['String'];
+  internalComponentName: Scalars['String'];
+  componentChunkName: Scalars['String'];
+  matchPath?: Maybe<Scalars['String']>;
+  pageContext?: Maybe<Scalars['JSON']>;
+  pluginCreator?: Maybe<SitePlugin>;
+  id: Scalars['ID'];
+  parent?: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
+};
+
+export type SitePlugin = Node & {
+  resolve?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  version?: Maybe<Scalars['String']>;
+  nodeAPIs?: Maybe<Array<Maybe<Scalars['String']>>>;
+  browserAPIs?: Maybe<Array<Maybe<Scalars['String']>>>;
+  ssrAPIs?: Maybe<Array<Maybe<Scalars['String']>>>;
+  pluginFilepath?: Maybe<Scalars['String']>;
+  pluginOptions?: Maybe<Scalars['JSON']>;
+  packageJson?: Maybe<Scalars['JSON']>;
+  id: Scalars['ID'];
+  parent?: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
+};
+
+export type SiteBuildMetadata = Node & {
+  buildTime?: Maybe<Scalars['Date']>;
+  id: Scalars['ID'];
+  parent?: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
 };
 
 
-/** The query root of GitHub's GraphQL interface. */
-export type GitHubUserArgs = {
-  login: Scalars['String'];
+export type SiteBuildMetadataBuildTimeArgs = {
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  difference?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+export type ImageFormat =
+  | 'NO_CHANGE'
+  | 'AUTO'
+  | 'JPG'
+  | 'PNG'
+  | 'WEBP'
+  | 'AVIF';
+
+export type ImageFit =
+  | 'COVER'
+  | 'CONTAIN'
+  | 'FILL'
+  | 'INSIDE'
+  | 'OUTSIDE';
+
+export type ImageLayout =
+  | 'FIXED'
+  | 'FULL_WIDTH'
+  | 'CONSTRAINED';
+
+export type ImageCropFocus =
+  | 'CENTER'
+  | 'NORTH'
+  | 'NORTHEAST'
+  | 'EAST'
+  | 'SOUTHEAST'
+  | 'SOUTH'
+  | 'SOUTHWEST'
+  | 'WEST'
+  | 'NORTHWEST'
+  | 'ENTROPY'
+  | 'ATTENTION';
+
+export type DuotoneGradient = {
+  highlight: Scalars['String'];
+  shadow: Scalars['String'];
+  opacity?: InputMaybe<Scalars['Int']>;
+};
+
+export type PotraceTurnPolicy =
+  | 'TURNPOLICY_BLACK'
+  | 'TURNPOLICY_WHITE'
+  | 'TURNPOLICY_LEFT'
+  | 'TURNPOLICY_RIGHT'
+  | 'TURNPOLICY_MINORITY'
+  | 'TURNPOLICY_MAJORITY';
+
+export type Potrace = {
+  turnPolicy?: InputMaybe<PotraceTurnPolicy>;
+  turdSize?: InputMaybe<Scalars['Float']>;
+  alphaMax?: InputMaybe<Scalars['Float']>;
+  optCurve?: InputMaybe<Scalars['Boolean']>;
+  optTolerance?: InputMaybe<Scalars['Float']>;
+  threshold?: InputMaybe<Scalars['Int']>;
+  blackOnWhite?: InputMaybe<Scalars['Boolean']>;
+  color?: InputMaybe<Scalars['String']>;
+  background?: InputMaybe<Scalars['String']>;
+};
+
+export type ImageSharp = Node & {
+  fixed?: Maybe<ImageSharpFixed>;
+  fluid?: Maybe<ImageSharpFluid>;
+  gatsbyImageData: Scalars['JSON'];
+  original?: Maybe<ImageSharpOriginal>;
+  resize?: Maybe<ImageSharpResize>;
+  id: Scalars['ID'];
+  parent?: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
+};
+
+
+export type ImageSharpFixedArgs = {
+  width?: InputMaybe<Scalars['Int']>;
+  height?: InputMaybe<Scalars['Int']>;
+  base64Width?: InputMaybe<Scalars['Int']>;
+  jpegProgressive?: InputMaybe<Scalars['Boolean']>;
+  pngCompressionSpeed?: InputMaybe<Scalars['Int']>;
+  grayscale?: InputMaybe<Scalars['Boolean']>;
+  duotone?: InputMaybe<DuotoneGradient>;
+  traceSVG?: InputMaybe<Potrace>;
+  quality?: InputMaybe<Scalars['Int']>;
+  jpegQuality?: InputMaybe<Scalars['Int']>;
+  pngQuality?: InputMaybe<Scalars['Int']>;
+  webpQuality?: InputMaybe<Scalars['Int']>;
+  toFormat?: InputMaybe<ImageFormat>;
+  toFormatBase64?: InputMaybe<ImageFormat>;
+  cropFocus?: InputMaybe<ImageCropFocus>;
+  fit?: InputMaybe<ImageFit>;
+  background?: InputMaybe<Scalars['String']>;
+  rotate?: InputMaybe<Scalars['Int']>;
+  trim?: InputMaybe<Scalars['Float']>;
+};
+
+
+export type ImageSharpFluidArgs = {
+  maxWidth?: InputMaybe<Scalars['Int']>;
+  maxHeight?: InputMaybe<Scalars['Int']>;
+  base64Width?: InputMaybe<Scalars['Int']>;
+  grayscale?: InputMaybe<Scalars['Boolean']>;
+  jpegProgressive?: InputMaybe<Scalars['Boolean']>;
+  pngCompressionSpeed?: InputMaybe<Scalars['Int']>;
+  duotone?: InputMaybe<DuotoneGradient>;
+  traceSVG?: InputMaybe<Potrace>;
+  quality?: InputMaybe<Scalars['Int']>;
+  jpegQuality?: InputMaybe<Scalars['Int']>;
+  pngQuality?: InputMaybe<Scalars['Int']>;
+  webpQuality?: InputMaybe<Scalars['Int']>;
+  toFormat?: InputMaybe<ImageFormat>;
+  toFormatBase64?: InputMaybe<ImageFormat>;
+  cropFocus?: InputMaybe<ImageCropFocus>;
+  fit?: InputMaybe<ImageFit>;
+  background?: InputMaybe<Scalars['String']>;
+  rotate?: InputMaybe<Scalars['Int']>;
+  trim?: InputMaybe<Scalars['Float']>;
+  sizes?: InputMaybe<Scalars['String']>;
+  srcSetBreakpoints?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
+};
+
+
+export type ImageSharpGatsbyImageDataArgs = {
+  layout?: InputMaybe<ImageLayout>;
+  width?: InputMaybe<Scalars['Int']>;
+  height?: InputMaybe<Scalars['Int']>;
+  aspectRatio?: InputMaybe<Scalars['Float']>;
+  placeholder?: InputMaybe<ImagePlaceholder>;
+  blurredOptions?: InputMaybe<BlurredOptions>;
+  tracedSVGOptions?: InputMaybe<Potrace>;
+  formats?: InputMaybe<Array<InputMaybe<ImageFormat>>>;
+  outputPixelDensities?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
+  breakpoints?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
+  sizes?: InputMaybe<Scalars['String']>;
+  quality?: InputMaybe<Scalars['Int']>;
+  jpgOptions?: InputMaybe<JpgOptions>;
+  pngOptions?: InputMaybe<PngOptions>;
+  webpOptions?: InputMaybe<WebPOptions>;
+  avifOptions?: InputMaybe<AvifOptions>;
+  transformOptions?: InputMaybe<TransformOptions>;
+  backgroundColor?: InputMaybe<Scalars['String']>;
+};
+
+
+export type ImageSharpResizeArgs = {
+  width?: InputMaybe<Scalars['Int']>;
+  height?: InputMaybe<Scalars['Int']>;
+  quality?: InputMaybe<Scalars['Int']>;
+  jpegQuality?: InputMaybe<Scalars['Int']>;
+  pngQuality?: InputMaybe<Scalars['Int']>;
+  webpQuality?: InputMaybe<Scalars['Int']>;
+  jpegProgressive?: InputMaybe<Scalars['Boolean']>;
+  pngCompressionLevel?: InputMaybe<Scalars['Int']>;
+  pngCompressionSpeed?: InputMaybe<Scalars['Int']>;
+  grayscale?: InputMaybe<Scalars['Boolean']>;
+  duotone?: InputMaybe<DuotoneGradient>;
+  base64?: InputMaybe<Scalars['Boolean']>;
+  traceSVG?: InputMaybe<Potrace>;
+  toFormat?: InputMaybe<ImageFormat>;
+  cropFocus?: InputMaybe<ImageCropFocus>;
+  fit?: InputMaybe<ImageFit>;
+  background?: InputMaybe<Scalars['String']>;
+  rotate?: InputMaybe<Scalars['Int']>;
+  trim?: InputMaybe<Scalars['Float']>;
+};
+
+export type ImageSharpFixed = {
+  base64?: Maybe<Scalars['String']>;
+  tracedSVG?: Maybe<Scalars['String']>;
+  aspectRatio?: Maybe<Scalars['Float']>;
+  width: Scalars['Float'];
+  height: Scalars['Float'];
+  src: Scalars['String'];
+  srcSet: Scalars['String'];
+  srcWebp?: Maybe<Scalars['String']>;
+  srcSetWebp?: Maybe<Scalars['String']>;
+  originalName?: Maybe<Scalars['String']>;
+};
+
+export type ImageSharpFluid = {
+  base64?: Maybe<Scalars['String']>;
+  tracedSVG?: Maybe<Scalars['String']>;
+  aspectRatio: Scalars['Float'];
+  src: Scalars['String'];
+  srcSet: Scalars['String'];
+  srcWebp?: Maybe<Scalars['String']>;
+  srcSetWebp?: Maybe<Scalars['String']>;
+  sizes: Scalars['String'];
+  originalImg?: Maybe<Scalars['String']>;
+  originalName?: Maybe<Scalars['String']>;
+  presentationWidth: Scalars['Int'];
+  presentationHeight: Scalars['Int'];
+};
+
+export type ImagePlaceholder =
+  | 'DOMINANT_COLOR'
+  | 'TRACED_SVG'
+  | 'BLURRED'
+  | 'NONE';
+
+export type BlurredOptions = {
+  /** Width of the generated low-res preview. Default is 20px */
+  width?: InputMaybe<Scalars['Int']>;
+  /** Force the output format for the low-res preview. Default is to use the same format as the input. You should rarely need to change this */
+  toFormat?: InputMaybe<ImageFormat>;
+};
+
+export type JpgOptions = {
+  quality?: InputMaybe<Scalars['Int']>;
+  progressive?: InputMaybe<Scalars['Boolean']>;
+};
+
+export type PngOptions = {
+  quality?: InputMaybe<Scalars['Int']>;
+  compressionSpeed?: InputMaybe<Scalars['Int']>;
+};
+
+export type WebPOptions = {
+  quality?: InputMaybe<Scalars['Int']>;
+};
+
+export type AvifOptions = {
+  quality?: InputMaybe<Scalars['Int']>;
+  lossless?: InputMaybe<Scalars['Boolean']>;
+  speed?: InputMaybe<Scalars['Int']>;
+};
+
+export type TransformOptions = {
+  grayscale?: InputMaybe<Scalars['Boolean']>;
+  duotone?: InputMaybe<DuotoneGradient>;
+  rotate?: InputMaybe<Scalars['Int']>;
+  trim?: InputMaybe<Scalars['Float']>;
+  cropFocus?: InputMaybe<ImageCropFocus>;
+  fit?: InputMaybe<ImageFit>;
+};
+
+export type ImageSharpOriginal = {
+  width?: Maybe<Scalars['Float']>;
+  height?: Maybe<Scalars['Float']>;
+  src?: Maybe<Scalars['String']>;
+};
+
+export type ImageSharpResize = {
+  src?: Maybe<Scalars['String']>;
+  tracedSVG?: Maybe<Scalars['String']>;
+  width?: Maybe<Scalars['Int']>;
+  height?: Maybe<Scalars['Int']>;
+  aspectRatio?: Maybe<Scalars['Float']>;
+  originalName?: Maybe<Scalars['String']>;
+};
+
+export type QiitaPost = Node & {
+  id: Scalars['ID'];
+  parent?: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
+  rendered_body?: Maybe<Scalars['String']>;
+  body?: Maybe<Scalars['String']>;
+  coediting?: Maybe<Scalars['Boolean']>;
+  comments_count?: Maybe<Scalars['Int']>;
+  created_at?: Maybe<Scalars['Date']>;
+  likes_count?: Maybe<Scalars['Int']>;
+  private?: Maybe<Scalars['Boolean']>;
+  reactions_count?: Maybe<Scalars['Int']>;
+  tags?: Maybe<Array<Maybe<QiitaPostTags>>>;
+  title?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['Date']>;
+  url?: Maybe<Scalars['String']>;
+  user?: Maybe<QiitaPostUser>;
+  page_views_count?: Maybe<Scalars['Int']>;
+  headings?: Maybe<Array<Maybe<QiitaHeading>>>;
+};
+
+
+export type QiitaPostCreated_AtArgs = {
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  difference?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+export type QiitaPostUpdated_AtArgs = {
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  difference?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+export type QiitaPostTags = {
+  name?: Maybe<Scalars['String']>;
+};
+
+export type QiitaPostUser = {
+  description?: Maybe<Scalars['String']>;
+  facebook_id?: Maybe<Scalars['String']>;
+  followees_count?: Maybe<Scalars['Int']>;
+  followers_count?: Maybe<Scalars['Int']>;
+  github_login_name?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  items_count?: Maybe<Scalars['Int']>;
+  linkedin_id?: Maybe<Scalars['String']>;
+  location?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  organization?: Maybe<Scalars['String']>;
+  permanent_id?: Maybe<Scalars['Int']>;
+  profile_image_url?: Maybe<Scalars['String']>;
+  team_only?: Maybe<Scalars['Boolean']>;
+  twitter_screen_name?: Maybe<Scalars['String']>;
+  website_url?: Maybe<Scalars['String']>;
+};
+
+export type QiitaHeading = {
+  value?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  depth?: Maybe<Scalars['Int']>;
+  parents?: Maybe<Array<Maybe<QiitaParentHeadings>>>;
+};
+
+export type QiitaParentHeadings = {
+  value?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  depth?: Maybe<Scalars['Int']>;
+};
+
+export type MicrocmsPosts = Node & {
+  id: Scalars['ID'];
+  parent?: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
+  createdAt?: Maybe<Scalars['Date']>;
+  updatedAt?: Maybe<Scalars['Date']>;
+  publishedAt?: Maybe<Scalars['Date']>;
+  revisedAt?: Maybe<Scalars['Date']>;
+  title?: Maybe<Scalars['String']>;
+  body?: Maybe<Scalars['String']>;
+  _embedded?: Maybe<MicrocmsPosts_Embedded>;
+  author?: Maybe<MicrocmsPostsAuthor>;
+  sortIndex?: Maybe<Scalars['Int']>;
+  postsId?: Maybe<Scalars['String']>;
+};
+
+
+export type MicrocmsPostsCreatedAtArgs = {
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  difference?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+export type MicrocmsPostsUpdatedAtArgs = {
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  difference?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+export type MicrocmsPostsPublishedAtArgs = {
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  difference?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+export type MicrocmsPostsRevisedAtArgs = {
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  difference?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+export type MicrocmsPosts_Embedded = {
+  url?: Maybe<Scalars['String']>;
+  height?: Maybe<Scalars['Int']>;
+  width?: Maybe<Scalars['Int']>;
+};
+
+export type MicrocmsPostsAuthor = {
+  id?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['Date']>;
+  updatedAt?: Maybe<Scalars['Date']>;
+  revisedAt?: Maybe<Scalars['Date']>;
+  name?: Maybe<Scalars['String']>;
+  text?: Maybe<Scalars['String']>;
+  image?: Maybe<MicrocmsPostsAuthorImage>;
+};
+
+
+export type MicrocmsPostsAuthorCreatedAtArgs = {
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  difference?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+export type MicrocmsPostsAuthorUpdatedAtArgs = {
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  difference?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+export type MicrocmsPostsAuthorRevisedAtArgs = {
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow?: InputMaybe<Scalars['Boolean']>;
+  difference?: InputMaybe<Scalars['String']>;
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+export type MicrocmsPostsAuthorImage = {
+  url?: Maybe<Scalars['String']>;
+  height?: Maybe<Scalars['Int']>;
+  width?: Maybe<Scalars['Int']>;
+};
+
+export type GraphQlSource = Node & {
+  id: Scalars['ID'];
+  parent?: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
+  typeName?: Maybe<Scalars['String']>;
+  fieldName?: Maybe<Scalars['String']>;
 };
 
 /** Autogenerated input type of AbortQueuedMigrations */
@@ -1028,7 +781,7 @@ export type GitHub_AbortQueuedMigrationsInput = {
   /** The ID of the organization that is running the migrations. */
   ownerId: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of AbortQueuedMigrations */
@@ -1044,7 +797,7 @@ export type GitHub_AcceptEnterpriseAdministratorInvitationInput = {
   /** The id of the invitation being accepted */
   invitationId: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of AcceptEnterpriseAdministratorInvitation */
@@ -1064,7 +817,7 @@ export type GitHub_AcceptTopicSuggestionInput = {
   /** The name of the suggested topic. */
   name: Scalars['String'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of AcceptTopicSuggestion */
@@ -1090,7 +843,7 @@ export type GitHub_Actor = {
 
 /** Represents an object which can take actions on GitHub. Typically a User or Bot. */
 export type GitHub_ActorAvatarUrlArgs = {
-  size?: Maybe<Scalars['Int']>;
+  size?: InputMaybe<Scalars['Int']>;
 };
 
 /** Location information for an actor */
@@ -1108,7 +861,7 @@ export type GitHub_ActorLocation = {
 };
 
 /** The actor's type. */
-export type GitHub_ActorType = 
+export type GitHub_ActorType =
   /** Indicates a user actor. */
   | 'USER'
   /** Indicates a team actor. */
@@ -1121,7 +874,7 @@ export type GitHub_AddAssigneesToAssignableInput = {
   /** The id of users to add as assignees. */
   assigneeIds: Array<Scalars['ID']>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of AddAssigneesToAssignable */
@@ -1139,7 +892,7 @@ export type GitHub_AddCommentInput = {
   /** The contents of the comment. */
   body: Scalars['String'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of AddComment */
@@ -1159,11 +912,11 @@ export type GitHub_AddDiscussionCommentInput = {
   /** The Node ID of the discussion to comment on. */
   discussionId: Scalars['ID'];
   /** The Node ID of the discussion comment within this discussion to reply to. */
-  replyToId?: Maybe<Scalars['ID']>;
+  replyToId?: InputMaybe<Scalars['ID']>;
   /** The contents of the comment. */
   body: Scalars['String'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of AddDiscussionComment */
@@ -1174,17 +927,6 @@ export type GitHub_AddDiscussionCommentPayload = {
   comment?: Maybe<GitHub_DiscussionComment>;
 };
 
-/** Represents a 'added_to_project' event on a given issue or pull request. */
-export type GitHub_AddedToProjectEvent = GitHub_Node & {
-  /** Identifies the actor who performed the event. */
-  actor?: Maybe<GitHub_Actor>;
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['GitHub_DateTime'];
-  /** Identifies the primary key from the database. */
-  databaseId?: Maybe<Scalars['Int']>;
-  id: Scalars['ID'];
-};
-
 /** Autogenerated input type of AddEnterpriseSupportEntitlement */
 export type GitHub_AddEnterpriseSupportEntitlementInput = {
   /** The ID of the Enterprise which the admin belongs to. */
@@ -1192,7 +934,7 @@ export type GitHub_AddEnterpriseSupportEntitlementInput = {
   /** The login of a member who will receive the support entitlement. */
   login: Scalars['String'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of AddEnterpriseSupportEntitlement */
@@ -1210,7 +952,7 @@ export type GitHub_AddLabelsToLabelableInput = {
   /** The ids of the labels to add. */
   labelIds: Array<Scalars['ID']>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of AddLabelsToLabelable */
@@ -1226,11 +968,11 @@ export type GitHub_AddProjectCardInput = {
   /** The Node ID of the ProjectColumn. */
   projectColumnId: Scalars['ID'];
   /** The content of the card. Must be a member of the ProjectCardItem union */
-  contentId?: Maybe<Scalars['ID']>;
+  contentId?: InputMaybe<Scalars['ID']>;
   /** The note on the card. */
-  note?: Maybe<Scalars['String']>;
+  note?: InputMaybe<Scalars['String']>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of AddProjectCard */
@@ -1250,7 +992,7 @@ export type GitHub_AddProjectColumnInput = {
   /** The name of the column. */
   name: Scalars['String'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of AddProjectColumn */
@@ -1263,6 +1005,28 @@ export type GitHub_AddProjectColumnPayload = {
   project?: Maybe<GitHub_Project>;
 };
 
+/** Autogenerated input type of AddProjectDraftIssue */
+export type GitHub_AddProjectDraftIssueInput = {
+  /** The ID of the Project to add the draft issue to. */
+  projectId: Scalars['ID'];
+  /** The title of the draft issue. */
+  title: Scalars['String'];
+  /** The body of the draft issue. */
+  body?: InputMaybe<Scalars['String']>;
+  /** The IDs of the assignees of the draft issue. */
+  assigneeIds?: InputMaybe<Array<Scalars['ID']>>;
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+};
+
+/** Autogenerated return type of AddProjectDraftIssue */
+export type GitHub_AddProjectDraftIssuePayload = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** The draft issue added to the project. */
+  projectNextItem?: Maybe<GitHub_ProjectNextItem>;
+};
+
 /** Autogenerated input type of AddProjectNextItem */
 export type GitHub_AddProjectNextItemInput = {
   /** The ID of the Project to add the item to. */
@@ -1270,7 +1034,7 @@ export type GitHub_AddProjectNextItemInput = {
   /** The content id of the item (Issue or PullRequest). */
   contentId: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of AddProjectNextItem */
@@ -1284,21 +1048,21 @@ export type GitHub_AddProjectNextItemPayload = {
 /** Autogenerated input type of AddPullRequestReviewComment */
 export type GitHub_AddPullRequestReviewCommentInput = {
   /** The node ID of the pull request reviewing */
-  pullRequestId?: Maybe<Scalars['ID']>;
+  pullRequestId?: InputMaybe<Scalars['ID']>;
   /** The Node ID of the review to modify. */
-  pullRequestReviewId?: Maybe<Scalars['ID']>;
+  pullRequestReviewId?: InputMaybe<Scalars['ID']>;
   /** The SHA of the commit to comment on. */
-  commitOID?: Maybe<Scalars['GitHub_GitObjectID']>;
+  commitOID?: InputMaybe<Scalars['GitHub_GitObjectID']>;
   /** The text of the comment. */
   body: Scalars['String'];
   /** The relative path of the file to comment on. */
-  path?: Maybe<Scalars['String']>;
+  path?: InputMaybe<Scalars['String']>;
   /** The line index in the diff to comment on. */
-  position?: Maybe<Scalars['Int']>;
+  position?: InputMaybe<Scalars['Int']>;
   /** The comment id to reply to. */
-  inReplyTo?: Maybe<Scalars['ID']>;
+  inReplyTo?: InputMaybe<Scalars['ID']>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of AddPullRequestReviewComment */
@@ -1316,17 +1080,17 @@ export type GitHub_AddPullRequestReviewInput = {
   /** The Node ID of the pull request to modify. */
   pullRequestId: Scalars['ID'];
   /** The commit OID the review pertains to. */
-  commitOID?: Maybe<Scalars['GitHub_GitObjectID']>;
+  commitOID?: InputMaybe<Scalars['GitHub_GitObjectID']>;
   /** The contents of the review body comment. */
-  body?: Maybe<Scalars['String']>;
+  body?: InputMaybe<Scalars['String']>;
   /** The event to perform on the pull request review. */
-  event?: Maybe<GitHub_PullRequestReviewEvent>;
+  event?: InputMaybe<GitHub_PullRequestReviewEvent>;
   /** The review line comments. */
-  comments?: Maybe<Array<Maybe<GitHub_DraftPullRequestReviewComment>>>;
+  comments?: InputMaybe<Array<InputMaybe<GitHub_DraftPullRequestReviewComment>>>;
   /** The review line comment threads. */
-  threads?: Maybe<Array<Maybe<GitHub_DraftPullRequestReviewThread>>>;
+  threads?: InputMaybe<Array<InputMaybe<GitHub_DraftPullRequestReviewThread>>>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of AddPullRequestReview */
@@ -1346,19 +1110,19 @@ export type GitHub_AddPullRequestReviewThreadInput = {
   /** Body of the thread's first comment. */
   body: Scalars['String'];
   /** The node ID of the pull request reviewing */
-  pullRequestId?: Maybe<Scalars['ID']>;
+  pullRequestId?: InputMaybe<Scalars['ID']>;
   /** The Node ID of the review to modify. */
-  pullRequestReviewId?: Maybe<Scalars['ID']>;
+  pullRequestReviewId?: InputMaybe<Scalars['ID']>;
   /** The line of the blob to which the thread refers. The end of the line range for multi-line comments. */
   line: Scalars['Int'];
   /** The side of the diff on which the line resides. For multi-line comments, this is the side for the end of the line range. */
-  side?: Maybe<GitHub_DiffSide>;
+  side?: InputMaybe<GitHub_DiffSide>;
   /** The first line of the range to which the comment refers. */
-  startLine?: Maybe<Scalars['Int']>;
+  startLine?: InputMaybe<Scalars['Int']>;
   /** The side of the diff on which the start line resides. */
-  startSide?: Maybe<GitHub_DiffSide>;
+  startSide?: InputMaybe<GitHub_DiffSide>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of AddPullRequestReviewThread */
@@ -1376,7 +1140,7 @@ export type GitHub_AddReactionInput = {
   /** The name of the emoji to react with. */
   content: GitHub_ReactionContent;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of AddReaction */
@@ -1394,7 +1158,7 @@ export type GitHub_AddStarInput = {
   /** The Starrable ID to star. */
   starrableId: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of AddStar */
@@ -1410,7 +1174,7 @@ export type GitHub_AddUpvoteInput = {
   /** The Node ID of the discussion or comment to upvote. */
   subjectId: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of AddUpvote */
@@ -1428,7 +1192,7 @@ export type GitHub_AddVerifiableDomainInput = {
   /** The URL of the domain */
   domain: Scalars['GitHub_URI'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of AddVerifiableDomain */
@@ -1437,6 +1201,17 @@ export type GitHub_AddVerifiableDomainPayload = {
   clientMutationId?: Maybe<Scalars['String']>;
   /** The verifiable domain that was added. */
   domain?: Maybe<GitHub_VerifiableDomain>;
+};
+
+/** Represents a 'added_to_project' event on a given issue or pull request. */
+export type GitHub_AddedToProjectEvent = GitHub_Node & {
+  /** Identifies the actor who performed the event. */
+  actor?: Maybe<GitHub_Actor>;
+  /** Identifies the date and time when the object was created. */
+  createdAt: Scalars['GitHub_DateTime'];
+  /** Identifies the primary key from the database. */
+  databaseId?: Maybe<Scalars['Int']>;
+  id: Scalars['ID'];
 };
 
 /** A GitHub App. */
@@ -1467,17 +1242,17 @@ export type GitHub_App = GitHub_Node & {
 
 /** A GitHub App. */
 export type GitHub_AppIpAllowListEntriesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  orderBy?: Maybe<GitHub_IpAllowListEntryOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_IpAllowListEntryOrder>;
 };
 
 
 /** A GitHub App. */
 export type GitHub_AppLogoUrlArgs = {
-  size?: Maybe<Scalars['Int']>;
+  size?: InputMaybe<Scalars['Int']>;
 };
 
 /** Autogenerated input type of ApproveDeployments */
@@ -1487,9 +1262,9 @@ export type GitHub_ApproveDeploymentsInput = {
   /** The ids of environments to reject deployments */
   environmentIds: Array<Scalars['ID']>;
   /** Optional comment for approving deployments */
-  comment?: Maybe<Scalars['String']>;
+  comment?: InputMaybe<Scalars['String']>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of ApproveDeployments */
@@ -1505,7 +1280,7 @@ export type GitHub_ApproveVerifiableDomainInput = {
   /** The ID of the verifiable domain to approve. */
   id: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of ApproveVerifiableDomain */
@@ -1521,7 +1296,7 @@ export type GitHub_ArchiveRepositoryInput = {
   /** The ID of the repository to mark as archived. */
   repositoryId: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of ArchiveRepository */
@@ -1541,10 +1316,10 @@ export type GitHub_Assignable = {
 
 /** An object that can have users assigned to it. */
 export type GitHub_AssignableAssigneesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** Represents an 'assigned' event on any assignable object. */
@@ -1604,45 +1379,15 @@ export type GitHub_AuditEntryActor = GitHub_Bot | GitHub_Organization | GitHub_U
 /** Ordering options for Audit Log connections. */
 export type GitHub_AuditLogOrder = {
   /** The field to order Audit Logs by. */
-  field?: Maybe<GitHub_AuditLogOrderField>;
+  field?: InputMaybe<GitHub_AuditLogOrderField>;
   /** The ordering direction. */
-  direction?: Maybe<GitHub_OrderDirection>;
+  direction?: InputMaybe<GitHub_OrderDirection>;
 };
 
 /** Properties by which Audit Log connections can be ordered. */
-export type GitHub_AuditLogOrderField = 
+export type GitHub_AuditLogOrderField =
   /** Order audit log entries by timestamp */
   | 'CREATED_AT';
-
-/** Represents a 'automatic_base_change_failed' event on a given pull request. */
-export type GitHub_AutomaticBaseChangeFailedEvent = GitHub_Node & {
-  /** Identifies the actor who performed the event. */
-  actor?: Maybe<GitHub_Actor>;
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['GitHub_DateTime'];
-  id: Scalars['ID'];
-  /** The new base for this PR */
-  newBase: Scalars['String'];
-  /** The old base for this PR */
-  oldBase: Scalars['String'];
-  /** PullRequest referenced by event. */
-  pullRequest: GitHub_PullRequest;
-};
-
-/** Represents a 'automatic_base_change_succeeded' event on a given pull request. */
-export type GitHub_AutomaticBaseChangeSucceededEvent = GitHub_Node & {
-  /** Identifies the actor who performed the event. */
-  actor?: Maybe<GitHub_Actor>;
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['GitHub_DateTime'];
-  id: Scalars['ID'];
-  /** The new base for this PR */
-  newBase: Scalars['String'];
-  /** The old base for this PR */
-  oldBase: Scalars['String'];
-  /** PullRequest referenced by event. */
-  pullRequest: GitHub_PullRequest;
-};
 
 /** Represents a 'auto_merge_disabled' event on a given pull request. */
 export type GitHub_AutoMergeDisabledEvent = GitHub_Node & {
@@ -1718,6 +1463,35 @@ export type GitHub_AutoSquashEnabledEvent = GitHub_Node & {
   pullRequest?: Maybe<GitHub_PullRequest>;
 };
 
+/** Represents a 'automatic_base_change_failed' event on a given pull request. */
+export type GitHub_AutomaticBaseChangeFailedEvent = GitHub_Node & {
+  /** Identifies the actor who performed the event. */
+  actor?: Maybe<GitHub_Actor>;
+  /** Identifies the date and time when the object was created. */
+  createdAt: Scalars['GitHub_DateTime'];
+  id: Scalars['ID'];
+  /** The new base for this PR */
+  newBase: Scalars['String'];
+  /** The old base for this PR */
+  oldBase: Scalars['String'];
+  /** PullRequest referenced by event. */
+  pullRequest: GitHub_PullRequest;
+};
+
+/** Represents a 'automatic_base_change_succeeded' event on a given pull request. */
+export type GitHub_AutomaticBaseChangeSucceededEvent = GitHub_Node & {
+  /** Identifies the actor who performed the event. */
+  actor?: Maybe<GitHub_Actor>;
+  /** Identifies the date and time when the object was created. */
+  createdAt: Scalars['GitHub_DateTime'];
+  id: Scalars['ID'];
+  /** The new base for this PR */
+  newBase: Scalars['String'];
+  /** The old base for this PR */
+  oldBase: Scalars['String'];
+  /** PullRequest referenced by event. */
+  pullRequest: GitHub_PullRequest;
+};
 
 /** Represents a 'base_ref_changed' event on a given issue or pull request. */
 export type GitHub_BaseRefChangedEvent = GitHub_Node & {
@@ -1774,12 +1548,7 @@ export type GitHub_Blame = {
 
 /** Represents a range of information from a Git blame. */
 export type GitHub_BlameRange = {
-  /**
-   * Identifies the recency of the change, from 1 (new) to 10 (old). This is
-   * calculated as a 2-quantile and determines the length of distance between the
-   * median age of all the changes in the file and the recency of the current
-   * range's change.
-   */
+  /** Identifies the recency of the change, from 1 (new) to 10 (old). This is calculated as a 2-quantile and determines the length of distance between the median age of all the changes in the file and the recency of the current range's change. */
   age: Scalars['Int'];
   /** Identifies the line author */
   commit: GitHub_Commit;
@@ -1834,7 +1603,7 @@ export type GitHub_Bot = GitHub_Node & GitHub_Actor & GitHub_UniformResourceLoca
 
 /** A special type of user which takes actions on behalf of GitHub Apps. */
 export type GitHub_BotAvatarUrlArgs = {
-  size?: Maybe<Scalars['Int']>;
+  size?: InputMaybe<Scalars['Int']>;
 };
 
 /** Types which can be actors for `BranchActorAllowance` objects. */
@@ -1902,56 +1671,56 @@ export type GitHub_BranchProtectionRule = GitHub_Node & {
 
 /** A branch protection rule. */
 export type GitHub_BranchProtectionRuleBranchProtectionRuleConflictsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A branch protection rule. */
 export type GitHub_BranchProtectionRuleBypassForcePushAllowancesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A branch protection rule. */
 export type GitHub_BranchProtectionRuleBypassPullRequestAllowancesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A branch protection rule. */
 export type GitHub_BranchProtectionRuleMatchingRefsArgs = {
-  query?: Maybe<Scalars['String']>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  query?: InputMaybe<Scalars['String']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A branch protection rule. */
 export type GitHub_BranchProtectionRulePushAllowancesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A branch protection rule. */
 export type GitHub_BranchProtectionRuleReviewDismissalAllowancesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** A conflict between two branch protection rules. */
@@ -2062,12 +1831,51 @@ export type GitHub_BypassPullRequestAllowanceEdge = {
   node?: Maybe<GitHub_BypassPullRequestAllowance>;
 };
 
+/** The Common Vulnerability Scoring System */
+export type GitHub_Cvss = {
+  /** The CVSS score associated with this advisory */
+  score: Scalars['Float'];
+  /** The CVSS vector string associated with this advisory */
+  vectorString?: Maybe<Scalars['String']>;
+};
+
+/** A common weakness enumeration */
+export type GitHub_Cwe = GitHub_Node & {
+  /** The id of the CWE */
+  cweId: Scalars['String'];
+  /** A detailed description of this CWE */
+  description: Scalars['String'];
+  id: Scalars['ID'];
+  /** The name of this CWE */
+  name: Scalars['String'];
+};
+
+/** The connection type for CWE. */
+export type GitHub_CweConnection = {
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<GitHub_CweEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<GitHub_Cwe>>>;
+  /** Information to aid in pagination. */
+  pageInfo: GitHub_PageInfo;
+  /** Identifies the total count of items in the connection. */
+  totalCount: Scalars['Int'];
+};
+
+/** An edge in a connection. */
+export type GitHub_CweEdge = {
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node?: Maybe<GitHub_Cwe>;
+};
+
 /** Autogenerated input type of CancelEnterpriseAdminInvitation */
 export type GitHub_CancelEnterpriseAdminInvitationInput = {
   /** The Node ID of the pending enterprise administrator invitation. */
   invitationId: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of CancelEnterpriseAdminInvitation */
@@ -2082,22 +1890,16 @@ export type GitHub_CancelEnterpriseAdminInvitationPayload = {
 
 /** Autogenerated input type of CancelSponsorship */
 export type GitHub_CancelSponsorshipInput = {
-  /**
-   * The ID of the user or organization who is acting as the sponsor, paying for
-   * the sponsorship. Required if sponsorLogin is not given.
-   */
-  sponsorId?: Maybe<Scalars['ID']>;
-  /**
-   * The username of the user or organization who is acting as the sponsor, paying
-   * for the sponsorship. Required if sponsorId is not given.
-   */
-  sponsorLogin?: Maybe<Scalars['String']>;
+  /** The ID of the user or organization who is acting as the sponsor, paying for the sponsorship. Required if sponsorLogin is not given. */
+  sponsorId?: InputMaybe<Scalars['ID']>;
+  /** The username of the user or organization who is acting as the sponsor, paying for the sponsorship. Required if sponsorId is not given. */
+  sponsorLogin?: InputMaybe<Scalars['String']>;
   /** The ID of the user or organization who is receiving the sponsorship. Required if sponsorableLogin is not given. */
-  sponsorableId?: Maybe<Scalars['ID']>;
+  sponsorableId?: InputMaybe<Scalars['ID']>;
   /** The username of the user or organization who is receiving the sponsorship. Required if sponsorableId is not given. */
-  sponsorableLogin?: Maybe<Scalars['String']>;
+  sponsorableLogin?: InputMaybe<Scalars['String']>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of CancelSponsorship */
@@ -2111,20 +1913,17 @@ export type GitHub_CancelSponsorshipPayload = {
 /** Autogenerated input type of ChangeUserStatus */
 export type GitHub_ChangeUserStatusInput = {
   /** The emoji to represent your status. Can either be a native Unicode emoji or an emoji name with colons, e.g., :grinning:. */
-  emoji?: Maybe<Scalars['String']>;
+  emoji?: InputMaybe<Scalars['String']>;
   /** A short description of your current status. */
-  message?: Maybe<Scalars['String']>;
-  /**
-   * The ID of the organization whose members will be allowed to see the status. If
-   * omitted, the status will be publicly visible.
-   */
-  organizationId?: Maybe<Scalars['ID']>;
+  message?: InputMaybe<Scalars['String']>;
+  /** The ID of the organization whose members will be allowed to see the status. If omitted, the status will be publicly visible. */
+  organizationId?: InputMaybe<Scalars['ID']>;
   /** Whether this status should indicate you are not fully available on GitHub, e.g., you are away. */
-  limitedAvailability?: Maybe<Scalars['Boolean']>;
+  limitedAvailability?: InputMaybe<Scalars['Boolean']>;
   /** If set, the user status will not be shown after this date. */
-  expiresAt?: Maybe<Scalars['GitHub_DateTime']>;
+  expiresAt?: InputMaybe<Scalars['GitHub_DateTime']>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of ChangeUserStatus */
@@ -2178,9 +1977,9 @@ export type GitHub_CheckAnnotationData = {
   /** A short description of the feedback for these lines of code. */
   message: Scalars['String'];
   /** The title that represents the annotation. */
-  title?: Maybe<Scalars['String']>;
+  title?: InputMaybe<Scalars['String']>;
   /** Details about this annotation. */
-  rawDetails?: Maybe<Scalars['String']>;
+  rawDetails?: InputMaybe<Scalars['String']>;
 };
 
 /** An edge in a connection. */
@@ -2192,7 +1991,7 @@ export type GitHub_CheckAnnotationEdge = {
 };
 
 /** Represents an annotation's information level. */
-export type GitHub_CheckAnnotationLevel = 
+export type GitHub_CheckAnnotationLevel =
   /** An annotation indicating an inescapable error. */
   | 'FAILURE'
   /** An annotation indicating some information. */
@@ -2213,11 +2012,11 @@ export type GitHub_CheckAnnotationRange = {
   /** The starting line of the range. */
   startLine: Scalars['Int'];
   /** The starting column of the range. */
-  startColumn?: Maybe<Scalars['Int']>;
+  startColumn?: InputMaybe<Scalars['Int']>;
   /** The ending line of the range. */
   endLine: Scalars['Int'];
   /** The ending column of the range. */
-  endColumn?: Maybe<Scalars['Int']>;
+  endColumn?: InputMaybe<Scalars['Int']>;
 };
 
 /** An inclusive pair of positions for a check annotation. */
@@ -2229,7 +2028,7 @@ export type GitHub_CheckAnnotationSpan = {
 };
 
 /** The possible states for a check suite or run conclusion. */
-export type GitHub_CheckConclusionState = 
+export type GitHub_CheckConclusionState =
   /** The check suite or run requires action. */
   | 'ACTION_REQUIRED'
   /** The check suite or run has timed out. */
@@ -2299,27 +2098,27 @@ export type GitHub_CheckRun = GitHub_Node & GitHub_UniformResourceLocatable & Gi
 
 /** A check run. */
 export type GitHub_CheckRunAnnotationsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A check run. */
 export type GitHub_CheckRunIsRequiredArgs = {
-  pullRequestId?: Maybe<Scalars['ID']>;
-  pullRequestNumber?: Maybe<Scalars['Int']>;
+  pullRequestId?: InputMaybe<Scalars['ID']>;
+  pullRequestNumber?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A check run. */
 export type GitHub_CheckRunStepsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  number?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  number?: InputMaybe<Scalars['Int']>;
 };
 
 /** Possible further actions the integrator can perform. */
@@ -2355,13 +2154,13 @@ export type GitHub_CheckRunEdge = {
 /** The filters that are available when fetching check runs. */
 export type GitHub_CheckRunFilter = {
   /** Filters the check runs by this type. */
-  checkType?: Maybe<GitHub_CheckRunType>;
+  checkType?: InputMaybe<GitHub_CheckRunType>;
   /** Filters the check runs created by this application ID. */
-  appId?: Maybe<Scalars['Int']>;
+  appId?: InputMaybe<Scalars['Int']>;
   /** Filters the check runs by this name. */
-  checkName?: Maybe<Scalars['String']>;
+  checkName?: InputMaybe<Scalars['String']>;
   /** Filters the check runs by this status. */
-  status?: Maybe<GitHub_CheckStatusState>;
+  status?: InputMaybe<GitHub_CheckStatusState>;
 };
 
 /** Descriptive details about the check run. */
@@ -2371,11 +2170,11 @@ export type GitHub_CheckRunOutput = {
   /** The summary of the check run (supports Commonmark). */
   summary: Scalars['String'];
   /** The details of the check run (supports Commonmark). */
-  text?: Maybe<Scalars['String']>;
+  text?: InputMaybe<Scalars['String']>;
   /** The annotations that are made as part of the check run. */
-  annotations?: Maybe<Array<GitHub_CheckAnnotationData>>;
+  annotations?: InputMaybe<Array<GitHub_CheckAnnotationData>>;
   /** Images attached to the check run output displayed in the GitHub pull request UI. */
-  images?: Maybe<Array<GitHub_CheckRunOutputImage>>;
+  images?: InputMaybe<Array<GitHub_CheckRunOutputImage>>;
 };
 
 /** Images attached to the check run output displayed in the GitHub pull request UI. */
@@ -2385,18 +2184,18 @@ export type GitHub_CheckRunOutputImage = {
   /** The full URL of the image. */
   imageUrl: Scalars['GitHub_URI'];
   /** A short image description. */
-  caption?: Maybe<Scalars['String']>;
+  caption?: InputMaybe<Scalars['String']>;
 };
 
 /** The possible types of check runs. */
-export type GitHub_CheckRunType = 
+export type GitHub_CheckRunType =
   /** Every check run available. */
   | 'ALL'
   /** The latest check run. */
   | 'LATEST';
 
 /** The possible states for a check suite or run status. */
-export type GitHub_CheckStatusState = 
+export type GitHub_CheckStatusState =
   /** The check suite or run has been queued. */
   | 'QUEUED'
   /** The check suite or run is in progress. */
@@ -2490,25 +2289,25 @@ export type GitHub_CheckSuite = GitHub_Node & {
 
 /** A check suite. */
 export type GitHub_CheckSuiteCheckRunsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  filterBy?: Maybe<GitHub_CheckRunFilter>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  filterBy?: InputMaybe<GitHub_CheckRunFilter>;
 };
 
 
 /** A check suite. */
 export type GitHub_CheckSuiteMatchingPullRequestsArgs = {
-  states?: Maybe<Array<GitHub_PullRequestState>>;
-  labels?: Maybe<Array<Scalars['String']>>;
-  headRefName?: Maybe<Scalars['String']>;
-  baseRefName?: Maybe<Scalars['String']>;
-  orderBy?: Maybe<GitHub_IssueOrder>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  states?: InputMaybe<Array<GitHub_PullRequestState>>;
+  labels?: InputMaybe<Array<Scalars['String']>>;
+  headRefName?: InputMaybe<Scalars['String']>;
+  baseRefName?: InputMaybe<Scalars['String']>;
+  orderBy?: InputMaybe<GitHub_IssueOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** The auto-trigger preferences that are available for check suites. */
@@ -2542,9 +2341,9 @@ export type GitHub_CheckSuiteEdge = {
 /** The filters that are available when fetching check suites. */
 export type GitHub_CheckSuiteFilter = {
   /** Filters the check suites created by this application ID. */
-  appId?: Maybe<Scalars['Int']>;
+  appId?: InputMaybe<Scalars['Int']>;
   /** Filters the check suites by this name. */
-  checkName?: Maybe<Scalars['String']>;
+  checkName?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated input type of ClearLabelsFromLabelable */
@@ -2552,7 +2351,7 @@ export type GitHub_ClearLabelsFromLabelableInput = {
   /** The id of the labelable object to clear the labels from. */
   labelableId: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of ClearLabelsFromLabelable */
@@ -2574,11 +2373,11 @@ export type GitHub_CloneProjectInput = {
   /** The name of the project. */
   name: Scalars['String'];
   /** The description of the project. */
-  body?: Maybe<Scalars['String']>;
+  body?: InputMaybe<Scalars['String']>;
   /** The visibility of the project, defaults to false (private). */
-  public?: Maybe<Scalars['Boolean']>;
+  public?: InputMaybe<Scalars['Boolean']>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of CloneProject */
@@ -2600,16 +2399,13 @@ export type GitHub_CloneTemplateRepositoryInput = {
   /** The ID of the owner for the new repository. */
   ownerId: Scalars['ID'];
   /** A short description of the new repository. */
-  description?: Maybe<Scalars['String']>;
+  description?: InputMaybe<Scalars['String']>;
   /** Indicates the repository's visibility level. */
   visibility: GitHub_RepositoryVisibility;
-  /**
-   * Whether to copy all branches from the template to the new repository. Defaults
-   * to copying only the default branch of the template.
-   */
-  includeAllBranches?: Maybe<Scalars['Boolean']>;
+  /** Whether to copy all branches from the template to the new repository. Defaults to copying only the default branch of the template. */
+  includeAllBranches?: InputMaybe<Scalars['Boolean']>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of CloneTemplateRepository */
@@ -2628,29 +2424,12 @@ export type GitHub_Closable = {
   closedAt?: Maybe<Scalars['GitHub_DateTime']>;
 };
 
-/** Represents a 'closed' event on any `Closable`. */
-export type GitHub_ClosedEvent = GitHub_Node & GitHub_UniformResourceLocatable & {
-  /** Identifies the actor who performed the event. */
-  actor?: Maybe<GitHub_Actor>;
-  /** Object that was closed. */
-  closable: GitHub_Closable;
-  /** Object which triggered the creation of this event. */
-  closer?: Maybe<GitHub_Closer>;
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['GitHub_DateTime'];
-  id: Scalars['ID'];
-  /** The HTTP path for this closed event. */
-  resourcePath: Scalars['GitHub_URI'];
-  /** The HTTP URL for this closed event. */
-  url: Scalars['GitHub_URI'];
-};
-
 /** Autogenerated input type of CloseIssue */
 export type GitHub_CloseIssueInput = {
   /** ID of the issue to be closed. */
   issueId: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of CloseIssue */
@@ -2666,7 +2445,7 @@ export type GitHub_ClosePullRequestInput = {
   /** ID of the pull request to be closed. */
   pullRequestId: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of ClosePullRequest */
@@ -2675,6 +2454,23 @@ export type GitHub_ClosePullRequestPayload = {
   clientMutationId?: Maybe<Scalars['String']>;
   /** The pull request that was closed. */
   pullRequest?: Maybe<GitHub_PullRequest>;
+};
+
+/** Represents a 'closed' event on any `Closable`. */
+export type GitHub_ClosedEvent = GitHub_Node & GitHub_UniformResourceLocatable & {
+  /** Identifies the actor who performed the event. */
+  actor?: Maybe<GitHub_Actor>;
+  /** Object that was closed. */
+  closable: GitHub_Closable;
+  /** Object which triggered the creation of this event. */
+  closer?: Maybe<GitHub_Closer>;
+  /** Identifies the date and time when the object was created. */
+  createdAt: Scalars['GitHub_DateTime'];
+  id: Scalars['ID'];
+  /** The HTTP path for this closed event. */
+  resourcePath: Scalars['GitHub_URI'];
+  /** The HTTP URL for this closed event. */
+  url: Scalars['GitHub_URI'];
 };
 
 /** The object which triggered a `ClosedEvent`. */
@@ -2696,7 +2492,7 @@ export type GitHub_CodeOfConduct = GitHub_Node & {
 };
 
 /** Collaborators affiliation level with a subject. */
-export type GitHub_CollaboratorAffiliation = 
+export type GitHub_CollaboratorAffiliation =
   /** All outside collaborators of an organization-owned subject. */
   | 'OUTSIDE'
   /** All collaborators with permissions to an organization-owned subject, regardless of organization membership status. */
@@ -2740,14 +2536,14 @@ export type GitHub_Comment = {
 
 /** Represents a comment. */
 export type GitHub_CommentUserContentEditsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** A comment author association with repository. */
-export type GitHub_CommentAuthorAssociation = 
+export type GitHub_CommentAuthorAssociation =
   /** Author is a member of the organization that owns the repository. */
   | 'MEMBER'
   /** Author is the owner of the repository. */
@@ -2766,7 +2562,7 @@ export type GitHub_CommentAuthorAssociation =
   | 'NONE';
 
 /** The possible errors that will prevent a user from updating a comment. */
-export type GitHub_CommentCannotUpdateReason = 
+export type GitHub_CommentCannotUpdateReason =
   /** Unable to create comment because repository is archived. */
   | 'ARCHIVED'
   /** You must be the author or have write access to this repository to update this comment. */
@@ -2801,11 +2597,7 @@ export type GitHub_Commit = GitHub_Node & GitHub_GitObject & GitHub_Subscribable
   abbreviatedOid: Scalars['String'];
   /** The number of additions in this commit. */
   additions: Scalars['Int'];
-  /**
-   * The merged Pull Request that introduced the commit to the repository. If the
-   * commit is not present in the default branch, additionally returns open Pull
-   * Requests associated with the commit
-   */
+  /** The merged Pull Request that introduced the commit to the repository. If the commit is not present in the default branch, additionally returns open Pull Requests associated with the commit */
   associatedPullRequests?: Maybe<GitHub_PullRequestConnection>;
   /** Authorship details of the commit. */
   author?: Maybe<GitHub_GitActor>;
@@ -2902,20 +2694,20 @@ export type GitHub_Commit = GitHub_Node & GitHub_GitObject & GitHub_Subscribable
 
 /** Represents a Git commit. */
 export type GitHub_CommitAssociatedPullRequestsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  orderBy?: Maybe<GitHub_PullRequestOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_PullRequestOrder>;
 };
 
 
 /** Represents a Git commit. */
 export type GitHub_CommitAuthorsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
@@ -2927,31 +2719,31 @@ export type GitHub_CommitBlameArgs = {
 
 /** Represents a Git commit. */
 export type GitHub_CommitCheckSuitesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  filterBy?: Maybe<GitHub_CheckSuiteFilter>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  filterBy?: InputMaybe<GitHub_CheckSuiteFilter>;
 };
 
 
 /** Represents a Git commit. */
 export type GitHub_CommitCommentsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** Represents a Git commit. */
 export type GitHub_CommitDeploymentsArgs = {
-  environments?: Maybe<Array<Scalars['String']>>;
-  orderBy?: Maybe<GitHub_DeploymentOrder>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  environments?: InputMaybe<Array<Scalars['String']>>;
+  orderBy?: InputMaybe<GitHub_DeploymentOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
@@ -2963,43 +2755,40 @@ export type GitHub_CommitFileArgs = {
 
 /** Represents a Git commit. */
 export type GitHub_CommitHistoryArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  path?: Maybe<Scalars['String']>;
-  author?: Maybe<GitHub_CommitAuthor>;
-  since?: Maybe<Scalars['GitHub_GitTimestamp']>;
-  until?: Maybe<Scalars['GitHub_GitTimestamp']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  path?: InputMaybe<Scalars['String']>;
+  author?: InputMaybe<GitHub_CommitAuthor>;
+  since?: InputMaybe<Scalars['GitHub_GitTimestamp']>;
+  until?: InputMaybe<Scalars['GitHub_GitTimestamp']>;
 };
 
 
 /** Represents a Git commit. */
 export type GitHub_CommitParentsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** Represents a Git commit. */
 export type GitHub_CommitSubmodulesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** Specifies an author for filtering Git commits. */
 export type GitHub_CommitAuthor = {
-  /**
-   * ID of a User to filter by. If non-null, only commits authored by this user
-   * will be returned. This field takes precedence over emails.
-   */
-  id?: Maybe<Scalars['ID']>;
+  /** ID of a User to filter by. If non-null, only commits authored by this user will be returned. This field takes precedence over emails. */
+  id?: InputMaybe<Scalars['ID']>;
   /** Email addresses to filter by. Commits authored by any of the specified email addresses will be returned. */
-  emails?: Maybe<Array<Scalars['String']>>;
+  emails?: InputMaybe<Array<Scalars['String']>>;
 };
 
 /** Represents a comment on a given Commit. */
@@ -3070,21 +2859,21 @@ export type GitHub_CommitComment = GitHub_Node & GitHub_Comment & GitHub_Deletab
 
 /** Represents a comment on a given Commit. */
 export type GitHub_CommitCommentReactionsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  content?: Maybe<GitHub_ReactionContent>;
-  orderBy?: Maybe<GitHub_ReactionOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  content?: InputMaybe<GitHub_ReactionContent>;
+  orderBy?: InputMaybe<GitHub_ReactionOrder>;
 };
 
 
 /** Represents a comment on a given Commit. */
 export type GitHub_CommitCommentUserContentEditsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** The connection type for CommitComment. */
@@ -3125,10 +2914,10 @@ export type GitHub_CommitCommentThread = GitHub_Node & GitHub_RepositoryNode & {
 
 /** A thread of comments on a commit. */
 export type GitHub_CommitCommentThreadCommentsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** The connection type for Commit. */
@@ -3152,7 +2941,7 @@ export type GitHub_CommitContributionOrder = {
 };
 
 /** Properties by which commit contribution connections can be ordered. */
-export type GitHub_CommitContributionOrderField = 
+export type GitHub_CommitContributionOrderField =
   /** Order commit contributions by when they were made. */
   | 'OCCURRED_AT'
   /** Order commit contributions by how many commits they represent. */
@@ -3173,11 +2962,11 @@ export type GitHub_CommitContributionsByRepository = {
 
 /** This aggregates commits made by a user within one repository. */
 export type GitHub_CommitContributionsByRepositoryContributionsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  orderBy?: Maybe<GitHub_CommitContributionOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_CommitContributionOrder>;
 };
 
 /** An edge in a connection. */
@@ -3205,27 +2994,27 @@ export type GitHub_CommitMessage = {
   /** The headline of the message. */
   headline: Scalars['String'];
   /** The body of the message. */
-  body?: Maybe<Scalars['String']>;
+  body?: InputMaybe<Scalars['String']>;
 };
 
 /**
  * A git ref for a commit to be appended to.
- * 
+ *
  * The ref must be a branch, i.e. its fully qualified name must start
  * with `refs/heads/` (although the input is not required to be fully
  * qualified).
- * 
+ *
  * The Ref may be specified by its global node ID or by the
  * repository nameWithOwner and branch name.
- * 
+ *
  * ### Examples
- * 
+ *
  * Specify a branch using a global node ID:
- * 
+ *
  *     { "id": "MDM6UmVmMTpyZWZzL2hlYWRzL21haW4=" }
- * 
+ *
  * Specify a branch using nameWithOwner and branch name:
- * 
+ *
  *     {
  *       "nameWithOwner": "github/graphql-client",
  *       "branchName": "main"
@@ -3233,11 +3022,11 @@ export type GitHub_CommitMessage = {
  */
 export type GitHub_CommittableBranch = {
   /** The Node ID of the Ref to be updated. */
-  id?: Maybe<Scalars['ID']>;
+  id?: InputMaybe<Scalars['ID']>;
   /** The nameWithOwner of the repository to commit to. */
-  repositoryNameWithOwner?: Maybe<Scalars['String']>;
+  repositoryNameWithOwner?: InputMaybe<Scalars['String']>;
   /** The unqualified name of the branch to append the commit to. */
-  branchName?: Maybe<Scalars['String']>;
+  branchName?: InputMaybe<Scalars['String']>;
 };
 
 /** Represents a 'connected' event on a given issue or pull request. */
@@ -3293,10 +3082,7 @@ export type GitHub_ContributionCalendarDay = {
   color: Scalars['String'];
   /** How many contributions were made by the user on this day. */
   contributionCount: Scalars['Int'];
-  /**
-   * Indication of contributions, relative to other days. Can be used to indicate
-   * which color to represent this day on a calendar.
-   */
+  /** Indication of contributions, relative to other days. Can be used to indicate which color to represent this day on a calendar. */
   contributionLevel: GitHub_ContributionLevel;
   /** The day this square represents. */
   date: Scalars['GitHub_Date'];
@@ -3325,7 +3111,7 @@ export type GitHub_ContributionCalendarWeek = {
 };
 
 /** Varying levels of contributions from none to many. */
-export type GitHub_ContributionLevel = 
+export type GitHub_ContributionLevel =
   /** No contributions occurred. */
   | 'NONE'
   /** Lowest 25% of days of contributions. */
@@ -3353,43 +3139,21 @@ export type GitHub_ContributionsCollection = {
   contributionYears: Array<Scalars['Int']>;
   /** Determine if this collection's time span ends in the current month. */
   doesEndInCurrentMonth: Scalars['Boolean'];
-  /**
-   * The date of the first restricted contribution the user made in this time
-   * period. Can only be non-null when the user has enabled private contribution counts.
-   */
+  /** The date of the first restricted contribution the user made in this time period. Can only be non-null when the user has enabled private contribution counts. */
   earliestRestrictedContributionDate?: Maybe<Scalars['GitHub_Date']>;
   /** The ending date and time of this collection. */
   endedAt: Scalars['GitHub_DateTime'];
-  /**
-   * The first issue the user opened on GitHub. This will be null if that issue was
-   * opened outside the collection's time range and ignoreTimeRange is false. If
-   * the issue is not visible but the user has opted to show private contributions,
-   * a RestrictedContribution will be returned.
-   */
+  /** The first issue the user opened on GitHub. This will be null if that issue was opened outside the collection's time range and ignoreTimeRange is false. If the issue is not visible but the user has opted to show private contributions, a RestrictedContribution will be returned. */
   firstIssueContribution?: Maybe<GitHub_CreatedIssueOrRestrictedContribution>;
-  /**
-   * The first pull request the user opened on GitHub. This will be null if that
-   * pull request was opened outside the collection's time range and
-   * ignoreTimeRange is not true. If the pull request is not visible but the user
-   * has opted to show private contributions, a RestrictedContribution will be returned.
-   */
+  /** The first pull request the user opened on GitHub. This will be null if that pull request was opened outside the collection's time range and ignoreTimeRange is not true. If the pull request is not visible but the user has opted to show private contributions, a RestrictedContribution will be returned. */
   firstPullRequestContribution?: Maybe<GitHub_CreatedPullRequestOrRestrictedContribution>;
-  /**
-   * The first repository the user created on GitHub. This will be null if that
-   * first repository was created outside the collection's time range and
-   * ignoreTimeRange is false. If the repository is not visible, then a
-   * RestrictedContribution is returned.
-   */
+  /** The first repository the user created on GitHub. This will be null if that first repository was created outside the collection's time range and ignoreTimeRange is false. If the repository is not visible, then a RestrictedContribution is returned. */
   firstRepositoryContribution?: Maybe<GitHub_CreatedRepositoryOrRestrictedContribution>;
   /** Does the user have any more activity in the timeline that occurred prior to the collection's time range? */
   hasActivityInThePast: Scalars['Boolean'];
   /** Determine if there are any contributions in this collection. */
   hasAnyContributions: Scalars['Boolean'];
-  /**
-   * Determine if the user made any contributions in this time frame whose details
-   * are not visible because they were made in a private repository. Can only be
-   * true if the user enabled private contribution counts.
-   */
+  /** Determine if the user made any contributions in this time frame whose details are not visible because they were made in a private repository. Can only be true if the user enabled private contribution counts. */
   hasAnyRestrictedContributions: Scalars['Boolean'];
   /** Whether or not the collector's time span is all within the same day. */
   isSingleDay: Scalars['Boolean'];
@@ -3397,15 +3161,9 @@ export type GitHub_ContributionsCollection = {
   issueContributions: GitHub_CreatedIssueContributionConnection;
   /** Issue contributions made by the user, grouped by repository. */
   issueContributionsByRepository: Array<GitHub_IssueContributionsByRepository>;
-  /**
-   * When the user signed up for GitHub. This will be null if that sign up date
-   * falls outside the collection's time range and ignoreTimeRange is false.
-   */
+  /** When the user signed up for GitHub. This will be null if that sign up date falls outside the collection's time range and ignoreTimeRange is false. */
   joinedGitHubContribution?: Maybe<GitHub_JoinedGitHubContribution>;
-  /**
-   * The date of the most recent restricted contribution the user made in this time
-   * period. Can only be non-null when the user has enabled private contribution counts.
-   */
+  /** The date of the most recent restricted contribution the user made in this time period. Can only be non-null when the user has enabled private contribution counts. */
   latestRestrictedContributionDate?: Maybe<Scalars['GitHub_Date']>;
   /**
    * When this collection's time range does not include any activity from the user, use this
@@ -3437,10 +3195,7 @@ export type GitHub_ContributionsCollection = {
   pullRequestReviewContributionsByRepository: Array<GitHub_PullRequestReviewContributionsByRepository>;
   /** A list of repositories owned by the user that the user created in this time range. */
   repositoryContributions: GitHub_CreatedRepositoryContributionConnection;
-  /**
-   * A count of contributions made by the user that the viewer cannot access. Only
-   * non-zero when the user has chosen to share their private contribution counts.
-   */
+  /** A count of contributions made by the user that the viewer cannot access. Only non-zero when the user has chosen to share their private contribution counts. */
   restrictedContributionsCount: Scalars['Int'];
   /** The beginning date and time of this collection. */
   startedAt: Scalars['GitHub_DateTime'];
@@ -3469,130 +3224,108 @@ export type GitHub_ContributionsCollection = {
 
 /** A contributions collection aggregates contributions such as opened issues and commits created by a user. */
 export type GitHub_ContributionsCollectionCommitContributionsByRepositoryArgs = {
-  maxRepositories?: Maybe<Scalars['Int']>;
+  maxRepositories?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A contributions collection aggregates contributions such as opened issues and commits created by a user. */
 export type GitHub_ContributionsCollectionIssueContributionsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  excludeFirst?: Maybe<Scalars['Boolean']>;
-  excludePopular?: Maybe<Scalars['Boolean']>;
-  orderBy?: Maybe<GitHub_ContributionOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  excludeFirst?: InputMaybe<Scalars['Boolean']>;
+  excludePopular?: InputMaybe<Scalars['Boolean']>;
+  orderBy?: InputMaybe<GitHub_ContributionOrder>;
 };
 
 
 /** A contributions collection aggregates contributions such as opened issues and commits created by a user. */
 export type GitHub_ContributionsCollectionIssueContributionsByRepositoryArgs = {
-  maxRepositories?: Maybe<Scalars['Int']>;
-  excludeFirst?: Maybe<Scalars['Boolean']>;
-  excludePopular?: Maybe<Scalars['Boolean']>;
+  maxRepositories?: InputMaybe<Scalars['Int']>;
+  excludeFirst?: InputMaybe<Scalars['Boolean']>;
+  excludePopular?: InputMaybe<Scalars['Boolean']>;
 };
 
 
 /** A contributions collection aggregates contributions such as opened issues and commits created by a user. */
 export type GitHub_ContributionsCollectionPullRequestContributionsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  excludeFirst?: Maybe<Scalars['Boolean']>;
-  excludePopular?: Maybe<Scalars['Boolean']>;
-  orderBy?: Maybe<GitHub_ContributionOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  excludeFirst?: InputMaybe<Scalars['Boolean']>;
+  excludePopular?: InputMaybe<Scalars['Boolean']>;
+  orderBy?: InputMaybe<GitHub_ContributionOrder>;
 };
 
 
 /** A contributions collection aggregates contributions such as opened issues and commits created by a user. */
 export type GitHub_ContributionsCollectionPullRequestContributionsByRepositoryArgs = {
-  maxRepositories?: Maybe<Scalars['Int']>;
-  excludeFirst?: Maybe<Scalars['Boolean']>;
-  excludePopular?: Maybe<Scalars['Boolean']>;
+  maxRepositories?: InputMaybe<Scalars['Int']>;
+  excludeFirst?: InputMaybe<Scalars['Boolean']>;
+  excludePopular?: InputMaybe<Scalars['Boolean']>;
 };
 
 
 /** A contributions collection aggregates contributions such as opened issues and commits created by a user. */
 export type GitHub_ContributionsCollectionPullRequestReviewContributionsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  orderBy?: Maybe<GitHub_ContributionOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_ContributionOrder>;
 };
 
 
 /** A contributions collection aggregates contributions such as opened issues and commits created by a user. */
 export type GitHub_ContributionsCollectionPullRequestReviewContributionsByRepositoryArgs = {
-  maxRepositories?: Maybe<Scalars['Int']>;
+  maxRepositories?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A contributions collection aggregates contributions such as opened issues and commits created by a user. */
 export type GitHub_ContributionsCollectionRepositoryContributionsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  excludeFirst?: Maybe<Scalars['Boolean']>;
-  orderBy?: Maybe<GitHub_ContributionOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  excludeFirst?: InputMaybe<Scalars['Boolean']>;
+  orderBy?: InputMaybe<GitHub_ContributionOrder>;
 };
 
 
 /** A contributions collection aggregates contributions such as opened issues and commits created by a user. */
 export type GitHub_ContributionsCollectionTotalIssueContributionsArgs = {
-  excludeFirst?: Maybe<Scalars['Boolean']>;
-  excludePopular?: Maybe<Scalars['Boolean']>;
+  excludeFirst?: InputMaybe<Scalars['Boolean']>;
+  excludePopular?: InputMaybe<Scalars['Boolean']>;
 };
 
 
 /** A contributions collection aggregates contributions such as opened issues and commits created by a user. */
 export type GitHub_ContributionsCollectionTotalPullRequestContributionsArgs = {
-  excludeFirst?: Maybe<Scalars['Boolean']>;
-  excludePopular?: Maybe<Scalars['Boolean']>;
+  excludeFirst?: InputMaybe<Scalars['Boolean']>;
+  excludePopular?: InputMaybe<Scalars['Boolean']>;
 };
 
 
 /** A contributions collection aggregates contributions such as opened issues and commits created by a user. */
 export type GitHub_ContributionsCollectionTotalRepositoriesWithContributedIssuesArgs = {
-  excludeFirst?: Maybe<Scalars['Boolean']>;
-  excludePopular?: Maybe<Scalars['Boolean']>;
+  excludeFirst?: InputMaybe<Scalars['Boolean']>;
+  excludePopular?: InputMaybe<Scalars['Boolean']>;
 };
 
 
 /** A contributions collection aggregates contributions such as opened issues and commits created by a user. */
 export type GitHub_ContributionsCollectionTotalRepositoriesWithContributedPullRequestsArgs = {
-  excludeFirst?: Maybe<Scalars['Boolean']>;
-  excludePopular?: Maybe<Scalars['Boolean']>;
+  excludeFirst?: InputMaybe<Scalars['Boolean']>;
+  excludePopular?: InputMaybe<Scalars['Boolean']>;
 };
 
 
 /** A contributions collection aggregates contributions such as opened issues and commits created by a user. */
 export type GitHub_ContributionsCollectionTotalRepositoryContributionsArgs = {
-  excludeFirst?: Maybe<Scalars['Boolean']>;
-};
-
-/** Represents a 'converted_note_to_issue' event on a given issue or pull request. */
-export type GitHub_ConvertedNoteToIssueEvent = GitHub_Node & {
-  /** Identifies the actor who performed the event. */
-  actor?: Maybe<GitHub_Actor>;
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['GitHub_DateTime'];
-  /** Identifies the primary key from the database. */
-  databaseId?: Maybe<Scalars['Int']>;
-  id: Scalars['ID'];
-};
-
-/** Represents a 'converted_to_discussion' event on a given issue. */
-export type GitHub_ConvertedToDiscussionEvent = GitHub_Node & {
-  /** Identifies the actor who performed the event. */
-  actor?: Maybe<GitHub_Actor>;
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['GitHub_DateTime'];
-  /** The discussion that the issue was converted into. */
-  discussion?: Maybe<GitHub_Discussion>;
-  id: Scalars['ID'];
+  excludeFirst?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** Autogenerated input type of ConvertProjectCardNoteToIssue */
@@ -3602,11 +3335,11 @@ export type GitHub_ConvertProjectCardNoteToIssueInput = {
   /** The ID of the repository to create the issue in. */
   repositoryId: Scalars['ID'];
   /** The title of the newly created issue. Defaults to the card's note text. */
-  title?: Maybe<Scalars['String']>;
+  title?: InputMaybe<Scalars['String']>;
   /** The body of the newly created issue. */
-  body?: Maybe<Scalars['String']>;
+  body?: InputMaybe<Scalars['String']>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of ConvertProjectCardNoteToIssue */
@@ -3622,7 +3355,7 @@ export type GitHub_ConvertPullRequestToDraftInput = {
   /** ID of the pull request to convert to draft */
   pullRequestId: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of ConvertPullRequestToDraft */
@@ -3648,6 +3381,28 @@ export type GitHub_ConvertToDraftEvent = GitHub_Node & GitHub_UniformResourceLoc
   url: Scalars['GitHub_URI'];
 };
 
+/** Represents a 'converted_note_to_issue' event on a given issue or pull request. */
+export type GitHub_ConvertedNoteToIssueEvent = GitHub_Node & {
+  /** Identifies the actor who performed the event. */
+  actor?: Maybe<GitHub_Actor>;
+  /** Identifies the date and time when the object was created. */
+  createdAt: Scalars['GitHub_DateTime'];
+  /** Identifies the primary key from the database. */
+  databaseId?: Maybe<Scalars['Int']>;
+  id: Scalars['ID'];
+};
+
+/** Represents a 'converted_to_discussion' event on a given issue. */
+export type GitHub_ConvertedToDiscussionEvent = GitHub_Node & {
+  /** Identifies the actor who performed the event. */
+  actor?: Maybe<GitHub_Actor>;
+  /** Identifies the date and time when the object was created. */
+  createdAt: Scalars['GitHub_DateTime'];
+  /** The discussion that the issue was converted into. */
+  discussion?: Maybe<GitHub_Discussion>;
+  id: Scalars['ID'];
+};
+
 /** Autogenerated input type of CreateBranchProtectionRule */
 export type GitHub_CreateBranchProtectionRuleInput = {
   /** The global relay id of the repository in which a new branch protection rule should be created in. */
@@ -3655,49 +3410,49 @@ export type GitHub_CreateBranchProtectionRuleInput = {
   /** The glob-like pattern used to determine matching branches. */
   pattern: Scalars['String'];
   /** Are approving reviews required to update matching branches. */
-  requiresApprovingReviews?: Maybe<Scalars['Boolean']>;
+  requiresApprovingReviews?: InputMaybe<Scalars['Boolean']>;
   /** Number of approving reviews required to update matching branches. */
-  requiredApprovingReviewCount?: Maybe<Scalars['Int']>;
+  requiredApprovingReviewCount?: InputMaybe<Scalars['Int']>;
   /** Are commits required to be signed. */
-  requiresCommitSignatures?: Maybe<Scalars['Boolean']>;
+  requiresCommitSignatures?: InputMaybe<Scalars['Boolean']>;
   /** Are merge commits prohibited from being pushed to this branch. */
-  requiresLinearHistory?: Maybe<Scalars['Boolean']>;
+  requiresLinearHistory?: InputMaybe<Scalars['Boolean']>;
   /** Is branch creation a protected operation. */
-  blocksCreations?: Maybe<Scalars['Boolean']>;
+  blocksCreations?: InputMaybe<Scalars['Boolean']>;
   /** Are force pushes allowed on this branch. */
-  allowsForcePushes?: Maybe<Scalars['Boolean']>;
+  allowsForcePushes?: InputMaybe<Scalars['Boolean']>;
   /** Can this branch be deleted. */
-  allowsDeletions?: Maybe<Scalars['Boolean']>;
+  allowsDeletions?: InputMaybe<Scalars['Boolean']>;
   /** Can admins overwrite branch protection. */
-  isAdminEnforced?: Maybe<Scalars['Boolean']>;
+  isAdminEnforced?: InputMaybe<Scalars['Boolean']>;
   /** Are status checks required to update matching branches. */
-  requiresStatusChecks?: Maybe<Scalars['Boolean']>;
+  requiresStatusChecks?: InputMaybe<Scalars['Boolean']>;
   /** Are branches required to be up to date before merging. */
-  requiresStrictStatusChecks?: Maybe<Scalars['Boolean']>;
+  requiresStrictStatusChecks?: InputMaybe<Scalars['Boolean']>;
   /** Are reviews from code owners required to update matching branches. */
-  requiresCodeOwnerReviews?: Maybe<Scalars['Boolean']>;
+  requiresCodeOwnerReviews?: InputMaybe<Scalars['Boolean']>;
   /** Will new commits pushed to matching branches dismiss pull request review approvals. */
-  dismissesStaleReviews?: Maybe<Scalars['Boolean']>;
+  dismissesStaleReviews?: InputMaybe<Scalars['Boolean']>;
   /** Is dismissal of pull request reviews restricted. */
-  restrictsReviewDismissals?: Maybe<Scalars['Boolean']>;
+  restrictsReviewDismissals?: InputMaybe<Scalars['Boolean']>;
   /** A list of User or Team IDs allowed to dismiss reviews on pull requests targeting matching branches. */
-  reviewDismissalActorIds?: Maybe<Array<Scalars['ID']>>;
+  reviewDismissalActorIds?: InputMaybe<Array<Scalars['ID']>>;
   /** A list of User or Team IDs allowed to bypass pull requests targeting matching branches. */
-  bypassPullRequestActorIds?: Maybe<Array<Scalars['ID']>>;
+  bypassPullRequestActorIds?: InputMaybe<Array<Scalars['ID']>>;
   /** A list of User or Team IDs allowed to bypass force push targeting matching branches. */
-  bypassForcePushActorIds?: Maybe<Array<Scalars['ID']>>;
+  bypassForcePushActorIds?: InputMaybe<Array<Scalars['ID']>>;
   /** Is pushing to matching branches restricted. */
-  restrictsPushes?: Maybe<Scalars['Boolean']>;
+  restrictsPushes?: InputMaybe<Scalars['Boolean']>;
   /** A list of User, Team or App IDs allowed to push to matching branches. */
-  pushActorIds?: Maybe<Array<Scalars['ID']>>;
+  pushActorIds?: InputMaybe<Array<Scalars['ID']>>;
   /** List of required status check contexts that must pass for commits to be accepted to matching branches. */
-  requiredStatusCheckContexts?: Maybe<Array<Scalars['String']>>;
+  requiredStatusCheckContexts?: InputMaybe<Array<Scalars['String']>>;
   /** The list of required status checks */
-  requiredStatusChecks?: Maybe<Array<GitHub_RequiredStatusCheckInput>>;
+  requiredStatusChecks?: InputMaybe<Array<GitHub_RequiredStatusCheckInput>>;
   /** Are conversations required to be resolved before merging. */
-  requiresConversationResolution?: Maybe<Scalars['Boolean']>;
+  requiresConversationResolution?: InputMaybe<Scalars['Boolean']>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of CreateBranchProtectionRule */
@@ -3717,23 +3472,23 @@ export type GitHub_CreateCheckRunInput = {
   /** The SHA of the head commit. */
   headSha: Scalars['GitHub_GitObjectID'];
   /** The URL of the integrator's site that has the full details of the check. */
-  detailsUrl?: Maybe<Scalars['GitHub_URI']>;
+  detailsUrl?: InputMaybe<Scalars['GitHub_URI']>;
   /** A reference for the run on the integrator's system. */
-  externalId?: Maybe<Scalars['String']>;
+  externalId?: InputMaybe<Scalars['String']>;
   /** The current status. */
-  status?: Maybe<GitHub_RequestableCheckStatusState>;
+  status?: InputMaybe<GitHub_RequestableCheckStatusState>;
   /** The time that the check run began. */
-  startedAt?: Maybe<Scalars['GitHub_DateTime']>;
+  startedAt?: InputMaybe<Scalars['GitHub_DateTime']>;
   /** The final conclusion of the check. */
-  conclusion?: Maybe<GitHub_CheckConclusionState>;
+  conclusion?: InputMaybe<GitHub_CheckConclusionState>;
   /** The time that the check run finished. */
-  completedAt?: Maybe<Scalars['GitHub_DateTime']>;
+  completedAt?: InputMaybe<Scalars['GitHub_DateTime']>;
   /** Descriptive details about the run. */
-  output?: Maybe<GitHub_CheckRunOutput>;
+  output?: InputMaybe<GitHub_CheckRunOutput>;
   /** Possible further actions the integrator can perform, which a user may trigger. */
-  actions?: Maybe<Array<GitHub_CheckRunAction>>;
+  actions?: InputMaybe<Array<GitHub_CheckRunAction>>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of CreateCheckRun */
@@ -3751,7 +3506,7 @@ export type GitHub_CreateCheckSuiteInput = {
   /** The SHA of the head commit. */
   headSha: Scalars['GitHub_GitObjectID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of CreateCheckSuite */
@@ -3767,13 +3522,13 @@ export type GitHub_CreateCommitOnBranchInput = {
   /** The Ref to be updated.  Must be a branch. */
   branch: GitHub_CommittableBranch;
   /** A description of changes to files in this commit. */
-  fileChanges?: Maybe<GitHub_FileChanges>;
+  fileChanges?: InputMaybe<GitHub_FileChanges>;
   /** The commit message the be included with the commit. */
   message: GitHub_CommitMessage;
   /** The git commit oid expected at the head of the branch prior to the commit */
   expectedHeadOid: Scalars['GitHub_GitObjectID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of CreateCommitOnBranch */
@@ -3784,6 +3539,367 @@ export type GitHub_CreateCommitOnBranchPayload = {
   commit?: Maybe<GitHub_Commit>;
   /** The ref which has been updated to point to the new commit. */
   ref?: Maybe<GitHub_Ref>;
+};
+
+/** Autogenerated input type of CreateDiscussion */
+export type GitHub_CreateDiscussionInput = {
+  /** The id of the repository on which to create the discussion. */
+  repositoryId: Scalars['ID'];
+  /** The title of the discussion. */
+  title: Scalars['String'];
+  /** The body of the discussion. */
+  body: Scalars['String'];
+  /** The id of the discussion category to associate with this discussion. */
+  categoryId: Scalars['ID'];
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+};
+
+/** Autogenerated return type of CreateDiscussion */
+export type GitHub_CreateDiscussionPayload = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** The discussion that was just created. */
+  discussion?: Maybe<GitHub_Discussion>;
+};
+
+/** Autogenerated input type of CreateEnterpriseOrganization */
+export type GitHub_CreateEnterpriseOrganizationInput = {
+  /** The ID of the enterprise owning the new organization. */
+  enterpriseId: Scalars['ID'];
+  /** The login of the new organization. */
+  login: Scalars['String'];
+  /** The profile name of the new organization. */
+  profileName: Scalars['String'];
+  /** The email used for sending billing receipts. */
+  billingEmail: Scalars['String'];
+  /** The logins for the administrators of the new organization. */
+  adminLogins: Array<Scalars['String']>;
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+};
+
+/** Autogenerated return type of CreateEnterpriseOrganization */
+export type GitHub_CreateEnterpriseOrganizationPayload = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** The enterprise that owns the created organization. */
+  enterprise?: Maybe<GitHub_Enterprise>;
+  /** The organization that was created. */
+  organization?: Maybe<GitHub_Organization>;
+};
+
+/** Autogenerated input type of CreateEnvironment */
+export type GitHub_CreateEnvironmentInput = {
+  /** The node ID of the repository. */
+  repositoryId: Scalars['ID'];
+  /** The name of the environment. */
+  name: Scalars['String'];
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+};
+
+/** Autogenerated return type of CreateEnvironment */
+export type GitHub_CreateEnvironmentPayload = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** The new or existing environment. */
+  environment?: Maybe<GitHub_Environment>;
+};
+
+/** Autogenerated input type of CreateIpAllowListEntry */
+export type GitHub_CreateIpAllowListEntryInput = {
+  /** The ID of the owner for which to create the new IP allow list entry. */
+  ownerId: Scalars['ID'];
+  /** An IP address or range of addresses in CIDR notation. */
+  allowListValue: Scalars['String'];
+  /** An optional name for the IP allow list entry. */
+  name?: InputMaybe<Scalars['String']>;
+  /** Whether the IP allow list entry is active when an IP allow list is enabled. */
+  isActive: Scalars['Boolean'];
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+};
+
+/** Autogenerated return type of CreateIpAllowListEntry */
+export type GitHub_CreateIpAllowListEntryPayload = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** The IP allow list entry that was created. */
+  ipAllowListEntry?: Maybe<GitHub_IpAllowListEntry>;
+};
+
+/** Autogenerated input type of CreateIssue */
+export type GitHub_CreateIssueInput = {
+  /** The Node ID of the repository. */
+  repositoryId: Scalars['ID'];
+  /** The title for the issue. */
+  title: Scalars['String'];
+  /** The body for the issue description. */
+  body?: InputMaybe<Scalars['String']>;
+  /** The Node ID for the user assignee for this issue. */
+  assigneeIds?: InputMaybe<Array<Scalars['ID']>>;
+  /** The Node ID of the milestone for this issue. */
+  milestoneId?: InputMaybe<Scalars['ID']>;
+  /** An array of Node IDs of labels for this issue. */
+  labelIds?: InputMaybe<Array<Scalars['ID']>>;
+  /** An array of Node IDs for projects associated with this issue. */
+  projectIds?: InputMaybe<Array<Scalars['ID']>>;
+  /** The name of an issue template in the repository, assigns labels and assignees from the template to the issue */
+  issueTemplate?: InputMaybe<Scalars['String']>;
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+};
+
+/** Autogenerated return type of CreateIssue */
+export type GitHub_CreateIssuePayload = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** The new issue. */
+  issue?: Maybe<GitHub_Issue>;
+};
+
+/** Autogenerated input type of CreateMigrationSource */
+export type GitHub_CreateMigrationSourceInput = {
+  /** The Octoshift migration source name. */
+  name: Scalars['String'];
+  /** The Octoshift migration source URL. */
+  url: Scalars['String'];
+  /** The Octoshift migration source access token. */
+  accessToken?: InputMaybe<Scalars['String']>;
+  /** The Octoshift migration source type. */
+  type: GitHub_MigrationSourceType;
+  /** The ID of the organization that will own the Octoshift migration source. */
+  ownerId: Scalars['ID'];
+  /** The GitHub personal access token of the user importing to the target repository. */
+  githubPat?: InputMaybe<Scalars['String']>;
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+};
+
+/** Autogenerated return type of CreateMigrationSource */
+export type GitHub_CreateMigrationSourcePayload = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** The created Octoshift migration source. */
+  migrationSource?: Maybe<GitHub_MigrationSource>;
+};
+
+/** Autogenerated input type of CreateProject */
+export type GitHub_CreateProjectInput = {
+  /** The owner ID to create the project under. */
+  ownerId: Scalars['ID'];
+  /** The name of project. */
+  name: Scalars['String'];
+  /** The description of project. */
+  body?: InputMaybe<Scalars['String']>;
+  /** The name of the GitHub-provided template. */
+  template?: InputMaybe<GitHub_ProjectTemplate>;
+  /** A list of repository IDs to create as linked repositories for the project */
+  repositoryIds?: InputMaybe<Array<Scalars['ID']>>;
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+};
+
+/** Autogenerated return type of CreateProject */
+export type GitHub_CreateProjectPayload = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** The new project. */
+  project?: Maybe<GitHub_Project>;
+};
+
+/** Autogenerated input type of CreatePullRequest */
+export type GitHub_CreatePullRequestInput = {
+  /** The Node ID of the repository. */
+  repositoryId: Scalars['ID'];
+  /**
+   * The name of the branch you want your changes pulled into. This should be an existing branch
+   * on the current repository. You cannot update the base branch on a pull request to point
+   * to another repository.
+   */
+  baseRefName: Scalars['String'];
+  /**
+   * The name of the branch where your changes are implemented. For cross-repository pull requests
+   * in the same network, namespace `head_ref_name` with a user like this: `username:branch`.
+   */
+  headRefName: Scalars['String'];
+  /** The title of the pull request. */
+  title: Scalars['String'];
+  /** The contents of the pull request. */
+  body?: InputMaybe<Scalars['String']>;
+  /** Indicates whether maintainers can modify the pull request. */
+  maintainerCanModify?: InputMaybe<Scalars['Boolean']>;
+  /** Indicates whether this pull request should be a draft. */
+  draft?: InputMaybe<Scalars['Boolean']>;
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+};
+
+/** Autogenerated return type of CreatePullRequest */
+export type GitHub_CreatePullRequestPayload = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** The new pull request. */
+  pullRequest?: Maybe<GitHub_PullRequest>;
+};
+
+/** Autogenerated input type of CreateRef */
+export type GitHub_CreateRefInput = {
+  /** The Node ID of the Repository to create the Ref in. */
+  repositoryId: Scalars['ID'];
+  /** The fully qualified name of the new Ref (ie: `refs/heads/my_new_branch`). */
+  name: Scalars['String'];
+  /** The GitObjectID that the new Ref shall target. Must point to a commit. */
+  oid: Scalars['GitHub_GitObjectID'];
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+};
+
+/** Autogenerated return type of CreateRef */
+export type GitHub_CreateRefPayload = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** The newly created ref. */
+  ref?: Maybe<GitHub_Ref>;
+};
+
+/** Autogenerated input type of CreateRepository */
+export type GitHub_CreateRepositoryInput = {
+  /** The name of the new repository. */
+  name: Scalars['String'];
+  /** The ID of the owner for the new repository. */
+  ownerId?: InputMaybe<Scalars['ID']>;
+  /** A short description of the new repository. */
+  description?: InputMaybe<Scalars['String']>;
+  /** Indicates the repository's visibility level. */
+  visibility: GitHub_RepositoryVisibility;
+  /** Whether this repository should be marked as a template such that anyone who can access it can create new repositories with the same files and directory structure. */
+  template?: InputMaybe<Scalars['Boolean']>;
+  /** The URL for a web page about this repository. */
+  homepageUrl?: InputMaybe<Scalars['GitHub_URI']>;
+  /** Indicates if the repository should have the wiki feature enabled. */
+  hasWikiEnabled?: InputMaybe<Scalars['Boolean']>;
+  /** Indicates if the repository should have the issues feature enabled. */
+  hasIssuesEnabled?: InputMaybe<Scalars['Boolean']>;
+  /** When an organization is specified as the owner, this ID identifies the team that should be granted access to the new repository. */
+  teamId?: InputMaybe<Scalars['ID']>;
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+};
+
+/** Autogenerated return type of CreateRepository */
+export type GitHub_CreateRepositoryPayload = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** The new repository. */
+  repository?: Maybe<GitHub_Repository>;
+};
+
+/** Autogenerated input type of CreateSponsorsTier */
+export type GitHub_CreateSponsorsTierInput = {
+  /** The ID of the user or organization who owns the GitHub Sponsors profile. Defaults to the current user if omitted and sponsorableLogin is not given. */
+  sponsorableId?: InputMaybe<Scalars['ID']>;
+  /** The username of the user or organization who owns the GitHub Sponsors profile. Defaults to the current user if omitted and sponsorableId is not given. */
+  sponsorableLogin?: InputMaybe<Scalars['String']>;
+  /** The value of the new tier in US dollars. Valid values: 1-12000. */
+  amount: Scalars['Int'];
+  /** Whether sponsorships using this tier should happen monthly/yearly or just once. */
+  isRecurring?: InputMaybe<Scalars['Boolean']>;
+  /** Optional ID of the private repository that sponsors at this tier should gain read-only access to. Must be owned by an organization. */
+  repositoryId?: InputMaybe<Scalars['ID']>;
+  /** Optional login of the organization owner of the private repository that sponsors at this tier should gain read-only access to. Necessary if repositoryName is given. Will be ignored if repositoryId is given. */
+  repositoryOwnerLogin?: InputMaybe<Scalars['String']>;
+  /** Optional name of the private repository that sponsors at this tier should gain read-only access to. Must be owned by an organization. Necessary if repositoryOwnerLogin is given. Will be ignored if repositoryId is given. */
+  repositoryName?: InputMaybe<Scalars['String']>;
+  /** Optional message new sponsors at this tier will receive. */
+  welcomeMessage?: InputMaybe<Scalars['String']>;
+  /** A description of what this tier is, what perks sponsors might receive, what a sponsorship at this tier means for you, etc. */
+  description: Scalars['String'];
+  /** Whether to make the tier available immediately for sponsors to choose. Defaults to creating a draft tier that will not be publicly visible. */
+  publish?: InputMaybe<Scalars['Boolean']>;
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+};
+
+/** Autogenerated return type of CreateSponsorsTier */
+export type GitHub_CreateSponsorsTierPayload = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** The new tier. */
+  sponsorsTier?: Maybe<GitHub_SponsorsTier>;
+};
+
+/** Autogenerated input type of CreateSponsorship */
+export type GitHub_CreateSponsorshipInput = {
+  /** The ID of the user or organization who is acting as the sponsor, paying for the sponsorship. Required if sponsorLogin is not given. */
+  sponsorId?: InputMaybe<Scalars['ID']>;
+  /** The username of the user or organization who is acting as the sponsor, paying for the sponsorship. Required if sponsorId is not given. */
+  sponsorLogin?: InputMaybe<Scalars['String']>;
+  /** The ID of the user or organization who is receiving the sponsorship. Required if sponsorableLogin is not given. */
+  sponsorableId?: InputMaybe<Scalars['ID']>;
+  /** The username of the user or organization who is receiving the sponsorship. Required if sponsorableId is not given. */
+  sponsorableLogin?: InputMaybe<Scalars['String']>;
+  /** The ID of one of sponsorable's existing tiers to sponsor at. Required if amount is not specified. */
+  tierId?: InputMaybe<Scalars['ID']>;
+  /** The amount to pay to the sponsorable in US dollars. Required if a tierId is not specified. Valid values: 1-12000. */
+  amount?: InputMaybe<Scalars['Int']>;
+  /** Whether the sponsorship should happen monthly/yearly or just this one time. Required if a tierId is not specified. */
+  isRecurring?: InputMaybe<Scalars['Boolean']>;
+  /** Whether the sponsor should receive email updates from the sponsorable. */
+  receiveEmails?: InputMaybe<Scalars['Boolean']>;
+  /** Specify whether others should be able to see that the sponsor is sponsoring the sponsorable. Public visibility still does not reveal which tier is used. */
+  privacyLevel?: InputMaybe<GitHub_SponsorshipPrivacy>;
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+};
+
+/** Autogenerated return type of CreateSponsorship */
+export type GitHub_CreateSponsorshipPayload = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** The sponsorship that was started. */
+  sponsorship?: Maybe<GitHub_Sponsorship>;
+};
+
+/** Autogenerated input type of CreateTeamDiscussionComment */
+export type GitHub_CreateTeamDiscussionCommentInput = {
+  /** The ID of the discussion to which the comment belongs. */
+  discussionId: Scalars['ID'];
+  /** The content of the comment. */
+  body: Scalars['String'];
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+};
+
+/** Autogenerated return type of CreateTeamDiscussionComment */
+export type GitHub_CreateTeamDiscussionCommentPayload = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** The new comment. */
+  teamDiscussionComment?: Maybe<GitHub_TeamDiscussionComment>;
+};
+
+/** Autogenerated input type of CreateTeamDiscussion */
+export type GitHub_CreateTeamDiscussionInput = {
+  /** The ID of the team to which the discussion belongs. */
+  teamId: Scalars['ID'];
+  /** The title of the discussion. */
+  title: Scalars['String'];
+  /** The content of the discussion. */
+  body: Scalars['String'];
+  /** If true, restricts the visibility of this discussion to team members and organization admins. If false or not specified, allows any organization member to view this discussion. */
+  private?: InputMaybe<Scalars['Boolean']>;
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+};
+
+/** Autogenerated return type of CreateTeamDiscussion */
+export type GitHub_CreateTeamDiscussionPayload = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** The new discussion. */
+  teamDiscussion?: Maybe<GitHub_TeamDiscussion>;
 };
 
 /** Represents the contribution a user made by committing to a repository. */
@@ -3826,28 +3942,6 @@ export type GitHub_CreatedCommitContributionEdge = {
   cursor: Scalars['String'];
   /** The item at the end of the edge. */
   node?: Maybe<GitHub_CreatedCommitContribution>;
-};
-
-/** Autogenerated input type of CreateDiscussion */
-export type GitHub_CreateDiscussionInput = {
-  /** The id of the repository on which to create the discussion. */
-  repositoryId: Scalars['ID'];
-  /** The title of the discussion. */
-  title: Scalars['String'];
-  /** The body of the discussion. */
-  body: Scalars['String'];
-  /** The id of the discussion category to associate with this discussion. */
-  categoryId: Scalars['ID'];
-  /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
-};
-
-/** Autogenerated return type of CreateDiscussion */
-export type GitHub_CreateDiscussionPayload = {
-  /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
-  /** The discussion that was just created. */
-  discussion?: Maybe<GitHub_Discussion>;
 };
 
 /** Represents the contribution a user made on GitHub by opening an issue. */
@@ -4023,384 +4117,6 @@ export type GitHub_CreatedRepositoryContributionEdge = {
 /** Represents either a repository the viewer can access or a restricted contribution. */
 export type GitHub_CreatedRepositoryOrRestrictedContribution = GitHub_CreatedRepositoryContribution | GitHub_RestrictedContribution;
 
-/** Autogenerated input type of CreateEnterpriseOrganization */
-export type GitHub_CreateEnterpriseOrganizationInput = {
-  /** The ID of the enterprise owning the new organization. */
-  enterpriseId: Scalars['ID'];
-  /** The login of the new organization. */
-  login: Scalars['String'];
-  /** The profile name of the new organization. */
-  profileName: Scalars['String'];
-  /** The email used for sending billing receipts. */
-  billingEmail: Scalars['String'];
-  /** The logins for the administrators of the new organization. */
-  adminLogins: Array<Scalars['String']>;
-  /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
-};
-
-/** Autogenerated return type of CreateEnterpriseOrganization */
-export type GitHub_CreateEnterpriseOrganizationPayload = {
-  /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
-  /** The enterprise that owns the created organization. */
-  enterprise?: Maybe<GitHub_Enterprise>;
-  /** The organization that was created. */
-  organization?: Maybe<GitHub_Organization>;
-};
-
-/** Autogenerated input type of CreateEnvironment */
-export type GitHub_CreateEnvironmentInput = {
-  /** The node ID of the repository. */
-  repositoryId: Scalars['ID'];
-  /** The name of the environment. */
-  name: Scalars['String'];
-  /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
-};
-
-/** Autogenerated return type of CreateEnvironment */
-export type GitHub_CreateEnvironmentPayload = {
-  /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
-  /** The new or existing environment. */
-  environment?: Maybe<GitHub_Environment>;
-};
-
-/** Autogenerated input type of CreateIpAllowListEntry */
-export type GitHub_CreateIpAllowListEntryInput = {
-  /** The ID of the owner for which to create the new IP allow list entry. */
-  ownerId: Scalars['ID'];
-  /** An IP address or range of addresses in CIDR notation. */
-  allowListValue: Scalars['String'];
-  /** An optional name for the IP allow list entry. */
-  name?: Maybe<Scalars['String']>;
-  /** Whether the IP allow list entry is active when an IP allow list is enabled. */
-  isActive: Scalars['Boolean'];
-  /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
-};
-
-/** Autogenerated return type of CreateIpAllowListEntry */
-export type GitHub_CreateIpAllowListEntryPayload = {
-  /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
-  /** The IP allow list entry that was created. */
-  ipAllowListEntry?: Maybe<GitHub_IpAllowListEntry>;
-};
-
-/** Autogenerated input type of CreateIssue */
-export type GitHub_CreateIssueInput = {
-  /** The Node ID of the repository. */
-  repositoryId: Scalars['ID'];
-  /** The title for the issue. */
-  title: Scalars['String'];
-  /** The body for the issue description. */
-  body?: Maybe<Scalars['String']>;
-  /** The Node ID for the user assignee for this issue. */
-  assigneeIds?: Maybe<Array<Scalars['ID']>>;
-  /** The Node ID of the milestone for this issue. */
-  milestoneId?: Maybe<Scalars['ID']>;
-  /** An array of Node IDs of labels for this issue. */
-  labelIds?: Maybe<Array<Scalars['ID']>>;
-  /** An array of Node IDs for projects associated with this issue. */
-  projectIds?: Maybe<Array<Scalars['ID']>>;
-  /** The name of an issue template in the repository, assigns labels and assignees from the template to the issue */
-  issueTemplate?: Maybe<Scalars['String']>;
-  /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
-};
-
-/** Autogenerated return type of CreateIssue */
-export type GitHub_CreateIssuePayload = {
-  /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
-  /** The new issue. */
-  issue?: Maybe<GitHub_Issue>;
-};
-
-/** Autogenerated input type of CreateMigrationSource */
-export type GitHub_CreateMigrationSourceInput = {
-  /** The Octoshift migration source name. */
-  name: Scalars['String'];
-  /** The Octoshift migration source URL. */
-  url: Scalars['String'];
-  /** The Octoshift migration source access token. */
-  accessToken?: Maybe<Scalars['String']>;
-  /** The Octoshift migration source type. */
-  type: GitHub_MigrationSourceType;
-  /** The ID of the organization that will own the Octoshift migration source. */
-  ownerId: Scalars['ID'];
-  /** The GitHub personal access token of the user importing to the target repository. */
-  githubPat?: Maybe<Scalars['String']>;
-  /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
-};
-
-/** Autogenerated return type of CreateMigrationSource */
-export type GitHub_CreateMigrationSourcePayload = {
-  /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
-  /** The created Octoshift migration source. */
-  migrationSource?: Maybe<GitHub_MigrationSource>;
-};
-
-/** Autogenerated input type of CreateProject */
-export type GitHub_CreateProjectInput = {
-  /** The owner ID to create the project under. */
-  ownerId: Scalars['ID'];
-  /** The name of project. */
-  name: Scalars['String'];
-  /** The description of project. */
-  body?: Maybe<Scalars['String']>;
-  /** The name of the GitHub-provided template. */
-  template?: Maybe<GitHub_ProjectTemplate>;
-  /** A list of repository IDs to create as linked repositories for the project */
-  repositoryIds?: Maybe<Array<Scalars['ID']>>;
-  /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
-};
-
-/** Autogenerated return type of CreateProject */
-export type GitHub_CreateProjectPayload = {
-  /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
-  /** The new project. */
-  project?: Maybe<GitHub_Project>;
-};
-
-/** Autogenerated input type of CreatePullRequest */
-export type GitHub_CreatePullRequestInput = {
-  /** The Node ID of the repository. */
-  repositoryId: Scalars['ID'];
-  /**
-   * The name of the branch you want your changes pulled into. This should be an existing branch
-   * on the current repository. You cannot update the base branch on a pull request to point
-   * to another repository.
-   */
-  baseRefName: Scalars['String'];
-  /**
-   * The name of the branch where your changes are implemented. For cross-repository pull requests
-   * in the same network, namespace `head_ref_name` with a user like this: `username:branch`.
-   */
-  headRefName: Scalars['String'];
-  /** The title of the pull request. */
-  title: Scalars['String'];
-  /** The contents of the pull request. */
-  body?: Maybe<Scalars['String']>;
-  /** Indicates whether maintainers can modify the pull request. */
-  maintainerCanModify?: Maybe<Scalars['Boolean']>;
-  /** Indicates whether this pull request should be a draft. */
-  draft?: Maybe<Scalars['Boolean']>;
-  /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
-};
-
-/** Autogenerated return type of CreatePullRequest */
-export type GitHub_CreatePullRequestPayload = {
-  /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
-  /** The new pull request. */
-  pullRequest?: Maybe<GitHub_PullRequest>;
-};
-
-/** Autogenerated input type of CreateRef */
-export type GitHub_CreateRefInput = {
-  /** The Node ID of the Repository to create the Ref in. */
-  repositoryId: Scalars['ID'];
-  /** The fully qualified name of the new Ref (ie: `refs/heads/my_new_branch`). */
-  name: Scalars['String'];
-  /** The GitObjectID that the new Ref shall target. Must point to a commit. */
-  oid: Scalars['GitHub_GitObjectID'];
-  /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
-};
-
-/** Autogenerated return type of CreateRef */
-export type GitHub_CreateRefPayload = {
-  /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
-  /** The newly created ref. */
-  ref?: Maybe<GitHub_Ref>;
-};
-
-/** Autogenerated input type of CreateRepository */
-export type GitHub_CreateRepositoryInput = {
-  /** The name of the new repository. */
-  name: Scalars['String'];
-  /** The ID of the owner for the new repository. */
-  ownerId?: Maybe<Scalars['ID']>;
-  /** A short description of the new repository. */
-  description?: Maybe<Scalars['String']>;
-  /** Indicates the repository's visibility level. */
-  visibility: GitHub_RepositoryVisibility;
-  /**
-   * Whether this repository should be marked as a template such that anyone who
-   * can access it can create new repositories with the same files and directory structure.
-   */
-  template?: Maybe<Scalars['Boolean']>;
-  /** The URL for a web page about this repository. */
-  homepageUrl?: Maybe<Scalars['GitHub_URI']>;
-  /** Indicates if the repository should have the wiki feature enabled. */
-  hasWikiEnabled?: Maybe<Scalars['Boolean']>;
-  /** Indicates if the repository should have the issues feature enabled. */
-  hasIssuesEnabled?: Maybe<Scalars['Boolean']>;
-  /**
-   * When an organization is specified as the owner, this ID identifies the team
-   * that should be granted access to the new repository.
-   */
-  teamId?: Maybe<Scalars['ID']>;
-  /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
-};
-
-/** Autogenerated return type of CreateRepository */
-export type GitHub_CreateRepositoryPayload = {
-  /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
-  /** The new repository. */
-  repository?: Maybe<GitHub_Repository>;
-};
-
-/** Autogenerated input type of CreateSponsorship */
-export type GitHub_CreateSponsorshipInput = {
-  /**
-   * The ID of the user or organization who is acting as the sponsor, paying for
-   * the sponsorship. Required if sponsorLogin is not given.
-   */
-  sponsorId?: Maybe<Scalars['ID']>;
-  /**
-   * The username of the user or organization who is acting as the sponsor, paying
-   * for the sponsorship. Required if sponsorId is not given.
-   */
-  sponsorLogin?: Maybe<Scalars['String']>;
-  /** The ID of the user or organization who is receiving the sponsorship. Required if sponsorableLogin is not given. */
-  sponsorableId?: Maybe<Scalars['ID']>;
-  /** The username of the user or organization who is receiving the sponsorship. Required if sponsorableId is not given. */
-  sponsorableLogin?: Maybe<Scalars['String']>;
-  /** The ID of one of sponsorable's existing tiers to sponsor at. Required if amount is not specified. */
-  tierId?: Maybe<Scalars['ID']>;
-  /** The amount to pay to the sponsorable in US dollars. Required if a tierId is not specified. Valid values: 1-12000. */
-  amount?: Maybe<Scalars['Int']>;
-  /** Whether the sponsorship should happen monthly/yearly or just this one time. Required if a tierId is not specified. */
-  isRecurring?: Maybe<Scalars['Boolean']>;
-  /** Whether the sponsor should receive email updates from the sponsorable. */
-  receiveEmails?: Maybe<Scalars['Boolean']>;
-  /**
-   * Specify whether others should be able to see that the sponsor is sponsoring
-   * the sponsorable. Public visibility still does not reveal which tier is used.
-   */
-  privacyLevel?: Maybe<GitHub_SponsorshipPrivacy>;
-  /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
-};
-
-/** Autogenerated return type of CreateSponsorship */
-export type GitHub_CreateSponsorshipPayload = {
-  /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
-  /** The sponsorship that was started. */
-  sponsorship?: Maybe<GitHub_Sponsorship>;
-};
-
-/** Autogenerated input type of CreateSponsorsTier */
-export type GitHub_CreateSponsorsTierInput = {
-  /**
-   * The ID of the user or organization who owns the GitHub Sponsors profile.
-   * Defaults to the current user if omitted and sponsorableLogin is not given.
-   */
-  sponsorableId?: Maybe<Scalars['ID']>;
-  /**
-   * The username of the user or organization who owns the GitHub Sponsors profile.
-   * Defaults to the current user if omitted and sponsorableId is not given.
-   */
-  sponsorableLogin?: Maybe<Scalars['String']>;
-  /** The value of the new tier in US dollars. Valid values: 1-12000. */
-  amount: Scalars['Int'];
-  /** Whether sponsorships using this tier should happen monthly/yearly or just once. */
-  isRecurring?: Maybe<Scalars['Boolean']>;
-  /**
-   * Optional ID of the private repository that sponsors at this tier should gain
-   * read-only access to. Must be owned by an organization.
-   */
-  repositoryId?: Maybe<Scalars['ID']>;
-  /**
-   * Optional login of the organization owner of the private repository that
-   * sponsors at this tier should gain read-only access to. Necessary if
-   * repositoryName is given. Will be ignored if repositoryId is given.
-   */
-  repositoryOwnerLogin?: Maybe<Scalars['String']>;
-  /**
-   * Optional name of the private repository that sponsors at this tier should gain
-   * read-only access to. Must be owned by an organization. Necessary if
-   * repositoryOwnerLogin is given. Will be ignored if repositoryId is given.
-   */
-  repositoryName?: Maybe<Scalars['String']>;
-  /** Optional message new sponsors at this tier will receive. */
-  welcomeMessage?: Maybe<Scalars['String']>;
-  /** A description of what this tier is, what perks sponsors might receive, what a sponsorship at this tier means for you, etc. */
-  description: Scalars['String'];
-  /**
-   * Whether to make the tier available immediately for sponsors to choose.
-   * Defaults to creating a draft tier that will not be publicly visible.
-   */
-  publish?: Maybe<Scalars['Boolean']>;
-  /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
-};
-
-/** Autogenerated return type of CreateSponsorsTier */
-export type GitHub_CreateSponsorsTierPayload = {
-  /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
-  /** The new tier. */
-  sponsorsTier?: Maybe<GitHub_SponsorsTier>;
-};
-
-/** Autogenerated input type of CreateTeamDiscussionComment */
-export type GitHub_CreateTeamDiscussionCommentInput = {
-  /** The ID of the discussion to which the comment belongs. */
-  discussionId: Scalars['ID'];
-  /** The content of the comment. */
-  body: Scalars['String'];
-  /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
-};
-
-/** Autogenerated return type of CreateTeamDiscussionComment */
-export type GitHub_CreateTeamDiscussionCommentPayload = {
-  /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
-  /** The new comment. */
-  teamDiscussionComment?: Maybe<GitHub_TeamDiscussionComment>;
-};
-
-/** Autogenerated input type of CreateTeamDiscussion */
-export type GitHub_CreateTeamDiscussionInput = {
-  /** The ID of the team to which the discussion belongs. */
-  teamId: Scalars['ID'];
-  /** The title of the discussion. */
-  title: Scalars['String'];
-  /** The content of the discussion. */
-  body: Scalars['String'];
-  /**
-   * If true, restricts the visibility of this discussion to team members and
-   * organization admins. If false or not specified, allows any organization member
-   * to view this discussion.
-   */
-  private?: Maybe<Scalars['Boolean']>;
-  /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
-};
-
-/** Autogenerated return type of CreateTeamDiscussion */
-export type GitHub_CreateTeamDiscussionPayload = {
-  /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
-  /** The new discussion. */
-  teamDiscussion?: Maybe<GitHub_TeamDiscussion>;
-};
-
 /** Represents a mention made by one issue or pull request to another. */
 export type GitHub_CrossReferencedEvent = GitHub_UniformResourceLocatable & GitHub_Node & {
   /** Identifies the actor who performed the event. */
@@ -4424,47 +4140,6 @@ export type GitHub_CrossReferencedEvent = GitHub_UniformResourceLocatable & GitH
   willCloseTarget: Scalars['Boolean'];
 };
 
-/** The Common Vulnerability Scoring System */
-export type GitHub_Cvss = {
-  /** The CVSS score associated with this advisory */
-  score: Scalars['Float'];
-  /** The CVSS vector string associated with this advisory */
-  vectorString?: Maybe<Scalars['String']>;
-};
-
-/** A common weakness enumeration */
-export type GitHub_Cwe = GitHub_Node & {
-  /** The id of the CWE */
-  cweId: Scalars['String'];
-  /** A detailed description of this CWE */
-  description: Scalars['String'];
-  id: Scalars['ID'];
-  /** The name of this CWE */
-  name: Scalars['String'];
-};
-
-/** The connection type for CWE. */
-export type GitHub_CweConnection = {
-  /** A list of edges. */
-  edges?: Maybe<Array<Maybe<GitHub_CweEdge>>>;
-  /** A list of nodes. */
-  nodes?: Maybe<Array<Maybe<GitHub_Cwe>>>;
-  /** Information to aid in pagination. */
-  pageInfo: GitHub_PageInfo;
-  /** Identifies the total count of items in the connection. */
-  totalCount: Scalars['Int'];
-};
-
-/** An edge in a connection. */
-export type GitHub_CweEdge = {
-  /** A cursor for use in pagination. */
-  cursor: Scalars['String'];
-  /** The item at the end of the edge. */
-  node?: Maybe<GitHub_Cwe>;
-};
-
-
-
 /** Autogenerated input type of DeclineTopicSuggestion */
 export type GitHub_DeclineTopicSuggestionInput = {
   /** The Node ID of the repository. */
@@ -4474,7 +4149,7 @@ export type GitHub_DeclineTopicSuggestionInput = {
   /** The reason why the suggested topic is declined. */
   reason: GitHub_TopicSuggestionDeclineReason;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of DeclineTopicSuggestion */
@@ -4486,7 +4161,7 @@ export type GitHub_DeclineTopicSuggestionPayload = {
 };
 
 /** The possible base permissions for repositories. */
-export type GitHub_DefaultRepositoryPermissionField = 
+export type GitHub_DefaultRepositoryPermissionField =
   /** No access */
   | 'NONE'
   /** Can read repos by default */
@@ -4507,7 +4182,7 @@ export type GitHub_DeleteBranchProtectionRuleInput = {
   /** The global relay id of the branch protection rule to be deleted. */
   branchProtectionRuleId: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of DeleteBranchProtectionRule */
@@ -4521,7 +4196,7 @@ export type GitHub_DeleteDeploymentInput = {
   /** The Node ID of the deployment to be deleted. */
   id: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of DeleteDeployment */
@@ -4535,7 +4210,7 @@ export type GitHub_DeleteDiscussionCommentInput = {
   /** The Node id of the discussion comment to delete. */
   id: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of DeleteDiscussionComment */
@@ -4551,7 +4226,7 @@ export type GitHub_DeleteDiscussionInput = {
   /** The id of the discussion to delete. */
   id: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of DeleteDiscussion */
@@ -4567,7 +4242,7 @@ export type GitHub_DeleteEnvironmentInput = {
   /** The Node ID of the environment to be deleted. */
   id: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of DeleteEnvironment */
@@ -4581,7 +4256,7 @@ export type GitHub_DeleteIpAllowListEntryInput = {
   /** The ID of the IP allow list entry to delete. */
   ipAllowListEntryId: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of DeleteIpAllowListEntry */
@@ -4597,7 +4272,7 @@ export type GitHub_DeleteIssueCommentInput = {
   /** The ID of the comment to delete. */
   id: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of DeleteIssueComment */
@@ -4611,7 +4286,7 @@ export type GitHub_DeleteIssueInput = {
   /** The ID of the issue to delete. */
   issueId: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of DeleteIssue */
@@ -4627,7 +4302,7 @@ export type GitHub_DeleteProjectCardInput = {
   /** The id of the card to delete. */
   cardId: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of DeleteProjectCard */
@@ -4645,7 +4320,7 @@ export type GitHub_DeleteProjectColumnInput = {
   /** The id of the column to delete. */
   columnId: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of DeleteProjectColumn */
@@ -4663,7 +4338,7 @@ export type GitHub_DeleteProjectInput = {
   /** The Project ID to update. */
   projectId: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated input type of DeleteProjectNextItem */
@@ -4673,7 +4348,7 @@ export type GitHub_DeleteProjectNextItemInput = {
   /** The ID of the item to be removed. */
   itemId: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of DeleteProjectNextItem */
@@ -4697,7 +4372,7 @@ export type GitHub_DeletePullRequestReviewCommentInput = {
   /** The ID of the comment to delete. */
   id: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of DeletePullRequestReviewComment */
@@ -4713,7 +4388,7 @@ export type GitHub_DeletePullRequestReviewInput = {
   /** The Node ID of the pull request review to delete. */
   pullRequestReviewId: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of DeletePullRequestReview */
@@ -4729,7 +4404,7 @@ export type GitHub_DeleteRefInput = {
   /** The Node ID of the Ref to be deleted. */
   refId: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of DeleteRef */
@@ -4743,7 +4418,7 @@ export type GitHub_DeleteTeamDiscussionCommentInput = {
   /** The ID of the comment to delete. */
   id: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of DeleteTeamDiscussionComment */
@@ -4757,7 +4432,7 @@ export type GitHub_DeleteTeamDiscussionInput = {
   /** The discussion ID to delete. */
   id: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of DeleteTeamDiscussion */
@@ -4771,7 +4446,7 @@ export type GitHub_DeleteVerifiableDomainInput = {
   /** The ID of the verifiable domain to delete. */
   id: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of DeleteVerifiableDomain */
@@ -4816,7 +4491,7 @@ export type GitHub_DependabotUpdateError = {
 };
 
 /** The possible ecosystems of a dependency graph package. */
-export type GitHub_DependencyGraphEcosystem = 
+export type GitHub_DependencyGraphEcosystem =
   /** Ruby gems hosted at RubyGems.org */
   | 'RUBYGEMS'
   /** JavaScript packages hosted at npmjs.com */
@@ -4833,23 +4508,6 @@ export type GitHub_DependencyGraphEcosystem =
   | 'GO'
   /** GitHub Actions */
   | 'ACTIONS';
-
-/** Represents a 'deployed' event on a given pull request. */
-export type GitHub_DeployedEvent = GitHub_Node & {
-  /** Identifies the actor who performed the event. */
-  actor?: Maybe<GitHub_Actor>;
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['GitHub_DateTime'];
-  /** Identifies the primary key from the database. */
-  databaseId?: Maybe<Scalars['Int']>;
-  /** The deployment associated with the 'deployed' event. */
-  deployment: GitHub_Deployment;
-  id: Scalars['ID'];
-  /** PullRequest referenced by event. */
-  pullRequest: GitHub_PullRequest;
-  /** The ref associated with the 'deployed' event. */
-  ref?: Maybe<GitHub_Ref>;
-};
 
 /** A repository deploy key. */
 export type GitHub_DeployKey = GitHub_Node & {
@@ -4884,6 +4542,23 @@ export type GitHub_DeployKeyEdge = {
   cursor: Scalars['String'];
   /** The item at the end of the edge. */
   node?: Maybe<GitHub_DeployKey>;
+};
+
+/** Represents a 'deployed' event on a given pull request. */
+export type GitHub_DeployedEvent = GitHub_Node & {
+  /** Identifies the actor who performed the event. */
+  actor?: Maybe<GitHub_Actor>;
+  /** Identifies the date and time when the object was created. */
+  createdAt: Scalars['GitHub_DateTime'];
+  /** Identifies the primary key from the database. */
+  databaseId?: Maybe<Scalars['Int']>;
+  /** The deployment associated with the 'deployed' event. */
+  deployment: GitHub_Deployment;
+  id: Scalars['ID'];
+  /** PullRequest referenced by event. */
+  pullRequest: GitHub_PullRequest;
+  /** The ref associated with the 'deployed' event. */
+  ref?: Maybe<GitHub_Ref>;
 };
 
 /** Represents triggered deployment instance. */
@@ -4928,10 +4603,10 @@ export type GitHub_Deployment = GitHub_Node & {
 
 /** Represents triggered deployment instance. */
 export type GitHub_DeploymentStatusesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** The connection type for Deployment. */
@@ -4976,7 +4651,7 @@ export type GitHub_DeploymentOrder = {
 };
 
 /** Properties by which deployment connections can be ordered. */
-export type GitHub_DeploymentOrderField = 
+export type GitHub_DeploymentOrderField =
   /** Order collection by creation time */
   | 'CREATED_AT';
 
@@ -4995,10 +4670,10 @@ export type GitHub_DeploymentProtectionRule = {
 
 /** A protection rule. */
 export type GitHub_DeploymentProtectionRuleReviewersArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** The connection type for DeploymentProtectionRule. */
@@ -5022,7 +4697,7 @@ export type GitHub_DeploymentProtectionRuleEdge = {
 };
 
 /** The possible protection rule types. */
-export type GitHub_DeploymentProtectionRuleType = 
+export type GitHub_DeploymentProtectionRuleType =
   /** Required reviewers */
   | 'REQUIRED_REVIEWERS'
   /** Wait timer */
@@ -5045,10 +4720,10 @@ export type GitHub_DeploymentRequest = {
 
 /** A request to deploy a workflow run to an environment. */
 export type GitHub_DeploymentRequestReviewersArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** The connection type for DeploymentRequest. */
@@ -5089,10 +4764,10 @@ export type GitHub_DeploymentReview = GitHub_Node & {
 
 /** A deployment review. */
 export type GitHub_DeploymentReviewEnvironmentsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** The connection type for DeploymentReview. */
@@ -5114,6 +4789,13 @@ export type GitHub_DeploymentReviewEdge = {
   /** The item at the end of the edge. */
   node?: Maybe<GitHub_DeploymentReview>;
 };
+
+/** The possible states for a deployment review. */
+export type GitHub_DeploymentReviewState =
+  /** The deployment was approved. */
+  | 'APPROVED'
+  /** The deployment was rejected. */
+  | 'REJECTED';
 
 /** Users and teams. */
 export type GitHub_DeploymentReviewer = GitHub_Team | GitHub_User;
@@ -5138,15 +4820,8 @@ export type GitHub_DeploymentReviewerEdge = {
   node?: Maybe<GitHub_DeploymentReviewer>;
 };
 
-/** The possible states for a deployment review. */
-export type GitHub_DeploymentReviewState = 
-  /** The deployment was approved. */
-  | 'APPROVED'
-  /** The deployment was rejected. */
-  | 'REJECTED';
-
 /** The possible states in which a deployment can be. */
-export type GitHub_DeploymentState = 
+export type GitHub_DeploymentState =
   /** The pending deployment was not updated after 30 minutes. */
   | 'ABANDONED'
   /** The deployment is currently active. */
@@ -5210,7 +4885,7 @@ export type GitHub_DeploymentStatusEdge = {
 };
 
 /** The possible states for a deployment status. */
-export type GitHub_DeploymentStatusState = 
+export type GitHub_DeploymentStatusState =
   /** The deployment is pending. */
   | 'PENDING'
   /** The deployment was successful. */
@@ -5229,7 +4904,7 @@ export type GitHub_DeploymentStatusState =
   | 'WAITING';
 
 /** The possible sides of a diff. */
-export type GitHub_DiffSide = 
+export type GitHub_DiffSide =
   /** The left side of the diff. */
   | 'LEFT'
   /** The right side of the diff. */
@@ -5240,7 +4915,7 @@ export type GitHub_DisablePullRequestAutoMergeInput = {
   /** ID of the pull request to disable auto merge on. */
   pullRequestId: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of DisablePullRequestAutoMerge */
@@ -5352,40 +5027,40 @@ export type GitHub_Discussion = GitHub_Comment & GitHub_Updatable & GitHub_Delet
 
 /** A discussion in a repository. */
 export type GitHub_DiscussionCommentsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A discussion in a repository. */
 export type GitHub_DiscussionLabelsArgs = {
-  orderBy?: Maybe<GitHub_LabelOrder>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_LabelOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A discussion in a repository. */
 export type GitHub_DiscussionReactionsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  content?: Maybe<GitHub_ReactionContent>;
-  orderBy?: Maybe<GitHub_ReactionOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  content?: InputMaybe<GitHub_ReactionContent>;
+  orderBy?: InputMaybe<GitHub_ReactionOrder>;
 };
 
 
 /** A discussion in a repository. */
 export type GitHub_DiscussionUserContentEditsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** A category for discussions in a repository. */
@@ -5509,30 +5184,30 @@ export type GitHub_DiscussionComment = GitHub_Comment & GitHub_Deletable & GitHu
 
 /** A comment on a discussion. */
 export type GitHub_DiscussionCommentReactionsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  content?: Maybe<GitHub_ReactionContent>;
-  orderBy?: Maybe<GitHub_ReactionOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  content?: InputMaybe<GitHub_ReactionContent>;
+  orderBy?: InputMaybe<GitHub_ReactionOrder>;
 };
 
 
 /** A comment on a discussion. */
 export type GitHub_DiscussionCommentRepliesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A comment on a discussion. */
 export type GitHub_DiscussionCommentUserContentEditsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** The connection type for DiscussionComment. */
@@ -5584,7 +5259,7 @@ export type GitHub_DiscussionOrder = {
 };
 
 /** Properties by which discussion connections can be ordered. */
-export type GitHub_DiscussionOrderField = 
+export type GitHub_DiscussionOrderField =
   /** Order discussions by creation time. */
   | 'CREATED_AT'
   /** Order discussions by most recent modification time. */
@@ -5597,7 +5272,7 @@ export type GitHub_DismissPullRequestReviewInput = {
   /** The contents of the pull request review dismissal message. */
   message: Scalars['String'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of DismissPullRequestReview */
@@ -5609,7 +5284,7 @@ export type GitHub_DismissPullRequestReviewPayload = {
 };
 
 /** The possible reasons that a Dependabot alert was dismissed. */
-export type GitHub_DismissReason = 
+export type GitHub_DismissReason =
   /** A fix has already been started */
   | 'FIX_STARTED'
   /** No bandwidth to fix this */
@@ -5628,7 +5303,7 @@ export type GitHub_DismissRepositoryVulnerabilityAlertInput = {
   /** The reason the Dependabot alert is being dismissed. */
   dismissReason: GitHub_DismissReason;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of DismissRepositoryVulnerabilityAlert */
@@ -5654,9 +5329,9 @@ export type GitHub_DraftIssue = GitHub_Node & {
   /** The actor who created this draft issue. */
   creator?: Maybe<GitHub_Actor>;
   id: Scalars['ID'];
-  /** The project that contains this draft issue. */
+  /** The project (beta) that contains this draft issue. */
   project: GitHub_ProjectNext;
-  /** The project item that wraps this draft issue. */
+  /** The project (beta) item that wraps this draft issue. */
   projectItem: GitHub_ProjectNextItem;
   /** The title of the draft issue */
   title: Scalars['String'];
@@ -5667,10 +5342,10 @@ export type GitHub_DraftIssue = GitHub_Node & {
 
 /** A draft issue within a project. */
 export type GitHub_DraftIssueAssigneesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** Specifies a review comment to be left with a Pull Request Review. */
@@ -5690,11 +5365,11 @@ export type GitHub_DraftPullRequestReviewThread = {
   /** The line of the blob to which the thread refers. The end of the line range for multi-line comments. */
   line: Scalars['Int'];
   /** The side of the diff on which the line resides. For multi-line comments, this is the side for the end of the line range. */
-  side?: Maybe<GitHub_DiffSide>;
+  side?: InputMaybe<GitHub_DiffSide>;
   /** The first line of the range to which the comment refers. */
-  startLine?: Maybe<Scalars['Int']>;
+  startLine?: InputMaybe<Scalars['Int']>;
   /** The side of the diff on which the start line resides. */
-  startSide?: Maybe<GitHub_DiffSide>;
+  startSide?: InputMaybe<GitHub_DiffSide>;
   /** Body of the comment to leave. */
   body: Scalars['String'];
 };
@@ -5704,15 +5379,15 @@ export type GitHub_EnablePullRequestAutoMergeInput = {
   /** ID of the pull request to enable auto-merge on. */
   pullRequestId: Scalars['ID'];
   /** Commit headline to use for the commit when the PR is mergable; if omitted, a default message will be used. */
-  commitHeadline?: Maybe<Scalars['String']>;
+  commitHeadline?: InputMaybe<Scalars['String']>;
   /** Commit body to use for the commit when the PR is mergable; if omitted, a default message will be used. */
-  commitBody?: Maybe<Scalars['String']>;
+  commitBody?: InputMaybe<Scalars['String']>;
   /** The merge method to use. If omitted, defaults to 'MERGE' */
-  mergeMethod?: Maybe<GitHub_PullRequestMergeMethod>;
+  mergeMethod?: InputMaybe<GitHub_PullRequestMergeMethod>;
   /** The email address to associate with this merge. */
-  authorEmail?: Maybe<Scalars['String']>;
+  authorEmail?: InputMaybe<Scalars['String']>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of EnablePullRequestAutoMerge */
@@ -5770,42 +5445,42 @@ export type GitHub_Enterprise = GitHub_Node & {
 
 /** An account to manage multiple organizations with consolidated policy and billing. */
 export type GitHub_EnterpriseAvatarUrlArgs = {
-  size?: Maybe<Scalars['Int']>;
+  size?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** An account to manage multiple organizations with consolidated policy and billing. */
 export type GitHub_EnterpriseMembersArgs = {
-  organizationLogins?: Maybe<Array<Scalars['String']>>;
-  query?: Maybe<Scalars['String']>;
-  orderBy?: Maybe<GitHub_EnterpriseMemberOrder>;
-  role?: Maybe<GitHub_EnterpriseUserAccountMembershipRole>;
-  deployment?: Maybe<GitHub_EnterpriseUserDeployment>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  organizationLogins?: InputMaybe<Array<Scalars['String']>>;
+  query?: InputMaybe<Scalars['String']>;
+  orderBy?: InputMaybe<GitHub_EnterpriseMemberOrder>;
+  role?: InputMaybe<GitHub_EnterpriseUserAccountMembershipRole>;
+  deployment?: InputMaybe<GitHub_EnterpriseUserDeployment>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** An account to manage multiple organizations with consolidated policy and billing. */
 export type GitHub_EnterpriseOrganizationsArgs = {
-  query?: Maybe<Scalars['String']>;
-  viewerOrganizationRole?: Maybe<GitHub_RoleInOrganization>;
-  orderBy?: Maybe<GitHub_OrganizationOrder>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  query?: InputMaybe<Scalars['String']>;
+  viewerOrganizationRole?: InputMaybe<GitHub_RoleInOrganization>;
+  orderBy?: InputMaybe<GitHub_OrganizationOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** An account to manage multiple organizations with consolidated policy and billing. */
 export type GitHub_EnterpriseUserAccountsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** The connection type for User. */
@@ -5876,12 +5551,12 @@ export type GitHub_EnterpriseAdministratorInvitationOrder = {
 };
 
 /** Properties by which enterprise administrator invitation connections can be ordered. */
-export type GitHub_EnterpriseAdministratorInvitationOrderField = 
+export type GitHub_EnterpriseAdministratorInvitationOrderField =
   /** Order enterprise administrator member invitations by creation time */
   | 'CREATED_AT';
 
 /** The possible administrator roles in an enterprise account. */
-export type GitHub_EnterpriseAdministratorRole = 
+export type GitHub_EnterpriseAdministratorRole =
   /** Represents an owner of the enterprise account. */
   | 'OWNER'
   /** Represents a billing manager of the enterprise account. */
@@ -5903,22 +5578,12 @@ export type GitHub_EnterpriseBillingInfo = {
   allLicensableUsersCount: Scalars['Int'];
   /** The number of data packs used by all organizations owned by the enterprise. */
   assetPacks: Scalars['Int'];
-  /**
-   * The number of available seats across all owned organizations based on the unique number of billable users.
-   * @deprecated `availableSeats` will be replaced with `totalAvailableLicenses` to provide more clarity on the value being returned Use EnterpriseBillingInfo.totalAvailableLicenses instead. Removal on 2020-01-01 UTC.
-   */
-  availableSeats: Scalars['Int'];
   /** The bandwidth quota in GB for all organizations owned by the enterprise. */
   bandwidthQuota: Scalars['Float'];
   /** The bandwidth usage in GB for all organizations owned by the enterprise. */
   bandwidthUsage: Scalars['Float'];
   /** The bandwidth usage as a percentage of the bandwidth quota. */
   bandwidthUsagePercentage: Scalars['Int'];
-  /**
-   * The total seats across all organizations owned by the enterprise.
-   * @deprecated `seats` will be replaced with `totalLicenses` to provide more clarity on the value being returned Use EnterpriseBillingInfo.totalLicenses instead. Removal on 2020-01-01 UTC.
-   */
-  seats: Scalars['Int'];
   /** The storage quota in GB for all organizations owned by the enterprise. */
   storageQuota: Scalars['Float'];
   /** The storage usage in GB for all organizations owned by the enterprise. */
@@ -5932,7 +5597,7 @@ export type GitHub_EnterpriseBillingInfo = {
 };
 
 /** The possible values for the enterprise base repository permission setting. */
-export type GitHub_EnterpriseDefaultRepositoryPermissionSettingValue = 
+export type GitHub_EnterpriseDefaultRepositoryPermissionSettingValue =
   /** Organizations in the enterprise choose base repository permissions for their members. */
   | 'NO_POLICY'
   /** Organization members will be able to clone, pull, push, and add new collaborators to all organization repositories. */
@@ -5945,7 +5610,7 @@ export type GitHub_EnterpriseDefaultRepositoryPermissionSettingValue =
   | 'NONE';
 
 /** The possible values for an enabled/disabled enterprise setting. */
-export type GitHub_EnterpriseEnabledDisabledSettingValue = 
+export type GitHub_EnterpriseEnabledDisabledSettingValue =
   /** The setting is enabled for organizations in the enterprise. */
   | 'ENABLED'
   /** The setting is disabled for organizations in the enterprise. */
@@ -5954,7 +5619,7 @@ export type GitHub_EnterpriseEnabledDisabledSettingValue =
   | 'NO_POLICY';
 
 /** The possible values for an enabled/no policy enterprise setting. */
-export type GitHub_EnterpriseEnabledSettingValue = 
+export type GitHub_EnterpriseEnabledSettingValue =
   /** The setting is enabled for organizations in the enterprise. */
   | 'ENABLED'
   /** There is no policy set for organizations in the enterprise. */
@@ -5984,13 +5649,13 @@ export type GitHub_EnterpriseIdentityProvider = GitHub_Node & {
 
 /** An identity provider configured to provision identities for an enterprise. */
 export type GitHub_EnterpriseIdentityProviderExternalIdentitiesArgs = {
-  membersOnly?: Maybe<Scalars['Boolean']>;
-  login?: Maybe<Scalars['String']>;
-  userName?: Maybe<Scalars['String']>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  membersOnly?: InputMaybe<Scalars['Boolean']>;
+  login?: InputMaybe<Scalars['String']>;
+  userName?: InputMaybe<Scalars['String']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** An object that is a member of an enterprise. */
@@ -6012,11 +5677,6 @@ export type GitHub_EnterpriseMemberConnection = {
 export type GitHub_EnterpriseMemberEdge = {
   /** A cursor for use in pagination. */
   cursor: Scalars['String'];
-  /**
-   * Whether the user does not have a license for the enterprise.
-   * @deprecated All members consume a license Removal on 2021-01-01 UTC.
-   */
-  isUnlicensed: Scalars['Boolean'];
   /** The item at the end of the edge. */
   node?: Maybe<GitHub_EnterpriseMember>;
 };
@@ -6030,14 +5690,14 @@ export type GitHub_EnterpriseMemberOrder = {
 };
 
 /** Properties by which enterprise member connections can be ordered. */
-export type GitHub_EnterpriseMemberOrderField = 
+export type GitHub_EnterpriseMemberOrderField =
   /** Order enterprise members by login */
   | 'LOGIN'
   /** Order enterprise members by creation time */
   | 'CREATED_AT';
 
 /** The possible values for the enterprise members can create repositories setting. */
-export type GitHub_EnterpriseMembersCanCreateRepositoriesSettingValue = 
+export type GitHub_EnterpriseMembersCanCreateRepositoriesSettingValue =
   /** Organization administrators choose whether to allow members to create repositories. */
   | 'NO_POLICY'
   /** Members will be able to create public and private repositories. */
@@ -6050,7 +5710,7 @@ export type GitHub_EnterpriseMembersCanCreateRepositoriesSettingValue =
   | 'DISABLED';
 
 /** The possible values for the members can make purchases setting. */
-export type GitHub_EnterpriseMembersCanMakePurchasesSettingValue = 
+export type GitHub_EnterpriseMembersCanMakePurchasesSettingValue =
   /** The setting is enabled for organizations in the enterprise. */
   | 'ENABLED'
   /** The setting is disabled for organizations in the enterprise. */
@@ -6094,11 +5754,6 @@ export type GitHub_EnterpriseOutsideCollaboratorConnection = {
 export type GitHub_EnterpriseOutsideCollaboratorEdge = {
   /** A cursor for use in pagination. */
   cursor: Scalars['String'];
-  /**
-   * Whether the outside collaborator does not have a license for the enterprise.
-   * @deprecated All outside collaborators consume a license Removal on 2021-01-01 UTC.
-   */
-  isUnlicensed: Scalars['Boolean'];
   /** The item at the end of the edge. */
   node?: Maybe<GitHub_User>;
   /** The enterprise organization repositories this user is a member of. */
@@ -6108,11 +5763,11 @@ export type GitHub_EnterpriseOutsideCollaboratorEdge = {
 
 /** A User who is an outside collaborator of an enterprise through one or more organizations. */
 export type GitHub_EnterpriseOutsideCollaboratorEdgeRepositoriesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  orderBy?: Maybe<GitHub_RepositoryOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_RepositoryOrder>;
 };
 
 /** Enterprise information only visible to enterprise owners. */
@@ -6145,10 +5800,7 @@ export type GitHub_EnterpriseOwnerInfo = {
   isUpdatingDefaultRepositoryPermission: Scalars['Boolean'];
   /** Whether the two-factor authentication requirement is currently being enforced. */
   isUpdatingTwoFactorRequirement: Scalars['Boolean'];
-  /**
-   * The setting value for whether organization members with admin permissions on a
-   * repository can change repository visibility.
-   */
+  /** The setting value for whether organization members with admin permissions on a repository can change repository visibility. */
   membersCanChangeRepositoryVisibilitySetting: GitHub_EnterpriseEnabledDisabledSettingValue;
   /** A list of enterprise organizations configured with the provided can change repository visibility setting value. */
   membersCanChangeRepositoryVisibilitySettingOrganizations: GitHub_OrganizationConnection;
@@ -6204,10 +5856,7 @@ export type GitHub_EnterpriseOwnerInfo = {
   repositoryProjectsSetting: GitHub_EnterpriseEnabledDisabledSettingValue;
   /** A list of enterprise organizations configured with the provided repository projects setting value. */
   repositoryProjectsSettingOrganizations: GitHub_OrganizationConnection;
-  /**
-   * The SAML Identity Provider for the enterprise. When used by a GitHub App,
-   * requires an installation token with read and write access to members.
-   */
+  /** The SAML Identity Provider for the enterprise. When used by a GitHub App, requires an installation token with read and write access to members. */
   samlIdentityProvider?: Maybe<GitHub_EnterpriseIdentityProvider>;
   /** A list of enterprise organizations configured with the SAML single sign-on setting value. */
   samlIdentityProviderSettingOrganizations: GitHub_OrganizationConnection;
@@ -6226,265 +5875,269 @@ export type GitHub_EnterpriseOwnerInfo = {
 
 /** Enterprise information only visible to enterprise owners. */
 export type GitHub_EnterpriseOwnerInfoAdminsArgs = {
-  query?: Maybe<Scalars['String']>;
-  role?: Maybe<GitHub_EnterpriseAdministratorRole>;
-  orderBy?: Maybe<GitHub_EnterpriseMemberOrder>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  organizationLogins?: InputMaybe<Array<Scalars['String']>>;
+  query?: InputMaybe<Scalars['String']>;
+  role?: InputMaybe<GitHub_EnterpriseAdministratorRole>;
+  orderBy?: InputMaybe<GitHub_EnterpriseMemberOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** Enterprise information only visible to enterprise owners. */
 export type GitHub_EnterpriseOwnerInfoAffiliatedUsersWithTwoFactorDisabledArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** Enterprise information only visible to enterprise owners. */
 export type GitHub_EnterpriseOwnerInfoAllowPrivateRepositoryForkingSettingOrganizationsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
   value: Scalars['Boolean'];
-  orderBy?: Maybe<GitHub_OrganizationOrder>;
+  orderBy?: InputMaybe<GitHub_OrganizationOrder>;
 };
 
 
 /** Enterprise information only visible to enterprise owners. */
 export type GitHub_EnterpriseOwnerInfoDefaultRepositoryPermissionSettingOrganizationsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
   value: GitHub_DefaultRepositoryPermissionField;
-  orderBy?: Maybe<GitHub_OrganizationOrder>;
+  orderBy?: InputMaybe<GitHub_OrganizationOrder>;
 };
 
 
 /** Enterprise information only visible to enterprise owners. */
 export type GitHub_EnterpriseOwnerInfoDomainsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  isVerified?: Maybe<Scalars['Boolean']>;
-  isApproved?: Maybe<Scalars['Boolean']>;
-  orderBy?: Maybe<GitHub_VerifiableDomainOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  isVerified?: InputMaybe<Scalars['Boolean']>;
+  isApproved?: InputMaybe<Scalars['Boolean']>;
+  orderBy?: InputMaybe<GitHub_VerifiableDomainOrder>;
 };
 
 
 /** Enterprise information only visible to enterprise owners. */
 export type GitHub_EnterpriseOwnerInfoEnterpriseServerInstallationsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  connectedOnly?: Maybe<Scalars['Boolean']>;
-  orderBy?: Maybe<GitHub_EnterpriseServerInstallationOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  connectedOnly?: InputMaybe<Scalars['Boolean']>;
+  orderBy?: InputMaybe<GitHub_EnterpriseServerInstallationOrder>;
 };
 
 
 /** Enterprise information only visible to enterprise owners. */
 export type GitHub_EnterpriseOwnerInfoIpAllowListEntriesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  orderBy?: Maybe<GitHub_IpAllowListEntryOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_IpAllowListEntryOrder>;
 };
 
 
 /** Enterprise information only visible to enterprise owners. */
 export type GitHub_EnterpriseOwnerInfoMembersCanChangeRepositoryVisibilitySettingOrganizationsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
   value: Scalars['Boolean'];
-  orderBy?: Maybe<GitHub_OrganizationOrder>;
+  orderBy?: InputMaybe<GitHub_OrganizationOrder>;
 };
 
 
 /** Enterprise information only visible to enterprise owners. */
 export type GitHub_EnterpriseOwnerInfoMembersCanCreateRepositoriesSettingOrganizationsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
   value: GitHub_OrganizationMembersCanCreateRepositoriesSettingValue;
-  orderBy?: Maybe<GitHub_OrganizationOrder>;
+  orderBy?: InputMaybe<GitHub_OrganizationOrder>;
 };
 
 
 /** Enterprise information only visible to enterprise owners. */
 export type GitHub_EnterpriseOwnerInfoMembersCanDeleteIssuesSettingOrganizationsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
   value: Scalars['Boolean'];
-  orderBy?: Maybe<GitHub_OrganizationOrder>;
+  orderBy?: InputMaybe<GitHub_OrganizationOrder>;
 };
 
 
 /** Enterprise information only visible to enterprise owners. */
 export type GitHub_EnterpriseOwnerInfoMembersCanDeleteRepositoriesSettingOrganizationsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
   value: Scalars['Boolean'];
-  orderBy?: Maybe<GitHub_OrganizationOrder>;
+  orderBy?: InputMaybe<GitHub_OrganizationOrder>;
 };
 
 
 /** Enterprise information only visible to enterprise owners. */
 export type GitHub_EnterpriseOwnerInfoMembersCanInviteCollaboratorsSettingOrganizationsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
   value: Scalars['Boolean'];
-  orderBy?: Maybe<GitHub_OrganizationOrder>;
+  orderBy?: InputMaybe<GitHub_OrganizationOrder>;
 };
 
 
 /** Enterprise information only visible to enterprise owners. */
 export type GitHub_EnterpriseOwnerInfoMembersCanUpdateProtectedBranchesSettingOrganizationsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
   value: Scalars['Boolean'];
-  orderBy?: Maybe<GitHub_OrganizationOrder>;
+  orderBy?: InputMaybe<GitHub_OrganizationOrder>;
 };
 
 
 /** Enterprise information only visible to enterprise owners. */
 export type GitHub_EnterpriseOwnerInfoMembersCanViewDependencyInsightsSettingOrganizationsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
   value: Scalars['Boolean'];
-  orderBy?: Maybe<GitHub_OrganizationOrder>;
+  orderBy?: InputMaybe<GitHub_OrganizationOrder>;
 };
 
 
 /** Enterprise information only visible to enterprise owners. */
 export type GitHub_EnterpriseOwnerInfoOrganizationProjectsSettingOrganizationsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
   value: Scalars['Boolean'];
-  orderBy?: Maybe<GitHub_OrganizationOrder>;
+  orderBy?: InputMaybe<GitHub_OrganizationOrder>;
 };
 
 
 /** Enterprise information only visible to enterprise owners. */
 export type GitHub_EnterpriseOwnerInfoOutsideCollaboratorsArgs = {
-  login?: Maybe<Scalars['String']>;
-  query?: Maybe<Scalars['String']>;
-  orderBy?: Maybe<GitHub_EnterpriseMemberOrder>;
-  visibility?: Maybe<GitHub_RepositoryVisibility>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  login?: InputMaybe<Scalars['String']>;
+  query?: InputMaybe<Scalars['String']>;
+  orderBy?: InputMaybe<GitHub_EnterpriseMemberOrder>;
+  visibility?: InputMaybe<GitHub_RepositoryVisibility>;
+  hasTwoFactorEnabled?: InputMaybe<Scalars['Boolean']>;
+  organizationLogins?: InputMaybe<Array<Scalars['String']>>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** Enterprise information only visible to enterprise owners. */
 export type GitHub_EnterpriseOwnerInfoPendingAdminInvitationsArgs = {
-  query?: Maybe<Scalars['String']>;
-  orderBy?: Maybe<GitHub_EnterpriseAdministratorInvitationOrder>;
-  role?: Maybe<GitHub_EnterpriseAdministratorRole>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  query?: InputMaybe<Scalars['String']>;
+  orderBy?: InputMaybe<GitHub_EnterpriseAdministratorInvitationOrder>;
+  role?: InputMaybe<GitHub_EnterpriseAdministratorRole>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** Enterprise information only visible to enterprise owners. */
 export type GitHub_EnterpriseOwnerInfoPendingCollaboratorInvitationsArgs = {
-  query?: Maybe<Scalars['String']>;
-  orderBy?: Maybe<GitHub_RepositoryInvitationOrder>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  query?: InputMaybe<Scalars['String']>;
+  orderBy?: InputMaybe<GitHub_RepositoryInvitationOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** Enterprise information only visible to enterprise owners. */
 export type GitHub_EnterpriseOwnerInfoPendingMemberInvitationsArgs = {
-  query?: Maybe<Scalars['String']>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  query?: InputMaybe<Scalars['String']>;
+  organizationLogins?: InputMaybe<Array<Scalars['String']>>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** Enterprise information only visible to enterprise owners. */
 export type GitHub_EnterpriseOwnerInfoRepositoryProjectsSettingOrganizationsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
   value: Scalars['Boolean'];
-  orderBy?: Maybe<GitHub_OrganizationOrder>;
+  orderBy?: InputMaybe<GitHub_OrganizationOrder>;
 };
 
 
 /** Enterprise information only visible to enterprise owners. */
 export type GitHub_EnterpriseOwnerInfoSamlIdentityProviderSettingOrganizationsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
   value: GitHub_IdentityProviderConfigurationState;
-  orderBy?: Maybe<GitHub_OrganizationOrder>;
+  orderBy?: InputMaybe<GitHub_OrganizationOrder>;
 };
 
 
 /** Enterprise information only visible to enterprise owners. */
 export type GitHub_EnterpriseOwnerInfoSupportEntitlementsArgs = {
-  orderBy?: Maybe<GitHub_EnterpriseMemberOrder>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_EnterpriseMemberOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** Enterprise information only visible to enterprise owners. */
 export type GitHub_EnterpriseOwnerInfoTeamDiscussionsSettingOrganizationsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
   value: Scalars['Boolean'];
-  orderBy?: Maybe<GitHub_OrganizationOrder>;
+  orderBy?: InputMaybe<GitHub_OrganizationOrder>;
 };
 
 
 /** Enterprise information only visible to enterprise owners. */
 export type GitHub_EnterpriseOwnerInfoTwoFactorRequiredSettingOrganizationsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
   value: Scalars['Boolean'];
-  orderBy?: Maybe<GitHub_OrganizationOrder>;
+  orderBy?: InputMaybe<GitHub_OrganizationOrder>;
 };
 
 /** The connection type for OrganizationInvitation. */
@@ -6505,11 +6158,6 @@ export type GitHub_EnterprisePendingMemberInvitationConnection = {
 export type GitHub_EnterprisePendingMemberInvitationEdge = {
   /** A cursor for use in pagination. */
   cursor: Scalars['String'];
-  /**
-   * Whether the invitation has a license for the enterprise.
-   * @deprecated All pending members consume a license Removal on 2020-07-01 UTC.
-   */
-  isUnlicensed: Scalars['Boolean'];
   /** The item at the end of the edge. */
   node?: Maybe<GitHub_OrganizationInvitation>;
 };
@@ -6567,21 +6215,21 @@ export type GitHub_EnterpriseServerInstallation = GitHub_Node & {
 
 /** An Enterprise Server installation. */
 export type GitHub_EnterpriseServerInstallationUserAccountsArgs = {
-  orderBy?: Maybe<GitHub_EnterpriseServerUserAccountOrder>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_EnterpriseServerUserAccountOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** An Enterprise Server installation. */
 export type GitHub_EnterpriseServerInstallationUserAccountsUploadsArgs = {
-  orderBy?: Maybe<GitHub_EnterpriseServerUserAccountsUploadOrder>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_EnterpriseServerUserAccountsUploadOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** The connection type for EnterpriseServerInstallation. */
@@ -6613,7 +6261,7 @@ export type GitHub_EnterpriseServerInstallationOrder = {
 };
 
 /** Properties by which Enterprise Server installation connections can be ordered. */
-export type GitHub_EnterpriseServerInstallationOrderField = 
+export type GitHub_EnterpriseServerInstallationOrderField =
   /** Order Enterprise Server installations by host name */
   | 'HOST_NAME'
   /** Order Enterprise Server installations by customer name */
@@ -6647,11 +6295,11 @@ export type GitHub_EnterpriseServerUserAccount = GitHub_Node & {
 
 /** A user account on an Enterprise Server installation. */
 export type GitHub_EnterpriseServerUserAccountEmailsArgs = {
-  orderBy?: Maybe<GitHub_EnterpriseServerUserAccountEmailOrder>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_EnterpriseServerUserAccountEmailOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** The connection type for EnterpriseServerUserAccount. */
@@ -6718,7 +6366,7 @@ export type GitHub_EnterpriseServerUserAccountEmailOrder = {
 };
 
 /** Properties by which Enterprise Server user account email connections can be ordered. */
-export type GitHub_EnterpriseServerUserAccountEmailOrderField = 
+export type GitHub_EnterpriseServerUserAccountEmailOrderField =
   /** Order emails by email */
   | 'EMAIL';
 
@@ -6731,7 +6379,7 @@ export type GitHub_EnterpriseServerUserAccountOrder = {
 };
 
 /** Properties by which Enterprise Server user account connections can be ordered. */
-export type GitHub_EnterpriseServerUserAccountOrderField = 
+export type GitHub_EnterpriseServerUserAccountOrderField =
   /** Order user accounts by login */
   | 'LOGIN'
   /** Order user accounts by creation time on the Enterprise Server installation */
@@ -6783,12 +6431,12 @@ export type GitHub_EnterpriseServerUserAccountsUploadOrder = {
 };
 
 /** Properties by which Enterprise Server user accounts upload connections can be ordered. */
-export type GitHub_EnterpriseServerUserAccountsUploadOrderField = 
+export type GitHub_EnterpriseServerUserAccountsUploadOrderField =
   /** Order user accounts uploads by creation time */
   | 'CREATED_AT';
 
 /** Synchronization state of the Enterprise Server user accounts upload */
-export type GitHub_EnterpriseServerUserAccountsUploadSyncState = 
+export type GitHub_EnterpriseServerUserAccountsUploadSyncState =
   /** The synchronization of the upload is pending. */
   | 'PENDING'
   /** The synchronization of the upload succeeded. */
@@ -6824,19 +6472,19 @@ export type GitHub_EnterpriseUserAccount = GitHub_Actor & GitHub_Node & {
 
 /** An account for a user who is an admin of an enterprise or a member of an enterprise through one or more organizations. */
 export type GitHub_EnterpriseUserAccountAvatarUrlArgs = {
-  size?: Maybe<Scalars['Int']>;
+  size?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** An account for a user who is an admin of an enterprise or a member of an enterprise through one or more organizations. */
 export type GitHub_EnterpriseUserAccountOrganizationsArgs = {
-  query?: Maybe<Scalars['String']>;
-  orderBy?: Maybe<GitHub_OrganizationOrder>;
-  role?: Maybe<GitHub_EnterpriseUserAccountMembershipRole>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  query?: InputMaybe<Scalars['String']>;
+  orderBy?: InputMaybe<GitHub_OrganizationOrder>;
+  role?: InputMaybe<GitHub_EnterpriseUserAccountMembershipRole>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** The connection type for EnterpriseUserAccount. */
@@ -6860,14 +6508,14 @@ export type GitHub_EnterpriseUserAccountEdge = {
 };
 
 /** The possible roles for enterprise membership. */
-export type GitHub_EnterpriseUserAccountMembershipRole = 
+export type GitHub_EnterpriseUserAccountMembershipRole =
   /** The user is a member of the enterprise membership. */
   | 'MEMBER'
   /** The user is an owner of the enterprise membership. */
   | 'OWNER';
 
 /** The possible GitHub Enterprise deployments where this user can exist. */
-export type GitHub_EnterpriseUserDeployment = 
+export type GitHub_EnterpriseUserDeployment =
   /** The user is part of a GitHub Enterprise Cloud deployment. */
   | 'CLOUD'
   /** The user is part of a GitHub Enterprise Server deployment. */
@@ -6887,10 +6535,10 @@ export type GitHub_Environment = GitHub_Node & {
 
 /** An environment. */
 export type GitHub_EnvironmentProtectionRulesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** The connection type for Environment. */
@@ -6978,10 +6626,7 @@ export type GitHub_ExternalIdentityScimAttributes = {
   username?: Maybe<Scalars['String']>;
 };
 
-/**
- * A command to add a file at the given path with the given contents as part of a
- * commit.  Any existing file at that that path will be replaced.
- */
+/** A command to add a file at the given path with the given contents as part of a commit.  Any existing file at that that path will be replaced. */
 export type GitHub_FileAddition = {
   /** The path in the repository where the file will be located */
   path: Scalars['String'];
@@ -6993,29 +6638,29 @@ export type GitHub_FileAddition = {
  * A description of a set of changes to a file tree to be made as part of
  * a git commit, modeled as zero or more file `additions` and zero or more
  * file `deletions`.
- * 
+ *
  * Both fields are optional; omitting both will produce a commit with no
  * file changes.
- * 
+ *
  * `deletions` and `additions` describe changes to files identified
  * by their path in the git tree using unix-style path separators, i.e.
  * `/`.  The root of a git tree is an empty string, so paths are not
  * slash-prefixed.
- * 
+ *
  * `path` values must be unique across all `additions` and `deletions`
  * provided.  Any duplication will result in a validation error.
- * 
+ *
  * ### Encoding
- * 
+ *
  * File contents must be provided in full for each `FileAddition`.
- * 
+ *
  * The `contents` of a `FileAddition` must be encoded using RFC 4648
  * compliant base64, i.e. correct padding is required and no characters
  * outside the standard alphabet may be used.  Invalid base64
  * encoding will be rejected with a validation error.
- * 
+ *
  * The encoded contents may be binary.
- * 
+ *
  * For text files, no assumptions are made about the character encoding of
  * the file contents (after base64 decoding).  No charset transcoding or
  * line-ending normalization will be performed; it is the client's
@@ -7024,14 +6669,14 @@ export type GitHub_FileAddition = {
  * and ensuring that all files in a repository use a consistent
  * line-ending convention (`\n` or `\r\n`), and that all files end
  * with a newline.
- * 
+ *
  * ### Modeling file changes
- * 
+ *
  * Each of the the five types of conceptual changes that can be made in a
  * git commit can be described using the `FileChanges` type as follows:
- * 
+ *
  * 1. New file addition: create file `hello world\n` at path `docs/README.txt`:
- * 
+ *
  *        {
  *          "additions" [
  *            {
@@ -7040,10 +6685,10 @@ export type GitHub_FileAddition = {
  *            }
  *          ]
  *        }
- * 
+ *
  * 2. Existing file modification: change existing `docs/README.txt` to have new
  *    content `new content here\n`:
- * 
+ *
  *        {
  *          "additions" [
  *            {
@@ -7052,12 +6697,12 @@ export type GitHub_FileAddition = {
  *            }
  *          ]
  *        }
- * 
+ *
  * 3. Existing file deletion: remove existing file `docs/README.txt`.
  *    Note that the path is required to exist -- specifying a
  *    path that does not exist on the given branch will abort the
  *    commit and return an error.
- * 
+ *
  *        {
  *          "deletions" [
  *            {
@@ -7065,12 +6710,12 @@ export type GitHub_FileAddition = {
  *            }
  *          ]
  *        }
- * 
- * 
+ *
+ *
  * 4. File rename with no changes: rename `docs/README.txt` with
  *    previous content `hello world\n` to the same content at
  *    `newdocs/README.txt`:
- * 
+ *
  *        {
  *          "deletions" [
  *            {
@@ -7084,12 +6729,12 @@ export type GitHub_FileAddition = {
  *            }
  *          ]
  *        }
- * 
- * 
+ *
+ *
  * 5. File rename with changes: rename `docs/README.txt` with
  *    previous content `hello world\n` to a file at path
  *    `newdocs/README.txt` with content `new contents\n`:
- * 
+ *
  *        {
  *          "deletions" [
  *            {
@@ -7106,9 +6751,9 @@ export type GitHub_FileAddition = {
  */
 export type GitHub_FileChanges = {
   /** Files to delete. */
-  deletions?: Maybe<Array<GitHub_FileDeletion>>;
+  deletions?: InputMaybe<Array<GitHub_FileDeletion>>;
   /** File to add or change. */
-  additions?: Maybe<Array<GitHub_FileAddition>>;
+  additions?: InputMaybe<Array<GitHub_FileAddition>>;
 };
 
 /** A command to delete the file at the given path as part of a commit. */
@@ -7118,13 +6763,45 @@ export type GitHub_FileDeletion = {
 };
 
 /** The possible viewed states of a file . */
-export type GitHub_FileViewedState = 
+export type GitHub_FileViewedState =
   /** The file has new changes since last viewed. */
   | 'DISMISSED'
   /** The file has been marked as viewed. */
   | 'VIEWED'
   /** The file has not been marked as viewed. */
   | 'UNVIEWED';
+
+/** Autogenerated input type of FollowOrganization */
+export type GitHub_FollowOrganizationInput = {
+  /** ID of the organization to follow. */
+  organizationId: Scalars['ID'];
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+};
+
+/** Autogenerated return type of FollowOrganization */
+export type GitHub_FollowOrganizationPayload = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** The organization that was followed. */
+  organization?: Maybe<GitHub_Organization>;
+};
+
+/** Autogenerated input type of FollowUser */
+export type GitHub_FollowUserInput = {
+  /** ID of the user to follow. */
+  userId: Scalars['ID'];
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+};
+
+/** Autogenerated return type of FollowUser */
+export type GitHub_FollowUserPayload = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** The user that was followed. */
+  user?: Maybe<GitHub_User>;
+};
 
 /** The connection type for User. */
 export type GitHub_FollowerConnection = {
@@ -7150,22 +6827,6 @@ export type GitHub_FollowingConnection = {
   totalCount: Scalars['Int'];
 };
 
-/** Autogenerated input type of FollowUser */
-export type GitHub_FollowUserInput = {
-  /** ID of the user to follow. */
-  userId: Scalars['ID'];
-  /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
-};
-
-/** Autogenerated return type of FollowUser */
-export type GitHub_FollowUserPayload = {
-  /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
-  /** The user that was followed. */
-  user?: Maybe<GitHub_User>;
-};
-
 /** A funding platform link for a repository. */
 export type GitHub_FundingLink = {
   /** The funding platform this link is for. */
@@ -7175,7 +6836,7 @@ export type GitHub_FundingLink = {
 };
 
 /** The possible funding platforms for repository funding links. */
-export type GitHub_FundingPlatform = 
+export type GitHub_FundingPlatform =
   /** GitHub funding platform. */
   | 'GITHUB'
   /** Patreon funding platform. */
@@ -7247,37 +6908,37 @@ export type GitHub_Gist = GitHub_Node & GitHub_Starrable & GitHub_UniformResourc
 
 /** A Gist. */
 export type GitHub_GistCommentsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A Gist. */
 export type GitHub_GistFilesArgs = {
-  limit?: Maybe<Scalars['Int']>;
-  oid?: Maybe<Scalars['GitHub_GitObjectID']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  oid?: InputMaybe<Scalars['GitHub_GitObjectID']>;
 };
 
 
 /** A Gist. */
 export type GitHub_GistForksArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  orderBy?: Maybe<GitHub_GistOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_GistOrder>;
 };
 
 
 /** A Gist. */
 export type GitHub_GistStargazersArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  orderBy?: Maybe<GitHub_StarOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_StarOrder>;
 };
 
 /** Represents a comment on an Gist. */
@@ -7332,10 +6993,10 @@ export type GitHub_GistComment = GitHub_Node & GitHub_Comment & GitHub_Deletable
 
 /** Represents a comment on an Gist. */
 export type GitHub_GistCommentUserContentEditsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** The connection type for GistComment. */
@@ -7403,7 +7064,7 @@ export type GitHub_GistFile = {
 
 /** A file in a gist. */
 export type GitHub_GistFileTextArgs = {
-  truncate?: Maybe<Scalars['Int']>;
+  truncate?: InputMaybe<Scalars['Int']>;
 };
 
 /** Ordering options for gist connections */
@@ -7415,7 +7076,7 @@ export type GitHub_GistOrder = {
 };
 
 /** Properties by which gist connections can be ordered. */
-export type GitHub_GistOrderField = 
+export type GitHub_GistOrderField =
   /** Order gists by creation time */
   | 'CREATED_AT'
   /** Order gists by update time */
@@ -7424,7 +7085,7 @@ export type GitHub_GistOrderField =
   | 'PUSHED_AT';
 
 /** The privacy of a Gist */
-export type GitHub_GistPrivacy = 
+export type GitHub_GistPrivacy =
   /** Public */
   | 'PUBLIC'
   /** Secret */
@@ -7449,7 +7110,7 @@ export type GitHub_GitActor = {
 
 /** Represents an actor in a Git commit (ie. an author or committer). */
 export type GitHub_GitActorAvatarUrlArgs = {
-  size?: Maybe<Scalars['Int']>;
+  size?: InputMaybe<Scalars['Int']>;
 };
 
 /** The connection type for GitActor. */
@@ -7503,7 +7164,6 @@ export type GitHub_GitObject = {
   repository: GitHub_Repository;
 };
 
-
 /** Information about a signature (GPG or S/MIME) on a Commit or Tag. */
 export type GitHub_GitSignature = {
   /** Email used to sign this object. */
@@ -7516,17 +7176,14 @@ export type GitHub_GitSignature = {
   signature: Scalars['String'];
   /** GitHub user corresponding to the email signing this commit. */
   signer?: Maybe<GitHub_User>;
-  /**
-   * The state of this signature. `VALID` if signature is valid and verified by
-   * GitHub, otherwise represents reason why signature is considered invalid.
-   */
+  /** The state of this signature. `VALID` if signature is valid and verified by GitHub, otherwise represents reason why signature is considered invalid. */
   state: GitHub_GitSignatureState;
   /** True if the signature was made with GitHub's signing key. */
   wasSignedByGitHub: Scalars['Boolean'];
 };
 
 /** The state of a Git signature. */
-export type GitHub_GitSignatureState = 
+export type GitHub_GitSignatureState =
   /** Valid signature and verified by GitHub */
   | 'VALID'
   /** Invalid signature */
@@ -7562,8 +7219,6 @@ export type GitHub_GitSignatureState =
   /** One or more certificates in chain has been revoked */
   | 'OCSP_REVOKED';
 
-
-
 /** Represents a GPG signature on a Commit or Tag. */
 export type GitHub_GpgSignature = GitHub_GitSignature & {
   /** Email used to sign this object. */
@@ -7578,10 +7233,7 @@ export type GitHub_GpgSignature = GitHub_GitSignature & {
   signature: Scalars['String'];
   /** GitHub user corresponding to the email signing this commit. */
   signer?: Maybe<GitHub_User>;
-  /**
-   * The state of this signature. `VALID` if signature is valid and verified by
-   * GitHub, otherwise represents reason why signature is considered invalid.
-   */
+  /** The state of this signature. `VALID` if signature is valid and verified by GitHub, otherwise represents reason why signature is considered invalid. */
   state: GitHub_GitSignatureState;
   /** True if the signature was made with GitHub's signing key. */
   wasSignedByGitHub: Scalars['Boolean'];
@@ -7594,7 +7246,7 @@ export type GitHub_GrantEnterpriseOrganizationsMigratorRoleInput = {
   /** The login of the user to grant the migrator role */
   login: Scalars['String'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of GrantEnterpriseOrganizationsMigratorRole */
@@ -7608,10 +7260,10 @@ export type GitHub_GrantEnterpriseOrganizationsMigratorRolePayload = {
 
 /** Autogenerated return type of GrantEnterpriseOrganizationsMigratorRole */
 export type GitHub_GrantEnterpriseOrganizationsMigratorRolePayloadOrganizationsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** Autogenerated input type of GrantMigratorRole */
@@ -7623,7 +7275,7 @@ export type GitHub_GrantMigratorRoleInput = {
   /** Specifies the type of the actor, can be either USER or TEAM. */
   actorType: GitHub_ActorType;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of GrantMigratorRole */
@@ -7691,9 +7343,8 @@ export type GitHub_HovercardContext = {
   octicon: Scalars['String'];
 };
 
-
 /** The possible states in which authentication can be configured with an identity provider. */
-export type GitHub_IdentityProviderConfigurationState = 
+export type GitHub_IdentityProviderConfigurationState =
   /** Authentication with an identity provider is configured and enforced. */
   | 'ENFORCED'
   /** Authentication with an identity provider is configured but not enforced. */
@@ -7706,13 +7357,13 @@ export type GitHub_InviteEnterpriseAdminInput = {
   /** The ID of the enterprise to which you want to invite an administrator. */
   enterpriseId: Scalars['ID'];
   /** The login of a user to invite as an administrator. */
-  invitee?: Maybe<Scalars['String']>;
+  invitee?: InputMaybe<Scalars['String']>;
   /** The email of the person to invite as an administrator. */
-  email?: Maybe<Scalars['String']>;
+  email?: InputMaybe<Scalars['String']>;
   /** The role of the administrator. */
-  role?: Maybe<GitHub_EnterpriseAdministratorRole>;
+  role?: InputMaybe<GitHub_EnterpriseAdministratorRole>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of InviteEnterpriseAdmin */
@@ -7724,7 +7375,7 @@ export type GitHub_InviteEnterpriseAdminPayload = {
 };
 
 /** The possible values for the IP allow list enabled setting. */
-export type GitHub_IpAllowListEnabledSettingValue = 
+export type GitHub_IpAllowListEnabledSettingValue =
   /** The setting is enabled for the owner. */
   | 'ENABLED'
   /** The setting is disabled for the owner. */
@@ -7776,14 +7427,14 @@ export type GitHub_IpAllowListEntryOrder = {
 };
 
 /** Properties by which IP allow list entry connections can be ordered. */
-export type GitHub_IpAllowListEntryOrderField = 
+export type GitHub_IpAllowListEntryOrderField =
   /** Order IP allow list entries by creation time. */
   | 'CREATED_AT'
   /** Order IP allow list entries by the allow list value. */
   | 'ALLOW_LIST_VALUE';
 
 /** The possible values for the IP allow list configuration for installed GitHub Apps setting. */
-export type GitHub_IpAllowListForInstalledAppsEnabledSettingValue = 
+export type GitHub_IpAllowListForInstalledAppsEnabledSettingValue =
   /** The setting is enabled for the owner. */
   | 'ENABLED'
   /** The setting is disabled for the owner. */
@@ -7907,55 +7558,55 @@ export type GitHub_Issue = GitHub_Node & GitHub_Assignable & GitHub_Closable & G
 
 /** An Issue is a place to discuss ideas, enhancements, tasks, and bugs for a project. */
 export type GitHub_IssueAssigneesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** An Issue is a place to discuss ideas, enhancements, tasks, and bugs for a project. */
 export type GitHub_IssueCommentsArgs = {
-  orderBy?: Maybe<GitHub_IssueCommentOrder>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_IssueCommentOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** An Issue is a place to discuss ideas, enhancements, tasks, and bugs for a project. */
 export type GitHub_IssueHovercardArgs = {
-  includeNotificationContexts?: Maybe<Scalars['Boolean']>;
+  includeNotificationContexts?: InputMaybe<Scalars['Boolean']>;
 };
 
 
 /** An Issue is a place to discuss ideas, enhancements, tasks, and bugs for a project. */
 export type GitHub_IssueLabelsArgs = {
-  orderBy?: Maybe<GitHub_LabelOrder>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_LabelOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** An Issue is a place to discuss ideas, enhancements, tasks, and bugs for a project. */
 export type GitHub_IssueParticipantsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** An Issue is a place to discuss ideas, enhancements, tasks, and bugs for a project. */
 export type GitHub_IssueProjectCardsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  archivedStates?: Maybe<Array<Maybe<GitHub_ProjectCardArchivedState>>>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  archivedStates?: InputMaybe<Array<InputMaybe<GitHub_ProjectCardArchivedState>>>;
 };
 
 
@@ -7967,88 +7618,88 @@ export type GitHub_IssueProjectNextArgs = {
 
 /** An Issue is a place to discuss ideas, enhancements, tasks, and bugs for a project. */
 export type GitHub_IssueProjectNextItemsArgs = {
-  includeArchived?: Maybe<Scalars['Boolean']>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  includeArchived?: InputMaybe<Scalars['Boolean']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** An Issue is a place to discuss ideas, enhancements, tasks, and bugs for a project. */
 export type GitHub_IssueProjectsNextArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  query?: Maybe<Scalars['String']>;
-  sortBy?: Maybe<GitHub_ProjectNextOrderField>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  query?: InputMaybe<Scalars['String']>;
+  sortBy?: InputMaybe<GitHub_ProjectNextOrderField>;
 };
 
 
 /** An Issue is a place to discuss ideas, enhancements, tasks, and bugs for a project. */
 export type GitHub_IssueReactionsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  content?: Maybe<GitHub_ReactionContent>;
-  orderBy?: Maybe<GitHub_ReactionOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  content?: InputMaybe<GitHub_ReactionContent>;
+  orderBy?: InputMaybe<GitHub_ReactionOrder>;
 };
 
 
 /** An Issue is a place to discuss ideas, enhancements, tasks, and bugs for a project. */
 export type GitHub_IssueTimelineArgs = {
-  since?: Maybe<Scalars['GitHub_DateTime']>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  since?: InputMaybe<Scalars['GitHub_DateTime']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** An Issue is a place to discuss ideas, enhancements, tasks, and bugs for a project. */
 export type GitHub_IssueTimelineItemsArgs = {
-  since?: Maybe<Scalars['GitHub_DateTime']>;
-  skip?: Maybe<Scalars['Int']>;
-  itemTypes?: Maybe<Array<GitHub_IssueTimelineItemsItemType>>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  since?: InputMaybe<Scalars['GitHub_DateTime']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  itemTypes?: InputMaybe<Array<GitHub_IssueTimelineItemsItemType>>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** An Issue is a place to discuss ideas, enhancements, tasks, and bugs for a project. */
 export type GitHub_IssueTrackedInIssuesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** An Issue is a place to discuss ideas, enhancements, tasks, and bugs for a project. */
 export type GitHub_IssueTrackedIssuesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** An Issue is a place to discuss ideas, enhancements, tasks, and bugs for a project. */
 export type GitHub_IssueTrackedIssuesCountArgs = {
-  states?: Maybe<Array<Maybe<GitHub_TrackedIssueStates>>>;
+  states?: InputMaybe<Array<InputMaybe<GitHub_TrackedIssueStates>>>;
 };
 
 
 /** An Issue is a place to discuss ideas, enhancements, tasks, and bugs for a project. */
 export type GitHub_IssueUserContentEditsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** Represents a comment on an Issue. */
@@ -8120,21 +7771,21 @@ export type GitHub_IssueComment = GitHub_Node & GitHub_Comment & GitHub_Deletabl
 
 /** Represents a comment on an Issue. */
 export type GitHub_IssueCommentReactionsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  content?: Maybe<GitHub_ReactionContent>;
-  orderBy?: Maybe<GitHub_ReactionOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  content?: InputMaybe<GitHub_ReactionContent>;
+  orderBy?: InputMaybe<GitHub_ReactionOrder>;
 };
 
 
 /** Represents a comment on an Issue. */
 export type GitHub_IssueCommentUserContentEditsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** The connection type for IssueComment. */
@@ -8166,7 +7817,7 @@ export type GitHub_IssueCommentOrder = {
 };
 
 /** Properties by which issue comment connections can be ordered. */
-export type GitHub_IssueCommentOrderField = 
+export type GitHub_IssueCommentOrderField =
   /** Order issue comments by update time */
   | 'UPDATED_AT';
 
@@ -8193,11 +7844,11 @@ export type GitHub_IssueContributionsByRepository = {
 
 /** This aggregates issues opened by a user within one repository. */
 export type GitHub_IssueContributionsByRepositoryContributionsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  orderBy?: Maybe<GitHub_ContributionOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_ContributionOrder>;
 };
 
 /** An edge in a connection. */
@@ -8210,36 +7861,28 @@ export type GitHub_IssueEdge = {
 
 /** Ways in which to filter lists of issues. */
 export type GitHub_IssueFilters = {
-  /**
-   * List issues assigned to given name. Pass in `null` for issues with no assigned
-   * user, and `*` for issues assigned to any user.
-   */
-  assignee?: Maybe<Scalars['String']>;
+  /** List issues assigned to given name. Pass in `null` for issues with no assigned user, and `*` for issues assigned to any user. */
+  assignee?: InputMaybe<Scalars['String']>;
   /** List issues created by given name. */
-  createdBy?: Maybe<Scalars['String']>;
+  createdBy?: InputMaybe<Scalars['String']>;
   /** List issues where the list of label names exist on the issue. */
-  labels?: Maybe<Array<Scalars['String']>>;
+  labels?: InputMaybe<Array<Scalars['String']>>;
   /** List issues where the given name is mentioned in the issue. */
-  mentioned?: Maybe<Scalars['String']>;
-  /**
-   * List issues by given milestone argument. If an string representation of an
-   * integer is passed, it should refer to a milestone by its database ID. Pass in
-   * `null` for issues with no milestone, and `*` for issues that are assigned to any milestone.
-   */
-  milestone?: Maybe<Scalars['String']>;
-  /**
-   * List issues by given milestone argument. If an string representation of an
-   * integer is passed, it should refer to a milestone by its number field. Pass in
-   * `null` for issues with no milestone, and `*` for issues that are assigned to any milestone.
-   */
-  milestoneNumber?: Maybe<Scalars['String']>;
+  mentioned?: InputMaybe<Scalars['String']>;
+  /** List issues by given milestone argument. If an string representation of an integer is passed, it should refer to a milestone by its database ID. Pass in `null` for issues with no milestone, and `*` for issues that are assigned to any milestone. */
+  milestone?: InputMaybe<Scalars['String']>;
+  /** List issues by given milestone argument. If an string representation of an integer is passed, it should refer to a milestone by its number field. Pass in `null` for issues with no milestone, and `*` for issues that are assigned to any milestone. */
+  milestoneNumber?: InputMaybe<Scalars['String']>;
   /** List issues that have been updated at or after the given date. */
-  since?: Maybe<Scalars['GitHub_DateTime']>;
+  since?: InputMaybe<Scalars['GitHub_DateTime']>;
   /** List issues filtered by the list of states given. */
-  states?: Maybe<Array<GitHub_IssueState>>;
+  states?: InputMaybe<Array<GitHub_IssueState>>;
   /** List issues subscribed to by viewer. */
-  viewerSubscribed?: Maybe<Scalars['Boolean']>;
+  viewerSubscribed?: InputMaybe<Scalars['Boolean']>;
 };
+
+/** Used for return value of Repository.issueOrPullRequest. */
+export type GitHub_IssueOrPullRequest = GitHub_Issue | GitHub_PullRequest;
 
 /** Ways in which lists of issues can be ordered upon return. */
 export type GitHub_IssueOrder = {
@@ -8250,7 +7893,7 @@ export type GitHub_IssueOrder = {
 };
 
 /** Properties by which issue connections can be ordered. */
-export type GitHub_IssueOrderField = 
+export type GitHub_IssueOrderField =
   /** Order issues by creation time */
   | 'CREATED_AT'
   /** Order issues by update time */
@@ -8258,11 +7901,8 @@ export type GitHub_IssueOrderField =
   /** Order issues by comment count */
   | 'COMMENTS';
 
-/** Used for return value of Repository.issueOrPullRequest. */
-export type GitHub_IssueOrPullRequest = GitHub_Issue | GitHub_PullRequest;
-
 /** The possible states of an issue. */
-export type GitHub_IssueState = 
+export type GitHub_IssueState =
   /** An issue that is still open */
   | 'OPEN'
   /** An issue that has been closed */
@@ -8333,7 +7973,7 @@ export type GitHub_IssueTimelineItemsEdge = {
 };
 
 /** The possible item types found in a timeline. */
-export type GitHub_IssueTimelineItemsItemType = 
+export type GitHub_IssueTimelineItemsItemType =
   /** Represents a comment on an Issue. */
   | 'ISSUE_COMMENT'
   /** Represents a mention made by one issue or pull request to another. */
@@ -8445,44 +8085,28 @@ export type GitHub_Label = GitHub_Node & {
 
 /** A label for categorizing Issues, Pull Requests, Milestones, or Discussions with a given Repository. */
 export type GitHub_LabelIssuesArgs = {
-  orderBy?: Maybe<GitHub_IssueOrder>;
-  labels?: Maybe<Array<Scalars['String']>>;
-  states?: Maybe<Array<GitHub_IssueState>>;
-  filterBy?: Maybe<GitHub_IssueFilters>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_IssueOrder>;
+  labels?: InputMaybe<Array<Scalars['String']>>;
+  states?: InputMaybe<Array<GitHub_IssueState>>;
+  filterBy?: InputMaybe<GitHub_IssueFilters>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A label for categorizing Issues, Pull Requests, Milestones, or Discussions with a given Repository. */
 export type GitHub_LabelPullRequestsArgs = {
-  states?: Maybe<Array<GitHub_PullRequestState>>;
-  labels?: Maybe<Array<Scalars['String']>>;
-  headRefName?: Maybe<Scalars['String']>;
-  baseRefName?: Maybe<Scalars['String']>;
-  orderBy?: Maybe<GitHub_IssueOrder>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-};
-
-/** An object that can have labels assigned to it. */
-export type GitHub_Labelable = {
-  /** A list of labels associated with the object. */
-  labels?: Maybe<GitHub_LabelConnection>;
-};
-
-
-/** An object that can have labels assigned to it. */
-export type GitHub_LabelableLabelsArgs = {
-  orderBy?: Maybe<GitHub_LabelOrder>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  states?: InputMaybe<Array<GitHub_PullRequestState>>;
+  labels?: InputMaybe<Array<Scalars['String']>>;
+  headRefName?: InputMaybe<Scalars['String']>;
+  baseRefName?: InputMaybe<Scalars['String']>;
+  orderBy?: InputMaybe<GitHub_IssueOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** The connection type for Label. */
@@ -8495,19 +8119,6 @@ export type GitHub_LabelConnection = {
   pageInfo: GitHub_PageInfo;
   /** Identifies the total count of items in the connection. */
   totalCount: Scalars['Int'];
-};
-
-/** Represents a 'labeled' event on a given issue or pull request. */
-export type GitHub_LabeledEvent = GitHub_Node & {
-  /** Identifies the actor who performed the event. */
-  actor?: Maybe<GitHub_Actor>;
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['GitHub_DateTime'];
-  id: Scalars['ID'];
-  /** Identifies the label associated with the 'labeled' event. */
-  label: GitHub_Label;
-  /** Identifies the `Labelable` associated with the event. */
-  labelable: GitHub_Labelable;
 };
 
 /** An edge in a connection. */
@@ -8527,11 +8138,40 @@ export type GitHub_LabelOrder = {
 };
 
 /** Properties by which label connections can be ordered. */
-export type GitHub_LabelOrderField = 
+export type GitHub_LabelOrderField =
   /** Order labels by name  */
   | 'NAME'
   /** Order labels by creation time */
   | 'CREATED_AT';
+
+/** An object that can have labels assigned to it. */
+export type GitHub_Labelable = {
+  /** A list of labels associated with the object. */
+  labels?: Maybe<GitHub_LabelConnection>;
+};
+
+
+/** An object that can have labels assigned to it. */
+export type GitHub_LabelableLabelsArgs = {
+  orderBy?: InputMaybe<GitHub_LabelOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+};
+
+/** Represents a 'labeled' event on a given issue or pull request. */
+export type GitHub_LabeledEvent = GitHub_Node & {
+  /** Identifies the actor who performed the event. */
+  actor?: Maybe<GitHub_Actor>;
+  /** Identifies the date and time when the object was created. */
+  createdAt: Scalars['GitHub_DateTime'];
+  id: Scalars['ID'];
+  /** Identifies the label associated with the 'labeled' event. */
+  label: GitHub_Label;
+  /** Identifies the `Labelable` associated with the event. */
+  labelable: GitHub_Labelable;
+};
 
 /** Represents a given language found in repositories. */
 export type GitHub_Language = GitHub_Node & {
@@ -8573,7 +8213,7 @@ export type GitHub_LanguageOrder = {
 };
 
 /** Properties by which language connections can be ordered. */
-export type GitHub_LanguageOrderField = 
+export type GitHub_LanguageOrderField =
   /** Order languages by the size of all files containing the language */
   | 'SIZE';
 
@@ -8627,7 +8267,7 @@ export type GitHub_LinkRepositoryToProjectInput = {
   /** The ID of the Repository to link to a Project. */
   repositoryId: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of LinkRepositoryToProject */
@@ -8639,6 +8279,37 @@ export type GitHub_LinkRepositoryToProjectPayload = {
   /** The linked Repository. */
   repository?: Maybe<GitHub_Repository>;
 };
+
+/** Autogenerated input type of LockLockable */
+export type GitHub_LockLockableInput = {
+  /** ID of the item to be locked. */
+  lockableId: Scalars['ID'];
+  /** A reason for why the item will be locked. */
+  lockReason?: InputMaybe<GitHub_LockReason>;
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+};
+
+/** Autogenerated return type of LockLockable */
+export type GitHub_LockLockablePayload = {
+  /** Identifies the actor who performed the event. */
+  actor?: Maybe<GitHub_Actor>;
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** The item that was locked. */
+  lockedRecord?: Maybe<GitHub_Lockable>;
+};
+
+/** The possible reasons that an issue or pull request was locked. */
+export type GitHub_LockReason =
+  /** The issue or pull request was locked because the conversation was off-topic. */
+  | 'OFF_TOPIC'
+  /** The issue or pull request was locked because the conversation was too heated. */
+  | 'TOO_HEATED'
+  /** The issue or pull request was locked because the conversation was resolved. */
+  | 'RESOLVED'
+  /** The issue or pull request was locked because the conversation was spam. */
+  | 'SPAM';
 
 /** An object that can be locked. */
 export type GitHub_Lockable = {
@@ -8660,37 +8331,6 @@ export type GitHub_LockedEvent = GitHub_Node & {
   /** Object that was locked. */
   lockable: GitHub_Lockable;
 };
-
-/** Autogenerated input type of LockLockable */
-export type GitHub_LockLockableInput = {
-  /** ID of the item to be locked. */
-  lockableId: Scalars['ID'];
-  /** A reason for why the item will be locked. */
-  lockReason?: Maybe<GitHub_LockReason>;
-  /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
-};
-
-/** Autogenerated return type of LockLockable */
-export type GitHub_LockLockablePayload = {
-  /** Identifies the actor who performed the event. */
-  actor?: Maybe<GitHub_Actor>;
-  /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
-  /** The item that was locked. */
-  lockedRecord?: Maybe<GitHub_Lockable>;
-};
-
-/** The possible reasons that an issue or pull request was locked. */
-export type GitHub_LockReason = 
-  /** The issue or pull request was locked because the conversation was off-topic. */
-  | 'OFF_TOPIC'
-  /** The issue or pull request was locked because the conversation was too heated. */
-  | 'TOO_HEATED'
-  /** The issue or pull request was locked because the conversation was resolved. */
-  | 'RESOLVED'
-  /** The issue or pull request was locked because the conversation was spam. */
-  | 'SPAM';
 
 /** A placeholder user for attribution of imported data on GitHub. */
 export type GitHub_Mannequin = GitHub_Node & GitHub_Actor & GitHub_UniformResourceLocatable & {
@@ -8718,7 +8358,7 @@ export type GitHub_Mannequin = GitHub_Node & GitHub_Actor & GitHub_UniformResour
 
 /** A placeholder user for attribution of imported data on GitHub. */
 export type GitHub_MannequinAvatarUrlArgs = {
-  size?: Maybe<Scalars['Int']>;
+  size?: InputMaybe<Scalars['Int']>;
 };
 
 /** Autogenerated input type of MarkDiscussionCommentAsAnswer */
@@ -8726,7 +8366,7 @@ export type GitHub_MarkDiscussionCommentAsAnswerInput = {
   /** The Node ID of the discussion comment to mark as an answer. */
   id: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of MarkDiscussionCommentAsAnswer */
@@ -8735,6 +8375,40 @@ export type GitHub_MarkDiscussionCommentAsAnswerPayload = {
   clientMutationId?: Maybe<Scalars['String']>;
   /** The discussion that includes the chosen comment. */
   discussion?: Maybe<GitHub_Discussion>;
+};
+
+/** Autogenerated input type of MarkFileAsViewed */
+export type GitHub_MarkFileAsViewedInput = {
+  /** The Node ID of the pull request. */
+  pullRequestId: Scalars['ID'];
+  /** The path of the file to mark as viewed */
+  path: Scalars['String'];
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+};
+
+/** Autogenerated return type of MarkFileAsViewed */
+export type GitHub_MarkFileAsViewedPayload = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** The updated pull request. */
+  pullRequest?: Maybe<GitHub_PullRequest>;
+};
+
+/** Autogenerated input type of MarkPullRequestReadyForReview */
+export type GitHub_MarkPullRequestReadyForReviewInput = {
+  /** ID of the pull request to be marked as ready for review. */
+  pullRequestId: Scalars['ID'];
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+};
+
+/** Autogenerated return type of MarkPullRequestReadyForReview */
+export type GitHub_MarkPullRequestReadyForReviewPayload = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** The pull request that is ready for review. */
+  pullRequest?: Maybe<GitHub_PullRequest>;
 };
 
 /** Represents a 'marked_as_duplicate' event on a given issue or pull request. */
@@ -8810,10 +8484,7 @@ export type GitHub_MarketplaceListing = GitHub_Node & {
   installedForViewer: Scalars['Boolean'];
   /** Whether this listing has been removed from the Marketplace. */
   isArchived: Scalars['Boolean'];
-  /**
-   * Whether this listing is still an editable draft that has not been submitted
-   * for review and is not publicly visible in the Marketplace.
-   */
+  /** Whether this listing is still an editable draft that has not been submitted for review and is not publicly visible in the Marketplace. */
   isDraft: Scalars['Boolean'];
   /** Whether the product this listing represents is available as part of a paid plan. */
   isPaid: Scalars['Boolean'];
@@ -8859,10 +8530,7 @@ export type GitHub_MarketplaceListing = GitHub_Node & {
   statusUrl?: Maybe<Scalars['GitHub_URI']>;
   /** An email address for support for this listing's app. */
   supportEmail?: Maybe<Scalars['String']>;
-  /**
-   * Either a URL or an email address for support for this listing's app, may
-   * return an empty string for listings that do not require a support URL.
-   */
+  /** Either a URL or an email address for support for this listing's app, may return an empty string for listings that do not require a support URL. */
   supportUrl: Scalars['GitHub_URI'];
   /** URL to the listing's terms of service. */
   termsOfServiceUrl?: Maybe<Scalars['GitHub_URI']>;
@@ -8912,7 +8580,7 @@ export type GitHub_MarketplaceListing = GitHub_Node & {
 
 /** A listing in the GitHub integration marketplace. */
 export type GitHub_MarketplaceListingLogoUrlArgs = {
-  size?: Maybe<Scalars['Int']>;
+  size?: InputMaybe<Scalars['Int']>;
 };
 
 /** Look up Marketplace Listings */
@@ -8935,38 +8603,20 @@ export type GitHub_MarketplaceListingEdge = {
   node?: Maybe<GitHub_MarketplaceListing>;
 };
 
-/** Autogenerated input type of MarkFileAsViewed */
-export type GitHub_MarkFileAsViewedInput = {
-  /** The Node ID of the pull request. */
-  pullRequestId: Scalars['ID'];
-  /** The path of the file to mark as viewed */
-  path: Scalars['String'];
-  /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+/** Entities that have members who can set status messages. */
+export type GitHub_MemberStatusable = {
+  /** Get the status messages members of this entity have set that are either public or visible only to the organization. */
+  memberStatuses: GitHub_UserStatusConnection;
 };
 
-/** Autogenerated return type of MarkFileAsViewed */
-export type GitHub_MarkFileAsViewedPayload = {
-  /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
-  /** The updated pull request. */
-  pullRequest?: Maybe<GitHub_PullRequest>;
-};
 
-/** Autogenerated input type of MarkPullRequestReadyForReview */
-export type GitHub_MarkPullRequestReadyForReviewInput = {
-  /** ID of the pull request to be marked as ready for review. */
-  pullRequestId: Scalars['ID'];
-  /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
-};
-
-/** Autogenerated return type of MarkPullRequestReadyForReview */
-export type GitHub_MarkPullRequestReadyForReviewPayload = {
-  /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
-  /** The pull request that is ready for review. */
-  pullRequest?: Maybe<GitHub_PullRequest>;
+/** Entities that have members who can set status messages. */
+export type GitHub_MemberStatusableMemberStatusesArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_UserStatusOrder>;
 };
 
 /** Audit log entry for a members_can_delete_repos.clear event. */
@@ -9104,22 +8754,6 @@ export type GitHub_MembersCanDeleteReposEnableAuditEntry = GitHub_Node & GitHub_
   userUrl?: Maybe<Scalars['GitHub_URI']>;
 };
 
-/** Entities that have members who can set status messages. */
-export type GitHub_MemberStatusable = {
-  /** Get the status messages members of this entity have set that are either public or visible only to the organization. */
-  memberStatuses: GitHub_UserStatusConnection;
-};
-
-
-/** Entities that have members who can set status messages. */
-export type GitHub_MemberStatusableMemberStatusesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  orderBy?: Maybe<GitHub_UserStatusOrder>;
-};
-
 /** Represents a 'mentioned' event on a given issue or pull request. */
 export type GitHub_MentionedEvent = GitHub_Node & {
   /** Identifies the actor who performed the event. */
@@ -9131,15 +8765,6 @@ export type GitHub_MentionedEvent = GitHub_Node & {
   id: Scalars['ID'];
 };
 
-/** Whether or not a PullRequest can be merged. */
-export type GitHub_MergeableState = 
-  /** The pull request can be merged. */
-  | 'MERGEABLE'
-  /** The pull request cannot be merged due to merge conflicts. */
-  | 'CONFLICTING'
-  /** The mergeability of the pull request is still being calculated. */
-  | 'UNKNOWN';
-
 /** Autogenerated input type of MergeBranch */
 export type GitHub_MergeBranchInput = {
   /** The Node ID of the Repository containing the base branch that will be modified. */
@@ -9149,11 +8774,11 @@ export type GitHub_MergeBranchInput = {
   /** The head to merge into the base branch. This can be a branch name or a commit GitObjectID. */
   head: Scalars['String'];
   /** Message to use for the merge commit. If omitted, a default will be used. */
-  commitMessage?: Maybe<Scalars['String']>;
+  commitMessage?: InputMaybe<Scalars['String']>;
   /** The email address to associate with this commit. */
-  authorEmail?: Maybe<Scalars['String']>;
+  authorEmail?: InputMaybe<Scalars['String']>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of MergeBranch */
@@ -9163,6 +8788,43 @@ export type GitHub_MergeBranchPayload = {
   /** The resulting merge Commit. */
   mergeCommit?: Maybe<GitHub_Commit>;
 };
+
+/** Autogenerated input type of MergePullRequest */
+export type GitHub_MergePullRequestInput = {
+  /** ID of the pull request to be merged. */
+  pullRequestId: Scalars['ID'];
+  /** Commit headline to use for the merge commit; if omitted, a default message will be used. */
+  commitHeadline?: InputMaybe<Scalars['String']>;
+  /** Commit body to use for the merge commit; if omitted, a default message will be used */
+  commitBody?: InputMaybe<Scalars['String']>;
+  /** OID that the pull request head ref must match to allow merge; if omitted, no check is performed. */
+  expectedHeadOid?: InputMaybe<Scalars['GitHub_GitObjectID']>;
+  /** The merge method to use. If omitted, defaults to 'MERGE' */
+  mergeMethod?: InputMaybe<GitHub_PullRequestMergeMethod>;
+  /** The email address to associate with this merge. */
+  authorEmail?: InputMaybe<Scalars['String']>;
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+};
+
+/** Autogenerated return type of MergePullRequest */
+export type GitHub_MergePullRequestPayload = {
+  /** Identifies the actor who performed the event. */
+  actor?: Maybe<GitHub_Actor>;
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** The pull request that was merged. */
+  pullRequest?: Maybe<GitHub_PullRequest>;
+};
+
+/** Whether or not a PullRequest can be merged. */
+export type GitHub_MergeableState =
+  /** The pull request can be merged. */
+  | 'MERGEABLE'
+  /** The pull request cannot be merged due to merge conflicts. */
+  | 'CONFLICTING'
+  /** The mergeability of the pull request is still being calculated. */
+  | 'UNKNOWN';
 
 /** Represents a 'merged' event on a given pull request. */
 export type GitHub_MergedEvent = GitHub_Node & GitHub_UniformResourceLocatable & {
@@ -9185,34 +8847,6 @@ export type GitHub_MergedEvent = GitHub_Node & GitHub_UniformResourceLocatable &
   url: Scalars['GitHub_URI'];
 };
 
-/** Autogenerated input type of MergePullRequest */
-export type GitHub_MergePullRequestInput = {
-  /** ID of the pull request to be merged. */
-  pullRequestId: Scalars['ID'];
-  /** Commit headline to use for the merge commit; if omitted, a default message will be used. */
-  commitHeadline?: Maybe<Scalars['String']>;
-  /** Commit body to use for the merge commit; if omitted, a default message will be used */
-  commitBody?: Maybe<Scalars['String']>;
-  /** OID that the pull request head ref must match to allow merge; if omitted, no check is performed. */
-  expectedHeadOid?: Maybe<Scalars['GitHub_GitObjectID']>;
-  /** The merge method to use. If omitted, defaults to 'MERGE' */
-  mergeMethod?: Maybe<GitHub_PullRequestMergeMethod>;
-  /** The email address to associate with this merge. */
-  authorEmail?: Maybe<Scalars['String']>;
-  /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
-};
-
-/** Autogenerated return type of MergePullRequest */
-export type GitHub_MergePullRequestPayload = {
-  /** Identifies the actor who performed the event. */
-  actor?: Maybe<GitHub_Actor>;
-  /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
-  /** The pull request that was merged. */
-  pullRequest?: Maybe<GitHub_PullRequest>;
-};
-
 /** Represents an Octoshift migration. */
 export type GitHub_Migration = {
   /** The Octoshift migration flag to continue on error. */
@@ -9222,8 +8856,12 @@ export type GitHub_Migration = {
   /** The reason the migration failed. */
   failureReason?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
+  /** The URL for the migration log (expires 1 day after migration completes). */
+  migrationLogUrl?: Maybe<Scalars['GitHub_URI']>;
   /** The Octoshift migration source. */
   migrationSource: GitHub_MigrationSource;
+  /** The target repository name. */
+  repositoryName: Scalars['String'];
   /** The Octoshift migration source URL. */
   sourceUrl: Scalars['GitHub_URI'];
   /** The Octoshift migration state. */
@@ -9242,7 +8880,7 @@ export type GitHub_MigrationSource = GitHub_Node & {
 };
 
 /** Represents the different Octoshift migration sources. */
-export type GitHub_MigrationSourceType = 
+export type GitHub_MigrationSourceType =
   /** A GitLab migration source. */
   | 'GITLAB'
   /** An Azure DevOps migration source. */
@@ -9255,7 +8893,7 @@ export type GitHub_MigrationSourceType =
   | 'GITHUB_ARCHIVE';
 
 /** The Octoshift migration state. */
-export type GitHub_MigrationState = 
+export type GitHub_MigrationState =
   /** The Octoshift migration has not started. */
   | 'NOT_STARTED'
   /** The Octoshift migration has been queued. */
@@ -9307,28 +8945,28 @@ export type GitHub_Milestone = GitHub_Node & GitHub_Closable & GitHub_UniformRes
 
 /** Represents a Milestone object on a given repository. */
 export type GitHub_MilestoneIssuesArgs = {
-  orderBy?: Maybe<GitHub_IssueOrder>;
-  labels?: Maybe<Array<Scalars['String']>>;
-  states?: Maybe<Array<GitHub_IssueState>>;
-  filterBy?: Maybe<GitHub_IssueFilters>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_IssueOrder>;
+  labels?: InputMaybe<Array<Scalars['String']>>;
+  states?: InputMaybe<Array<GitHub_IssueState>>;
+  filterBy?: InputMaybe<GitHub_IssueFilters>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** Represents a Milestone object on a given repository. */
 export type GitHub_MilestonePullRequestsArgs = {
-  states?: Maybe<Array<GitHub_PullRequestState>>;
-  labels?: Maybe<Array<Scalars['String']>>;
-  headRefName?: Maybe<Scalars['String']>;
-  baseRefName?: Maybe<Scalars['String']>;
-  orderBy?: Maybe<GitHub_IssueOrder>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  states?: InputMaybe<Array<GitHub_PullRequestState>>;
+  labels?: InputMaybe<Array<Scalars['String']>>;
+  headRefName?: InputMaybe<Scalars['String']>;
+  baseRefName?: InputMaybe<Scalars['String']>;
+  orderBy?: InputMaybe<GitHub_IssueOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** The connection type for Milestone. */
@@ -9341,19 +8979,6 @@ export type GitHub_MilestoneConnection = {
   pageInfo: GitHub_PageInfo;
   /** Identifies the total count of items in the connection. */
   totalCount: Scalars['Int'];
-};
-
-/** Represents a 'milestoned' event on a given issue or pull request. */
-export type GitHub_MilestonedEvent = GitHub_Node & {
-  /** Identifies the actor who performed the event. */
-  actor?: Maybe<GitHub_Actor>;
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['GitHub_DateTime'];
-  id: Scalars['ID'];
-  /** Identifies the milestone title associated with the 'milestoned' event. */
-  milestoneTitle: Scalars['String'];
-  /** Object referenced by event. */
-  subject: GitHub_MilestoneItem;
 };
 
 /** An edge in a connection. */
@@ -9376,7 +9001,7 @@ export type GitHub_MilestoneOrder = {
 };
 
 /** Properties by which milestone connections can be ordered. */
-export type GitHub_MilestoneOrderField = 
+export type GitHub_MilestoneOrderField =
   /** Order milestones by when they are due. */
   | 'DUE_DATE'
   /** Order milestones by when they were created. */
@@ -9387,11 +9012,24 @@ export type GitHub_MilestoneOrderField =
   | 'NUMBER';
 
 /** The possible states of a milestone. */
-export type GitHub_MilestoneState = 
+export type GitHub_MilestoneState =
   /** A milestone that is still open. */
   | 'OPEN'
   /** A milestone that has been closed. */
   | 'CLOSED';
+
+/** Represents a 'milestoned' event on a given issue or pull request. */
+export type GitHub_MilestonedEvent = GitHub_Node & {
+  /** Identifies the actor who performed the event. */
+  actor?: Maybe<GitHub_Actor>;
+  /** Identifies the date and time when the object was created. */
+  createdAt: Scalars['GitHub_DateTime'];
+  id: Scalars['ID'];
+  /** Identifies the milestone title associated with the 'milestoned' event. */
+  milestoneTitle: Scalars['String'];
+  /** Object referenced by event. */
+  subject: GitHub_MilestoneItem;
+};
 
 /** Entities that can be minimized. */
 export type GitHub_Minimizable = {
@@ -9410,7 +9048,7 @@ export type GitHub_MinimizeCommentInput = {
   /** The classification of comment */
   classifier: GitHub_ReportedContentClassifiers;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of MinimizeComment */
@@ -9421,17 +9059,6 @@ export type GitHub_MinimizeCommentPayload = {
   minimizedComment?: Maybe<GitHub_Minimizable>;
 };
 
-/** Represents a 'moved_columns_in_project' event on a given issue or pull request. */
-export type GitHub_MovedColumnsInProjectEvent = GitHub_Node & {
-  /** Identifies the actor who performed the event. */
-  actor?: Maybe<GitHub_Actor>;
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['GitHub_DateTime'];
-  /** Identifies the primary key from the database. */
-  databaseId?: Maybe<Scalars['Int']>;
-  id: Scalars['ID'];
-};
-
 /** Autogenerated input type of MoveProjectCard */
 export type GitHub_MoveProjectCardInput = {
   /** The id of the card to move. */
@@ -9439,9 +9066,9 @@ export type GitHub_MoveProjectCardInput = {
   /** The id of the column to move it into. */
   columnId: Scalars['ID'];
   /** Place the new card after the card with this id. Pass null to place it at the top. */
-  afterCardId?: Maybe<Scalars['ID']>;
+  afterCardId?: InputMaybe<Scalars['ID']>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of MoveProjectCard */
@@ -9457,9 +9084,9 @@ export type GitHub_MoveProjectColumnInput = {
   /** The id of the column to move. */
   columnId: Scalars['ID'];
   /** Place the new column after the column with this id. Pass null to place it at the front. */
-  afterColumnId?: Maybe<Scalars['ID']>;
+  afterColumnId?: InputMaybe<Scalars['ID']>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of MoveProjectColumn */
@@ -9470,6 +9097,17 @@ export type GitHub_MoveProjectColumnPayload = {
   columnEdge?: Maybe<GitHub_ProjectColumnEdge>;
 };
 
+/** Represents a 'moved_columns_in_project' event on a given issue or pull request. */
+export type GitHub_MovedColumnsInProjectEvent = GitHub_Node & {
+  /** Identifies the actor who performed the event. */
+  actor?: Maybe<GitHub_Actor>;
+  /** Identifies the date and time when the object was created. */
+  createdAt: Scalars['GitHub_DateTime'];
+  /** Identifies the primary key from the database. */
+  databaseId?: Maybe<Scalars['Int']>;
+  id: Scalars['ID'];
+};
+
 /** An object with an ID. */
 export type GitHub_Node = {
   /** ID of the object. */
@@ -9477,11 +9115,41 @@ export type GitHub_Node = {
 };
 
 /** The possible values for the notification restriction setting. */
-export type GitHub_NotificationRestrictionSettingValue = 
+export type GitHub_NotificationRestrictionSettingValue =
   /** The setting is enabled for the owner. */
   | 'ENABLED'
   /** The setting is disabled for the owner. */
   | 'DISABLED';
+
+/** An OIDC identity provider configured to provision identities for an enterprise. */
+export type GitHub_OidcProvider = GitHub_Node & {
+  /** The enterprise this identity provider belongs to. */
+  enterprise?: Maybe<GitHub_Enterprise>;
+  /** ExternalIdentities provisioned by this identity provider. */
+  externalIdentities: GitHub_ExternalIdentityConnection;
+  id: Scalars['ID'];
+  /** The OIDC identity provider type */
+  providerType: GitHub_OidcProviderType;
+  /** The id of the tenant this provider is attached to */
+  tenantId: Scalars['String'];
+};
+
+
+/** An OIDC identity provider configured to provision identities for an enterprise. */
+export type GitHub_OidcProviderExternalIdentitiesArgs = {
+  membersOnly?: InputMaybe<Scalars['Boolean']>;
+  login?: InputMaybe<Scalars['String']>;
+  userName?: InputMaybe<Scalars['String']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+};
+
+/** The OIDC identity provider type */
+export type GitHub_OidcProviderType =
+  /** Azure Active Directory */
+  | 'AAD';
 
 /** Metadata for an audit entry with action oauth_application.* */
 export type GitHub_OauthApplicationAuditEntryData = {
@@ -9547,7 +9215,7 @@ export type GitHub_OauthApplicationCreateAuditEntry = GitHub_Node & GitHub_Audit
 };
 
 /** The state of an OAuth Application when it was created. */
-export type GitHub_OauthApplicationCreateAuditEntryState = 
+export type GitHub_OauthApplicationCreateAuditEntryState =
   /** The OAuth Application was active and allowed to have OAuth Accesses. */
   | 'ACTIVE'
   /** The OAuth Application was suspended from generating OAuth Accesses due to abuse or security concerns. */
@@ -9555,38 +9223,8 @@ export type GitHub_OauthApplicationCreateAuditEntryState =
   /** The OAuth Application was in the process of being deleted. */
   | 'PENDING_DELETION';
 
-/** An OIDC identity provider configured to provision identities for an enterprise. */
-export type GitHub_OidcProvider = GitHub_Node & {
-  /** The enterprise this identity provider belongs to. */
-  enterprise?: Maybe<GitHub_Enterprise>;
-  /** ExternalIdentities provisioned by this identity provider. */
-  externalIdentities: GitHub_ExternalIdentityConnection;
-  id: Scalars['ID'];
-  /** The OIDC identity provider type */
-  providerType: GitHub_OidcProviderType;
-  /** The id of the tenant this provider is attached to */
-  tenantId: Scalars['String'];
-};
-
-
-/** An OIDC identity provider configured to provision identities for an enterprise. */
-export type GitHub_OidcProviderExternalIdentitiesArgs = {
-  membersOnly?: Maybe<Scalars['Boolean']>;
-  login?: Maybe<Scalars['String']>;
-  userName?: Maybe<Scalars['String']>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-};
-
-/** The OIDC identity provider type */
-export type GitHub_OidcProviderType = 
-  /** Azure Active Directory */
-  | 'AAD';
-
 /** The corresponding operation type for the action */
-export type GitHub_OperationType = 
+export type GitHub_OperationType =
   /** An existing resource was accessed */
   | 'ACCESS'
   /** A resource performed an authentication event */
@@ -9603,7 +9241,7 @@ export type GitHub_OperationType =
   | 'TRANSFER';
 
 /** Possible directions in which to order a list of items when provided an `orderBy` argument. */
-export type GitHub_OrderDirection = 
+export type GitHub_OrderDirection =
   /** Specifies an ascending order for a given `orderBy` argument. */
   | 'ASC'
   /** Specifies a descending order for a given `orderBy` argument. */
@@ -9692,746 +9330,11 @@ export type GitHub_OrgAddMemberAuditEntry = GitHub_Node & GitHub_AuditEntry & Gi
 };
 
 /** The permissions available to members on an Organization. */
-export type GitHub_OrgAddMemberAuditEntryPermission = 
+export type GitHub_OrgAddMemberAuditEntryPermission =
   /** Can read and clone repositories. */
   | 'READ'
   /** Can read, clone, push, and add collaborators to repositories. */
   | 'ADMIN';
-
-/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
-export type GitHub_Organization = GitHub_Node & GitHub_Actor & GitHub_PackageOwner & GitHub_ProjectOwner & GitHub_ProjectNextOwner & GitHub_ProjectV2Owner & GitHub_RepositoryDiscussionAuthor & GitHub_RepositoryDiscussionCommentAuthor & GitHub_RepositoryOwner & GitHub_UniformResourceLocatable & GitHub_MemberStatusable & GitHub_ProfileOwner & GitHub_Sponsorable & {
-  /** Determine if this repository owner has any items that can be pinned to their profile. */
-  anyPinnableItems: Scalars['Boolean'];
-  /** Audit log entries of the organization */
-  auditLog: GitHub_OrganizationAuditEntryConnection;
-  /** A URL pointing to the organization's public avatar. */
-  avatarUrl: Scalars['GitHub_URI'];
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['GitHub_DateTime'];
-  /** Identifies the primary key from the database. */
-  databaseId?: Maybe<Scalars['Int']>;
-  /** The organization's public profile description. */
-  description?: Maybe<Scalars['String']>;
-  /** The organization's public profile description rendered to HTML. */
-  descriptionHTML?: Maybe<Scalars['String']>;
-  /** A list of domains owned by the organization. */
-  domains?: Maybe<GitHub_VerifiableDomainConnection>;
-  /** The organization's public email. */
-  email?: Maybe<Scalars['String']>;
-  /** A list of owners of the organization's enterprise account. */
-  enterpriseOwners: GitHub_OrganizationEnterpriseOwnerConnection;
-  /** The estimated next GitHub Sponsors payout for this user/organization in cents (USD). */
-  estimatedNextSponsorsPayoutInCents: Scalars['Int'];
-  /** True if this user/organization has a GitHub Sponsors listing. */
-  hasSponsorsListing: Scalars['Boolean'];
-  id: Scalars['ID'];
-  /** The interaction ability settings for this organization. */
-  interactionAbility?: Maybe<GitHub_RepositoryInteractionAbility>;
-  /** The setting value for whether the organization has an IP allow list enabled. */
-  ipAllowListEnabledSetting: GitHub_IpAllowListEnabledSettingValue;
-  /** The IP addresses that are allowed to access resources owned by the organization. */
-  ipAllowListEntries: GitHub_IpAllowListEntryConnection;
-  /** The setting value for whether the organization has IP allow list configuration for installed GitHub Apps enabled. */
-  ipAllowListForInstalledAppsEnabledSetting: GitHub_IpAllowListForInstalledAppsEnabledSettingValue;
-  /** Check if the given account is sponsoring this user/organization. */
-  isSponsoredBy: Scalars['Boolean'];
-  /** True if the viewer is sponsored by this user/organization. */
-  isSponsoringViewer: Scalars['Boolean'];
-  /** Whether the organization has verified its profile email and website. */
-  isVerified: Scalars['Boolean'];
-  /**
-   * Showcases a selection of repositories and gists that the profile owner has
-   * either curated or that have been selected automatically based on popularity.
-   */
-  itemShowcase: GitHub_ProfileItemShowcase;
-  /** The organization's public profile location. */
-  location?: Maybe<Scalars['String']>;
-  /** The organization's login name. */
-  login: Scalars['String'];
-  /** Get the status messages members of this entity have set that are either public or visible only to the organization. */
-  memberStatuses: GitHub_UserStatusConnection;
-  /** Members can fork private repositories in this organization */
-  membersCanForkPrivateRepositories: Scalars['Boolean'];
-  /** A list of users who are members of this organization. */
-  membersWithRole: GitHub_OrganizationMemberConnection;
-  /** The estimated monthly GitHub Sponsors income for this user/organization in cents (USD). */
-  monthlyEstimatedSponsorsIncomeInCents: Scalars['Int'];
-  /** The organization's public profile name. */
-  name?: Maybe<Scalars['String']>;
-  /** The HTTP path creating a new team */
-  newTeamResourcePath: Scalars['GitHub_URI'];
-  /** The HTTP URL creating a new team */
-  newTeamUrl: Scalars['GitHub_URI'];
-  /** Indicates if email notification delivery for this organization is restricted to verified or approved domains. */
-  notificationDeliveryRestrictionEnabledSetting: GitHub_NotificationRestrictionSettingValue;
-  /** The billing email for the organization. */
-  organizationBillingEmail?: Maybe<Scalars['String']>;
-  /** A list of packages under the owner. */
-  packages: GitHub_PackageConnection;
-  /** A list of users who have been invited to join this organization. */
-  pendingMembers: GitHub_UserConnection;
-  /** A list of repositories and gists this profile owner can pin to their profile. */
-  pinnableItems: GitHub_PinnableItemConnection;
-  /** A list of repositories and gists this profile owner has pinned to their profile */
-  pinnedItems: GitHub_PinnableItemConnection;
-  /** Returns how many more items this profile owner can pin to their profile. */
-  pinnedItemsRemaining: Scalars['Int'];
-  /** Find project by number. */
-  project?: Maybe<GitHub_Project>;
-  /** Find a project by project (beta) number. */
-  projectNext?: Maybe<GitHub_ProjectNext>;
-  /** A list of projects under the owner. */
-  projects: GitHub_ProjectConnection;
-  /** A list of projects (beta) under the owner. */
-  projectsNext: GitHub_ProjectNextConnection;
-  /** The HTTP path listing organization's projects */
-  projectsResourcePath: Scalars['GitHub_URI'];
-  /** The HTTP URL listing organization's projects */
-  projectsUrl: Scalars['GitHub_URI'];
-  /** A list of repositories that the user owns. */
-  repositories: GitHub_RepositoryConnection;
-  /** Find Repository. */
-  repository?: Maybe<GitHub_Repository>;
-  /** Discussion comments this user has authored. */
-  repositoryDiscussionComments: GitHub_DiscussionCommentConnection;
-  /** Discussions this user has started. */
-  repositoryDiscussions: GitHub_DiscussionConnection;
-  /** A list of all repository migrations for this organization. */
-  repositoryMigrations: GitHub_RepositoryMigrationConnection;
-  /**
-   * When true the organization requires all members, billing managers, and outside
-   * collaborators to enable two-factor authentication.
-   */
-  requiresTwoFactorAuthentication?: Maybe<Scalars['Boolean']>;
-  /** The HTTP path for this organization. */
-  resourcePath: Scalars['GitHub_URI'];
-  /** The Organization's SAML identity providers */
-  samlIdentityProvider?: Maybe<GitHub_OrganizationIdentityProvider>;
-  /** List of users and organizations this entity is sponsoring. */
-  sponsoring: GitHub_SponsorConnection;
-  /** List of sponsors for this user or organization. */
-  sponsors: GitHub_SponsorConnection;
-  /** Events involving this sponsorable, such as new sponsorships. */
-  sponsorsActivities: GitHub_SponsorsActivityConnection;
-  /** The GitHub Sponsors listing for this user or organization. */
-  sponsorsListing?: Maybe<GitHub_SponsorsListing>;
-  /**
-   * The sponsorship from the viewer to this user/organization; that is, the
-   * sponsorship where you're the sponsor. Only returns a sponsorship if it is active.
-   */
-  sponsorshipForViewerAsSponsor?: Maybe<GitHub_Sponsorship>;
-  /**
-   * The sponsorship from this user/organization to the viewer; that is, the
-   * sponsorship you're receiving. Only returns a sponsorship if it is active.
-   */
-  sponsorshipForViewerAsSponsorable?: Maybe<GitHub_Sponsorship>;
-  /** List of sponsorship updates sent from this sponsorable to sponsors. */
-  sponsorshipNewsletters: GitHub_SponsorshipNewsletterConnection;
-  /** This object's sponsorships as the maintainer. */
-  sponsorshipsAsMaintainer: GitHub_SponsorshipConnection;
-  /** This object's sponsorships as the sponsor. */
-  sponsorshipsAsSponsor: GitHub_SponsorshipConnection;
-  /** Find an organization's team by its slug. */
-  team?: Maybe<GitHub_Team>;
-  /** A list of teams in this organization. */
-  teams: GitHub_TeamConnection;
-  /** The HTTP path listing organization's teams */
-  teamsResourcePath: Scalars['GitHub_URI'];
-  /** The HTTP URL listing organization's teams */
-  teamsUrl: Scalars['GitHub_URI'];
-  /** The organization's Twitter username. */
-  twitterUsername?: Maybe<Scalars['String']>;
-  /** Identifies the date and time when the object was last updated. */
-  updatedAt: Scalars['GitHub_DateTime'];
-  /** The HTTP URL for this organization. */
-  url: Scalars['GitHub_URI'];
-  /** Organization is adminable by the viewer. */
-  viewerCanAdminister: Scalars['Boolean'];
-  /** Can the viewer pin repositories and gists to the profile? */
-  viewerCanChangePinnedItems: Scalars['Boolean'];
-  /** Can the current viewer create new projects on this owner. */
-  viewerCanCreateProjects: Scalars['Boolean'];
-  /** Viewer can create repositories on this organization */
-  viewerCanCreateRepositories: Scalars['Boolean'];
-  /** Viewer can create teams on this organization. */
-  viewerCanCreateTeams: Scalars['Boolean'];
-  /** Whether or not the viewer is able to sponsor this user/organization. */
-  viewerCanSponsor: Scalars['Boolean'];
-  /** Viewer is an active member of this organization. */
-  viewerIsAMember: Scalars['Boolean'];
-  /** True if the viewer is sponsoring this user/organization. */
-  viewerIsSponsoring: Scalars['Boolean'];
-  /** The organization's public profile URL. */
-  websiteUrl?: Maybe<Scalars['GitHub_URI']>;
-};
-
-
-/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
-export type GitHub_OrganizationAnyPinnableItemsArgs = {
-  type?: Maybe<GitHub_PinnableItemType>;
-};
-
-
-/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
-export type GitHub_OrganizationAuditLogArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  query?: Maybe<Scalars['String']>;
-  orderBy?: Maybe<GitHub_AuditLogOrder>;
-};
-
-
-/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
-export type GitHub_OrganizationAvatarUrlArgs = {
-  size?: Maybe<Scalars['Int']>;
-};
-
-
-/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
-export type GitHub_OrganizationDomainsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  isVerified?: Maybe<Scalars['Boolean']>;
-  isApproved?: Maybe<Scalars['Boolean']>;
-  orderBy?: Maybe<GitHub_VerifiableDomainOrder>;
-};
-
-
-/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
-export type GitHub_OrganizationEnterpriseOwnersArgs = {
-  query?: Maybe<Scalars['String']>;
-  organizationRole?: Maybe<GitHub_RoleInOrganization>;
-  orderBy?: Maybe<GitHub_OrgEnterpriseOwnerOrder>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-};
-
-
-/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
-export type GitHub_OrganizationIpAllowListEntriesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  orderBy?: Maybe<GitHub_IpAllowListEntryOrder>;
-};
-
-
-/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
-export type GitHub_OrganizationIsSponsoredByArgs = {
-  accountLogin: Scalars['String'];
-};
-
-
-/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
-export type GitHub_OrganizationMemberStatusesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  orderBy?: Maybe<GitHub_UserStatusOrder>;
-};
-
-
-/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
-export type GitHub_OrganizationMembersWithRoleArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-};
-
-
-/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
-export type GitHub_OrganizationPackagesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  names?: Maybe<Array<Maybe<Scalars['String']>>>;
-  repositoryId?: Maybe<Scalars['ID']>;
-  packageType?: Maybe<GitHub_PackageType>;
-  orderBy?: Maybe<GitHub_PackageOrder>;
-};
-
-
-/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
-export type GitHub_OrganizationPendingMembersArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-};
-
-
-/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
-export type GitHub_OrganizationPinnableItemsArgs = {
-  types?: Maybe<Array<GitHub_PinnableItemType>>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-};
-
-
-/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
-export type GitHub_OrganizationPinnedItemsArgs = {
-  types?: Maybe<Array<GitHub_PinnableItemType>>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-};
-
-
-/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
-export type GitHub_OrganizationProjectArgs = {
-  number: Scalars['Int'];
-};
-
-
-/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
-export type GitHub_OrganizationProjectNextArgs = {
-  number: Scalars['Int'];
-};
-
-
-/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
-export type GitHub_OrganizationProjectsArgs = {
-  orderBy?: Maybe<GitHub_ProjectOrder>;
-  search?: Maybe<Scalars['String']>;
-  states?: Maybe<Array<GitHub_ProjectState>>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-};
-
-
-/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
-export type GitHub_OrganizationProjectsNextArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  query?: Maybe<Scalars['String']>;
-  sortBy?: Maybe<GitHub_ProjectNextOrderField>;
-};
-
-
-/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
-export type GitHub_OrganizationRepositoriesArgs = {
-  privacy?: Maybe<GitHub_RepositoryPrivacy>;
-  orderBy?: Maybe<GitHub_RepositoryOrder>;
-  affiliations?: Maybe<Array<Maybe<GitHub_RepositoryAffiliation>>>;
-  ownerAffiliations?: Maybe<Array<Maybe<GitHub_RepositoryAffiliation>>>;
-  isLocked?: Maybe<Scalars['Boolean']>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  isFork?: Maybe<Scalars['Boolean']>;
-};
-
-
-/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
-export type GitHub_OrganizationRepositoryArgs = {
-  name: Scalars['String'];
-  followRenames?: Maybe<Scalars['Boolean']>;
-};
-
-
-/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
-export type GitHub_OrganizationRepositoryDiscussionCommentsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  repositoryId?: Maybe<Scalars['ID']>;
-  onlyAnswers?: Maybe<Scalars['Boolean']>;
-};
-
-
-/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
-export type GitHub_OrganizationRepositoryDiscussionsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  orderBy?: Maybe<GitHub_DiscussionOrder>;
-  repositoryId?: Maybe<Scalars['ID']>;
-  answered?: Maybe<Scalars['Boolean']>;
-};
-
-
-/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
-export type GitHub_OrganizationRepositoryMigrationsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  state?: Maybe<GitHub_MigrationState>;
-  orderBy?: Maybe<GitHub_RepositoryMigrationOrder>;
-};
-
-
-/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
-export type GitHub_OrganizationSponsoringArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  orderBy?: Maybe<GitHub_SponsorOrder>;
-};
-
-
-/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
-export type GitHub_OrganizationSponsorsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  tierId?: Maybe<Scalars['ID']>;
-  orderBy?: Maybe<GitHub_SponsorOrder>;
-};
-
-
-/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
-export type GitHub_OrganizationSponsorsActivitiesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  period?: Maybe<GitHub_SponsorsActivityPeriod>;
-  orderBy?: Maybe<GitHub_SponsorsActivityOrder>;
-};
-
-
-/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
-export type GitHub_OrganizationSponsorshipNewslettersArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  orderBy?: Maybe<GitHub_SponsorshipNewsletterOrder>;
-};
-
-
-/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
-export type GitHub_OrganizationSponsorshipsAsMaintainerArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  includePrivate?: Maybe<Scalars['Boolean']>;
-  orderBy?: Maybe<GitHub_SponsorshipOrder>;
-};
-
-
-/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
-export type GitHub_OrganizationSponsorshipsAsSponsorArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  orderBy?: Maybe<GitHub_SponsorshipOrder>;
-};
-
-
-/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
-export type GitHub_OrganizationTeamArgs = {
-  slug: Scalars['String'];
-};
-
-
-/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
-export type GitHub_OrganizationTeamsArgs = {
-  privacy?: Maybe<GitHub_TeamPrivacy>;
-  role?: Maybe<GitHub_TeamRole>;
-  query?: Maybe<Scalars['String']>;
-  userLogins?: Maybe<Array<Scalars['String']>>;
-  orderBy?: Maybe<GitHub_TeamOrder>;
-  ldapMapped?: Maybe<Scalars['Boolean']>;
-  rootTeamsOnly?: Maybe<Scalars['Boolean']>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-};
-
-/** An audit entry in an organization audit log. */
-export type GitHub_OrganizationAuditEntry = GitHub_MembersCanDeleteReposClearAuditEntry | GitHub_MembersCanDeleteReposDisableAuditEntry | GitHub_MembersCanDeleteReposEnableAuditEntry | GitHub_OauthApplicationCreateAuditEntry | GitHub_OrgAddBillingManagerAuditEntry | GitHub_OrgAddMemberAuditEntry | GitHub_OrgBlockUserAuditEntry | GitHub_OrgConfigDisableCollaboratorsOnlyAuditEntry | GitHub_OrgConfigEnableCollaboratorsOnlyAuditEntry | GitHub_OrgCreateAuditEntry | GitHub_OrgDisableOauthAppRestrictionsAuditEntry | GitHub_OrgDisableSamlAuditEntry | GitHub_OrgDisableTwoFactorRequirementAuditEntry | GitHub_OrgEnableOauthAppRestrictionsAuditEntry | GitHub_OrgEnableSamlAuditEntry | GitHub_OrgEnableTwoFactorRequirementAuditEntry | GitHub_OrgInviteMemberAuditEntry | GitHub_OrgInviteToBusinessAuditEntry | GitHub_OrgOauthAppAccessApprovedAuditEntry | GitHub_OrgOauthAppAccessDeniedAuditEntry | GitHub_OrgOauthAppAccessRequestedAuditEntry | GitHub_OrgRemoveBillingManagerAuditEntry | GitHub_OrgRemoveMemberAuditEntry | GitHub_OrgRemoveOutsideCollaboratorAuditEntry | GitHub_OrgRestoreMemberAuditEntry | GitHub_OrgUnblockUserAuditEntry | GitHub_OrgUpdateDefaultRepositoryPermissionAuditEntry | GitHub_OrgUpdateMemberAuditEntry | GitHub_OrgUpdateMemberRepositoryCreationPermissionAuditEntry | GitHub_OrgUpdateMemberRepositoryInvitationPermissionAuditEntry | GitHub_PrivateRepositoryForkingDisableAuditEntry | GitHub_PrivateRepositoryForkingEnableAuditEntry | GitHub_RepoAccessAuditEntry | GitHub_RepoAddMemberAuditEntry | GitHub_RepoAddTopicAuditEntry | GitHub_RepoArchivedAuditEntry | GitHub_RepoChangeMergeSettingAuditEntry | GitHub_RepoConfigDisableAnonymousGitAccessAuditEntry | GitHub_RepoConfigDisableCollaboratorsOnlyAuditEntry | GitHub_RepoConfigDisableContributorsOnlyAuditEntry | GitHub_RepoConfigDisableSockpuppetDisallowedAuditEntry | GitHub_RepoConfigEnableAnonymousGitAccessAuditEntry | GitHub_RepoConfigEnableCollaboratorsOnlyAuditEntry | GitHub_RepoConfigEnableContributorsOnlyAuditEntry | GitHub_RepoConfigEnableSockpuppetDisallowedAuditEntry | GitHub_RepoConfigLockAnonymousGitAccessAuditEntry | GitHub_RepoConfigUnlockAnonymousGitAccessAuditEntry | GitHub_RepoCreateAuditEntry | GitHub_RepoDestroyAuditEntry | GitHub_RepoRemoveMemberAuditEntry | GitHub_RepoRemoveTopicAuditEntry | GitHub_RepositoryVisibilityChangeDisableAuditEntry | GitHub_RepositoryVisibilityChangeEnableAuditEntry | GitHub_TeamAddMemberAuditEntry | GitHub_TeamAddRepositoryAuditEntry | GitHub_TeamChangeParentTeamAuditEntry | GitHub_TeamRemoveMemberAuditEntry | GitHub_TeamRemoveRepositoryAuditEntry;
-
-/** The connection type for OrganizationAuditEntry. */
-export type GitHub_OrganizationAuditEntryConnection = {
-  /** A list of edges. */
-  edges?: Maybe<Array<Maybe<GitHub_OrganizationAuditEntryEdge>>>;
-  /** A list of nodes. */
-  nodes?: Maybe<Array<Maybe<GitHub_OrganizationAuditEntry>>>;
-  /** Information to aid in pagination. */
-  pageInfo: GitHub_PageInfo;
-  /** Identifies the total count of items in the connection. */
-  totalCount: Scalars['Int'];
-};
-
-/** Metadata for an audit entry with action org.* */
-export type GitHub_OrganizationAuditEntryData = {
-  /** The Organization associated with the Audit Entry. */
-  organization?: Maybe<GitHub_Organization>;
-  /** The name of the Organization. */
-  organizationName?: Maybe<Scalars['String']>;
-  /** The HTTP path for the organization */
-  organizationResourcePath?: Maybe<Scalars['GitHub_URI']>;
-  /** The HTTP URL for the organization */
-  organizationUrl?: Maybe<Scalars['GitHub_URI']>;
-};
-
-/** An edge in a connection. */
-export type GitHub_OrganizationAuditEntryEdge = {
-  /** A cursor for use in pagination. */
-  cursor: Scalars['String'];
-  /** The item at the end of the edge. */
-  node?: Maybe<GitHub_OrganizationAuditEntry>;
-};
-
-/** A list of organizations managed by an enterprise. */
-export type GitHub_OrganizationConnection = {
-  /** A list of edges. */
-  edges?: Maybe<Array<Maybe<GitHub_OrganizationEdge>>>;
-  /** A list of nodes. */
-  nodes?: Maybe<Array<Maybe<GitHub_Organization>>>;
-  /** Information to aid in pagination. */
-  pageInfo: GitHub_PageInfo;
-  /** Identifies the total count of items in the connection. */
-  totalCount: Scalars['Int'];
-};
-
-/** An edge in a connection. */
-export type GitHub_OrganizationEdge = {
-  /** A cursor for use in pagination. */
-  cursor: Scalars['String'];
-  /** The item at the end of the edge. */
-  node?: Maybe<GitHub_Organization>;
-};
-
-/** The connection type for User. */
-export type GitHub_OrganizationEnterpriseOwnerConnection = {
-  /** A list of edges. */
-  edges?: Maybe<Array<Maybe<GitHub_OrganizationEnterpriseOwnerEdge>>>;
-  /** A list of nodes. */
-  nodes?: Maybe<Array<Maybe<GitHub_User>>>;
-  /** Information to aid in pagination. */
-  pageInfo: GitHub_PageInfo;
-  /** Identifies the total count of items in the connection. */
-  totalCount: Scalars['Int'];
-};
-
-/** An enterprise owner in the context of an organization that is part of the enterprise. */
-export type GitHub_OrganizationEnterpriseOwnerEdge = {
-  /** A cursor for use in pagination. */
-  cursor: Scalars['String'];
-  /** The item at the end of the edge. */
-  node?: Maybe<GitHub_User>;
-  /** The role of the owner with respect to the organization. */
-  organizationRole: GitHub_RoleInOrganization;
-};
-
-/** An Identity Provider configured to provision SAML and SCIM identities for Organizations */
-export type GitHub_OrganizationIdentityProvider = GitHub_Node & {
-  /** The digest algorithm used to sign SAML requests for the Identity Provider. */
-  digestMethod?: Maybe<Scalars['GitHub_URI']>;
-  /** External Identities provisioned by this Identity Provider */
-  externalIdentities: GitHub_ExternalIdentityConnection;
-  id: Scalars['ID'];
-  /** The x509 certificate used by the Identity Provider to sign assertions and responses. */
-  idpCertificate?: Maybe<Scalars['GitHub_X509Certificate']>;
-  /** The Issuer Entity ID for the SAML Identity Provider */
-  issuer?: Maybe<Scalars['String']>;
-  /** Organization this Identity Provider belongs to */
-  organization?: Maybe<GitHub_Organization>;
-  /** The signature algorithm used to sign SAML requests for the Identity Provider. */
-  signatureMethod?: Maybe<Scalars['GitHub_URI']>;
-  /** The URL endpoint for the Identity Provider's SAML SSO. */
-  ssoUrl?: Maybe<Scalars['GitHub_URI']>;
-};
-
-
-/** An Identity Provider configured to provision SAML and SCIM identities for Organizations */
-export type GitHub_OrganizationIdentityProviderExternalIdentitiesArgs = {
-  membersOnly?: Maybe<Scalars['Boolean']>;
-  login?: Maybe<Scalars['String']>;
-  userName?: Maybe<Scalars['String']>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-};
-
-/** An Invitation for a user to an organization. */
-export type GitHub_OrganizationInvitation = GitHub_Node & {
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['GitHub_DateTime'];
-  /** The email address of the user invited to the organization. */
-  email?: Maybe<Scalars['String']>;
-  id: Scalars['ID'];
-  /** The type of invitation that was sent (e.g. email, user). */
-  invitationType: GitHub_OrganizationInvitationType;
-  /** The user who was invited to the organization. */
-  invitee?: Maybe<GitHub_User>;
-  /** The user who created the invitation. */
-  inviter: GitHub_User;
-  /** The organization the invite is for */
-  organization: GitHub_Organization;
-  /** The user's pending role in the organization (e.g. member, owner). */
-  role: GitHub_OrganizationInvitationRole;
-};
-
-/** The connection type for OrganizationInvitation. */
-export type GitHub_OrganizationInvitationConnection = {
-  /** A list of edges. */
-  edges?: Maybe<Array<Maybe<GitHub_OrganizationInvitationEdge>>>;
-  /** A list of nodes. */
-  nodes?: Maybe<Array<Maybe<GitHub_OrganizationInvitation>>>;
-  /** Information to aid in pagination. */
-  pageInfo: GitHub_PageInfo;
-  /** Identifies the total count of items in the connection. */
-  totalCount: Scalars['Int'];
-};
-
-/** An edge in a connection. */
-export type GitHub_OrganizationInvitationEdge = {
-  /** A cursor for use in pagination. */
-  cursor: Scalars['String'];
-  /** The item at the end of the edge. */
-  node?: Maybe<GitHub_OrganizationInvitation>;
-};
-
-/** The possible organization invitation roles. */
-export type GitHub_OrganizationInvitationRole = 
-  /** The user is invited to be a direct member of the organization. */
-  | 'DIRECT_MEMBER'
-  /** The user is invited to be an admin of the organization. */
-  | 'ADMIN'
-  /** The user is invited to be a billing manager of the organization. */
-  | 'BILLING_MANAGER'
-  /** The user's previous role will be reinstated. */
-  | 'REINSTATE';
-
-/** The possible organization invitation types. */
-export type GitHub_OrganizationInvitationType = 
-  /** The invitation was to an existing user. */
-  | 'USER'
-  /** The invitation was to an email address. */
-  | 'EMAIL';
-
-/** The connection type for User. */
-export type GitHub_OrganizationMemberConnection = {
-  /** A list of edges. */
-  edges?: Maybe<Array<Maybe<GitHub_OrganizationMemberEdge>>>;
-  /** A list of nodes. */
-  nodes?: Maybe<Array<Maybe<GitHub_User>>>;
-  /** Information to aid in pagination. */
-  pageInfo: GitHub_PageInfo;
-  /** Identifies the total count of items in the connection. */
-  totalCount: Scalars['Int'];
-};
-
-/** Represents a user within an organization. */
-export type GitHub_OrganizationMemberEdge = {
-  /** A cursor for use in pagination. */
-  cursor: Scalars['String'];
-  /** Whether the organization member has two factor enabled or not. Returns null if information is not available to viewer. */
-  hasTwoFactorEnabled?: Maybe<Scalars['Boolean']>;
-  /** The item at the end of the edge. */
-  node?: Maybe<GitHub_User>;
-  /** The role this user has in the organization. */
-  role?: Maybe<GitHub_OrganizationMemberRole>;
-};
-
-/** The possible roles within an organization for its members. */
-export type GitHub_OrganizationMemberRole = 
-  /** The user is a member of the organization. */
-  | 'MEMBER'
-  /** The user is an administrator of the organization. */
-  | 'ADMIN';
-
-/** The possible values for the members can create repositories setting on an organization. */
-export type GitHub_OrganizationMembersCanCreateRepositoriesSettingValue = 
-  /** Members will be able to create public and private repositories. */
-  | 'ALL'
-  /** Members will be able to create only private repositories. */
-  | 'PRIVATE'
-  /** Members will be able to create only internal repositories. */
-  | 'INTERNAL'
-  /** Members will not be able to create public or private repositories. */
-  | 'DISABLED';
-
-/** Ordering options for organization connections. */
-export type GitHub_OrganizationOrder = {
-  /** The field to order organizations by. */
-  field: GitHub_OrganizationOrderField;
-  /** The ordering direction. */
-  direction: GitHub_OrderDirection;
-};
-
-/** Properties by which organization connections can be ordered. */
-export type GitHub_OrganizationOrderField = 
-  /** Order organizations by creation time */
-  | 'CREATED_AT'
-  /** Order organizations by login */
-  | 'LOGIN';
-
-/** An organization list hovercard context */
-export type GitHub_OrganizationsHovercardContext = GitHub_HovercardContext & {
-  /** A string describing this context */
-  message: Scalars['String'];
-  /** An octicon to accompany this context */
-  octicon: Scalars['String'];
-  /** Organizations this user is a member of that are relevant */
-  relevantOrganizations: GitHub_OrganizationConnection;
-  /** The total number of organizations this user is in */
-  totalOrganizationCount: Scalars['Int'];
-};
-
-
-/** An organization list hovercard context */
-export type GitHub_OrganizationsHovercardContextRelevantOrganizationsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-};
-
-/** An organization teams hovercard context */
-export type GitHub_OrganizationTeamsHovercardContext = GitHub_HovercardContext & {
-  /** A string describing this context */
-  message: Scalars['String'];
-  /** An octicon to accompany this context */
-  octicon: Scalars['String'];
-  /** Teams in this organization the user is a member of that are relevant */
-  relevantTeams: GitHub_TeamConnection;
-  /** The path for the full team list for this user */
-  teamsResourcePath: Scalars['GitHub_URI'];
-  /** The URL for the full team list for this user */
-  teamsUrl: Scalars['GitHub_URI'];
-  /** The total number of teams the user is on in the organization */
-  totalTeamCount: Scalars['Int'];
-};
-
-
-/** An organization teams hovercard context */
-export type GitHub_OrganizationTeamsHovercardContextRelevantTeamsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-};
 
 /** Audit log entry for a org.block_user */
 export type GitHub_OrgBlockUserAuditEntry = GitHub_Node & GitHub_AuditEntry & GitHub_OrganizationAuditEntryData & {
@@ -10600,7 +9503,7 @@ export type GitHub_OrgCreateAuditEntry = GitHub_Node & GitHub_AuditEntry & GitHu
 };
 
 /** The billing plans available for organizations. */
-export type GitHub_OrgCreateAuditEntryBillingPlan = 
+export type GitHub_OrgCreateAuditEntryBillingPlan =
   /** Free Plan */
   | 'FREE'
   /** Team Plan */
@@ -10871,7 +9774,7 @@ export type GitHub_OrgEnterpriseOwnerOrder = {
 };
 
 /** Properties by which enterprise owners can be ordered. */
-export type GitHub_OrgEnterpriseOwnerOrderField = 
+export type GitHub_OrgEnterpriseOwnerOrderField =
   /** Order enterprise owners by login. */
   | 'LOGIN';
 
@@ -11140,7 +10043,7 @@ export type GitHub_OrgRemoveBillingManagerAuditEntry = GitHub_Node & GitHub_Audi
 };
 
 /** The reason a billing manager was removed from an Organization. */
-export type GitHub_OrgRemoveBillingManagerAuditEntryReason = 
+export type GitHub_OrgRemoveBillingManagerAuditEntryReason =
   /** The organization required 2FA of its billing managers and this user did not have 2FA enabled. */
   | 'TWO_FACTOR_REQUIREMENT_NON_COMPLIANCE'
   /** SAML external identity missing */
@@ -11192,32 +10095,20 @@ export type GitHub_OrgRemoveMemberAuditEntry = GitHub_Node & GitHub_AuditEntry &
 };
 
 /** The type of membership a user has with an Organization. */
-export type GitHub_OrgRemoveMemberAuditEntryMembershipType = 
+export type GitHub_OrgRemoveMemberAuditEntryMembershipType =
   /** A direct member is a user that is a member of the Organization. */
   | 'DIRECT_MEMBER'
-  /**
-   * Organization administrators have full access and can change several settings,
-   * including the names of repositories that belong to the Organization and Owners
-   * team membership. In addition, organization admins can delete the organization
-   * and all of its repositories.
-   */
+  /** Organization administrators have full access and can change several settings, including the names of repositories that belong to the Organization and Owners team membership. In addition, organization admins can delete the organization and all of its repositories. */
   | 'ADMIN'
   /** A billing manager is a user who manages the billing settings for the Organization, such as updating payment information. */
   | 'BILLING_MANAGER'
-  /**
-   * An unaffiliated collaborator is a person who is not a member of the
-   * Organization and does not have access to any repositories in the Organization.
-   */
+  /** An unaffiliated collaborator is a person who is not a member of the Organization and does not have access to any repositories in the Organization. */
   | 'UNAFFILIATED'
-  /**
-   * An outside collaborator is a person who isn't explicitly a member of the
-   * Organization, but who has Read, Write, or Admin permissions to one or more
-   * repositories in the organization.
-   */
+  /** An outside collaborator is a person who isn't explicitly a member of the Organization, but who has Read, Write, or Admin permissions to one or more repositories in the organization. */
   | 'OUTSIDE_COLLABORATOR';
 
 /** The reason a member was removed from an Organization. */
-export type GitHub_OrgRemoveMemberAuditEntryReason = 
+export type GitHub_OrgRemoveMemberAuditEntryReason =
   /** The organization required 2FA of its billing managers and this user did not have 2FA enabled. */
   | 'TWO_FACTOR_REQUIREMENT_NON_COMPLIANCE'
   /** SAML external identity missing */
@@ -11273,23 +10164,16 @@ export type GitHub_OrgRemoveOutsideCollaboratorAuditEntry = GitHub_Node & GitHub
 };
 
 /** The type of membership a user has with an Organization. */
-export type GitHub_OrgRemoveOutsideCollaboratorAuditEntryMembershipType = 
-  /**
-   * An outside collaborator is a person who isn't explicitly a member of the
-   * Organization, but who has Read, Write, or Admin permissions to one or more
-   * repositories in the organization.
-   */
+export type GitHub_OrgRemoveOutsideCollaboratorAuditEntryMembershipType =
+  /** An outside collaborator is a person who isn't explicitly a member of the Organization, but who has Read, Write, or Admin permissions to one or more repositories in the organization. */
   | 'OUTSIDE_COLLABORATOR'
-  /**
-   * An unaffiliated collaborator is a person who is not a member of the
-   * Organization and does not have access to any repositories in the organization.
-   */
+  /** An unaffiliated collaborator is a person who is not a member of the Organization and does not have access to any repositories in the organization. */
   | 'UNAFFILIATED'
   /** A billing manager is a user who manages the billing settings for the Organization, such as updating payment information. */
   | 'BILLING_MANAGER';
 
 /** The reason an outside collaborator was removed from an Organization. */
-export type GitHub_OrgRemoveOutsideCollaboratorAuditEntryReason = 
+export type GitHub_OrgRemoveOutsideCollaboratorAuditEntryReason =
   /** The organization required 2FA of its billing managers and this user did not have 2FA enabled. */
   | 'TWO_FACTOR_REQUIREMENT_NON_COMPLIANCE'
   /** SAML external identity missing */
@@ -11478,7 +10362,7 @@ export type GitHub_OrgUpdateDefaultRepositoryPermissionAuditEntry = GitHub_Node 
 };
 
 /** The default permission a repository can have in an Organization. */
-export type GitHub_OrgUpdateDefaultRepositoryPermissionAuditEntryPermission = 
+export type GitHub_OrgUpdateDefaultRepositoryPermissionAuditEntryPermission =
   /** Can read and clone repositories. */
   | 'READ'
   /** Can read, clone and push to repositories. */
@@ -11532,7 +10416,7 @@ export type GitHub_OrgUpdateMemberAuditEntry = GitHub_Node & GitHub_AuditEntry &
 };
 
 /** The permissions available to members on an Organization. */
-export type GitHub_OrgUpdateMemberAuditEntryPermission = 
+export type GitHub_OrgUpdateMemberAuditEntryPermission =
   /** Can read and clone repositories. */
   | 'READ'
   /** Can read, clone, push, and add collaborators to repositories. */
@@ -11582,7 +10466,7 @@ export type GitHub_OrgUpdateMemberRepositoryCreationPermissionAuditEntry = GitHu
 };
 
 /** The permissions available for repository creation on an Organization. */
-export type GitHub_OrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibility = 
+export type GitHub_OrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibility =
   /** All organization members are restricted from creating any repositories. */
   | 'ALL'
   /** All organization members are restricted from creating public repositories. */
@@ -11641,6 +10525,730 @@ export type GitHub_OrgUpdateMemberRepositoryInvitationPermissionAuditEntry = Git
   userUrl?: Maybe<Scalars['GitHub_URI']>;
 };
 
+/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
+export type GitHub_Organization = GitHub_Node & GitHub_Actor & GitHub_PackageOwner & GitHub_ProjectOwner & GitHub_ProjectNextOwner & GitHub_ProjectV2Owner & GitHub_RepositoryDiscussionAuthor & GitHub_RepositoryDiscussionCommentAuthor & GitHub_RepositoryOwner & GitHub_UniformResourceLocatable & GitHub_MemberStatusable & GitHub_ProfileOwner & GitHub_Sponsorable & {
+  /** Determine if this repository owner has any items that can be pinned to their profile. */
+  anyPinnableItems: Scalars['Boolean'];
+  /** Audit log entries of the organization */
+  auditLog: GitHub_OrganizationAuditEntryConnection;
+  /** A URL pointing to the organization's public avatar. */
+  avatarUrl: Scalars['GitHub_URI'];
+  /** Identifies the date and time when the object was created. */
+  createdAt: Scalars['GitHub_DateTime'];
+  /** Identifies the primary key from the database. */
+  databaseId?: Maybe<Scalars['Int']>;
+  /** The organization's public profile description. */
+  description?: Maybe<Scalars['String']>;
+  /** The organization's public profile description rendered to HTML. */
+  descriptionHTML?: Maybe<Scalars['String']>;
+  /** A list of domains owned by the organization. */
+  domains?: Maybe<GitHub_VerifiableDomainConnection>;
+  /** The organization's public email. */
+  email?: Maybe<Scalars['String']>;
+  /** A list of owners of the organization's enterprise account. */
+  enterpriseOwners: GitHub_OrganizationEnterpriseOwnerConnection;
+  /** The estimated next GitHub Sponsors payout for this user/organization in cents (USD). */
+  estimatedNextSponsorsPayoutInCents: Scalars['Int'];
+  /** True if this user/organization has a GitHub Sponsors listing. */
+  hasSponsorsListing: Scalars['Boolean'];
+  id: Scalars['ID'];
+  /** The interaction ability settings for this organization. */
+  interactionAbility?: Maybe<GitHub_RepositoryInteractionAbility>;
+  /** The setting value for whether the organization has an IP allow list enabled. */
+  ipAllowListEnabledSetting: GitHub_IpAllowListEnabledSettingValue;
+  /** The IP addresses that are allowed to access resources owned by the organization. */
+  ipAllowListEntries: GitHub_IpAllowListEntryConnection;
+  /** The setting value for whether the organization has IP allow list configuration for installed GitHub Apps enabled. */
+  ipAllowListForInstalledAppsEnabledSetting: GitHub_IpAllowListForInstalledAppsEnabledSettingValue;
+  /** Check if the given account is sponsoring this user/organization. */
+  isSponsoredBy: Scalars['Boolean'];
+  /** True if the viewer is sponsored by this user/organization. */
+  isSponsoringViewer: Scalars['Boolean'];
+  /** Whether the organization has verified its profile email and website. */
+  isVerified: Scalars['Boolean'];
+  /** Showcases a selection of repositories and gists that the profile owner has either curated or that have been selected automatically based on popularity. */
+  itemShowcase: GitHub_ProfileItemShowcase;
+  /** The organization's public profile location. */
+  location?: Maybe<Scalars['String']>;
+  /** The organization's login name. */
+  login: Scalars['String'];
+  /** Get the status messages members of this entity have set that are either public or visible only to the organization. */
+  memberStatuses: GitHub_UserStatusConnection;
+  /** Members can fork private repositories in this organization */
+  membersCanForkPrivateRepositories: Scalars['Boolean'];
+  /** A list of users who are members of this organization. */
+  membersWithRole: GitHub_OrganizationMemberConnection;
+  /** The estimated monthly GitHub Sponsors income for this user/organization in cents (USD). */
+  monthlyEstimatedSponsorsIncomeInCents: Scalars['Int'];
+  /** The organization's public profile name. */
+  name?: Maybe<Scalars['String']>;
+  /** The HTTP path creating a new team */
+  newTeamResourcePath: Scalars['GitHub_URI'];
+  /** The HTTP URL creating a new team */
+  newTeamUrl: Scalars['GitHub_URI'];
+  /** Indicates if email notification delivery for this organization is restricted to verified or approved domains. */
+  notificationDeliveryRestrictionEnabledSetting: GitHub_NotificationRestrictionSettingValue;
+  /** The billing email for the organization. */
+  organizationBillingEmail?: Maybe<Scalars['String']>;
+  /** A list of packages under the owner. */
+  packages: GitHub_PackageConnection;
+  /** A list of users who have been invited to join this organization. */
+  pendingMembers: GitHub_UserConnection;
+  /** A list of repositories and gists this profile owner can pin to their profile. */
+  pinnableItems: GitHub_PinnableItemConnection;
+  /** A list of repositories and gists this profile owner has pinned to their profile */
+  pinnedItems: GitHub_PinnableItemConnection;
+  /** Returns how many more items this profile owner can pin to their profile. */
+  pinnedItemsRemaining: Scalars['Int'];
+  /** Find project by number. */
+  project?: Maybe<GitHub_Project>;
+  /** Find a project by project (beta) number. */
+  projectNext?: Maybe<GitHub_ProjectNext>;
+  /** A list of projects under the owner. */
+  projects: GitHub_ProjectConnection;
+  /** A list of projects (beta) under the owner. */
+  projectsNext: GitHub_ProjectNextConnection;
+  /** The HTTP path listing organization's projects */
+  projectsResourcePath: Scalars['GitHub_URI'];
+  /** The HTTP URL listing organization's projects */
+  projectsUrl: Scalars['GitHub_URI'];
+  /** A list of repositories that the user owns. */
+  repositories: GitHub_RepositoryConnection;
+  /** Find Repository. */
+  repository?: Maybe<GitHub_Repository>;
+  /** Discussion comments this user has authored. */
+  repositoryDiscussionComments: GitHub_DiscussionCommentConnection;
+  /** Discussions this user has started. */
+  repositoryDiscussions: GitHub_DiscussionConnection;
+  /** A list of all repository migrations for this organization. */
+  repositoryMigrations: GitHub_RepositoryMigrationConnection;
+  /** When true the organization requires all members, billing managers, and outside collaborators to enable two-factor authentication. */
+  requiresTwoFactorAuthentication?: Maybe<Scalars['Boolean']>;
+  /** The HTTP path for this organization. */
+  resourcePath: Scalars['GitHub_URI'];
+  /** The Organization's SAML identity providers */
+  samlIdentityProvider?: Maybe<GitHub_OrganizationIdentityProvider>;
+  /** List of users and organizations this entity is sponsoring. */
+  sponsoring: GitHub_SponsorConnection;
+  /** List of sponsors for this user or organization. */
+  sponsors: GitHub_SponsorConnection;
+  /** Events involving this sponsorable, such as new sponsorships. */
+  sponsorsActivities: GitHub_SponsorsActivityConnection;
+  /** The GitHub Sponsors listing for this user or organization. */
+  sponsorsListing?: Maybe<GitHub_SponsorsListing>;
+  /** The sponsorship from the viewer to this user/organization; that is, the sponsorship where you're the sponsor. Only returns a sponsorship if it is active. */
+  sponsorshipForViewerAsSponsor?: Maybe<GitHub_Sponsorship>;
+  /** The sponsorship from this user/organization to the viewer; that is, the sponsorship you're receiving. Only returns a sponsorship if it is active. */
+  sponsorshipForViewerAsSponsorable?: Maybe<GitHub_Sponsorship>;
+  /** List of sponsorship updates sent from this sponsorable to sponsors. */
+  sponsorshipNewsletters: GitHub_SponsorshipNewsletterConnection;
+  /** This object's sponsorships as the maintainer. */
+  sponsorshipsAsMaintainer: GitHub_SponsorshipConnection;
+  /** This object's sponsorships as the sponsor. */
+  sponsorshipsAsSponsor: GitHub_SponsorshipConnection;
+  /** Find an organization's team by its slug. */
+  team?: Maybe<GitHub_Team>;
+  /** A list of teams in this organization. */
+  teams: GitHub_TeamConnection;
+  /** The HTTP path listing organization's teams */
+  teamsResourcePath: Scalars['GitHub_URI'];
+  /** The HTTP URL listing organization's teams */
+  teamsUrl: Scalars['GitHub_URI'];
+  /** The organization's Twitter username. */
+  twitterUsername?: Maybe<Scalars['String']>;
+  /** Identifies the date and time when the object was last updated. */
+  updatedAt: Scalars['GitHub_DateTime'];
+  /** The HTTP URL for this organization. */
+  url: Scalars['GitHub_URI'];
+  /** Organization is adminable by the viewer. */
+  viewerCanAdminister: Scalars['Boolean'];
+  /** Can the viewer pin repositories and gists to the profile? */
+  viewerCanChangePinnedItems: Scalars['Boolean'];
+  /** Can the current viewer create new projects on this owner. */
+  viewerCanCreateProjects: Scalars['Boolean'];
+  /** Viewer can create repositories on this organization */
+  viewerCanCreateRepositories: Scalars['Boolean'];
+  /** Viewer can create teams on this organization. */
+  viewerCanCreateTeams: Scalars['Boolean'];
+  /** Whether or not the viewer is able to sponsor this user/organization. */
+  viewerCanSponsor: Scalars['Boolean'];
+  /** Viewer is an active member of this organization. */
+  viewerIsAMember: Scalars['Boolean'];
+  /** True if the viewer is sponsoring this user/organization. */
+  viewerIsSponsoring: Scalars['Boolean'];
+  /** The organization's public profile URL. */
+  websiteUrl?: Maybe<Scalars['GitHub_URI']>;
+};
+
+
+/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
+export type GitHub_OrganizationAnyPinnableItemsArgs = {
+  type?: InputMaybe<GitHub_PinnableItemType>;
+};
+
+
+/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
+export type GitHub_OrganizationAuditLogArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  query?: InputMaybe<Scalars['String']>;
+  orderBy?: InputMaybe<GitHub_AuditLogOrder>;
+};
+
+
+/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
+export type GitHub_OrganizationAvatarUrlArgs = {
+  size?: InputMaybe<Scalars['Int']>;
+};
+
+
+/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
+export type GitHub_OrganizationDomainsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  isVerified?: InputMaybe<Scalars['Boolean']>;
+  isApproved?: InputMaybe<Scalars['Boolean']>;
+  orderBy?: InputMaybe<GitHub_VerifiableDomainOrder>;
+};
+
+
+/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
+export type GitHub_OrganizationEnterpriseOwnersArgs = {
+  query?: InputMaybe<Scalars['String']>;
+  organizationRole?: InputMaybe<GitHub_RoleInOrganization>;
+  orderBy?: InputMaybe<GitHub_OrgEnterpriseOwnerOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+};
+
+
+/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
+export type GitHub_OrganizationIpAllowListEntriesArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_IpAllowListEntryOrder>;
+};
+
+
+/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
+export type GitHub_OrganizationIsSponsoredByArgs = {
+  accountLogin: Scalars['String'];
+};
+
+
+/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
+export type GitHub_OrganizationMemberStatusesArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_UserStatusOrder>;
+};
+
+
+/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
+export type GitHub_OrganizationMembersWithRoleArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+};
+
+
+/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
+export type GitHub_OrganizationPackagesArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  names?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  repositoryId?: InputMaybe<Scalars['ID']>;
+  packageType?: InputMaybe<GitHub_PackageType>;
+  orderBy?: InputMaybe<GitHub_PackageOrder>;
+};
+
+
+/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
+export type GitHub_OrganizationPendingMembersArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+};
+
+
+/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
+export type GitHub_OrganizationPinnableItemsArgs = {
+  types?: InputMaybe<Array<GitHub_PinnableItemType>>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+};
+
+
+/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
+export type GitHub_OrganizationPinnedItemsArgs = {
+  types?: InputMaybe<Array<GitHub_PinnableItemType>>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+};
+
+
+/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
+export type GitHub_OrganizationProjectArgs = {
+  number: Scalars['Int'];
+};
+
+
+/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
+export type GitHub_OrganizationProjectNextArgs = {
+  number: Scalars['Int'];
+};
+
+
+/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
+export type GitHub_OrganizationProjectsArgs = {
+  orderBy?: InputMaybe<GitHub_ProjectOrder>;
+  search?: InputMaybe<Scalars['String']>;
+  states?: InputMaybe<Array<GitHub_ProjectState>>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+};
+
+
+/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
+export type GitHub_OrganizationProjectsNextArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  query?: InputMaybe<Scalars['String']>;
+  sortBy?: InputMaybe<GitHub_ProjectNextOrderField>;
+};
+
+
+/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
+export type GitHub_OrganizationRepositoriesArgs = {
+  privacy?: InputMaybe<GitHub_RepositoryPrivacy>;
+  orderBy?: InputMaybe<GitHub_RepositoryOrder>;
+  affiliations?: InputMaybe<Array<InputMaybe<GitHub_RepositoryAffiliation>>>;
+  ownerAffiliations?: InputMaybe<Array<InputMaybe<GitHub_RepositoryAffiliation>>>;
+  isLocked?: InputMaybe<Scalars['Boolean']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  isFork?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
+export type GitHub_OrganizationRepositoryArgs = {
+  name: Scalars['String'];
+  followRenames?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
+export type GitHub_OrganizationRepositoryDiscussionCommentsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  repositoryId?: InputMaybe<Scalars['ID']>;
+  onlyAnswers?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
+export type GitHub_OrganizationRepositoryDiscussionsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_DiscussionOrder>;
+  repositoryId?: InputMaybe<Scalars['ID']>;
+  answered?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
+export type GitHub_OrganizationRepositoryMigrationsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  state?: InputMaybe<GitHub_MigrationState>;
+  repositoryName?: InputMaybe<Scalars['String']>;
+  orderBy?: InputMaybe<GitHub_RepositoryMigrationOrder>;
+};
+
+
+/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
+export type GitHub_OrganizationSponsoringArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_SponsorOrder>;
+};
+
+
+/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
+export type GitHub_OrganizationSponsorsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  tierId?: InputMaybe<Scalars['ID']>;
+  orderBy?: InputMaybe<GitHub_SponsorOrder>;
+};
+
+
+/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
+export type GitHub_OrganizationSponsorsActivitiesArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  period?: InputMaybe<GitHub_SponsorsActivityPeriod>;
+  orderBy?: InputMaybe<GitHub_SponsorsActivityOrder>;
+};
+
+
+/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
+export type GitHub_OrganizationSponsorshipNewslettersArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_SponsorshipNewsletterOrder>;
+};
+
+
+/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
+export type GitHub_OrganizationSponsorshipsAsMaintainerArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  includePrivate?: InputMaybe<Scalars['Boolean']>;
+  orderBy?: InputMaybe<GitHub_SponsorshipOrder>;
+};
+
+
+/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
+export type GitHub_OrganizationSponsorshipsAsSponsorArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_SponsorshipOrder>;
+};
+
+
+/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
+export type GitHub_OrganizationTeamArgs = {
+  slug: Scalars['String'];
+};
+
+
+/** An account on GitHub, with one or more owners, that has repositories, members and teams. */
+export type GitHub_OrganizationTeamsArgs = {
+  privacy?: InputMaybe<GitHub_TeamPrivacy>;
+  role?: InputMaybe<GitHub_TeamRole>;
+  query?: InputMaybe<Scalars['String']>;
+  userLogins?: InputMaybe<Array<Scalars['String']>>;
+  orderBy?: InputMaybe<GitHub_TeamOrder>;
+  ldapMapped?: InputMaybe<Scalars['Boolean']>;
+  rootTeamsOnly?: InputMaybe<Scalars['Boolean']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+};
+
+/** An audit entry in an organization audit log. */
+export type GitHub_OrganizationAuditEntry = GitHub_MembersCanDeleteReposClearAuditEntry | GitHub_MembersCanDeleteReposDisableAuditEntry | GitHub_MembersCanDeleteReposEnableAuditEntry | GitHub_OauthApplicationCreateAuditEntry | GitHub_OrgAddBillingManagerAuditEntry | GitHub_OrgAddMemberAuditEntry | GitHub_OrgBlockUserAuditEntry | GitHub_OrgConfigDisableCollaboratorsOnlyAuditEntry | GitHub_OrgConfigEnableCollaboratorsOnlyAuditEntry | GitHub_OrgCreateAuditEntry | GitHub_OrgDisableOauthAppRestrictionsAuditEntry | GitHub_OrgDisableSamlAuditEntry | GitHub_OrgDisableTwoFactorRequirementAuditEntry | GitHub_OrgEnableOauthAppRestrictionsAuditEntry | GitHub_OrgEnableSamlAuditEntry | GitHub_OrgEnableTwoFactorRequirementAuditEntry | GitHub_OrgInviteMemberAuditEntry | GitHub_OrgInviteToBusinessAuditEntry | GitHub_OrgOauthAppAccessApprovedAuditEntry | GitHub_OrgOauthAppAccessDeniedAuditEntry | GitHub_OrgOauthAppAccessRequestedAuditEntry | GitHub_OrgRemoveBillingManagerAuditEntry | GitHub_OrgRemoveMemberAuditEntry | GitHub_OrgRemoveOutsideCollaboratorAuditEntry | GitHub_OrgRestoreMemberAuditEntry | GitHub_OrgUnblockUserAuditEntry | GitHub_OrgUpdateDefaultRepositoryPermissionAuditEntry | GitHub_OrgUpdateMemberAuditEntry | GitHub_OrgUpdateMemberRepositoryCreationPermissionAuditEntry | GitHub_OrgUpdateMemberRepositoryInvitationPermissionAuditEntry | GitHub_PrivateRepositoryForkingDisableAuditEntry | GitHub_PrivateRepositoryForkingEnableAuditEntry | GitHub_RepoAccessAuditEntry | GitHub_RepoAddMemberAuditEntry | GitHub_RepoAddTopicAuditEntry | GitHub_RepoArchivedAuditEntry | GitHub_RepoChangeMergeSettingAuditEntry | GitHub_RepoConfigDisableAnonymousGitAccessAuditEntry | GitHub_RepoConfigDisableCollaboratorsOnlyAuditEntry | GitHub_RepoConfigDisableContributorsOnlyAuditEntry | GitHub_RepoConfigDisableSockpuppetDisallowedAuditEntry | GitHub_RepoConfigEnableAnonymousGitAccessAuditEntry | GitHub_RepoConfigEnableCollaboratorsOnlyAuditEntry | GitHub_RepoConfigEnableContributorsOnlyAuditEntry | GitHub_RepoConfigEnableSockpuppetDisallowedAuditEntry | GitHub_RepoConfigLockAnonymousGitAccessAuditEntry | GitHub_RepoConfigUnlockAnonymousGitAccessAuditEntry | GitHub_RepoCreateAuditEntry | GitHub_RepoDestroyAuditEntry | GitHub_RepoRemoveMemberAuditEntry | GitHub_RepoRemoveTopicAuditEntry | GitHub_RepositoryVisibilityChangeDisableAuditEntry | GitHub_RepositoryVisibilityChangeEnableAuditEntry | GitHub_TeamAddMemberAuditEntry | GitHub_TeamAddRepositoryAuditEntry | GitHub_TeamChangeParentTeamAuditEntry | GitHub_TeamRemoveMemberAuditEntry | GitHub_TeamRemoveRepositoryAuditEntry;
+
+/** The connection type for OrganizationAuditEntry. */
+export type GitHub_OrganizationAuditEntryConnection = {
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<GitHub_OrganizationAuditEntryEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<GitHub_OrganizationAuditEntry>>>;
+  /** Information to aid in pagination. */
+  pageInfo: GitHub_PageInfo;
+  /** Identifies the total count of items in the connection. */
+  totalCount: Scalars['Int'];
+};
+
+/** Metadata for an audit entry with action org.* */
+export type GitHub_OrganizationAuditEntryData = {
+  /** The Organization associated with the Audit Entry. */
+  organization?: Maybe<GitHub_Organization>;
+  /** The name of the Organization. */
+  organizationName?: Maybe<Scalars['String']>;
+  /** The HTTP path for the organization */
+  organizationResourcePath?: Maybe<Scalars['GitHub_URI']>;
+  /** The HTTP URL for the organization */
+  organizationUrl?: Maybe<Scalars['GitHub_URI']>;
+};
+
+/** An edge in a connection. */
+export type GitHub_OrganizationAuditEntryEdge = {
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node?: Maybe<GitHub_OrganizationAuditEntry>;
+};
+
+/** A list of organizations managed by an enterprise. */
+export type GitHub_OrganizationConnection = {
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<GitHub_OrganizationEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<GitHub_Organization>>>;
+  /** Information to aid in pagination. */
+  pageInfo: GitHub_PageInfo;
+  /** Identifies the total count of items in the connection. */
+  totalCount: Scalars['Int'];
+};
+
+/** An edge in a connection. */
+export type GitHub_OrganizationEdge = {
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node?: Maybe<GitHub_Organization>;
+};
+
+/** The connection type for User. */
+export type GitHub_OrganizationEnterpriseOwnerConnection = {
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<GitHub_OrganizationEnterpriseOwnerEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<GitHub_User>>>;
+  /** Information to aid in pagination. */
+  pageInfo: GitHub_PageInfo;
+  /** Identifies the total count of items in the connection. */
+  totalCount: Scalars['Int'];
+};
+
+/** An enterprise owner in the context of an organization that is part of the enterprise. */
+export type GitHub_OrganizationEnterpriseOwnerEdge = {
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node?: Maybe<GitHub_User>;
+  /** The role of the owner with respect to the organization. */
+  organizationRole: GitHub_RoleInOrganization;
+};
+
+/** An Identity Provider configured to provision SAML and SCIM identities for Organizations */
+export type GitHub_OrganizationIdentityProvider = GitHub_Node & {
+  /** The digest algorithm used to sign SAML requests for the Identity Provider. */
+  digestMethod?: Maybe<Scalars['GitHub_URI']>;
+  /** External Identities provisioned by this Identity Provider */
+  externalIdentities: GitHub_ExternalIdentityConnection;
+  id: Scalars['ID'];
+  /** The x509 certificate used by the Identity Provider to sign assertions and responses. */
+  idpCertificate?: Maybe<Scalars['GitHub_X509Certificate']>;
+  /** The Issuer Entity ID for the SAML Identity Provider */
+  issuer?: Maybe<Scalars['String']>;
+  /** Organization this Identity Provider belongs to */
+  organization?: Maybe<GitHub_Organization>;
+  /** The signature algorithm used to sign SAML requests for the Identity Provider. */
+  signatureMethod?: Maybe<Scalars['GitHub_URI']>;
+  /** The URL endpoint for the Identity Provider's SAML SSO. */
+  ssoUrl?: Maybe<Scalars['GitHub_URI']>;
+};
+
+
+/** An Identity Provider configured to provision SAML and SCIM identities for Organizations */
+export type GitHub_OrganizationIdentityProviderExternalIdentitiesArgs = {
+  membersOnly?: InputMaybe<Scalars['Boolean']>;
+  login?: InputMaybe<Scalars['String']>;
+  userName?: InputMaybe<Scalars['String']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+};
+
+/** An Invitation for a user to an organization. */
+export type GitHub_OrganizationInvitation = GitHub_Node & {
+  /** Identifies the date and time when the object was created. */
+  createdAt: Scalars['GitHub_DateTime'];
+  /** The email address of the user invited to the organization. */
+  email?: Maybe<Scalars['String']>;
+  id: Scalars['ID'];
+  /** The type of invitation that was sent (e.g. email, user). */
+  invitationType: GitHub_OrganizationInvitationType;
+  /** The user who was invited to the organization. */
+  invitee?: Maybe<GitHub_User>;
+  /** The user who created the invitation. */
+  inviter: GitHub_User;
+  /** The organization the invite is for */
+  organization: GitHub_Organization;
+  /** The user's pending role in the organization (e.g. member, owner). */
+  role: GitHub_OrganizationInvitationRole;
+};
+
+/** The connection type for OrganizationInvitation. */
+export type GitHub_OrganizationInvitationConnection = {
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<GitHub_OrganizationInvitationEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<GitHub_OrganizationInvitation>>>;
+  /** Information to aid in pagination. */
+  pageInfo: GitHub_PageInfo;
+  /** Identifies the total count of items in the connection. */
+  totalCount: Scalars['Int'];
+};
+
+/** An edge in a connection. */
+export type GitHub_OrganizationInvitationEdge = {
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node?: Maybe<GitHub_OrganizationInvitation>;
+};
+
+/** The possible organization invitation roles. */
+export type GitHub_OrganizationInvitationRole =
+  /** The user is invited to be a direct member of the organization. */
+  | 'DIRECT_MEMBER'
+  /** The user is invited to be an admin of the organization. */
+  | 'ADMIN'
+  /** The user is invited to be a billing manager of the organization. */
+  | 'BILLING_MANAGER'
+  /** The user's previous role will be reinstated. */
+  | 'REINSTATE';
+
+/** The possible organization invitation types. */
+export type GitHub_OrganizationInvitationType =
+  /** The invitation was to an existing user. */
+  | 'USER'
+  /** The invitation was to an email address. */
+  | 'EMAIL';
+
+/** The connection type for User. */
+export type GitHub_OrganizationMemberConnection = {
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<GitHub_OrganizationMemberEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<GitHub_User>>>;
+  /** Information to aid in pagination. */
+  pageInfo: GitHub_PageInfo;
+  /** Identifies the total count of items in the connection. */
+  totalCount: Scalars['Int'];
+};
+
+/** Represents a user within an organization. */
+export type GitHub_OrganizationMemberEdge = {
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** Whether the organization member has two factor enabled or not. Returns null if information is not available to viewer. */
+  hasTwoFactorEnabled?: Maybe<Scalars['Boolean']>;
+  /** The item at the end of the edge. */
+  node?: Maybe<GitHub_User>;
+  /** The role this user has in the organization. */
+  role?: Maybe<GitHub_OrganizationMemberRole>;
+};
+
+/** The possible roles within an organization for its members. */
+export type GitHub_OrganizationMemberRole =
+  /** The user is a member of the organization. */
+  | 'MEMBER'
+  /** The user is an administrator of the organization. */
+  | 'ADMIN';
+
+/** The possible values for the members can create repositories setting on an organization. */
+export type GitHub_OrganizationMembersCanCreateRepositoriesSettingValue =
+  /** Members will be able to create public and private repositories. */
+  | 'ALL'
+  /** Members will be able to create only private repositories. */
+  | 'PRIVATE'
+  /** Members will be able to create only internal repositories. */
+  | 'INTERNAL'
+  /** Members will not be able to create public or private repositories. */
+  | 'DISABLED';
+
+/** Ordering options for organization connections. */
+export type GitHub_OrganizationOrder = {
+  /** The field to order organizations by. */
+  field: GitHub_OrganizationOrderField;
+  /** The ordering direction. */
+  direction: GitHub_OrderDirection;
+};
+
+/** Properties by which organization connections can be ordered. */
+export type GitHub_OrganizationOrderField =
+  /** Order organizations by creation time */
+  | 'CREATED_AT'
+  /** Order organizations by login */
+  | 'LOGIN';
+
+/** An organization teams hovercard context */
+export type GitHub_OrganizationTeamsHovercardContext = GitHub_HovercardContext & {
+  /** A string describing this context */
+  message: Scalars['String'];
+  /** An octicon to accompany this context */
+  octicon: Scalars['String'];
+  /** Teams in this organization the user is a member of that are relevant */
+  relevantTeams: GitHub_TeamConnection;
+  /** The path for the full team list for this user */
+  teamsResourcePath: Scalars['GitHub_URI'];
+  /** The URL for the full team list for this user */
+  teamsUrl: Scalars['GitHub_URI'];
+  /** The total number of teams the user is on in the organization */
+  totalTeamCount: Scalars['Int'];
+};
+
+
+/** An organization teams hovercard context */
+export type GitHub_OrganizationTeamsHovercardContextRelevantTeamsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+};
+
+/** An organization list hovercard context */
+export type GitHub_OrganizationsHovercardContext = GitHub_HovercardContext & {
+  /** A string describing this context */
+  message: Scalars['String'];
+  /** An octicon to accompany this context */
+  octicon: Scalars['String'];
+  /** Organizations this user is a member of that are relevant */
+  relevantOrganizations: GitHub_OrganizationConnection;
+  /** The total number of organizations this user is in */
+  totalOrganizationCount: Scalars['Int'];
+};
+
+
+/** An organization list hovercard context */
+export type GitHub_OrganizationsHovercardContextRelevantOrganizationsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+};
+
 /** Information for an uploaded package. */
 export type GitHub_Package = GitHub_Node & {
   id: Scalars['ID'];
@@ -11669,11 +11277,11 @@ export type GitHub_PackageVersionArgs = {
 
 /** Information for an uploaded package. */
 export type GitHub_PackageVersionsArgs = {
-  orderBy?: Maybe<GitHub_PackageVersionOrder>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_PackageVersionOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** The connection type for Package. */
@@ -11740,26 +11348,26 @@ export type GitHub_PackageFileEdge = {
 /** Ways in which lists of package files can be ordered upon return. */
 export type GitHub_PackageFileOrder = {
   /** The field in which to order package files by. */
-  field?: Maybe<GitHub_PackageFileOrderField>;
+  field?: InputMaybe<GitHub_PackageFileOrderField>;
   /** The direction in which to order package files by the specified field. */
-  direction?: Maybe<GitHub_OrderDirection>;
+  direction?: InputMaybe<GitHub_OrderDirection>;
 };
 
 /** Properties by which package file connections can be ordered. */
-export type GitHub_PackageFileOrderField = 
+export type GitHub_PackageFileOrderField =
   /** Order package files by creation time */
   | 'CREATED_AT';
 
 /** Ways in which lists of packages can be ordered upon return. */
 export type GitHub_PackageOrder = {
   /** The field in which to order packages by. */
-  field?: Maybe<GitHub_PackageOrderField>;
+  field?: InputMaybe<GitHub_PackageOrderField>;
   /** The direction in which to order packages by the specified field. */
-  direction?: Maybe<GitHub_OrderDirection>;
+  direction?: InputMaybe<GitHub_OrderDirection>;
 };
 
 /** Properties by which package connections can be ordered. */
-export type GitHub_PackageOrderField = 
+export type GitHub_PackageOrderField =
   /** Order packages by creation time */
   | 'CREATED_AT';
 
@@ -11773,14 +11381,14 @@ export type GitHub_PackageOwner = {
 
 /** Represents an owner of a package. */
 export type GitHub_PackageOwnerPackagesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  names?: Maybe<Array<Maybe<Scalars['String']>>>;
-  repositoryId?: Maybe<Scalars['ID']>;
-  packageType?: Maybe<GitHub_PackageType>;
-  orderBy?: Maybe<GitHub_PackageOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  names?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  repositoryId?: InputMaybe<Scalars['ID']>;
+  packageType?: InputMaybe<GitHub_PackageType>;
+  orderBy?: InputMaybe<GitHub_PackageOrder>;
 };
 
 /** Represents a object that contains package activity statistics such as downloads. */
@@ -11799,7 +11407,7 @@ export type GitHub_PackageTag = GitHub_Node & {
 };
 
 /** The possible types of a package. */
-export type GitHub_PackageType = 
+export type GitHub_PackageType =
   /** An npm package. */
   | 'NPM'
   /** A rubygems package. */
@@ -11841,11 +11449,11 @@ export type GitHub_PackageVersion = GitHub_Node & {
 
 /** Information about a specific package version. */
 export type GitHub_PackageVersionFilesArgs = {
-  orderBy?: Maybe<GitHub_PackageFileOrder>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_PackageFileOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** The connection type for PackageVersion. */
@@ -11871,13 +11479,13 @@ export type GitHub_PackageVersionEdge = {
 /** Ways in which lists of package versions can be ordered upon return. */
 export type GitHub_PackageVersionOrder = {
   /** The field in which to order package versions by. */
-  field?: Maybe<GitHub_PackageVersionOrderField>;
+  field?: InputMaybe<GitHub_PackageVersionOrderField>;
   /** The direction in which to order package versions by the specified field. */
-  direction?: Maybe<GitHub_OrderDirection>;
+  direction?: InputMaybe<GitHub_OrderDirection>;
 };
 
 /** Properties by which package version connections can be ordered. */
-export type GitHub_PackageVersionOrderField = 
+export type GitHub_PackageVersionOrderField =
   /** Order package versions by creation time */
   | 'CREATED_AT';
 
@@ -11899,6 +11507,21 @@ export type GitHub_PageInfo = {
   startCursor?: Maybe<Scalars['String']>;
 };
 
+/** The possible types of patch statuses. */
+export type GitHub_PatchStatus =
+  /** The file was added. Git status 'A'. */
+  | 'ADDED'
+  /** The file was deleted. Git status 'D'. */
+  | 'DELETED'
+  /** The file was renamed. Git status 'R'. */
+  | 'RENAMED'
+  /** The file was copied. Git status 'C'. */
+  | 'COPIED'
+  /** The file's contents were changed. Git status 'M'. */
+  | 'MODIFIED'
+  /** The file's type was changed. Git status 'T'. */
+  | 'CHANGED';
+
 /** Types that can grant permissions on a repository to a user */
 export type GitHub_PermissionGranter = GitHub_Organization | GitHub_Repository | GitHub_Team;
 
@@ -11917,7 +11540,7 @@ export type GitHub_PinIssueInput = {
   /** The ID of the issue to be pinned */
   issueId: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of PinIssue */
@@ -11952,7 +11575,7 @@ export type GitHub_PinnableItemEdge = {
 };
 
 /** Represents items that can be pinned to a profile page or dashboard. */
-export type GitHub_PinnableItemType = 
+export type GitHub_PinnableItemType =
   /** A repository. */
   | 'REPOSITORY'
   /** A gist. */
@@ -12014,7 +11637,7 @@ export type GitHub_PinnedDiscussionEdge = {
 };
 
 /** Preconfigured gradients that may be used to style discussions pinned within a repository. */
-export type GitHub_PinnedDiscussionGradient = 
+export type GitHub_PinnedDiscussionGradient =
   /** A gradient of red to orange */
   | 'RED_ORANGE'
   /** A gradient of blue to mint */
@@ -12027,7 +11650,7 @@ export type GitHub_PinnedDiscussionGradient =
   | 'PURPLE_CORAL';
 
 /** Preconfigured background patterns that may be used to style discussions pinned within a repository. */
-export type GitHub_PinnedDiscussionPattern = 
+export type GitHub_PinnedDiscussionPattern =
   /** A solid dot pattern */
   | 'DOT_FILL'
   /** A plus sign pattern */
@@ -12084,7 +11707,6 @@ export type GitHub_PinnedIssueEdge = {
   /** The item at the end of the edge. */
   node?: Maybe<GitHub_PinnedIssue>;
 };
-
 
 /** Audit log entry for a private_repository_forking.disable event. */
 export type GitHub_PrivateRepositoryForkingDisableAuditEntry = GitHub_Node & GitHub_AuditEntry & GitHub_EnterpriseAuditEntryData & GitHub_OrganizationAuditEntryData & GitHub_RepositoryAuditEntryData & {
@@ -12192,31 +11814,21 @@ export type GitHub_PrivateRepositoryForkingEnableAuditEntry = GitHub_Node & GitH
   userUrl?: Maybe<Scalars['GitHub_URI']>;
 };
 
-/**
- * A curatable list of repositories relating to a repository owner, which defaults
- * to showing the most popular repositories they own.
- */
+/** A curatable list of repositories relating to a repository owner, which defaults to showing the most popular repositories they own. */
 export type GitHub_ProfileItemShowcase = {
   /** Whether or not the owner has pinned any repositories or gists. */
   hasPinnedItems: Scalars['Boolean'];
-  /**
-   * The repositories and gists in the showcase. If the profile owner has any
-   * pinned items, those will be returned. Otherwise, the profile owner's popular
-   * repositories will be returned.
-   */
+  /** The repositories and gists in the showcase. If the profile owner has any pinned items, those will be returned. Otherwise, the profile owner's popular repositories will be returned. */
   items: GitHub_PinnableItemConnection;
 };
 
 
-/**
- * A curatable list of repositories relating to a repository owner, which defaults
- * to showing the most popular repositories they own.
- */
+/** A curatable list of repositories relating to a repository owner, which defaults to showing the most popular repositories they own. */
 export type GitHub_ProfileItemShowcaseItemsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** Represents any entity on GitHub that has a profile page. */
@@ -12226,10 +11838,7 @@ export type GitHub_ProfileOwner = {
   /** The public profile email. */
   email?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
-  /**
-   * Showcases a selection of repositories and gists that the profile owner has
-   * either curated or that have been selected automatically based on popularity.
-   */
+  /** Showcases a selection of repositories and gists that the profile owner has either curated or that have been selected automatically based on popularity. */
   itemShowcase: GitHub_ProfileItemShowcase;
   /** The public profile location. */
   location?: Maybe<Scalars['String']>;
@@ -12252,27 +11861,27 @@ export type GitHub_ProfileOwner = {
 
 /** Represents any entity on GitHub that has a profile page. */
 export type GitHub_ProfileOwnerAnyPinnableItemsArgs = {
-  type?: Maybe<GitHub_PinnableItemType>;
+  type?: InputMaybe<GitHub_PinnableItemType>;
 };
 
 
 /** Represents any entity on GitHub that has a profile page. */
 export type GitHub_ProfileOwnerPinnableItemsArgs = {
-  types?: Maybe<Array<GitHub_PinnableItemType>>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  types?: InputMaybe<Array<GitHub_PinnableItemType>>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** Represents any entity on GitHub that has a profile page. */
 export type GitHub_ProfileOwnerPinnedItemsArgs = {
-  types?: Maybe<Array<GitHub_PinnableItemType>>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  types?: InputMaybe<Array<GitHub_PinnableItemType>>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** Projects manage issues, pull requests and notes within a project owner. */
@@ -12319,20 +11928,20 @@ export type GitHub_Project = GitHub_Node & GitHub_Closable & GitHub_Updatable & 
 
 /** Projects manage issues, pull requests and notes within a project owner. */
 export type GitHub_ProjectColumnsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** Projects manage issues, pull requests and notes within a project owner. */
 export type GitHub_ProjectPendingCardsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  archivedStates?: Maybe<Array<Maybe<GitHub_ProjectCardArchivedState>>>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  archivedStates?: InputMaybe<Array<InputMaybe<GitHub_ProjectCardArchivedState>>>;
 };
 
 /** A card in a project. */
@@ -12370,7 +11979,7 @@ export type GitHub_ProjectCard = GitHub_Node & {
 };
 
 /** The possible archived states of a project card. */
-export type GitHub_ProjectCardArchivedState = 
+export type GitHub_ProjectCardArchivedState =
   /** A project card that is archived */
   | 'ARCHIVED'
   /** A project card that is not archived */
@@ -12400,7 +12009,7 @@ export type GitHub_ProjectCardEdge = {
 export type GitHub_ProjectCardItem = GitHub_Issue | GitHub_PullRequest;
 
 /** Various content states of a ProjectCard */
-export type GitHub_ProjectCardState = 
+export type GitHub_ProjectCardState =
   /** The card has content only. */
   | 'CONTENT_ONLY'
   /** The card has a note only. */
@@ -12434,11 +12043,11 @@ export type GitHub_ProjectColumn = GitHub_Node & {
 
 /** A column inside a project. */
 export type GitHub_ProjectColumnCardsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  archivedStates?: Maybe<Array<Maybe<GitHub_ProjectCardArchivedState>>>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  archivedStates?: InputMaybe<Array<InputMaybe<GitHub_ProjectCardArchivedState>>>;
 };
 
 /** The connection type for ProjectColumn. */
@@ -12462,7 +12071,7 @@ export type GitHub_ProjectColumnEdge = {
 };
 
 /** The semantic purpose of the column - todo, in progress, or done. */
-export type GitHub_ProjectColumnPurpose = 
+export type GitHub_ProjectColumnPurpose =
   /** The column contains cards still to be worked on */
   | 'TODO'
   /** The column contains cards which are currently being worked on */
@@ -12491,7 +12100,7 @@ export type GitHub_ProjectEdge = {
 };
 
 /** The type of a project item. */
-export type GitHub_ProjectItemType = 
+export type GitHub_ProjectItemType =
   /** Issue */
   | 'ISSUE'
   /** Pull Request */
@@ -12532,7 +12141,7 @@ export type GitHub_ProjectNext = GitHub_Node & GitHub_Closable & GitHub_Updatabl
   resourcePath: Scalars['GitHub_URI'];
   /** The project's short description. */
   shortDescription?: Maybe<Scalars['String']>;
-  /** The project's name. Falls back to "Untitled table" if blank. */
+  /** The project's name. */
   title?: Maybe<Scalars['String']>;
   /** Identifies the date and time when the object was last updated. */
   updatedAt: Scalars['GitHub_DateTime'];
@@ -12547,37 +12156,37 @@ export type GitHub_ProjectNext = GitHub_Node & GitHub_Closable & GitHub_Updatabl
 
 /** New projects that manage issues, pull requests and drafts using tables and boards. */
 export type GitHub_ProjectNextFieldsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** New projects that manage issues, pull requests and drafts using tables and boards. */
 export type GitHub_ProjectNextItemsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** New projects that manage issues, pull requests and drafts using tables and boards. */
 export type GitHub_ProjectNextRepositoriesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** New projects that manage issues, pull requests and drafts using tables and boards. */
 export type GitHub_ProjectNextViewsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** The connection type for ProjectNext. */
@@ -12659,7 +12268,7 @@ export type GitHub_ProjectNextFieldEdge = {
 };
 
 /** The type of a project next field. */
-export type GitHub_ProjectNextFieldType = 
+export type GitHub_ProjectNextFieldType =
   /** Assignees */
   | 'ASSIGNEES'
   /** Linked Pull Requests */
@@ -12715,10 +12324,10 @@ export type GitHub_ProjectNextItem = GitHub_Node & {
 
 /** An item within a new Project. */
 export type GitHub_ProjectNextItemFieldValuesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** The connection type for ProjectNextItem. */
@@ -12784,7 +12393,7 @@ export type GitHub_ProjectNextItemFieldValueEdge = {
 };
 
 /** Properties by which the return project can be ordered. */
-export type GitHub_ProjectNextOrderField = 
+export type GitHub_ProjectNextOrderField =
   /** The project's title */
   | 'TITLE'
   /** The project's number */
@@ -12812,12 +12421,12 @@ export type GitHub_ProjectNextOwnerProjectNextArgs = {
 
 /** Represents an owner of a project (beta). */
 export type GitHub_ProjectNextOwnerProjectsNextArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  query?: Maybe<Scalars['String']>;
-  sortBy?: Maybe<GitHub_ProjectNextOrderField>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  query?: InputMaybe<Scalars['String']>;
+  sortBy?: InputMaybe<GitHub_ProjectNextOrderField>;
 };
 
 /** Ways in which lists of projects can be ordered upon return. */
@@ -12829,7 +12438,7 @@ export type GitHub_ProjectOrder = {
 };
 
 /** Properties by which project connections can be ordered. */
-export type GitHub_ProjectOrderField = 
+export type GitHub_ProjectOrderField =
   /** Order projects by creation time */
   | 'CREATED_AT'
   /** Order projects by update time */
@@ -12861,13 +12470,13 @@ export type GitHub_ProjectOwnerProjectArgs = {
 
 /** Represents an owner of a Project. */
 export type GitHub_ProjectOwnerProjectsArgs = {
-  orderBy?: Maybe<GitHub_ProjectOrder>;
-  search?: Maybe<Scalars['String']>;
-  states?: Maybe<Array<GitHub_ProjectState>>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_ProjectOrder>;
+  search?: InputMaybe<Scalars['String']>;
+  states?: InputMaybe<Array<GitHub_ProjectState>>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** Project progress stats. */
@@ -12889,14 +12498,14 @@ export type GitHub_ProjectProgress = {
 };
 
 /** State of the project; either 'open' or 'closed' */
-export type GitHub_ProjectState = 
+export type GitHub_ProjectState =
   /** The project is open. */
   | 'OPEN'
   /** The project is closed. */
   | 'CLOSED';
 
 /** GitHub-provided templates for Projects */
-export type GitHub_ProjectTemplate = 
+export type GitHub_ProjectTemplate =
   /** Create a board with columns for To do, In progress and Done. */
   | 'BASIC_KANBAN'
   /** Create a board with v2 triggers to automatically move cards across To do, In progress and Done columns. */
@@ -12922,6 +12531,8 @@ export type GitHub_ProjectView = GitHub_Node & {
   /** The view's group-by field. */
   groupBy?: Maybe<Array<Scalars['Int']>>;
   id: Scalars['ID'];
+  /** The view's filtered items. */
+  items: GitHub_ProjectNextItemConnection;
   /** The project view's layout. */
   layout: GitHub_ProjectViewLayout;
   /** The project view's name. */
@@ -12938,6 +12549,15 @@ export type GitHub_ProjectView = GitHub_Node & {
   verticalGroupBy?: Maybe<Array<Scalars['Int']>>;
   /** The view's visible fields. */
   visibleFields?: Maybe<Array<Scalars['Int']>>;
+};
+
+
+/** A view within a Project. */
+export type GitHub_ProjectViewItemsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** The connection type for ProjectView. */
@@ -12961,7 +12581,7 @@ export type GitHub_ProjectViewEdge = {
 };
 
 /** The layout of a project view. */
-export type GitHub_ProjectViewLayout = 
+export type GitHub_ProjectViewLayout =
   /** Board layout */
   | 'BOARD_LAYOUT'
   /** Table layout */
@@ -12971,10 +12591,7 @@ export type GitHub_ProjectViewLayout =
 export type GitHub_PublicKey = GitHub_Node & {
   /** The last time this authorization was used to perform an action. Values will be null for keys not owned by the user. */
   accessedAt?: Maybe<Scalars['GitHub_DateTime']>;
-  /**
-   * Identifies the date and time when the key was created. Keys created before
-   * March 5th, 2014 have inaccurate values. Values will be null for keys not owned by the user.
-   */
+  /** Identifies the date and time when the key was created. Keys created before March 5th, 2014 have inaccurate values. Values will be null for keys not owned by the user. */
   createdAt?: Maybe<Scalars['GitHub_DateTime']>;
   /** The fingerprint for this PublicKey. */
   fingerprint: Scalars['String'];
@@ -12983,11 +12600,7 @@ export type GitHub_PublicKey = GitHub_Node & {
   isReadOnly?: Maybe<Scalars['Boolean']>;
   /** The public key string. */
   key: Scalars['String'];
-  /**
-   * Identifies the date and time when the key was updated. Keys created before
-   * March 5th, 2014 may have inaccurate values. Values will be null for keys not
-   * owned by the user.
-   */
+  /** Identifies the date and time when the key was updated. Keys created before March 5th, 2014 may have inaccurate values. Values will be null for keys not owned by the user. */
   updatedAt?: Maybe<Scalars['GitHub_DateTime']>;
 };
 
@@ -13118,12 +12731,7 @@ export type GitHub_PullRequest = GitHub_Node & GitHub_Assignable & GitHub_Closab
   participants: GitHub_UserConnection;
   /** The permalink to the pull request. */
   permalink: Scalars['GitHub_URI'];
-  /**
-   * The commit that GitHub automatically generated to test if this pull request
-   * could be merged. This field will not return a value if the pull request is
-   * merged, or if the test merge commit is still being generated. See the
-   * `mergeable` field for more details on the mergeability of the pull request.
-   */
+  /** The commit that GitHub automatically generated to test if this pull request could be merged. This field will not return a value if the pull request is merged, or if the test merge commit is still being generated. See the `mergeable` field for more details on the mergeability of the pull request. */
   potentialMergeCommit?: Maybe<GitHub_Commit>;
   /** List of project cards associated with this pull request. */
   projectCards: GitHub_ProjectCardConnection;
@@ -13211,103 +12819,103 @@ export type GitHub_PullRequest = GitHub_Node & GitHub_Assignable & GitHub_Closab
 
 /** A repository pull request. */
 export type GitHub_PullRequestAssigneesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A repository pull request. */
 export type GitHub_PullRequestClosingIssuesReferencesArgs = {
-  userLinkedOnly?: Maybe<Scalars['Boolean']>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  orderBy?: Maybe<GitHub_IssueOrder>;
+  userLinkedOnly?: InputMaybe<Scalars['Boolean']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_IssueOrder>;
 };
 
 
 /** A repository pull request. */
 export type GitHub_PullRequestCommentsArgs = {
-  orderBy?: Maybe<GitHub_IssueCommentOrder>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_IssueCommentOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A repository pull request. */
 export type GitHub_PullRequestCommitsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A repository pull request. */
 export type GitHub_PullRequestFilesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A repository pull request. */
 export type GitHub_PullRequestHovercardArgs = {
-  includeNotificationContexts?: Maybe<Scalars['Boolean']>;
+  includeNotificationContexts?: InputMaybe<Scalars['Boolean']>;
 };
 
 
 /** A repository pull request. */
 export type GitHub_PullRequestLabelsArgs = {
-  orderBy?: Maybe<GitHub_LabelOrder>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_LabelOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A repository pull request. */
 export type GitHub_PullRequestLatestOpinionatedReviewsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  writersOnly?: Maybe<Scalars['Boolean']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  writersOnly?: InputMaybe<Scalars['Boolean']>;
 };
 
 
 /** A repository pull request. */
 export type GitHub_PullRequestLatestReviewsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A repository pull request. */
 export type GitHub_PullRequestParticipantsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A repository pull request. */
 export type GitHub_PullRequestProjectCardsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  archivedStates?: Maybe<Array<Maybe<GitHub_ProjectCardArchivedState>>>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  archivedStates?: InputMaybe<Array<InputMaybe<GitHub_ProjectCardArchivedState>>>;
 };
 
 
@@ -13319,111 +12927,113 @@ export type GitHub_PullRequestProjectNextArgs = {
 
 /** A repository pull request. */
 export type GitHub_PullRequestProjectNextItemsArgs = {
-  includeArchived?: Maybe<Scalars['Boolean']>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  includeArchived?: InputMaybe<Scalars['Boolean']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A repository pull request. */
 export type GitHub_PullRequestProjectsNextArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  query?: Maybe<Scalars['String']>;
-  sortBy?: Maybe<GitHub_ProjectNextOrderField>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  query?: InputMaybe<Scalars['String']>;
+  sortBy?: InputMaybe<GitHub_ProjectNextOrderField>;
 };
 
 
 /** A repository pull request. */
 export type GitHub_PullRequestReactionsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  content?: Maybe<GitHub_ReactionContent>;
-  orderBy?: Maybe<GitHub_ReactionOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  content?: InputMaybe<GitHub_ReactionContent>;
+  orderBy?: InputMaybe<GitHub_ReactionOrder>;
 };
 
 
 /** A repository pull request. */
 export type GitHub_PullRequestReviewRequestsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A repository pull request. */
 export type GitHub_PullRequestReviewThreadsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A repository pull request. */
 export type GitHub_PullRequestReviewsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  states?: Maybe<Array<GitHub_PullRequestReviewState>>;
-  author?: Maybe<Scalars['String']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  states?: InputMaybe<Array<GitHub_PullRequestReviewState>>;
+  author?: InputMaybe<Scalars['String']>;
 };
 
 
 /** A repository pull request. */
 export type GitHub_PullRequestTimelineArgs = {
-  since?: Maybe<Scalars['GitHub_DateTime']>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  since?: InputMaybe<Scalars['GitHub_DateTime']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A repository pull request. */
 export type GitHub_PullRequestTimelineItemsArgs = {
-  since?: Maybe<Scalars['GitHub_DateTime']>;
-  skip?: Maybe<Scalars['Int']>;
-  itemTypes?: Maybe<Array<GitHub_PullRequestTimelineItemsItemType>>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  since?: InputMaybe<Scalars['GitHub_DateTime']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  itemTypes?: InputMaybe<Array<GitHub_PullRequestTimelineItemsItemType>>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A repository pull request. */
 export type GitHub_PullRequestUserContentEditsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A repository pull request. */
 export type GitHub_PullRequestViewerMergeBodyTextArgs = {
-  mergeType?: Maybe<GitHub_PullRequestMergeMethod>;
+  mergeType?: InputMaybe<GitHub_PullRequestMergeMethod>;
 };
 
 
 /** A repository pull request. */
 export type GitHub_PullRequestViewerMergeHeadlineTextArgs = {
-  mergeType?: Maybe<GitHub_PullRequestMergeMethod>;
+  mergeType?: InputMaybe<GitHub_PullRequestMergeMethod>;
 };
 
 /** A file changed in a pull request. */
 export type GitHub_PullRequestChangedFile = {
   /** The number of additions to the file. */
   additions: Scalars['Int'];
+  /** How the file was changed in this PullRequest */
+  changeType: GitHub_PatchStatus;
   /** The number of deletions to the file. */
   deletions: Scalars['Int'];
   /** The path of the file. */
@@ -13485,10 +13095,10 @@ export type GitHub_PullRequestCommitCommentThread = GitHub_RepositoryNode & GitH
 
 /** Represents a commit comment thread part of a pull request. */
 export type GitHub_PullRequestCommitCommentThreadCommentsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** The connection type for PullRequestCommit. */
@@ -13534,11 +13144,11 @@ export type GitHub_PullRequestContributionsByRepository = {
 
 /** This aggregates pull requests opened by a user within one repository. */
 export type GitHub_PullRequestContributionsByRepositoryContributionsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  orderBy?: Maybe<GitHub_ContributionOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_ContributionOrder>;
 };
 
 /** An edge in a connection. */
@@ -13550,7 +13160,7 @@ export type GitHub_PullRequestEdge = {
 };
 
 /** Represents available types of methods to use when merging a pull request. */
-export type GitHub_PullRequestMergeMethod = 
+export type GitHub_PullRequestMergeMethod =
   /** Add all commits from the head branch to the base branch with a merge commit. */
   | 'MERGE'
   /** Combine all commits from the head branch into a single commit in the base branch. */
@@ -13567,7 +13177,7 @@ export type GitHub_PullRequestOrder = {
 };
 
 /** Properties by which pull_requests connections can be ordered. */
-export type GitHub_PullRequestOrderField = 
+export type GitHub_PullRequestOrderField =
   /** Order pull_requests by creation time */
   | 'CREATED_AT'
   /** Order pull_requests by update time */
@@ -13643,39 +13253,39 @@ export type GitHub_PullRequestReview = GitHub_Node & GitHub_Comment & GitHub_Del
 
 /** A review object for a given pull request. */
 export type GitHub_PullRequestReviewCommentsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A review object for a given pull request. */
 export type GitHub_PullRequestReviewOnBehalfOfArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A review object for a given pull request. */
 export type GitHub_PullRequestReviewReactionsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  content?: Maybe<GitHub_ReactionContent>;
-  orderBy?: Maybe<GitHub_ReactionOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  content?: InputMaybe<GitHub_ReactionContent>;
+  orderBy?: InputMaybe<GitHub_ReactionOrder>;
 };
 
 
 /** A review object for a given pull request. */
 export type GitHub_PullRequestReviewUserContentEditsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** A review comment associated with a given repository pull request. */
@@ -13764,21 +13374,21 @@ export type GitHub_PullRequestReviewComment = GitHub_Node & GitHub_Comment & Git
 
 /** A review comment associated with a given repository pull request. */
 export type GitHub_PullRequestReviewCommentReactionsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  content?: Maybe<GitHub_ReactionContent>;
-  orderBy?: Maybe<GitHub_ReactionOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  content?: InputMaybe<GitHub_ReactionContent>;
+  orderBy?: InputMaybe<GitHub_ReactionOrder>;
 };
 
 
 /** A review comment associated with a given repository pull request. */
 export type GitHub_PullRequestReviewCommentUserContentEditsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** The connection type for PullRequestReviewComment. */
@@ -13802,7 +13412,7 @@ export type GitHub_PullRequestReviewCommentEdge = {
 };
 
 /** The possible states of a pull request review comment. */
-export type GitHub_PullRequestReviewCommentState = 
+export type GitHub_PullRequestReviewCommentState =
   /** A comment that is part of a pending review */
   | 'PENDING'
   /** A comment that is part of a submitted review */
@@ -13831,15 +13441,15 @@ export type GitHub_PullRequestReviewContributionsByRepository = {
 
 /** This aggregates pull request reviews made by a user within one repository. */
 export type GitHub_PullRequestReviewContributionsByRepositoryContributionsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  orderBy?: Maybe<GitHub_ContributionOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_ContributionOrder>;
 };
 
 /** The review status of a pull request. */
-export type GitHub_PullRequestReviewDecision = 
+export type GitHub_PullRequestReviewDecision =
   /** Changes have been requested on the pull request. */
   | 'CHANGES_REQUESTED'
   /** The pull request has received an approving review. */
@@ -13856,7 +13466,7 @@ export type GitHub_PullRequestReviewEdge = {
 };
 
 /** The possible events to perform on a pull request review. */
-export type GitHub_PullRequestReviewEvent = 
+export type GitHub_PullRequestReviewEvent =
   /** Submit general feedback without explicit approval. */
   | 'COMMENT'
   /** Submit feedback and approve merging these changes. */
@@ -13867,7 +13477,7 @@ export type GitHub_PullRequestReviewEvent =
   | 'DISMISS';
 
 /** The possible states of a pull request review. */
-export type GitHub_PullRequestReviewState = 
+export type GitHub_PullRequestReviewState =
   /** A review that has not yet been submitted. */
   | 'PENDING'
   /** An informational review. */
@@ -13921,11 +13531,11 @@ export type GitHub_PullRequestReviewThread = GitHub_Node & {
 
 /** A threaded list of comments for a given pull request. */
 export type GitHub_PullRequestReviewThreadCommentsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  skip?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
 };
 
 /** Review comment threads for a pull request review. */
@@ -13959,7 +13569,7 @@ export type GitHub_PullRequestRevisionMarker = {
 };
 
 /** The possible states of a pull request. */
-export type GitHub_PullRequestState = 
+export type GitHub_PullRequestState =
   /** A pull request that is still open. */
   | 'OPEN'
   /** A pull request that has been closed without being merged. */
@@ -14030,7 +13640,7 @@ export type GitHub_PullRequestTimelineItemsEdge = {
 };
 
 /** The possible item types found in a timeline. */
-export type GitHub_PullRequestTimelineItemsItemType = 
+export type GitHub_PullRequestTimelineItemsItemType =
   /** Represents a Git commit part of a pull request. */
   | 'PULL_REQUEST_COMMIT'
   /** Represents a commit comment thread part of a pull request. */
@@ -14149,7 +13759,7 @@ export type GitHub_PullRequestTimelineItemsItemType =
   | 'UNSUBSCRIBED_EVENT';
 
 /** The possible target states when updating a pull request. */
-export type GitHub_PullRequestUpdateState = 
+export type GitHub_PullRequestUpdateState =
   /** A pull request that is still open. */
   | 'OPEN'
   /** A pull request that has been closed without being merged. */
@@ -14234,12 +13844,12 @@ export type GitHub_Reactable = {
 
 /** Represents a subject that can be reacted on. */
 export type GitHub_ReactableReactionsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  content?: Maybe<GitHub_ReactionContent>;
-  orderBy?: Maybe<GitHub_ReactionOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  content?: InputMaybe<GitHub_ReactionContent>;
+  orderBy?: InputMaybe<GitHub_ReactionOrder>;
 };
 
 /** The connection type for User. */
@@ -14293,7 +13903,7 @@ export type GitHub_ReactionConnection = {
 };
 
 /** Emojis that can be attached to Issues, Pull Requests and Comments. */
-export type GitHub_ReactionContent = 
+export type GitHub_ReactionContent =
   /** Represents the `:+1:` emoji. */
   | 'THUMBS_UP'
   /** Represents the `:-1:` emoji. */
@@ -14341,19 +13951,19 @@ export type GitHub_ReactionGroup = {
 
 /** A group of emoji reactions to a particular piece of content. */
 export type GitHub_ReactionGroupReactorsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A group of emoji reactions to a particular piece of content. */
 export type GitHub_ReactionGroupUsersArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** Ways in which lists of reactions can be ordered upon return. */
@@ -14365,7 +13975,7 @@ export type GitHub_ReactionOrder = {
 };
 
 /** A list of fields that reactions can be ordered by. */
-export type GitHub_ReactionOrderField = 
+export type GitHub_ReactionOrderField =
   /** Allows ordering a list of reactions by when they were created. */
   | 'CREATED_AT';
 
@@ -14431,15 +14041,15 @@ export type GitHub_Ref = GitHub_Node & {
 
 /** Represents a Git reference. */
 export type GitHub_RefAssociatedPullRequestsArgs = {
-  states?: Maybe<Array<GitHub_PullRequestState>>;
-  labels?: Maybe<Array<Scalars['String']>>;
-  headRefName?: Maybe<Scalars['String']>;
-  baseRefName?: Maybe<Scalars['String']>;
-  orderBy?: Maybe<GitHub_IssueOrder>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  states?: InputMaybe<Array<GitHub_PullRequestState>>;
+  labels?: InputMaybe<Array<Scalars['String']>>;
+  headRefName?: InputMaybe<Scalars['String']>;
+  baseRefName?: InputMaybe<Scalars['String']>;
+  orderBy?: InputMaybe<GitHub_IssueOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** The connection type for Ref. */
@@ -14462,28 +14072,6 @@ export type GitHub_RefEdge = {
   node?: Maybe<GitHub_Ref>;
 };
 
-/** Represents a 'referenced' event on a given `ReferencedSubject`. */
-export type GitHub_ReferencedEvent = GitHub_Node & {
-  /** Identifies the actor who performed the event. */
-  actor?: Maybe<GitHub_Actor>;
-  /** Identifies the commit associated with the 'referenced' event. */
-  commit?: Maybe<GitHub_Commit>;
-  /** Identifies the repository associated with the 'referenced' event. */
-  commitRepository: GitHub_Repository;
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['GitHub_DateTime'];
-  id: Scalars['ID'];
-  /** Reference originated in a different repository. */
-  isCrossRepository: Scalars['Boolean'];
-  /** Checks if the commit message itself references the subject. Can be false in the case of a commit comment reference. */
-  isDirectReference: Scalars['Boolean'];
-  /** Object referenced by event. */
-  subject: GitHub_ReferencedSubject;
-};
-
-/** Any referencable object */
-export type GitHub_ReferencedSubject = GitHub_Issue | GitHub_PullRequest;
-
 /** Ways in which lists of git refs can be ordered upon return. */
 export type GitHub_RefOrder = {
   /** The field in which to order refs by. */
@@ -14493,7 +14081,7 @@ export type GitHub_RefOrder = {
 };
 
 /** Properties by which ref connections can be ordered. */
-export type GitHub_RefOrderField = 
+export type GitHub_RefOrderField =
   /** Order refs by underlying commit date if the ref prefix is refs/tags/ */
   | 'TAG_COMMIT_DATE'
   /** Order refs by their alphanumeric name */
@@ -14527,12 +14115,34 @@ export type GitHub_RefUpdateRule = {
   viewerCanPush: Scalars['Boolean'];
 };
 
+/** Represents a 'referenced' event on a given `ReferencedSubject`. */
+export type GitHub_ReferencedEvent = GitHub_Node & {
+  /** Identifies the actor who performed the event. */
+  actor?: Maybe<GitHub_Actor>;
+  /** Identifies the commit associated with the 'referenced' event. */
+  commit?: Maybe<GitHub_Commit>;
+  /** Identifies the repository associated with the 'referenced' event. */
+  commitRepository: GitHub_Repository;
+  /** Identifies the date and time when the object was created. */
+  createdAt: Scalars['GitHub_DateTime'];
+  id: Scalars['ID'];
+  /** Reference originated in a different repository. */
+  isCrossRepository: Scalars['Boolean'];
+  /** Checks if the commit message itself references the subject. Can be false in the case of a commit comment reference. */
+  isDirectReference: Scalars['Boolean'];
+  /** Object referenced by event. */
+  subject: GitHub_ReferencedSubject;
+};
+
+/** Any referencable object */
+export type GitHub_ReferencedSubject = GitHub_Issue | GitHub_PullRequest;
+
 /** Autogenerated input type of RegenerateEnterpriseIdentityProviderRecoveryCodes */
 export type GitHub_RegenerateEnterpriseIdentityProviderRecoveryCodesInput = {
   /** The ID of the enterprise on which to set an identity provider. */
   enterpriseId: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of RegenerateEnterpriseIdentityProviderRecoveryCodes */
@@ -14548,7 +14158,7 @@ export type GitHub_RegenerateVerifiableDomainTokenInput = {
   /** The ID of the verifiable domain to regenerate the verification token of. */
   id: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of RegenerateVerifiableDomainToken */
@@ -14566,9 +14176,9 @@ export type GitHub_RejectDeploymentsInput = {
   /** The ids of environments to reject deployments */
   environmentIds: Array<Scalars['ID']>;
   /** Optional comment for rejecting deployments */
-  comment?: Maybe<Scalars['String']>;
+  comment?: InputMaybe<Scalars['String']>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of RejectDeployments */
@@ -14633,37 +14243,37 @@ export type GitHub_Release = GitHub_Node & GitHub_UniformResourceLocatable & Git
 
 /** A release contains the content for a release. */
 export type GitHub_ReleaseMentionsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A release contains the content for a release. */
 export type GitHub_ReleaseReactionsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  content?: Maybe<GitHub_ReactionContent>;
-  orderBy?: Maybe<GitHub_ReactionOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  content?: InputMaybe<GitHub_ReactionContent>;
+  orderBy?: InputMaybe<GitHub_ReactionOrder>;
 };
 
 
 /** A release contains the content for a release. */
 export type GitHub_ReleaseReleaseAssetsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  name?: Maybe<Scalars['String']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  name?: InputMaybe<Scalars['String']>;
 };
 
 
 /** A release contains the content for a release. */
 export type GitHub_ReleaseShortDescriptionHtmlArgs = {
-  limit?: Maybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
 };
 
 /** A release asset contains the content for a release asset. */
@@ -14740,7 +14350,7 @@ export type GitHub_ReleaseOrder = {
 };
 
 /** Properties by which release connections can be ordered. */
-export type GitHub_ReleaseOrderField = 
+export type GitHub_ReleaseOrderField =
   /** Order releases by creation time */
   | 'CREATED_AT'
   /** Order releases alphabetically by name */
@@ -14753,7 +14363,7 @@ export type GitHub_RemoveAssigneesFromAssignableInput = {
   /** The id of users to remove as assignees. */
   assigneeIds: Array<Scalars['ID']>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of RemoveAssigneesFromAssignable */
@@ -14764,17 +14374,6 @@ export type GitHub_RemoveAssigneesFromAssignablePayload = {
   clientMutationId?: Maybe<Scalars['String']>;
 };
 
-/** Represents a 'removed_from_project' event on a given issue or pull request. */
-export type GitHub_RemovedFromProjectEvent = GitHub_Node & {
-  /** Identifies the actor who performed the event. */
-  actor?: Maybe<GitHub_Actor>;
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['GitHub_DateTime'];
-  /** Identifies the primary key from the database. */
-  databaseId?: Maybe<Scalars['Int']>;
-  id: Scalars['ID'];
-};
-
 /** Autogenerated input type of RemoveEnterpriseAdmin */
 export type GitHub_RemoveEnterpriseAdminInput = {
   /** The Enterprise ID from which to remove the administrator. */
@@ -14782,7 +14381,7 @@ export type GitHub_RemoveEnterpriseAdminInput = {
   /** The login of the user to remove as an administrator. */
   login: Scalars['String'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of RemoveEnterpriseAdmin */
@@ -14804,7 +14403,7 @@ export type GitHub_RemoveEnterpriseIdentityProviderInput = {
   /** The ID of the enterprise from which to remove the identity provider. */
   enterpriseId: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of RemoveEnterpriseIdentityProvider */
@@ -14822,7 +14421,7 @@ export type GitHub_RemoveEnterpriseOrganizationInput = {
   /** The ID of the organization to remove from the enterprise. */
   organizationId: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of RemoveEnterpriseOrganization */
@@ -14844,7 +14443,7 @@ export type GitHub_RemoveEnterpriseSupportEntitlementInput = {
   /** The login of a member who will lose the support entitlement. */
   login: Scalars['String'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of RemoveEnterpriseSupportEntitlement */
@@ -14862,7 +14461,7 @@ export type GitHub_RemoveLabelsFromLabelableInput = {
   /** The ids of labels to remove. */
   labelIds: Array<Scalars['ID']>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of RemoveLabelsFromLabelable */
@@ -14880,7 +14479,7 @@ export type GitHub_RemoveOutsideCollaboratorInput = {
   /** The ID of the organization to remove the outside collaborator from. */
   organizationId: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of RemoveOutsideCollaborator */
@@ -14898,7 +14497,7 @@ export type GitHub_RemoveReactionInput = {
   /** The name of the emoji reaction to remove. */
   content: GitHub_ReactionContent;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of RemoveReaction */
@@ -14916,7 +14515,7 @@ export type GitHub_RemoveStarInput = {
   /** The Starrable ID to unstar. */
   starrableId: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of RemoveStar */
@@ -14932,7 +14531,7 @@ export type GitHub_RemoveUpvoteInput = {
   /** The Node ID of the discussion or comment to remove upvote. */
   subjectId: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of RemoveUpvote */
@@ -14941,6 +14540,17 @@ export type GitHub_RemoveUpvotePayload = {
   clientMutationId?: Maybe<Scalars['String']>;
   /** The votable subject. */
   subject?: Maybe<GitHub_Votable>;
+};
+
+/** Represents a 'removed_from_project' event on a given issue or pull request. */
+export type GitHub_RemovedFromProjectEvent = GitHub_Node & {
+  /** Identifies the actor who performed the event. */
+  actor?: Maybe<GitHub_Actor>;
+  /** Identifies the date and time when the object was created. */
+  createdAt: Scalars['GitHub_DateTime'];
+  /** Identifies the primary key from the database. */
+  databaseId?: Maybe<Scalars['Int']>;
+  id: Scalars['ID'];
 };
 
 /** Represents a 'renamed' event on a given issue or pull request */
@@ -14961,23 +14571,12 @@ export type GitHub_RenamedTitleEvent = GitHub_Node & {
 /** An object which has a renamable title */
 export type GitHub_RenamedTitleSubject = GitHub_Issue | GitHub_PullRequest;
 
-/** Represents a 'reopened' event on any `Closable`. */
-export type GitHub_ReopenedEvent = GitHub_Node & {
-  /** Identifies the actor who performed the event. */
-  actor?: Maybe<GitHub_Actor>;
-  /** Object that was reopened. */
-  closable: GitHub_Closable;
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['GitHub_DateTime'];
-  id: Scalars['ID'];
-};
-
 /** Autogenerated input type of ReopenIssue */
 export type GitHub_ReopenIssueInput = {
   /** ID of the issue to be opened. */
   issueId: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of ReopenIssue */
@@ -14993,7 +14592,7 @@ export type GitHub_ReopenPullRequestInput = {
   /** ID of the pull request to be reopened. */
   pullRequestId: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of ReopenPullRequest */
@@ -15002,6 +14601,17 @@ export type GitHub_ReopenPullRequestPayload = {
   clientMutationId?: Maybe<Scalars['String']>;
   /** The pull request that was reopened. */
   pullRequest?: Maybe<GitHub_PullRequest>;
+};
+
+/** Represents a 'reopened' event on any `Closable`. */
+export type GitHub_ReopenedEvent = GitHub_Node & {
+  /** Identifies the actor who performed the event. */
+  actor?: Maybe<GitHub_Actor>;
+  /** Object that was reopened. */
+  closable: GitHub_Closable;
+  /** Identifies the date and time when the object was created. */
+  createdAt: Scalars['GitHub_DateTime'];
+  id: Scalars['ID'];
 };
 
 /** Audit log entry for a repo.access event. */
@@ -15054,7 +14664,7 @@ export type GitHub_RepoAccessAuditEntry = GitHub_Node & GitHub_AuditEntry & GitH
 };
 
 /** The privacy of a repository */
-export type GitHub_RepoAccessAuditEntryVisibility = 
+export type GitHub_RepoAccessAuditEntryVisibility =
   /** The repository is visible only to users in the same business. */
   | 'INTERNAL'
   /** The repository is visible only to those with explicit access. */
@@ -15112,7 +14722,7 @@ export type GitHub_RepoAddMemberAuditEntry = GitHub_Node & GitHub_AuditEntry & G
 };
 
 /** The privacy of a repository */
-export type GitHub_RepoAddMemberAuditEntryVisibility = 
+export type GitHub_RepoAddMemberAuditEntryVisibility =
   /** The repository is visible only to users in the same business. */
   | 'INTERNAL'
   /** The repository is visible only to those with explicit access. */
@@ -15221,7 +14831,7 @@ export type GitHub_RepoArchivedAuditEntry = GitHub_Node & GitHub_AuditEntry & Gi
 };
 
 /** The privacy of a repository */
-export type GitHub_RepoArchivedAuditEntryVisibility = 
+export type GitHub_RepoArchivedAuditEntryVisibility =
   /** The repository is visible only to users in the same business. */
   | 'INTERNAL'
   /** The repository is visible only to those with explicit access. */
@@ -15281,7 +14891,7 @@ export type GitHub_RepoChangeMergeSettingAuditEntry = GitHub_Node & GitHub_Audit
 };
 
 /** The merge options available for pull requests to this repository. */
-export type GitHub_RepoChangeMergeSettingAuditEntryMergeType = 
+export type GitHub_RepoChangeMergeSettingAuditEntryMergeType =
   /** The pull request is added to the base branch in a merge commit. */
   | 'MERGE'
   /** Commits from the pull request are added onto the base branch individually without a merge commit. */
@@ -15813,7 +15423,7 @@ export type GitHub_RepoCreateAuditEntry = GitHub_Node & GitHub_AuditEntry & GitH
 };
 
 /** The privacy of a repository */
-export type GitHub_RepoCreateAuditEntryVisibility = 
+export type GitHub_RepoCreateAuditEntryVisibility =
   /** The repository is visible only to users in the same business. */
   | 'INTERNAL'
   /** The repository is visible only to those with explicit access. */
@@ -15871,7 +15481,7 @@ export type GitHub_RepoDestroyAuditEntry = GitHub_Node & GitHub_AuditEntry & Git
 };
 
 /** The privacy of a repository */
-export type GitHub_RepoDestroyAuditEntryVisibility = 
+export type GitHub_RepoDestroyAuditEntryVisibility =
   /** The repository is visible only to users in the same business. */
   | 'INTERNAL'
   /** The repository is visible only to those with explicit access. */
@@ -15929,7 +15539,7 @@ export type GitHub_RepoRemoveMemberAuditEntry = GitHub_Node & GitHub_AuditEntry 
 };
 
 /** The privacy of a repository */
-export type GitHub_RepoRemoveMemberAuditEntryVisibility = 
+export type GitHub_RepoRemoveMemberAuditEntryVisibility =
   /** The repository is visible only to users in the same business. */
   | 'INTERNAL'
   /** The repository is visible only to those with explicit access. */
@@ -15989,7 +15599,7 @@ export type GitHub_RepoRemoveTopicAuditEntry = GitHub_Node & GitHub_AuditEntry &
 };
 
 /** The reasons a piece of content can be reported or minimized. */
-export type GitHub_ReportedContentClassifiers = 
+export type GitHub_ReportedContentClassifiers =
   /** A spammy piece of content */
   | 'SPAM'
   /** An abusive or harassing piece of content */
@@ -16188,10 +15798,7 @@ export type GitHub_Repository = GitHub_Node & GitHub_ProjectOwner & GitHub_Packa
   stargazerCount: Scalars['Int'];
   /** A list of users who have starred this starrable. */
   stargazers: GitHub_StargazerConnection;
-  /**
-   * Returns a list of all submodules in this repository parsed from the
-   * .gitmodules file as of the default branch's HEAD commit.
-   */
+  /** Returns a list of all submodules in this repository parsed from the .gitmodules file as of the default branch's HEAD commit. */
   submodules: GitHub_SubmoduleConnection;
   /** Temporary authentication token for cloning this repository. */
   tempCloneToken?: Maybe<Scalars['String']>;
@@ -16234,66 +15841,66 @@ export type GitHub_Repository = GitHub_Node & GitHub_ProjectOwner & GitHub_Packa
 
 /** A repository contains the content for a project. */
 export type GitHub_RepositoryAssignableUsersArgs = {
-  query?: Maybe<Scalars['String']>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  query?: InputMaybe<Scalars['String']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A repository contains the content for a project. */
 export type GitHub_RepositoryBranchProtectionRulesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A repository contains the content for a project. */
 export type GitHub_RepositoryCodeownersArgs = {
-  refName?: Maybe<Scalars['String']>;
+  refName?: InputMaybe<Scalars['String']>;
 };
 
 
 /** A repository contains the content for a project. */
 export type GitHub_RepositoryCollaboratorsArgs = {
-  affiliation?: Maybe<GitHub_CollaboratorAffiliation>;
-  query?: Maybe<Scalars['String']>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  affiliation?: InputMaybe<GitHub_CollaboratorAffiliation>;
+  query?: InputMaybe<Scalars['String']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A repository contains the content for a project. */
 export type GitHub_RepositoryCommitCommentsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A repository contains the content for a project. */
 export type GitHub_RepositoryDeployKeysArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A repository contains the content for a project. */
 export type GitHub_RepositoryDeploymentsArgs = {
-  environments?: Maybe<Array<Scalars['String']>>;
-  orderBy?: Maybe<GitHub_DeploymentOrder>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  environments?: InputMaybe<Array<Scalars['String']>>;
+  orderBy?: InputMaybe<GitHub_DeploymentOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
@@ -16305,22 +15912,22 @@ export type GitHub_RepositoryDiscussionArgs = {
 
 /** A repository contains the content for a project. */
 export type GitHub_RepositoryDiscussionCategoriesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  filterByAssignable?: Maybe<Scalars['Boolean']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  filterByAssignable?: InputMaybe<Scalars['Boolean']>;
 };
 
 
 /** A repository contains the content for a project. */
 export type GitHub_RepositoryDiscussionsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  categoryId?: Maybe<Scalars['ID']>;
-  orderBy?: Maybe<GitHub_DiscussionOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  categoryId?: InputMaybe<Scalars['ID']>;
+  orderBy?: InputMaybe<GitHub_DiscussionOrder>;
 };
 
 
@@ -16332,24 +15939,24 @@ export type GitHub_RepositoryEnvironmentArgs = {
 
 /** A repository contains the content for a project. */
 export type GitHub_RepositoryEnvironmentsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A repository contains the content for a project. */
 export type GitHub_RepositoryForksArgs = {
-  privacy?: Maybe<GitHub_RepositoryPrivacy>;
-  orderBy?: Maybe<GitHub_RepositoryOrder>;
-  affiliations?: Maybe<Array<Maybe<GitHub_RepositoryAffiliation>>>;
-  ownerAffiliations?: Maybe<Array<Maybe<GitHub_RepositoryAffiliation>>>;
-  isLocked?: Maybe<Scalars['Boolean']>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  privacy?: InputMaybe<GitHub_RepositoryPrivacy>;
+  orderBy?: InputMaybe<GitHub_RepositoryOrder>;
+  affiliations?: InputMaybe<Array<InputMaybe<GitHub_RepositoryAffiliation>>>;
+  ownerAffiliations?: InputMaybe<Array<InputMaybe<GitHub_RepositoryAffiliation>>>;
+  isLocked?: InputMaybe<Scalars['Boolean']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
@@ -16367,14 +15974,14 @@ export type GitHub_RepositoryIssueOrPullRequestArgs = {
 
 /** A repository contains the content for a project. */
 export type GitHub_RepositoryIssuesArgs = {
-  orderBy?: Maybe<GitHub_IssueOrder>;
-  labels?: Maybe<Array<Scalars['String']>>;
-  states?: Maybe<Array<GitHub_IssueState>>;
-  filterBy?: Maybe<GitHub_IssueFilters>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_IssueOrder>;
+  labels?: InputMaybe<Array<Scalars['String']>>;
+  states?: InputMaybe<Array<GitHub_IssueState>>;
+  filterBy?: InputMaybe<GitHub_IssueFilters>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
@@ -16386,32 +15993,32 @@ export type GitHub_RepositoryLabelArgs = {
 
 /** A repository contains the content for a project. */
 export type GitHub_RepositoryLabelsArgs = {
-  orderBy?: Maybe<GitHub_LabelOrder>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  query?: Maybe<Scalars['String']>;
+  orderBy?: InputMaybe<GitHub_LabelOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  query?: InputMaybe<Scalars['String']>;
 };
 
 
 /** A repository contains the content for a project. */
 export type GitHub_RepositoryLanguagesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  orderBy?: Maybe<GitHub_LanguageOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_LanguageOrder>;
 };
 
 
 /** A repository contains the content for a project. */
 export type GitHub_RepositoryMentionableUsersArgs = {
-  query?: Maybe<Scalars['String']>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  query?: InputMaybe<Scalars['String']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
@@ -16423,51 +16030,51 @@ export type GitHub_RepositoryMilestoneArgs = {
 
 /** A repository contains the content for a project. */
 export type GitHub_RepositoryMilestonesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  states?: Maybe<Array<GitHub_MilestoneState>>;
-  orderBy?: Maybe<GitHub_MilestoneOrder>;
-  query?: Maybe<Scalars['String']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  states?: InputMaybe<Array<GitHub_MilestoneState>>;
+  orderBy?: InputMaybe<GitHub_MilestoneOrder>;
+  query?: InputMaybe<Scalars['String']>;
 };
 
 
 /** A repository contains the content for a project. */
 export type GitHub_RepositoryObjectArgs = {
-  oid?: Maybe<Scalars['GitHub_GitObjectID']>;
-  expression?: Maybe<Scalars['String']>;
+  oid?: InputMaybe<Scalars['GitHub_GitObjectID']>;
+  expression?: InputMaybe<Scalars['String']>;
 };
 
 
 /** A repository contains the content for a project. */
 export type GitHub_RepositoryPackagesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  names?: Maybe<Array<Maybe<Scalars['String']>>>;
-  repositoryId?: Maybe<Scalars['ID']>;
-  packageType?: Maybe<GitHub_PackageType>;
-  orderBy?: Maybe<GitHub_PackageOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  names?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  repositoryId?: InputMaybe<Scalars['ID']>;
+  packageType?: InputMaybe<GitHub_PackageType>;
+  orderBy?: InputMaybe<GitHub_PackageOrder>;
 };
 
 
 /** A repository contains the content for a project. */
 export type GitHub_RepositoryPinnedDiscussionsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A repository contains the content for a project. */
 export type GitHub_RepositoryPinnedIssuesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
@@ -16485,24 +16092,24 @@ export type GitHub_RepositoryProjectNextArgs = {
 
 /** A repository contains the content for a project. */
 export type GitHub_RepositoryProjectsArgs = {
-  orderBy?: Maybe<GitHub_ProjectOrder>;
-  search?: Maybe<Scalars['String']>;
-  states?: Maybe<Array<GitHub_ProjectState>>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_ProjectOrder>;
+  search?: InputMaybe<Scalars['String']>;
+  states?: InputMaybe<Array<GitHub_ProjectState>>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A repository contains the content for a project. */
 export type GitHub_RepositoryProjectsNextArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  query?: Maybe<Scalars['String']>;
-  sortBy?: Maybe<GitHub_ProjectNextOrderField>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  query?: InputMaybe<Scalars['String']>;
+  sortBy?: InputMaybe<GitHub_ProjectNextOrderField>;
 };
 
 
@@ -16514,15 +16121,15 @@ export type GitHub_RepositoryPullRequestArgs = {
 
 /** A repository contains the content for a project. */
 export type GitHub_RepositoryPullRequestsArgs = {
-  states?: Maybe<Array<GitHub_PullRequestState>>;
-  labels?: Maybe<Array<Scalars['String']>>;
-  headRefName?: Maybe<Scalars['String']>;
-  baseRefName?: Maybe<Scalars['String']>;
-  orderBy?: Maybe<GitHub_IssueOrder>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  states?: InputMaybe<Array<GitHub_PullRequestState>>;
+  labels?: InputMaybe<Array<Scalars['String']>>;
+  headRefName?: InputMaybe<Scalars['String']>;
+  baseRefName?: InputMaybe<Scalars['String']>;
+  orderBy?: InputMaybe<GitHub_IssueOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
@@ -16534,14 +16141,14 @@ export type GitHub_RepositoryRefArgs = {
 
 /** A repository contains the content for a project. */
 export type GitHub_RepositoryRefsArgs = {
-  query?: Maybe<Scalars['String']>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  query?: InputMaybe<Scalars['String']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
   refPrefix: Scalars['String'];
-  direction?: Maybe<GitHub_OrderDirection>;
-  orderBy?: Maybe<GitHub_RefOrder>;
+  direction?: InputMaybe<GitHub_OrderDirection>;
+  orderBy?: InputMaybe<GitHub_RefOrder>;
 };
 
 
@@ -16553,76 +16160,73 @@ export type GitHub_RepositoryReleaseArgs = {
 
 /** A repository contains the content for a project. */
 export type GitHub_RepositoryReleasesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  orderBy?: Maybe<GitHub_ReleaseOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_ReleaseOrder>;
 };
 
 
 /** A repository contains the content for a project. */
 export type GitHub_RepositoryRepositoryTopicsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A repository contains the content for a project. */
 export type GitHub_RepositoryShortDescriptionHtmlArgs = {
-  limit?: Maybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A repository contains the content for a project. */
 export type GitHub_RepositoryStargazersArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  orderBy?: Maybe<GitHub_StarOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_StarOrder>;
 };
 
 
 /** A repository contains the content for a project. */
 export type GitHub_RepositorySubmodulesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A repository contains the content for a project. */
 export type GitHub_RepositoryVulnerabilityAlertsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  states?: Maybe<Array<GitHub_RepositoryVulnerabilityAlertState>>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  states?: InputMaybe<Array<GitHub_RepositoryVulnerabilityAlertState>>;
 };
 
 
 /** A repository contains the content for a project. */
 export type GitHub_RepositoryWatchersArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** The affiliation of a user to a repository */
-export type GitHub_RepositoryAffiliation = 
+export type GitHub_RepositoryAffiliation =
   /** Repositories that are owned by the authenticated user. */
   | 'OWNER'
   /** Repositories that the user has been added to as a collaborator. */
   | 'COLLABORATOR'
-  /**
-   * Repositories that the user has access to through being a member of an
-   * organization. This includes every repository on every team that the user is on.
-   */
+  /** Repositories that the user has access to through being a member of an organization. This includes every repository on every team that the user is on. */
   | 'ORGANIZATION_MEMBER';
 
 /** Metadata for an audit entry with action repo.* */
@@ -16709,7 +16313,7 @@ export type GitHub_RepositoryContactLink = {
 };
 
 /** The reason a repository is listed as 'contributed'. */
-export type GitHub_RepositoryContributionType = 
+export type GitHub_RepositoryContributionType =
   /** Created a commit */
   | 'COMMIT'
   /** Created an issue */
@@ -16730,13 +16334,13 @@ export type GitHub_RepositoryDiscussionAuthor = {
 
 /** Represents an author of discussions in repositories. */
 export type GitHub_RepositoryDiscussionAuthorRepositoryDiscussionsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  orderBy?: Maybe<GitHub_DiscussionOrder>;
-  repositoryId?: Maybe<Scalars['ID']>;
-  answered?: Maybe<Scalars['Boolean']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_DiscussionOrder>;
+  repositoryId?: InputMaybe<Scalars['ID']>;
+  answered?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** Represents an author of discussion comments in repositories. */
@@ -16748,12 +16352,12 @@ export type GitHub_RepositoryDiscussionCommentAuthor = {
 
 /** Represents an author of discussion comments in repositories. */
 export type GitHub_RepositoryDiscussionCommentAuthorRepositoryDiscussionCommentsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  repositoryId?: Maybe<Scalars['ID']>;
-  onlyAnswers?: Maybe<Scalars['Boolean']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  repositoryId?: InputMaybe<Scalars['ID']>;
+  onlyAnswers?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** An edge in a connection. */
@@ -16829,7 +16433,7 @@ export type GitHub_RepositoryInfo = {
 
 /** A subset of repository info. */
 export type GitHub_RepositoryInfoShortDescriptionHtmlArgs = {
-  limit?: Maybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
 };
 
 /** Repository interaction limit that applies to this object. */
@@ -16843,7 +16447,7 @@ export type GitHub_RepositoryInteractionAbility = {
 };
 
 /** A repository interaction limit. */
-export type GitHub_RepositoryInteractionLimit = 
+export type GitHub_RepositoryInteractionLimit =
   /** Users that have recently created their account will be unable to interact with the repository. */
   | 'EXISTING_USERS'
   /** Users that have not previously committed to a repository’s default branch will be unable to interact with the repository. */
@@ -16854,7 +16458,7 @@ export type GitHub_RepositoryInteractionLimit =
   | 'NO_LIMIT';
 
 /** The length for a repository interaction limit to be enabled for. */
-export type GitHub_RepositoryInteractionLimitExpiry = 
+export type GitHub_RepositoryInteractionLimitExpiry =
   /** The interaction limit will expire after 1 day. */
   | 'ONE_DAY'
   /** The interaction limit will expire after 3 days. */
@@ -16867,7 +16471,7 @@ export type GitHub_RepositoryInteractionLimitExpiry =
   | 'SIX_MONTHS';
 
 /** Indicates where an interaction limit is configured. */
-export type GitHub_RepositoryInteractionLimitOrigin = 
+export type GitHub_RepositoryInteractionLimitOrigin =
   /** A limit that is configured at the repository level. */
   | 'REPOSITORY'
   /** A limit that is configured at the organization level. */
@@ -16921,12 +16525,12 @@ export type GitHub_RepositoryInvitationOrder = {
 };
 
 /** Properties by which repository invitation connections can be ordered. */
-export type GitHub_RepositoryInvitationOrderField = 
+export type GitHub_RepositoryInvitationOrderField =
   /** Order repository invitations by creation time */
   | 'CREATED_AT';
 
 /** The possible reasons a given repository could be in a locked state. */
-export type GitHub_RepositoryLockReason = 
+export type GitHub_RepositoryLockReason =
   /** The repository is locked due to a move. */
   | 'MOVING'
   /** The repository is locked due to a billing related reason. */
@@ -16945,8 +16549,12 @@ export type GitHub_RepositoryMigration = GitHub_Node & GitHub_Migration & {
   /** The reason the migration failed. */
   failureReason?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
+  /** The URL for the migration log (expires 1 day after migration completes). */
+  migrationLogUrl?: Maybe<Scalars['GitHub_URI']>;
   /** The Octoshift migration source. */
   migrationSource: GitHub_MigrationSource;
+  /** The target repository name. */
+  repositoryName: Scalars['String'];
   /** The Octoshift migration source URL. */
   sourceUrl: Scalars['GitHub_URI'];
   /** The Octoshift migration state. */
@@ -16982,14 +16590,14 @@ export type GitHub_RepositoryMigrationOrder = {
 };
 
 /** Possible directions in which to order a list of repository migrations when provided an `orderBy` argument. */
-export type GitHub_RepositoryMigrationOrderDirection = 
+export type GitHub_RepositoryMigrationOrderDirection =
   /** Specifies an ascending order for a given `orderBy` argument. */
   | 'ASC'
   /** Specifies a descending order for a given `orderBy` argument. */
   | 'DESC';
 
 /** Properties by which repository migrations can be ordered. */
-export type GitHub_RepositoryMigrationOrderField = 
+export type GitHub_RepositoryMigrationOrderField =
   /** Order mannequins why when they were created. */
   | 'CREATED_AT';
 
@@ -17008,7 +16616,7 @@ export type GitHub_RepositoryOrder = {
 };
 
 /** Properties by which repository connections can be ordered. */
-export type GitHub_RepositoryOrderField = 
+export type GitHub_RepositoryOrderField =
   /** Order repositories by creation time */
   | 'CREATED_AT'
   /** Order repositories by update time */
@@ -17040,37 +16648,34 @@ export type GitHub_RepositoryOwner = {
 
 /** Represents an owner of a Repository. */
 export type GitHub_RepositoryOwnerAvatarUrlArgs = {
-  size?: Maybe<Scalars['Int']>;
+  size?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** Represents an owner of a Repository. */
 export type GitHub_RepositoryOwnerRepositoriesArgs = {
-  privacy?: Maybe<GitHub_RepositoryPrivacy>;
-  orderBy?: Maybe<GitHub_RepositoryOrder>;
-  affiliations?: Maybe<Array<Maybe<GitHub_RepositoryAffiliation>>>;
-  ownerAffiliations?: Maybe<Array<Maybe<GitHub_RepositoryAffiliation>>>;
-  isLocked?: Maybe<Scalars['Boolean']>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  isFork?: Maybe<Scalars['Boolean']>;
+  privacy?: InputMaybe<GitHub_RepositoryPrivacy>;
+  orderBy?: InputMaybe<GitHub_RepositoryOrder>;
+  affiliations?: InputMaybe<Array<InputMaybe<GitHub_RepositoryAffiliation>>>;
+  ownerAffiliations?: InputMaybe<Array<InputMaybe<GitHub_RepositoryAffiliation>>>;
+  isLocked?: InputMaybe<Scalars['Boolean']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  isFork?: InputMaybe<Scalars['Boolean']>;
 };
 
 
 /** Represents an owner of a Repository. */
 export type GitHub_RepositoryOwnerRepositoryArgs = {
   name: Scalars['String'];
-  followRenames?: Maybe<Scalars['Boolean']>;
+  followRenames?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** The access level to a repository */
-export type GitHub_RepositoryPermission = 
-  /**
-   * Can read, clone, and push to this repository. Can also manage issues, pull
-   * requests, and repository settings, including adding collaborators
-   */
+export type GitHub_RepositoryPermission =
+  /** Can read, clone, and push to this repository. Can also manage issues, pull requests, and repository settings, including adding collaborators */
   | 'ADMIN'
   /** Can read, clone, and push to this repository. They can also manage issues, pull requests, and some repository settings */
   | 'MAINTAIN'
@@ -17082,7 +16687,7 @@ export type GitHub_RepositoryPermission =
   | 'READ';
 
 /** The privacy of a repository */
-export type GitHub_RepositoryPrivacy = 
+export type GitHub_RepositoryPrivacy =
   /** Public */
   | 'PUBLIC'
   /** Private */
@@ -17120,7 +16725,7 @@ export type GitHub_RepositoryTopicEdge = {
 };
 
 /** The repository's visibility level. */
-export type GitHub_RepositoryVisibility = 
+export type GitHub_RepositoryVisibility =
   /** The repository is visible only to those with explicit access. */
   | 'PRIVATE'
   /** The repository is visible to everyone. */
@@ -17274,7 +16879,7 @@ export type GitHub_RepositoryVulnerabilityAlertEdge = {
 };
 
 /** The possible states of an alert */
-export type GitHub_RepositoryVulnerabilityAlertState = 
+export type GitHub_RepositoryVulnerabilityAlertState =
   /** An alert that is still open. */
   | 'OPEN'
   /** An alert that has been resolved by a code change. */
@@ -17282,34 +16887,18 @@ export type GitHub_RepositoryVulnerabilityAlertState =
   /** An alert that has been manually closed by a user. */
   | 'DISMISSED';
 
-/** The possible states that can be requested when creating a check run. */
-export type GitHub_RequestableCheckStatusState = 
-  /** The check suite or run has been queued. */
-  | 'QUEUED'
-  /** The check suite or run is in progress. */
-  | 'IN_PROGRESS'
-  /** The check suite or run has been completed. */
-  | 'COMPLETED'
-  /** The check suite or run is in waiting state. */
-  | 'WAITING'
-  /** The check suite or run is in pending state. */
-  | 'PENDING';
-
-/** Types that can be requested reviewers. */
-export type GitHub_RequestedReviewer = GitHub_Mannequin | GitHub_Team | GitHub_User;
-
 /** Autogenerated input type of RequestReviews */
 export type GitHub_RequestReviewsInput = {
   /** The Node ID of the pull request to modify. */
   pullRequestId: Scalars['ID'];
   /** The Node IDs of the user to request. */
-  userIds?: Maybe<Array<Scalars['ID']>>;
+  userIds?: InputMaybe<Array<Scalars['ID']>>;
   /** The Node IDs of the team to request. */
-  teamIds?: Maybe<Array<Scalars['ID']>>;
+  teamIds?: InputMaybe<Array<Scalars['ID']>>;
   /** Add users to the set rather than replace. */
-  union?: Maybe<Scalars['Boolean']>;
+  union?: InputMaybe<Scalars['Boolean']>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of RequestReviews */
@@ -17324,6 +16913,22 @@ export type GitHub_RequestReviewsPayload = {
   requestedReviewersEdge?: Maybe<GitHub_UserEdge>;
 };
 
+/** The possible states that can be requested when creating a check run. */
+export type GitHub_RequestableCheckStatusState =
+  /** The check suite or run has been queued. */
+  | 'QUEUED'
+  /** The check suite or run is in progress. */
+  | 'IN_PROGRESS'
+  /** The check suite or run has been completed. */
+  | 'COMPLETED'
+  /** The check suite or run is in waiting state. */
+  | 'WAITING'
+  /** The check suite or run is in pending state. */
+  | 'PENDING';
+
+/** Types that can be requested reviewers. */
+export type GitHub_RequestedReviewer = GitHub_Mannequin | GitHub_Team | GitHub_User;
+
 /** Represents a type that can be required by a pull request for merging. */
 export type GitHub_RequirableByPullRequest = {
   /** Whether this is required to pass before merging for a specific pull request. */
@@ -17333,8 +16938,8 @@ export type GitHub_RequirableByPullRequest = {
 
 /** Represents a type that can be required by a pull request for merging. */
 export type GitHub_RequirableByPullRequestIsRequiredArgs = {
-  pullRequestId?: Maybe<Scalars['ID']>;
-  pullRequestNumber?: Maybe<Scalars['Int']>;
+  pullRequestId?: InputMaybe<Scalars['ID']>;
+  pullRequestNumber?: InputMaybe<Scalars['Int']>;
 };
 
 /** Represents a required status check for a protected branch, but not any specific run of that check. */
@@ -17349,12 +16954,8 @@ export type GitHub_RequiredStatusCheckDescription = {
 export type GitHub_RequiredStatusCheckInput = {
   /** Status check context that must pass for commits to be accepted to the matching branch. */
   context: Scalars['String'];
-  /**
-   * The ID of the App that must set the status in order for it to be accepted.
-   * Omit this value to use whichever app has recently been setting this status, or
-   * use "any" to allow any app to set the status.
-   */
-  appId?: Maybe<Scalars['ID']>;
+  /** The ID of the App that must set the status in order for it to be accepted. Omit this value to use whichever app has recently been setting this status, or use "any" to allow any app to set the status. */
+  appId?: InputMaybe<Scalars['ID']>;
 };
 
 /** Autogenerated input type of RerequestCheckSuite */
@@ -17364,7 +16965,7 @@ export type GitHub_RerequestCheckSuiteInput = {
   /** The Node ID of the check suite. */
   checkSuiteId: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of RerequestCheckSuite */
@@ -17380,7 +16981,7 @@ export type GitHub_ResolveReviewThreadInput = {
   /** The ID of the thread to resolve */
   threadId: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of ResolveReviewThread */
@@ -17493,19 +17094,6 @@ export type GitHub_ReviewRequestConnection = {
   totalCount: Scalars['Int'];
 };
 
-/** Represents an 'review_requested' event on a given pull request. */
-export type GitHub_ReviewRequestedEvent = GitHub_Node & {
-  /** Identifies the actor who performed the event. */
-  actor?: Maybe<GitHub_Actor>;
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['GitHub_DateTime'];
-  id: Scalars['ID'];
-  /** PullRequest referenced by event. */
-  pullRequest: GitHub_PullRequest;
-  /** Identifies the reviewer whose review was requested. */
-  requestedReviewer?: Maybe<GitHub_RequestedReviewer>;
-};
-
 /** An edge in a connection. */
 export type GitHub_ReviewRequestEdge = {
   /** A cursor for use in pagination. */
@@ -17524,6 +17112,19 @@ export type GitHub_ReviewRequestRemovedEvent = GitHub_Node & {
   /** PullRequest referenced by event. */
   pullRequest: GitHub_PullRequest;
   /** Identifies the reviewer whose review request was removed. */
+  requestedReviewer?: Maybe<GitHub_RequestedReviewer>;
+};
+
+/** Represents an 'review_requested' event on a given pull request. */
+export type GitHub_ReviewRequestedEvent = GitHub_Node & {
+  /** Identifies the actor who performed the event. */
+  actor?: Maybe<GitHub_Actor>;
+  /** Identifies the date and time when the object was created. */
+  createdAt: Scalars['GitHub_DateTime'];
+  id: Scalars['ID'];
+  /** PullRequest referenced by event. */
+  pullRequest: GitHub_PullRequest;
+  /** Identifies the reviewer whose review was requested. */
   requestedReviewer?: Maybe<GitHub_RequestedReviewer>;
 };
 
@@ -17547,7 +17148,7 @@ export type GitHub_RevokeEnterpriseOrganizationsMigratorRoleInput = {
   /** The login of the user to revoke the migrator role */
   login: Scalars['String'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of RevokeEnterpriseOrganizationsMigratorRole */
@@ -17561,10 +17162,10 @@ export type GitHub_RevokeEnterpriseOrganizationsMigratorRolePayload = {
 
 /** Autogenerated return type of RevokeEnterpriseOrganizationsMigratorRole */
 export type GitHub_RevokeEnterpriseOrganizationsMigratorRolePayloadOrganizationsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** Autogenerated input type of RevokeMigratorRole */
@@ -17576,7 +17177,7 @@ export type GitHub_RevokeMigratorRoleInput = {
   /** Specifies the type of the actor, can be either USER or TEAM. */
   actorType: GitHub_ActorType;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of RevokeMigratorRole */
@@ -17588,7 +17189,7 @@ export type GitHub_RevokeMigratorRolePayload = {
 };
 
 /** Possible roles a user may have in relation to an organization. */
-export type GitHub_RoleInOrganization = 
+export type GitHub_RoleInOrganization =
   /** A user with full administrative access to the organization. */
   | 'OWNER'
   /** A user who is a direct member of the organization. */
@@ -17597,7 +17198,7 @@ export type GitHub_RoleInOrganization =
   | 'UNAFFILIATED';
 
 /** The possible digest algorithms used to sign SAML requests for an identity provider. */
-export type GitHub_SamlDigestAlgorithm = 
+export type GitHub_SamlDigestAlgorithm =
   /** SHA1 */
   | 'SHA1'
   /** SHA256 */
@@ -17608,7 +17209,7 @@ export type GitHub_SamlDigestAlgorithm =
   | 'SHA512';
 
 /** The possible signature algorithms used to sign SAML requests for a Identity Provider. */
-export type GitHub_SamlSignatureAlgorithm = 
+export type GitHub_SamlSignatureAlgorithm =
   /** RSA-SHA1 */
   | 'RSA_SHA1'
   /** RSA-SHA256 */
@@ -17662,7 +17263,7 @@ export type GitHub_SavedReplyOrder = {
 };
 
 /** Properties by which saved reply connections can be ordered. */
-export type GitHub_SavedReplyOrderField = 
+export type GitHub_SavedReplyOrderField =
   /** Order saved reply by when they were updated. */
   | 'UPDATED_AT';
 
@@ -17702,7 +17303,7 @@ export type GitHub_SearchResultItemEdge = {
 };
 
 /** Represents the individual results of a search. */
-export type GitHub_SearchType = 
+export type GitHub_SearchType =
   /** Returns results matching issues in repositories. */
   | 'ISSUE'
   /** Returns results matching repositories. */
@@ -17752,23 +17353,23 @@ export type GitHub_SecurityAdvisory = GitHub_Node & {
 
 /** A GitHub Security Advisory */
 export type GitHub_SecurityAdvisoryCwesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A GitHub Security Advisory */
 export type GitHub_SecurityAdvisoryVulnerabilitiesArgs = {
-  orderBy?: Maybe<GitHub_SecurityVulnerabilityOrder>;
-  ecosystem?: Maybe<GitHub_SecurityAdvisoryEcosystem>;
-  package?: Maybe<Scalars['String']>;
-  severities?: Maybe<Array<GitHub_SecurityAdvisorySeverity>>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_SecurityVulnerabilityOrder>;
+  ecosystem?: InputMaybe<GitHub_SecurityAdvisoryEcosystem>;
+  package?: InputMaybe<Scalars['String']>;
+  severities?: InputMaybe<Array<GitHub_SecurityAdvisorySeverity>>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** The connection type for SecurityAdvisory. */
@@ -17784,7 +17385,7 @@ export type GitHub_SecurityAdvisoryConnection = {
 };
 
 /** The possible ecosystems of a security vulnerability's package. */
-export type GitHub_SecurityAdvisoryEcosystem = 
+export type GitHub_SecurityAdvisoryEcosystem =
   /** PHP packages hosted at packagist.org */
   | 'COMPOSER'
   /** Go modules */
@@ -17827,7 +17428,7 @@ export type GitHub_SecurityAdvisoryIdentifierFilter = {
 };
 
 /** Identifier formats available for advisories. */
-export type GitHub_SecurityAdvisoryIdentifierType = 
+export type GitHub_SecurityAdvisoryIdentifierType =
   /** Common Vulnerabilities and Exposures Identifier. */
   | 'CVE'
   /** GitHub Security Advisory ID. */
@@ -17842,7 +17443,7 @@ export type GitHub_SecurityAdvisoryOrder = {
 };
 
 /** Properties by which security advisory connections can be ordered. */
-export type GitHub_SecurityAdvisoryOrderField = 
+export type GitHub_SecurityAdvisoryOrderField =
   /** Order advisories by publication time */
   | 'PUBLISHED_AT'
   /** Order advisories by update time */
@@ -17869,7 +17470,7 @@ export type GitHub_SecurityAdvisoryReference = {
 };
 
 /** Severity of the vulnerability. */
-export type GitHub_SecurityAdvisorySeverity = 
+export type GitHub_SecurityAdvisorySeverity =
   /** Low. */
   | 'LOW'
   /** Moderate. */
@@ -17932,7 +17533,7 @@ export type GitHub_SecurityVulnerabilityOrder = {
 };
 
 /** Properties by which security vulnerability connections can be ordered. */
-export type GitHub_SecurityVulnerabilityOrderField = 
+export type GitHub_SecurityVulnerabilityOrderField =
   /** Order vulnerability by update time */
   | 'UPDATED_AT';
 
@@ -17943,7 +17544,7 @@ export type GitHub_SetEnterpriseIdentityProviderInput = {
   /** The URL endpoint for the identity provider's SAML SSO. */
   ssoUrl: Scalars['GitHub_URI'];
   /** The Issuer Entity ID for the SAML identity provider */
-  issuer?: Maybe<Scalars['String']>;
+  issuer?: InputMaybe<Scalars['String']>;
   /** The x509 certificate used by the identity provider to sign assertions and responses. */
   idpCertificate: Scalars['String'];
   /** The signature algorithm used to sign SAML requests for the identity provider. */
@@ -17951,7 +17552,7 @@ export type GitHub_SetEnterpriseIdentityProviderInput = {
   /** The digest algorithm used to sign SAML requests for the identity provider. */
   digestMethod: GitHub_SamlDigestAlgorithm;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of SetEnterpriseIdentityProvider */
@@ -17969,9 +17570,9 @@ export type GitHub_SetOrganizationInteractionLimitInput = {
   /** The limit to set. */
   limit: GitHub_RepositoryInteractionLimit;
   /** When this limit should expire. */
-  expiry?: Maybe<GitHub_RepositoryInteractionLimitExpiry>;
+  expiry?: InputMaybe<GitHub_RepositoryInteractionLimitExpiry>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of SetOrganizationInteractionLimit */
@@ -17989,9 +17590,9 @@ export type GitHub_SetRepositoryInteractionLimitInput = {
   /** The limit to set. */
   limit: GitHub_RepositoryInteractionLimit;
   /** When this limit should expire. */
-  expiry?: Maybe<GitHub_RepositoryInteractionLimitExpiry>;
+  expiry?: InputMaybe<GitHub_RepositoryInteractionLimitExpiry>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of SetRepositoryInteractionLimit */
@@ -18009,9 +17610,9 @@ export type GitHub_SetUserInteractionLimitInput = {
   /** The limit to set. */
   limit: GitHub_RepositoryInteractionLimit;
   /** When this limit should expire. */
-  expiry?: Maybe<GitHub_RepositoryInteractionLimitExpiry>;
+  expiry?: InputMaybe<GitHub_RepositoryInteractionLimitExpiry>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of SetUserInteractionLimit */
@@ -18034,10 +17635,7 @@ export type GitHub_SmimeSignature = GitHub_GitSignature & {
   signature: Scalars['String'];
   /** GitHub user corresponding to the email signing this commit. */
   signer?: Maybe<GitHub_User>;
-  /**
-   * The state of this signature. `VALID` if signature is valid and verified by
-   * GitHub, otherwise represents reason why signature is considered invalid.
-   */
+  /** The state of this signature. `VALID` if signature is valid and verified by GitHub, otherwise represents reason why signature is considered invalid. */
   state: GitHub_GitSignatureState;
   /** True if the signature was made with GitHub's signing key. */
   wasSignedByGitHub: Scalars['Boolean'];
@@ -18053,6 +17651,41 @@ export type GitHub_SortBy = {
 
 /** Entities that can sponsor others via GitHub Sponsors */
 export type GitHub_Sponsor = GitHub_Organization | GitHub_User;
+
+/** The connection type for Sponsor. */
+export type GitHub_SponsorConnection = {
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<GitHub_SponsorEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<GitHub_Sponsor>>>;
+  /** Information to aid in pagination. */
+  pageInfo: GitHub_PageInfo;
+  /** Identifies the total count of items in the connection. */
+  totalCount: Scalars['Int'];
+};
+
+/** Represents a user or organization who is sponsoring someone in GitHub Sponsors. */
+export type GitHub_SponsorEdge = {
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node?: Maybe<GitHub_Sponsor>;
+};
+
+/** Ordering options for connections to get sponsor entities for GitHub Sponsors. */
+export type GitHub_SponsorOrder = {
+  /** The field to order sponsor entities by. */
+  field: GitHub_SponsorOrderField;
+  /** The ordering direction. */
+  direction: GitHub_OrderDirection;
+};
+
+/** Properties by which sponsor connections can be ordered. */
+export type GitHub_SponsorOrderField =
+  /** Order sponsorable entities by login (username). */
+  | 'LOGIN'
+  /** Order sponsors by their relevance to the viewer. */
+  | 'RELEVANCE';
 
 /** Entities that can be sponsored through GitHub Sponsors */
 export type GitHub_Sponsorable = {
@@ -18074,15 +17707,9 @@ export type GitHub_Sponsorable = {
   sponsorsActivities: GitHub_SponsorsActivityConnection;
   /** The GitHub Sponsors listing for this user or organization. */
   sponsorsListing?: Maybe<GitHub_SponsorsListing>;
-  /**
-   * The sponsorship from the viewer to this user/organization; that is, the
-   * sponsorship where you're the sponsor. Only returns a sponsorship if it is active.
-   */
+  /** The sponsorship from the viewer to this user/organization; that is, the sponsorship where you're the sponsor. Only returns a sponsorship if it is active. */
   sponsorshipForViewerAsSponsor?: Maybe<GitHub_Sponsorship>;
-  /**
-   * The sponsorship from this user/organization to the viewer; that is, the
-   * sponsorship you're receiving. Only returns a sponsorship if it is active.
-   */
+  /** The sponsorship from this user/organization to the viewer; that is, the sponsorship you're receiving. Only returns a sponsorship if it is active. */
   sponsorshipForViewerAsSponsorable?: Maybe<GitHub_Sponsorship>;
   /** List of sponsorship updates sent from this sponsorable to sponsors. */
   sponsorshipNewsletters: GitHub_SponsorshipNewsletterConnection;
@@ -18105,64 +17732,64 @@ export type GitHub_SponsorableIsSponsoredByArgs = {
 
 /** Entities that can be sponsored through GitHub Sponsors */
 export type GitHub_SponsorableSponsoringArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  orderBy?: Maybe<GitHub_SponsorOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_SponsorOrder>;
 };
 
 
 /** Entities that can be sponsored through GitHub Sponsors */
 export type GitHub_SponsorableSponsorsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  tierId?: Maybe<Scalars['ID']>;
-  orderBy?: Maybe<GitHub_SponsorOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  tierId?: InputMaybe<Scalars['ID']>;
+  orderBy?: InputMaybe<GitHub_SponsorOrder>;
 };
 
 
 /** Entities that can be sponsored through GitHub Sponsors */
 export type GitHub_SponsorableSponsorsActivitiesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  period?: Maybe<GitHub_SponsorsActivityPeriod>;
-  orderBy?: Maybe<GitHub_SponsorsActivityOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  period?: InputMaybe<GitHub_SponsorsActivityPeriod>;
+  orderBy?: InputMaybe<GitHub_SponsorsActivityOrder>;
 };
 
 
 /** Entities that can be sponsored through GitHub Sponsors */
 export type GitHub_SponsorableSponsorshipNewslettersArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  orderBy?: Maybe<GitHub_SponsorshipNewsletterOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_SponsorshipNewsletterOrder>;
 };
 
 
 /** Entities that can be sponsored through GitHub Sponsors */
 export type GitHub_SponsorableSponsorshipsAsMaintainerArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  includePrivate?: Maybe<Scalars['Boolean']>;
-  orderBy?: Maybe<GitHub_SponsorshipOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  includePrivate?: InputMaybe<Scalars['Boolean']>;
+  orderBy?: InputMaybe<GitHub_SponsorshipOrder>;
 };
 
 
 /** Entities that can be sponsored through GitHub Sponsors */
 export type GitHub_SponsorableSponsorshipsAsSponsorArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  orderBy?: Maybe<GitHub_SponsorshipOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_SponsorshipOrder>;
 };
 
 /** Entities that can be sponsored via GitHub Sponsors */
@@ -18197,44 +17824,9 @@ export type GitHub_SponsorableOrder = {
 };
 
 /** Properties by which sponsorable connections can be ordered. */
-export type GitHub_SponsorableOrderField = 
+export type GitHub_SponsorableOrderField =
   /** Order sponsorable entities by login (username). */
   | 'LOGIN';
-
-/** The connection type for Sponsor. */
-export type GitHub_SponsorConnection = {
-  /** A list of edges. */
-  edges?: Maybe<Array<Maybe<GitHub_SponsorEdge>>>;
-  /** A list of nodes. */
-  nodes?: Maybe<Array<Maybe<GitHub_Sponsor>>>;
-  /** Information to aid in pagination. */
-  pageInfo: GitHub_PageInfo;
-  /** Identifies the total count of items in the connection. */
-  totalCount: Scalars['Int'];
-};
-
-/** Represents a user or organization who is sponsoring someone in GitHub Sponsors. */
-export type GitHub_SponsorEdge = {
-  /** A cursor for use in pagination. */
-  cursor: Scalars['String'];
-  /** The item at the end of the edge. */
-  node?: Maybe<GitHub_Sponsor>;
-};
-
-/** Ordering options for connections to get sponsor entities for GitHub Sponsors. */
-export type GitHub_SponsorOrder = {
-  /** The field to order sponsor entities by. */
-  field: GitHub_SponsorOrderField;
-  /** The ordering direction. */
-  direction: GitHub_OrderDirection;
-};
-
-/** Properties by which sponsor connections can be ordered. */
-export type GitHub_SponsorOrderField = 
-  /** Order sponsorable entities by login (username). */
-  | 'LOGIN'
-  /** Order sponsors by their relevance to the viewer. */
-  | 'RELEVANCE';
 
 /** An event related to sponsorship activity. */
 export type GitHub_SponsorsActivity = GitHub_Node & {
@@ -18254,7 +17846,7 @@ export type GitHub_SponsorsActivity = GitHub_Node & {
 };
 
 /** The possible actions that GitHub Sponsors activities can represent. */
-export type GitHub_SponsorsActivityAction = 
+export type GitHub_SponsorsActivityAction =
   /** The activity was starting a sponsorship. */
   | 'NEW_SPONSORSHIP'
   /** The activity was cancelling a sponsorship. */
@@ -18297,12 +17889,12 @@ export type GitHub_SponsorsActivityOrder = {
 };
 
 /** Properties by which GitHub Sponsors activity connections can be ordered. */
-export type GitHub_SponsorsActivityOrderField = 
+export type GitHub_SponsorsActivityOrderField =
   /** Order activities by when they happened. */
   | 'TIMESTAMP';
 
 /** The possible time periods for which Sponsors activities can be requested. */
-export type GitHub_SponsorsActivityPeriod = 
+export type GitHub_SponsorsActivityPeriod =
   /** The previous calendar day. */
   | 'DAY'
   /** The previous seven days. */
@@ -18320,21 +17912,136 @@ export type GitHub_SponsorsGoal = {
   kind: GitHub_SponsorsGoalKind;
   /** The percentage representing how complete this goal is, between 0-100. */
   percentComplete: Scalars['Int'];
-  /**
-   * What the goal amount is. Represents an amount in USD for monthly sponsorship
-   * amount goals. Represents a count of unique sponsors for total sponsors count goals.
-   */
+  /** What the goal amount is. Represents an amount in USD for monthly sponsorship amount goals. Represents a count of unique sponsors for total sponsors count goals. */
   targetValue: Scalars['Int'];
   /** A brief summary of the kind and target value of this goal. */
   title: Scalars['String'];
 };
 
 /** The different kinds of goals a GitHub Sponsors member can have. */
-export type GitHub_SponsorsGoalKind = 
+export type GitHub_SponsorsGoalKind =
   /** The goal is about reaching a certain number of sponsors. */
   | 'TOTAL_SPONSORS_COUNT'
   /** The goal is about getting a certain amount in USD from sponsorships each month. */
   | 'MONTHLY_SPONSORSHIP_AMOUNT';
+
+/** A GitHub Sponsors listing. */
+export type GitHub_SponsorsListing = GitHub_Node & {
+  /** The current goal the maintainer is trying to reach with GitHub Sponsors, if any. */
+  activeGoal?: Maybe<GitHub_SponsorsGoal>;
+  /** Identifies the date and time when the object was created. */
+  createdAt: Scalars['GitHub_DateTime'];
+  /** The full description of the listing. */
+  fullDescription: Scalars['String'];
+  /** The full description of the listing rendered to HTML. */
+  fullDescriptionHTML: Scalars['GitHub_HTML'];
+  id: Scalars['ID'];
+  /** Whether this listing is publicly visible. */
+  isPublic: Scalars['Boolean'];
+  /** The listing's full name. */
+  name: Scalars['String'];
+  /** A future date on which this listing is eligible to receive a payout. */
+  nextPayoutDate?: Maybe<Scalars['GitHub_Date']>;
+  /** The short description of the listing. */
+  shortDescription: Scalars['String'];
+  /** The short name of the listing. */
+  slug: Scalars['String'];
+  /** The entity this listing represents who can be sponsored on GitHub Sponsors. */
+  sponsorable: GitHub_Sponsorable;
+  /** The published tiers for this GitHub Sponsors listing. */
+  tiers?: Maybe<GitHub_SponsorsTierConnection>;
+};
+
+
+/** A GitHub Sponsors listing. */
+export type GitHub_SponsorsListingTiersArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_SponsorsTierOrder>;
+};
+
+/** A GitHub Sponsors tier associated with a GitHub Sponsors listing. */
+export type GitHub_SponsorsTier = GitHub_Node & {
+  /** SponsorsTier information only visible to users that can administer the associated Sponsors listing. */
+  adminInfo?: Maybe<GitHub_SponsorsTierAdminInfo>;
+  /** Get a different tier for this tier's maintainer that is at the same frequency as this tier but with an equal or lesser cost. Returns the published tier with the monthly price closest to this tier's without going over. */
+  closestLesserValueTier?: Maybe<GitHub_SponsorsTier>;
+  /** Identifies the date and time when the object was created. */
+  createdAt: Scalars['GitHub_DateTime'];
+  /** The description of the tier. */
+  description: Scalars['String'];
+  /** The tier description rendered to HTML */
+  descriptionHTML: Scalars['GitHub_HTML'];
+  id: Scalars['ID'];
+  /** Whether this tier was chosen at checkout time by the sponsor rather than defined ahead of time by the maintainer who manages the Sponsors listing. */
+  isCustomAmount: Scalars['Boolean'];
+  /** Whether this tier is only for use with one-time sponsorships. */
+  isOneTime: Scalars['Boolean'];
+  /** How much this tier costs per month in cents. */
+  monthlyPriceInCents: Scalars['Int'];
+  /** How much this tier costs per month in USD. */
+  monthlyPriceInDollars: Scalars['Int'];
+  /** The name of the tier. */
+  name: Scalars['String'];
+  /** The sponsors listing that this tier belongs to. */
+  sponsorsListing: GitHub_SponsorsListing;
+  /** Identifies the date and time when the object was last updated. */
+  updatedAt: Scalars['GitHub_DateTime'];
+};
+
+/** SponsorsTier information only visible to users that can administer the associated Sponsors listing. */
+export type GitHub_SponsorsTierAdminInfo = {
+  /** The sponsorships associated with this tier. */
+  sponsorships: GitHub_SponsorshipConnection;
+};
+
+
+/** SponsorsTier information only visible to users that can administer the associated Sponsors listing. */
+export type GitHub_SponsorsTierAdminInfoSponsorshipsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  includePrivate?: InputMaybe<Scalars['Boolean']>;
+  orderBy?: InputMaybe<GitHub_SponsorshipOrder>;
+};
+
+/** The connection type for SponsorsTier. */
+export type GitHub_SponsorsTierConnection = {
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<GitHub_SponsorsTierEdge>>>;
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<GitHub_SponsorsTier>>>;
+  /** Information to aid in pagination. */
+  pageInfo: GitHub_PageInfo;
+  /** Identifies the total count of items in the connection. */
+  totalCount: Scalars['Int'];
+};
+
+/** An edge in a connection. */
+export type GitHub_SponsorsTierEdge = {
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node?: Maybe<GitHub_SponsorsTier>;
+};
+
+/** Ordering options for Sponsors tiers connections. */
+export type GitHub_SponsorsTierOrder = {
+  /** The field to order tiers by. */
+  field: GitHub_SponsorsTierOrderField;
+  /** The ordering direction. */
+  direction: GitHub_OrderDirection;
+};
+
+/** Properties by which Sponsors tiers connections can be ordered. */
+export type GitHub_SponsorsTierOrderField =
+  /** Order tiers by creation time. */
+  | 'CREATED_AT'
+  /** Order tiers by their monthly price in cents */
+  | 'MONTHLY_PRICE_IN_CENTS';
 
 /** A sponsorship relationship between a sponsor and a maintainer */
 export type GitHub_Sponsorship = GitHub_Node & {
@@ -18343,10 +18050,7 @@ export type GitHub_Sponsorship = GitHub_Node & {
   id: Scalars['ID'];
   /** Whether this sponsorship represents a one-time payment versus a recurring sponsorship. */
   isOneTimePayment: Scalars['Boolean'];
-  /**
-   * Check if the sponsor has chosen to receive sponsorship update emails sent from
-   * the sponsorable. Only returns a non-null value when the viewer has permission to know this.
-   */
+  /** Check if the sponsor has chosen to receive sponsorship update emails sent from the sponsorable. Only returns a non-null value when the viewer has permission to know this. */
   isSponsorOptedIntoEmail?: Maybe<Scalars['Boolean']>;
   /**
    * The entity that is being sponsored
@@ -18380,15 +18084,9 @@ export type GitHub_SponsorshipConnection = {
   pageInfo: GitHub_PageInfo;
   /** Identifies the total count of items in the connection. */
   totalCount: Scalars['Int'];
-  /**
-   * The total amount in cents of all recurring sponsorships in the connection
-   * whose amount you can view. Does not include one-time sponsorships.
-   */
+  /** The total amount in cents of all recurring sponsorships in the connection whose amount you can view. Does not include one-time sponsorships. */
   totalRecurringMonthlyPriceInCents: Scalars['Int'];
-  /**
-   * The total amount in USD of all recurring sponsorships in the connection whose
-   * amount you can view. Does not include one-time sponsorships.
-   */
+  /** The total amount in USD of all recurring sponsorships in the connection whose amount you can view. Does not include one-time sponsorships. */
   totalRecurringMonthlyPriceInDollars: Scalars['Int'];
 };
 
@@ -18446,7 +18144,7 @@ export type GitHub_SponsorshipNewsletterOrder = {
 };
 
 /** Properties by which sponsorship update connections can be ordered. */
-export type GitHub_SponsorshipNewsletterOrderField = 
+export type GitHub_SponsorshipNewsletterOrderField =
   /** Order sponsorship newsletters by when they were created. */
   | 'CREATED_AT';
 
@@ -18459,141 +18157,29 @@ export type GitHub_SponsorshipOrder = {
 };
 
 /** Properties by which sponsorship connections can be ordered. */
-export type GitHub_SponsorshipOrderField = 
+export type GitHub_SponsorshipOrderField =
   /** Order sponsorship by creation time. */
   | 'CREATED_AT';
 
 /** The privacy of a sponsorship */
-export type GitHub_SponsorshipPrivacy = 
+export type GitHub_SponsorshipPrivacy =
   /** Public */
   | 'PUBLIC'
   /** Private */
   | 'PRIVATE';
 
-/** A GitHub Sponsors listing. */
-export type GitHub_SponsorsListing = GitHub_Node & {
-  /** The current goal the maintainer is trying to reach with GitHub Sponsors, if any. */
-  activeGoal?: Maybe<GitHub_SponsorsGoal>;
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['GitHub_DateTime'];
-  /** The full description of the listing. */
-  fullDescription: Scalars['String'];
-  /** The full description of the listing rendered to HTML. */
-  fullDescriptionHTML: Scalars['GitHub_HTML'];
-  id: Scalars['ID'];
-  /** Whether this listing is publicly visible. */
-  isPublic: Scalars['Boolean'];
-  /** The listing's full name. */
-  name: Scalars['String'];
-  /** A future date on which this listing is eligible to receive a payout. */
-  nextPayoutDate?: Maybe<Scalars['GitHub_Date']>;
-  /** The short description of the listing. */
-  shortDescription: Scalars['String'];
-  /** The short name of the listing. */
-  slug: Scalars['String'];
-  /** The entity this listing represents who can be sponsored on GitHub Sponsors. */
-  sponsorable: GitHub_Sponsorable;
-  /** The published tiers for this GitHub Sponsors listing. */
-  tiers?: Maybe<GitHub_SponsorsTierConnection>;
-};
-
-
-/** A GitHub Sponsors listing. */
-export type GitHub_SponsorsListingTiersArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  orderBy?: Maybe<GitHub_SponsorsTierOrder>;
-};
-
-/** A GitHub Sponsors tier associated with a GitHub Sponsors listing. */
-export type GitHub_SponsorsTier = GitHub_Node & {
-  /** SponsorsTier information only visible to users that can administer the associated Sponsors listing. */
-  adminInfo?: Maybe<GitHub_SponsorsTierAdminInfo>;
-  /**
-   * Get a different tier for this tier's maintainer that is at the same frequency
-   * as this tier but with an equal or lesser cost. Returns the published tier with
-   * the monthly price closest to this tier's without going over.
-   */
-  closestLesserValueTier?: Maybe<GitHub_SponsorsTier>;
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['GitHub_DateTime'];
-  /** The description of the tier. */
-  description: Scalars['String'];
-  /** The tier description rendered to HTML */
-  descriptionHTML: Scalars['GitHub_HTML'];
-  id: Scalars['ID'];
-  /**
-   * Whether this tier was chosen at checkout time by the sponsor rather than
-   * defined ahead of time by the maintainer who manages the Sponsors listing.
-   */
-  isCustomAmount: Scalars['Boolean'];
-  /** Whether this tier is only for use with one-time sponsorships. */
-  isOneTime: Scalars['Boolean'];
-  /** How much this tier costs per month in cents. */
-  monthlyPriceInCents: Scalars['Int'];
-  /** How much this tier costs per month in USD. */
-  monthlyPriceInDollars: Scalars['Int'];
-  /** The name of the tier. */
-  name: Scalars['String'];
-  /** The sponsors listing that this tier belongs to. */
-  sponsorsListing: GitHub_SponsorsListing;
-  /** Identifies the date and time when the object was last updated. */
-  updatedAt: Scalars['GitHub_DateTime'];
-};
-
-/** SponsorsTier information only visible to users that can administer the associated Sponsors listing. */
-export type GitHub_SponsorsTierAdminInfo = {
-  /** The sponsorships associated with this tier. */
-  sponsorships: GitHub_SponsorshipConnection;
-};
-
-
-/** SponsorsTier information only visible to users that can administer the associated Sponsors listing. */
-export type GitHub_SponsorsTierAdminInfoSponsorshipsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  includePrivate?: Maybe<Scalars['Boolean']>;
-  orderBy?: Maybe<GitHub_SponsorshipOrder>;
-};
-
-/** The connection type for SponsorsTier. */
-export type GitHub_SponsorsTierConnection = {
-  /** A list of edges. */
-  edges?: Maybe<Array<Maybe<GitHub_SponsorsTierEdge>>>;
-  /** A list of nodes. */
-  nodes?: Maybe<Array<Maybe<GitHub_SponsorsTier>>>;
-  /** Information to aid in pagination. */
-  pageInfo: GitHub_PageInfo;
-  /** Identifies the total count of items in the connection. */
-  totalCount: Scalars['Int'];
-};
-
-/** An edge in a connection. */
-export type GitHub_SponsorsTierEdge = {
-  /** A cursor for use in pagination. */
-  cursor: Scalars['String'];
-  /** The item at the end of the edge. */
-  node?: Maybe<GitHub_SponsorsTier>;
-};
-
-/** Ordering options for Sponsors tiers connections. */
-export type GitHub_SponsorsTierOrder = {
-  /** The field to order tiers by. */
-  field: GitHub_SponsorsTierOrderField;
-  /** The ordering direction. */
+/** Ways in which star connections can be ordered. */
+export type GitHub_StarOrder = {
+  /** The field in which to order nodes by. */
+  field: GitHub_StarOrderField;
+  /** The direction in which to order nodes. */
   direction: GitHub_OrderDirection;
 };
 
-/** Properties by which Sponsors tiers connections can be ordered. */
-export type GitHub_SponsorsTierOrderField = 
-  /** Order tiers by creation time. */
-  | 'CREATED_AT'
-  /** Order tiers by their monthly price in cents */
-  | 'MONTHLY_PRICE_IN_CENTS';
+/** Properties by which star connections can be ordered. */
+export type GitHub_StarOrderField =
+  /** Allows ordering a list of stars by when they were created. */
+  | 'STARRED_AT';
 
 /** The connection type for User. */
 export type GitHub_StargazerConnection = {
@@ -18616,19 +18202,6 @@ export type GitHub_StargazerEdge = {
   starredAt: Scalars['GitHub_DateTime'];
 };
 
-/** Ways in which star connections can be ordered. */
-export type GitHub_StarOrder = {
-  /** The field in which to order nodes by. */
-  field: GitHub_StarOrderField;
-  /** The direction in which to order nodes. */
-  direction: GitHub_OrderDirection;
-};
-
-/** Properties by which star connections can be ordered. */
-export type GitHub_StarOrderField = 
-  /** Allows ordering a list of stars by when they were created. */
-  | 'STARRED_AT';
-
 /** Things that can be starred. */
 export type GitHub_Starrable = {
   id: Scalars['ID'];
@@ -18643,11 +18216,11 @@ export type GitHub_Starrable = {
 
 /** Things that can be starred. */
 export type GitHub_StarrableStargazersArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  orderBy?: Maybe<GitHub_StarOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_StarOrder>;
 };
 
 /** The connection type for Repository. */
@@ -18684,19 +18257,19 @@ export type GitHub_StartRepositoryMigrationInput = {
   /** The name of the imported repository. */
   repositoryName: Scalars['String'];
   /** Whether to continue the migration on error */
-  continueOnError?: Maybe<Scalars['Boolean']>;
+  continueOnError?: InputMaybe<Scalars['Boolean']>;
   /** The signed URL to access the user-uploaded git archive */
-  gitArchiveUrl?: Maybe<Scalars['String']>;
+  gitArchiveUrl?: InputMaybe<Scalars['String']>;
   /** The signed URL to access the user-uploaded metadata archive */
-  metadataArchiveUrl?: Maybe<Scalars['String']>;
+  metadataArchiveUrl?: InputMaybe<Scalars['String']>;
   /** The Octoshift migration source access token. */
-  accessToken?: Maybe<Scalars['String']>;
+  accessToken?: InputMaybe<Scalars['String']>;
   /** The GitHub personal access token of the user importing to the target repository. */
-  githubPat?: Maybe<Scalars['String']>;
+  githubPat?: InputMaybe<Scalars['String']>;
   /** Whether to skip migrating releases for the repository. */
-  skipReleases?: Maybe<Scalars['Boolean']>;
+  skipReleases?: InputMaybe<Scalars['Boolean']>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of StartRepositoryMigration */
@@ -18725,10 +18298,10 @@ export type GitHub_Status = GitHub_Node & {
 
 /** Represents a commit status. */
 export type GitHub_StatusCombinedContextsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
@@ -18751,10 +18324,10 @@ export type GitHub_StatusCheckRollup = GitHub_Node & {
 
 /** Represents the rollup for both the check runs and status for a commit. */
 export type GitHub_StatusCheckRollupContextsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** Types that can be inside a StatusCheckRollup context. */
@@ -18806,18 +18379,18 @@ export type GitHub_StatusContext = GitHub_RequirableByPullRequest & GitHub_Node 
 
 /** Represents an individual commit status context */
 export type GitHub_StatusContextAvatarUrlArgs = {
-  size?: Maybe<Scalars['Int']>;
+  size?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** Represents an individual commit status context */
 export type GitHub_StatusContextIsRequiredArgs = {
-  pullRequestId?: Maybe<Scalars['ID']>;
-  pullRequestNumber?: Maybe<Scalars['Int']>;
+  pullRequestId?: InputMaybe<Scalars['ID']>;
+  pullRequestNumber?: InputMaybe<Scalars['Int']>;
 };
 
 /** The possible commit status states. */
-export type GitHub_StatusState = 
+export type GitHub_StatusState =
   /** Status is expected. */
   | 'EXPECTED'
   /** Status is errored. */
@@ -18832,15 +18405,15 @@ export type GitHub_StatusState =
 /** Autogenerated input type of SubmitPullRequestReview */
 export type GitHub_SubmitPullRequestReviewInput = {
   /** The Pull Request ID to submit any pending reviews. */
-  pullRequestId?: Maybe<Scalars['ID']>;
+  pullRequestId?: InputMaybe<Scalars['ID']>;
   /** The Pull Request Review ID to submit. */
-  pullRequestReviewId?: Maybe<Scalars['ID']>;
+  pullRequestReviewId?: InputMaybe<Scalars['ID']>;
   /** The event to send to the Pull Request Review. */
   event: GitHub_PullRequestReviewEvent;
   /** The text field to set on the Pull Request Review. */
-  body?: Maybe<Scalars['String']>;
+  body?: InputMaybe<Scalars['String']>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of SubmitPullRequestReview */
@@ -18906,7 +18479,7 @@ export type GitHub_SubscribedEvent = GitHub_Node & {
 };
 
 /** The possible states of a subscription. */
-export type GitHub_SubscriptionState = 
+export type GitHub_SubscriptionState =
   /** The User is only notified when participating or @mentioned. */
   | 'UNSUBSCRIBED'
   /** The User is notified of all conversations. */
@@ -19027,28 +18600,28 @@ export type GitHub_Team = GitHub_Node & GitHub_Subscribable & GitHub_MemberStatu
 
 /** A team of users in an organization. */
 export type GitHub_TeamAncestorsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A team of users in an organization. */
 export type GitHub_TeamAvatarUrlArgs = {
-  size?: Maybe<Scalars['Int']>;
+  size?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A team of users in an organization. */
 export type GitHub_TeamChildTeamsArgs = {
-  orderBy?: Maybe<GitHub_TeamOrder>;
-  userLogins?: Maybe<Array<Scalars['String']>>;
-  immediateOnly?: Maybe<Scalars['Boolean']>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_TeamOrder>;
+  userLogins?: InputMaybe<Array<Scalars['String']>>;
+  immediateOnly?: InputMaybe<Scalars['Boolean']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
@@ -19060,55 +18633,55 @@ export type GitHub_TeamDiscussionArgs = {
 
 /** A team of users in an organization. */
 export type GitHub_TeamDiscussionsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  isPinned?: Maybe<Scalars['Boolean']>;
-  orderBy?: Maybe<GitHub_TeamDiscussionOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  isPinned?: InputMaybe<Scalars['Boolean']>;
+  orderBy?: InputMaybe<GitHub_TeamDiscussionOrder>;
 };
 
 
 /** A team of users in an organization. */
 export type GitHub_TeamInvitationsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A team of users in an organization. */
 export type GitHub_TeamMemberStatusesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  orderBy?: Maybe<GitHub_UserStatusOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_UserStatusOrder>;
 };
 
 
 /** A team of users in an organization. */
 export type GitHub_TeamMembersArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  query?: Maybe<Scalars['String']>;
-  membership?: Maybe<GitHub_TeamMembershipType>;
-  role?: Maybe<GitHub_TeamMemberRole>;
-  orderBy?: Maybe<GitHub_TeamMemberOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  query?: InputMaybe<Scalars['String']>;
+  membership?: InputMaybe<GitHub_TeamMembershipType>;
+  role?: InputMaybe<GitHub_TeamMemberRole>;
+  orderBy?: InputMaybe<GitHub_TeamMemberOrder>;
 };
 
 
 /** A team of users in an organization. */
 export type GitHub_TeamRepositoriesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  query?: Maybe<Scalars['String']>;
-  orderBy?: Maybe<GitHub_TeamRepositoryOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  query?: InputMaybe<Scalars['String']>;
+  orderBy?: InputMaybe<GitHub_TeamRepositoryOrder>;
 };
 
 /** Audit log entry for a team.add_member event. */
@@ -19384,32 +18957,32 @@ export type GitHub_TeamDiscussion = GitHub_Node & GitHub_Comment & GitHub_Deleta
 
 /** A team discussion. */
 export type GitHub_TeamDiscussionCommentsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  orderBy?: Maybe<GitHub_TeamDiscussionCommentOrder>;
-  fromComment?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_TeamDiscussionCommentOrder>;
+  fromComment?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A team discussion. */
 export type GitHub_TeamDiscussionReactionsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  content?: Maybe<GitHub_ReactionContent>;
-  orderBy?: Maybe<GitHub_ReactionOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  content?: InputMaybe<GitHub_ReactionContent>;
+  orderBy?: InputMaybe<GitHub_ReactionOrder>;
 };
 
 
 /** A team discussion. */
 export type GitHub_TeamDiscussionUserContentEditsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** A comment on a team discussion. */
@@ -19472,21 +19045,21 @@ export type GitHub_TeamDiscussionComment = GitHub_Node & GitHub_Comment & GitHub
 
 /** A comment on a team discussion. */
 export type GitHub_TeamDiscussionCommentReactionsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  content?: Maybe<GitHub_ReactionContent>;
-  orderBy?: Maybe<GitHub_ReactionOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  content?: InputMaybe<GitHub_ReactionContent>;
+  orderBy?: InputMaybe<GitHub_ReactionOrder>;
 };
 
 
 /** A comment on a team discussion. */
 export type GitHub_TeamDiscussionCommentUserContentEditsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** The connection type for TeamDiscussionComment. */
@@ -19518,7 +19091,7 @@ export type GitHub_TeamDiscussionCommentOrder = {
 };
 
 /** Properties by which team discussion comment connections can be ordered. */
-export type GitHub_TeamDiscussionCommentOrderField = 
+export type GitHub_TeamDiscussionCommentOrderField =
   /** Allows sequential ordering of team discussion comments (which is equivalent to chronological ordering). */
   | 'NUMBER';
 
@@ -19551,7 +19124,7 @@ export type GitHub_TeamDiscussionOrder = {
 };
 
 /** Properties by which team discussion connections can be ordered. */
-export type GitHub_TeamDiscussionOrderField = 
+export type GitHub_TeamDiscussionOrderField =
   /** Allows chronological ordering of team discussions. */
   | 'CREATED_AT';
 
@@ -19597,21 +19170,21 @@ export type GitHub_TeamMemberOrder = {
 };
 
 /** Properties by which team member connections can be ordered. */
-export type GitHub_TeamMemberOrderField = 
+export type GitHub_TeamMemberOrderField =
   /** Order team members by login */
   | 'LOGIN'
   /** Order team members by creation time */
   | 'CREATED_AT';
 
 /** The possible team member roles; either 'maintainer' or 'member'. */
-export type GitHub_TeamMemberRole = 
+export type GitHub_TeamMemberRole =
   /** A team maintainer has permission to add and remove team members. */
   | 'MAINTAINER'
   /** A team member has no administrative permissions on the team. */
   | 'MEMBER';
 
 /** Defines which types of team members are included in the returned list. Can be one of IMMEDIATE, CHILD_TEAM or ALL. */
-export type GitHub_TeamMembershipType = 
+export type GitHub_TeamMembershipType =
   /** Includes only immediate members of the team. */
   | 'IMMEDIATE'
   /** Includes only child team members for the team. */
@@ -19628,12 +19201,12 @@ export type GitHub_TeamOrder = {
 };
 
 /** Properties by which team connections can be ordered. */
-export type GitHub_TeamOrderField = 
+export type GitHub_TeamOrderField =
   /** Allows ordering a list of teams by name. */
   | 'NAME';
 
 /** The possible team privacy values. */
-export type GitHub_TeamPrivacy = 
+export type GitHub_TeamPrivacy =
   /** A secret team can only be seen by its members. */
   | 'SECRET'
   /** A visible team can be seen and @mentioned by every member of the organization. */
@@ -19775,7 +19348,7 @@ export type GitHub_TeamRepositoryOrder = {
 };
 
 /** Properties by which team repository connections can be ordered. */
-export type GitHub_TeamRepositoryOrderField = 
+export type GitHub_TeamRepositoryOrderField =
   /** Order repositories by creation time */
   | 'CREATED_AT'
   /** Order repositories by update time */
@@ -19790,7 +19363,7 @@ export type GitHub_TeamRepositoryOrderField =
   | 'STARGAZERS';
 
 /** The role of a user on a team. */
-export type GitHub_TeamRole = 
+export type GitHub_TeamRole =
   /** User has admin rights on the team. */
   | 'ADMIN'
   /** User is a member of the team. */
@@ -19839,32 +19412,32 @@ export type GitHub_Topic = GitHub_Node & GitHub_Starrable & {
 
 /** A topic aggregates entities that are related to a subject. */
 export type GitHub_TopicRelatedTopicsArgs = {
-  first?: Maybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A topic aggregates entities that are related to a subject. */
 export type GitHub_TopicRepositoriesArgs = {
-  privacy?: Maybe<GitHub_RepositoryPrivacy>;
-  orderBy?: Maybe<GitHub_RepositoryOrder>;
-  affiliations?: Maybe<Array<Maybe<GitHub_RepositoryAffiliation>>>;
-  ownerAffiliations?: Maybe<Array<Maybe<GitHub_RepositoryAffiliation>>>;
-  isLocked?: Maybe<Scalars['Boolean']>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  sponsorableOnly?: Maybe<Scalars['Boolean']>;
+  privacy?: InputMaybe<GitHub_RepositoryPrivacy>;
+  orderBy?: InputMaybe<GitHub_RepositoryOrder>;
+  affiliations?: InputMaybe<Array<InputMaybe<GitHub_RepositoryAffiliation>>>;
+  ownerAffiliations?: InputMaybe<Array<InputMaybe<GitHub_RepositoryAffiliation>>>;
+  isLocked?: InputMaybe<Scalars['Boolean']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  sponsorableOnly?: InputMaybe<Scalars['Boolean']>;
 };
 
 
 /** A topic aggregates entities that are related to a subject. */
 export type GitHub_TopicStargazersArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  orderBy?: Maybe<GitHub_StarOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_StarOrder>;
 };
 
 /** Metadata for an audit entry with a topic. */
@@ -19876,7 +19449,7 @@ export type GitHub_TopicAuditEntryData = {
 };
 
 /** Reason that the suggested topic is declined. */
-export type GitHub_TopicSuggestionDeclineReason = 
+export type GitHub_TopicSuggestionDeclineReason =
   /** The suggested topic is not relevant to the repository. */
   | 'NOT_RELEVANT'
   /** The suggested topic is too specific for the repository (e.g. #ruby-on-rails-version-4-2-1). */
@@ -19887,7 +19460,7 @@ export type GitHub_TopicSuggestionDeclineReason =
   | 'TOO_GENERAL';
 
 /** The possible states of a tracked issue. */
-export type GitHub_TrackedIssueStates = 
+export type GitHub_TrackedIssueStates =
   /** The tracked issue is open */
   | 'OPEN'
   /** The tracked issue is closed */
@@ -19900,7 +19473,7 @@ export type GitHub_TransferIssueInput = {
   /** The Node ID of the repository the issue should be transferred to */
   repositoryId: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of TransferIssue */
@@ -19972,7 +19545,7 @@ export type GitHub_UnarchiveRepositoryInput = {
   /** The ID of the repository to unarchive. */
   repositoryId: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UnarchiveRepository */
@@ -20001,12 +19574,28 @@ export type GitHub_UnassignedEvent = GitHub_Node & {
   user?: Maybe<GitHub_User>;
 };
 
+/** Autogenerated input type of UnfollowOrganization */
+export type GitHub_UnfollowOrganizationInput = {
+  /** ID of the organization to unfollow. */
+  organizationId: Scalars['ID'];
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+};
+
+/** Autogenerated return type of UnfollowOrganization */
+export type GitHub_UnfollowOrganizationPayload = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** The organization that was unfollowed. */
+  organization?: Maybe<GitHub_Organization>;
+};
+
 /** Autogenerated input type of UnfollowUser */
 export type GitHub_UnfollowUserInput = {
   /** ID of the user to unfollow. */
   userId: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UnfollowUser */
@@ -20037,10 +19626,7 @@ export type GitHub_UnknownSignature = GitHub_GitSignature & {
   signature: Scalars['String'];
   /** GitHub user corresponding to the email signing this commit. */
   signer?: Maybe<GitHub_User>;
-  /**
-   * The state of this signature. `VALID` if signature is valid and verified by
-   * GitHub, otherwise represents reason why signature is considered invalid.
-   */
+  /** The state of this signature. `VALID` if signature is valid and verified by GitHub, otherwise represents reason why signature is considered invalid. */
   state: GitHub_GitSignatureState;
   /** True if the signature was made with GitHub's signing key. */
   wasSignedByGitHub: Scalars['Boolean'];
@@ -20066,7 +19652,7 @@ export type GitHub_UnlinkRepositoryFromProjectInput = {
   /** The ID of the Repository linked to the Project. */
   repositoryId: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UnlinkRepositoryFromProject */
@@ -20077,6 +19663,24 @@ export type GitHub_UnlinkRepositoryFromProjectPayload = {
   project?: Maybe<GitHub_Project>;
   /** The linked Repository. */
   repository?: Maybe<GitHub_Repository>;
+};
+
+/** Autogenerated input type of UnlockLockable */
+export type GitHub_UnlockLockableInput = {
+  /** ID of the item to be unlocked. */
+  lockableId: Scalars['ID'];
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+};
+
+/** Autogenerated return type of UnlockLockable */
+export type GitHub_UnlockLockablePayload = {
+  /** Identifies the actor who performed the event. */
+  actor?: Maybe<GitHub_Actor>;
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** The item that was unlocked. */
+  unlockedRecord?: Maybe<GitHub_Lockable>;
 };
 
 /** Represents an 'unlocked' event on a given issue or pull request. */
@@ -20090,30 +19694,12 @@ export type GitHub_UnlockedEvent = GitHub_Node & {
   lockable: GitHub_Lockable;
 };
 
-/** Autogenerated input type of UnlockLockable */
-export type GitHub_UnlockLockableInput = {
-  /** ID of the item to be unlocked. */
-  lockableId: Scalars['ID'];
-  /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
-};
-
-/** Autogenerated return type of UnlockLockable */
-export type GitHub_UnlockLockablePayload = {
-  /** Identifies the actor who performed the event. */
-  actor?: Maybe<GitHub_Actor>;
-  /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
-  /** The item that was unlocked. */
-  unlockedRecord?: Maybe<GitHub_Lockable>;
-};
-
 /** Autogenerated input type of UnmarkDiscussionCommentAsAnswer */
 export type GitHub_UnmarkDiscussionCommentAsAnswerInput = {
   /** The Node ID of the discussion comment to unmark as an answer. */
   id: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UnmarkDiscussionCommentAsAnswer */
@@ -20124,21 +19710,6 @@ export type GitHub_UnmarkDiscussionCommentAsAnswerPayload = {
   discussion?: Maybe<GitHub_Discussion>;
 };
 
-/** Represents an 'unmarked_as_duplicate' event on a given issue or pull request. */
-export type GitHub_UnmarkedAsDuplicateEvent = GitHub_Node & {
-  /** Identifies the actor who performed the event. */
-  actor?: Maybe<GitHub_Actor>;
-  /** The authoritative issue or pull request which has been duplicated by another. */
-  canonical?: Maybe<GitHub_IssueOrPullRequest>;
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['GitHub_DateTime'];
-  /** The issue or pull request which has been marked as a duplicate of another. */
-  duplicate?: Maybe<GitHub_IssueOrPullRequest>;
-  id: Scalars['ID'];
-  /** Canonical and duplicate belong to different repositories. */
-  isCrossRepository: Scalars['Boolean'];
-};
-
 /** Autogenerated input type of UnmarkFileAsViewed */
 export type GitHub_UnmarkFileAsViewedInput = {
   /** The Node ID of the pull request. */
@@ -20146,7 +19717,7 @@ export type GitHub_UnmarkFileAsViewedInput = {
   /** The path of the file to mark as unviewed */
   path: Scalars['String'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UnmarkFileAsViewed */
@@ -20164,7 +19735,7 @@ export type GitHub_UnmarkIssueAsDuplicateInput = {
   /** ID of the issue or pull request currently considered canonical/authoritative/original. */
   canonicalId: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UnmarkIssueAsDuplicate */
@@ -20175,12 +19746,27 @@ export type GitHub_UnmarkIssueAsDuplicatePayload = {
   duplicate?: Maybe<GitHub_IssueOrPullRequest>;
 };
 
+/** Represents an 'unmarked_as_duplicate' event on a given issue or pull request. */
+export type GitHub_UnmarkedAsDuplicateEvent = GitHub_Node & {
+  /** Identifies the actor who performed the event. */
+  actor?: Maybe<GitHub_Actor>;
+  /** The authoritative issue or pull request which has been duplicated by another. */
+  canonical?: Maybe<GitHub_IssueOrPullRequest>;
+  /** Identifies the date and time when the object was created. */
+  createdAt: Scalars['GitHub_DateTime'];
+  /** The issue or pull request which has been marked as a duplicate of another. */
+  duplicate?: Maybe<GitHub_IssueOrPullRequest>;
+  id: Scalars['ID'];
+  /** Canonical and duplicate belong to different repositories. */
+  isCrossRepository: Scalars['Boolean'];
+};
+
 /** Autogenerated input type of UnminimizeComment */
 export type GitHub_UnminimizeCommentInput = {
   /** The Node ID of the subject to modify. */
   subjectId: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UnminimizeComment */
@@ -20196,7 +19782,7 @@ export type GitHub_UnpinIssueInput = {
   /** The ID of the issue to be unpinned */
   issueId: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UnpinIssue */
@@ -20223,7 +19809,7 @@ export type GitHub_UnresolveReviewThreadInput = {
   /** The ID of the thread to unresolve */
   threadId: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UnresolveReviewThread */
@@ -20262,51 +19848,51 @@ export type GitHub_UpdateBranchProtectionRuleInput = {
   /** The global relay id of the branch protection rule to be updated. */
   branchProtectionRuleId: Scalars['ID'];
   /** The glob-like pattern used to determine matching branches. */
-  pattern?: Maybe<Scalars['String']>;
+  pattern?: InputMaybe<Scalars['String']>;
   /** Are approving reviews required to update matching branches. */
-  requiresApprovingReviews?: Maybe<Scalars['Boolean']>;
+  requiresApprovingReviews?: InputMaybe<Scalars['Boolean']>;
   /** Number of approving reviews required to update matching branches. */
-  requiredApprovingReviewCount?: Maybe<Scalars['Int']>;
+  requiredApprovingReviewCount?: InputMaybe<Scalars['Int']>;
   /** Are commits required to be signed. */
-  requiresCommitSignatures?: Maybe<Scalars['Boolean']>;
+  requiresCommitSignatures?: InputMaybe<Scalars['Boolean']>;
   /** Are merge commits prohibited from being pushed to this branch. */
-  requiresLinearHistory?: Maybe<Scalars['Boolean']>;
+  requiresLinearHistory?: InputMaybe<Scalars['Boolean']>;
   /** Is branch creation a protected operation. */
-  blocksCreations?: Maybe<Scalars['Boolean']>;
+  blocksCreations?: InputMaybe<Scalars['Boolean']>;
   /** Are force pushes allowed on this branch. */
-  allowsForcePushes?: Maybe<Scalars['Boolean']>;
+  allowsForcePushes?: InputMaybe<Scalars['Boolean']>;
   /** Can this branch be deleted. */
-  allowsDeletions?: Maybe<Scalars['Boolean']>;
+  allowsDeletions?: InputMaybe<Scalars['Boolean']>;
   /** Can admins overwrite branch protection. */
-  isAdminEnforced?: Maybe<Scalars['Boolean']>;
+  isAdminEnforced?: InputMaybe<Scalars['Boolean']>;
   /** Are status checks required to update matching branches. */
-  requiresStatusChecks?: Maybe<Scalars['Boolean']>;
+  requiresStatusChecks?: InputMaybe<Scalars['Boolean']>;
   /** Are branches required to be up to date before merging. */
-  requiresStrictStatusChecks?: Maybe<Scalars['Boolean']>;
+  requiresStrictStatusChecks?: InputMaybe<Scalars['Boolean']>;
   /** Are reviews from code owners required to update matching branches. */
-  requiresCodeOwnerReviews?: Maybe<Scalars['Boolean']>;
+  requiresCodeOwnerReviews?: InputMaybe<Scalars['Boolean']>;
   /** Will new commits pushed to matching branches dismiss pull request review approvals. */
-  dismissesStaleReviews?: Maybe<Scalars['Boolean']>;
+  dismissesStaleReviews?: InputMaybe<Scalars['Boolean']>;
   /** Is dismissal of pull request reviews restricted. */
-  restrictsReviewDismissals?: Maybe<Scalars['Boolean']>;
+  restrictsReviewDismissals?: InputMaybe<Scalars['Boolean']>;
   /** A list of User or Team IDs allowed to dismiss reviews on pull requests targeting matching branches. */
-  reviewDismissalActorIds?: Maybe<Array<Scalars['ID']>>;
+  reviewDismissalActorIds?: InputMaybe<Array<Scalars['ID']>>;
   /** A list of User or Team IDs allowed to bypass pull requests targeting matching branches. */
-  bypassPullRequestActorIds?: Maybe<Array<Scalars['ID']>>;
+  bypassPullRequestActorIds?: InputMaybe<Array<Scalars['ID']>>;
   /** A list of User or Team IDs allowed to bypass force push targeting matching branches. */
-  bypassForcePushActorIds?: Maybe<Array<Scalars['ID']>>;
+  bypassForcePushActorIds?: InputMaybe<Array<Scalars['ID']>>;
   /** Is pushing to matching branches restricted. */
-  restrictsPushes?: Maybe<Scalars['Boolean']>;
+  restrictsPushes?: InputMaybe<Scalars['Boolean']>;
   /** A list of User, Team or App IDs allowed to push to matching branches. */
-  pushActorIds?: Maybe<Array<Scalars['ID']>>;
+  pushActorIds?: InputMaybe<Array<Scalars['ID']>>;
   /** List of required status check contexts that must pass for commits to be accepted to matching branches. */
-  requiredStatusCheckContexts?: Maybe<Array<Scalars['String']>>;
+  requiredStatusCheckContexts?: InputMaybe<Array<Scalars['String']>>;
   /** The list of required status checks */
-  requiredStatusChecks?: Maybe<Array<GitHub_RequiredStatusCheckInput>>;
+  requiredStatusChecks?: InputMaybe<Array<GitHub_RequiredStatusCheckInput>>;
   /** Are conversations required to be resolved before merging. */
-  requiresConversationResolution?: Maybe<Scalars['Boolean']>;
+  requiresConversationResolution?: InputMaybe<Scalars['Boolean']>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UpdateBranchProtectionRule */
@@ -20324,25 +19910,25 @@ export type GitHub_UpdateCheckRunInput = {
   /** The node of the check. */
   checkRunId: Scalars['ID'];
   /** The name of the check. */
-  name?: Maybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
   /** The URL of the integrator's site that has the full details of the check. */
-  detailsUrl?: Maybe<Scalars['GitHub_URI']>;
+  detailsUrl?: InputMaybe<Scalars['GitHub_URI']>;
   /** A reference for the run on the integrator's system. */
-  externalId?: Maybe<Scalars['String']>;
+  externalId?: InputMaybe<Scalars['String']>;
   /** The current status. */
-  status?: Maybe<GitHub_RequestableCheckStatusState>;
+  status?: InputMaybe<GitHub_RequestableCheckStatusState>;
   /** The time that the check run began. */
-  startedAt?: Maybe<Scalars['GitHub_DateTime']>;
+  startedAt?: InputMaybe<Scalars['GitHub_DateTime']>;
   /** The final conclusion of the check. */
-  conclusion?: Maybe<GitHub_CheckConclusionState>;
+  conclusion?: InputMaybe<GitHub_CheckConclusionState>;
   /** The time that the check run finished. */
-  completedAt?: Maybe<Scalars['GitHub_DateTime']>;
+  completedAt?: InputMaybe<Scalars['GitHub_DateTime']>;
   /** Descriptive details about the run. */
-  output?: Maybe<GitHub_CheckRunOutput>;
+  output?: InputMaybe<GitHub_CheckRunOutput>;
   /** Possible further actions the integrator can perform, which a user may trigger. */
-  actions?: Maybe<Array<GitHub_CheckRunAction>>;
+  actions?: InputMaybe<Array<GitHub_CheckRunAction>>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UpdateCheckRun */
@@ -20360,7 +19946,7 @@ export type GitHub_UpdateCheckSuitePreferencesInput = {
   /** The check suite preferences to modify. */
   autoTriggerPreferences: Array<GitHub_CheckSuiteAutoTriggerPreference>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UpdateCheckSuitePreferences */
@@ -20378,7 +19964,7 @@ export type GitHub_UpdateDiscussionCommentInput = {
   /** The new contents of the comment body. */
   body: Scalars['String'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UpdateDiscussionComment */
@@ -20394,13 +19980,13 @@ export type GitHub_UpdateDiscussionInput = {
   /** The Node ID of the discussion to update. */
   discussionId: Scalars['ID'];
   /** The new discussion title. */
-  title?: Maybe<Scalars['String']>;
+  title?: InputMaybe<Scalars['String']>;
   /** The new contents of the discussion body. */
-  body?: Maybe<Scalars['String']>;
+  body?: InputMaybe<Scalars['String']>;
   /** The Node ID of a discussion category within the same repository to change this discussion to. */
-  categoryId?: Maybe<Scalars['ID']>;
+  categoryId?: InputMaybe<Scalars['ID']>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UpdateDiscussion */
@@ -20420,7 +20006,7 @@ export type GitHub_UpdateEnterpriseAdministratorRoleInput = {
   /** The new role for the Enterprise administrator. */
   role: GitHub_EnterpriseAdministratorRole;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UpdateEnterpriseAdministratorRole */
@@ -20438,7 +20024,7 @@ export type GitHub_UpdateEnterpriseAllowPrivateRepositoryForkingSettingInput = {
   /** The value for the allow private repository forking setting on the enterprise. */
   settingValue: GitHub_EnterpriseEnabledDisabledSettingValue;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UpdateEnterpriseAllowPrivateRepositoryForkingSetting */
@@ -20458,7 +20044,7 @@ export type GitHub_UpdateEnterpriseDefaultRepositoryPermissionSettingInput = {
   /** The value for the base repository permission setting on the enterprise. */
   settingValue: GitHub_EnterpriseDefaultRepositoryPermissionSettingValue;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UpdateEnterpriseDefaultRepositoryPermissionSetting */
@@ -20478,7 +20064,7 @@ export type GitHub_UpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingIn
   /** The value for the members can change repository visibility setting on the enterprise. */
   settingValue: GitHub_EnterpriseEnabledDisabledSettingValue;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UpdateEnterpriseMembersCanChangeRepositoryVisibilitySetting */
@@ -20495,21 +20081,18 @@ export type GitHub_UpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingPa
 export type GitHub_UpdateEnterpriseMembersCanCreateRepositoriesSettingInput = {
   /** The ID of the enterprise on which to set the members can create repositories setting. */
   enterpriseId: Scalars['ID'];
-  /**
-   * Value for the members can create repositories setting on the enterprise. This
-   * or the granular public/private/internal allowed fields (but not both) must be provided.
-   */
-  settingValue?: Maybe<GitHub_EnterpriseMembersCanCreateRepositoriesSettingValue>;
+  /** Value for the members can create repositories setting on the enterprise. This or the granular public/private/internal allowed fields (but not both) must be provided. */
+  settingValue?: InputMaybe<GitHub_EnterpriseMembersCanCreateRepositoriesSettingValue>;
   /** When false, allow member organizations to set their own repository creation member privileges. */
-  membersCanCreateRepositoriesPolicyEnabled?: Maybe<Scalars['Boolean']>;
+  membersCanCreateRepositoriesPolicyEnabled?: InputMaybe<Scalars['Boolean']>;
   /** Allow members to create public repositories. Defaults to current value. */
-  membersCanCreatePublicRepositories?: Maybe<Scalars['Boolean']>;
+  membersCanCreatePublicRepositories?: InputMaybe<Scalars['Boolean']>;
   /** Allow members to create private repositories. Defaults to current value. */
-  membersCanCreatePrivateRepositories?: Maybe<Scalars['Boolean']>;
+  membersCanCreatePrivateRepositories?: InputMaybe<Scalars['Boolean']>;
   /** Allow members to create internal repositories. Defaults to current value. */
-  membersCanCreateInternalRepositories?: Maybe<Scalars['Boolean']>;
+  membersCanCreateInternalRepositories?: InputMaybe<Scalars['Boolean']>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UpdateEnterpriseMembersCanCreateRepositoriesSetting */
@@ -20529,7 +20112,7 @@ export type GitHub_UpdateEnterpriseMembersCanDeleteIssuesSettingInput = {
   /** The value for the members can delete issues setting on the enterprise. */
   settingValue: GitHub_EnterpriseEnabledDisabledSettingValue;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UpdateEnterpriseMembersCanDeleteIssuesSetting */
@@ -20549,7 +20132,7 @@ export type GitHub_UpdateEnterpriseMembersCanDeleteRepositoriesSettingInput = {
   /** The value for the members can delete repositories setting on the enterprise. */
   settingValue: GitHub_EnterpriseEnabledDisabledSettingValue;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UpdateEnterpriseMembersCanDeleteRepositoriesSetting */
@@ -20569,7 +20152,7 @@ export type GitHub_UpdateEnterpriseMembersCanInviteCollaboratorsSettingInput = {
   /** The value for the members can invite collaborators setting on the enterprise. */
   settingValue: GitHub_EnterpriseEnabledDisabledSettingValue;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UpdateEnterpriseMembersCanInviteCollaboratorsSetting */
@@ -20589,7 +20172,7 @@ export type GitHub_UpdateEnterpriseMembersCanMakePurchasesSettingInput = {
   /** The value for the members can make purchases setting on the enterprise. */
   settingValue: GitHub_EnterpriseMembersCanMakePurchasesSettingValue;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UpdateEnterpriseMembersCanMakePurchasesSetting */
@@ -20609,7 +20192,7 @@ export type GitHub_UpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput
   /** The value for the members can update protected branches setting on the enterprise. */
   settingValue: GitHub_EnterpriseEnabledDisabledSettingValue;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UpdateEnterpriseMembersCanUpdateProtectedBranchesSetting */
@@ -20629,7 +20212,7 @@ export type GitHub_UpdateEnterpriseMembersCanViewDependencyInsightsSettingInput 
   /** The value for the members can view dependency insights setting on the enterprise. */
   settingValue: GitHub_EnterpriseEnabledDisabledSettingValue;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UpdateEnterpriseMembersCanViewDependencyInsightsSetting */
@@ -20649,7 +20232,7 @@ export type GitHub_UpdateEnterpriseOrganizationProjectsSettingInput = {
   /** The value for the organization projects setting on the enterprise. */
   settingValue: GitHub_EnterpriseEnabledDisabledSettingValue;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UpdateEnterpriseOrganizationProjectsSetting */
@@ -20671,7 +20254,7 @@ export type GitHub_UpdateEnterpriseOwnerOrganizationRoleInput = {
   /** The role to assume in the organization. */
   organizationRole: GitHub_RoleInOrganization;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UpdateEnterpriseOwnerOrganizationRole */
@@ -20687,15 +20270,15 @@ export type GitHub_UpdateEnterpriseProfileInput = {
   /** The Enterprise ID to update. */
   enterpriseId: Scalars['ID'];
   /** The name of the enterprise. */
-  name?: Maybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
   /** The description of the enterprise. */
-  description?: Maybe<Scalars['String']>;
+  description?: InputMaybe<Scalars['String']>;
   /** The URL of the enterprise's website. */
-  websiteUrl?: Maybe<Scalars['String']>;
+  websiteUrl?: InputMaybe<Scalars['String']>;
   /** The location of the enterprise. */
-  location?: Maybe<Scalars['String']>;
+  location?: InputMaybe<Scalars['String']>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UpdateEnterpriseProfile */
@@ -20713,7 +20296,7 @@ export type GitHub_UpdateEnterpriseRepositoryProjectsSettingInput = {
   /** The value for the repository projects setting on the enterprise. */
   settingValue: GitHub_EnterpriseEnabledDisabledSettingValue;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UpdateEnterpriseRepositoryProjectsSetting */
@@ -20733,7 +20316,7 @@ export type GitHub_UpdateEnterpriseTeamDiscussionsSettingInput = {
   /** The value for the team discussions setting on the enterprise. */
   settingValue: GitHub_EnterpriseEnabledDisabledSettingValue;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UpdateEnterpriseTeamDiscussionsSetting */
@@ -20753,7 +20336,7 @@ export type GitHub_UpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput =
   /** The value for the two factor authentication required setting on the enterprise. */
   settingValue: GitHub_EnterpriseEnabledSettingValue;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UpdateEnterpriseTwoFactorAuthenticationRequiredSetting */
@@ -20771,11 +20354,11 @@ export type GitHub_UpdateEnvironmentInput = {
   /** The node ID of the environment. */
   environmentId: Scalars['ID'];
   /** The wait timer in minutes. */
-  waitTimer?: Maybe<Scalars['Int']>;
+  waitTimer?: InputMaybe<Scalars['Int']>;
   /** The ids of users or teams that can approve deployments to this environment */
-  reviewers?: Maybe<Array<Scalars['ID']>>;
+  reviewers?: InputMaybe<Array<Scalars['ID']>>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UpdateEnvironment */
@@ -20793,7 +20376,7 @@ export type GitHub_UpdateIpAllowListEnabledSettingInput = {
   /** The value for the IP allow list enabled setting. */
   settingValue: GitHub_IpAllowListEnabledSettingValue;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UpdateIpAllowListEnabledSetting */
@@ -20811,11 +20394,11 @@ export type GitHub_UpdateIpAllowListEntryInput = {
   /** An IP address or range of addresses in CIDR notation. */
   allowListValue: Scalars['String'];
   /** An optional name for the IP allow list entry. */
-  name?: Maybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
   /** Whether the IP allow list entry is active when an IP allow list is enabled. */
   isActive: Scalars['Boolean'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UpdateIpAllowListEntry */
@@ -20833,7 +20416,7 @@ export type GitHub_UpdateIpAllowListForInstalledAppsEnabledSettingInput = {
   /** The value for the IP allow list configuration for installed GitHub Apps setting. */
   settingValue: GitHub_IpAllowListForInstalledAppsEnabledSettingValue;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UpdateIpAllowListForInstalledAppsEnabledSetting */
@@ -20851,7 +20434,7 @@ export type GitHub_UpdateIssueCommentInput = {
   /** The updated text of the comment. */
   body: Scalars['String'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UpdateIssueComment */
@@ -20867,21 +20450,21 @@ export type GitHub_UpdateIssueInput = {
   /** The ID of the Issue to modify. */
   id: Scalars['ID'];
   /** The title for the issue. */
-  title?: Maybe<Scalars['String']>;
+  title?: InputMaybe<Scalars['String']>;
   /** The body for the issue description. */
-  body?: Maybe<Scalars['String']>;
+  body?: InputMaybe<Scalars['String']>;
   /** An array of Node IDs of users for this issue. */
-  assigneeIds?: Maybe<Array<Scalars['ID']>>;
+  assigneeIds?: InputMaybe<Array<Scalars['ID']>>;
   /** The Node ID of the milestone for this issue. */
-  milestoneId?: Maybe<Scalars['ID']>;
+  milestoneId?: InputMaybe<Scalars['ID']>;
   /** An array of Node IDs of labels for this issue. */
-  labelIds?: Maybe<Array<Scalars['ID']>>;
+  labelIds?: InputMaybe<Array<Scalars['ID']>>;
   /** The desired issue state. */
-  state?: Maybe<GitHub_IssueState>;
+  state?: InputMaybe<GitHub_IssueState>;
   /** An array of Node IDs for projects associated with this issue. */
-  projectIds?: Maybe<Array<Scalars['ID']>>;
+  projectIds?: InputMaybe<Array<Scalars['ID']>>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UpdateIssue */
@@ -20901,7 +20484,7 @@ export type GitHub_UpdateNotificationRestrictionSettingInput = {
   /** The value for the restrict notifications setting. */
   settingValue: GitHub_NotificationRestrictionSettingValue;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UpdateNotificationRestrictionSetting */
@@ -20919,7 +20502,7 @@ export type GitHub_UpdateOrganizationAllowPrivateRepositoryForkingSettingInput =
   /** Enable forking of private repositories in the organization? */
   forkingEnabled: Scalars['Boolean'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UpdateOrganizationAllowPrivateRepositoryForkingSetting */
@@ -20937,11 +20520,11 @@ export type GitHub_UpdateProjectCardInput = {
   /** The ProjectCard ID to update. */
   projectCardId: Scalars['ID'];
   /** Whether or not the ProjectCard should be archived */
-  isArchived?: Maybe<Scalars['Boolean']>;
+  isArchived?: InputMaybe<Scalars['Boolean']>;
   /** The note of ProjectCard. */
-  note?: Maybe<Scalars['String']>;
+  note?: InputMaybe<Scalars['String']>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UpdateProjectCard */
@@ -20959,7 +20542,7 @@ export type GitHub_UpdateProjectColumnInput = {
   /** The name of project column. */
   name: Scalars['String'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UpdateProjectColumn */
@@ -20970,20 +20553,42 @@ export type GitHub_UpdateProjectColumnPayload = {
   projectColumn?: Maybe<GitHub_ProjectColumn>;
 };
 
+/** Autogenerated input type of UpdateProjectDraftIssue */
+export type GitHub_UpdateProjectDraftIssueInput = {
+  /** The ID of the draft issue to update. */
+  draftIssueId: Scalars['ID'];
+  /** The title of the draft issue. */
+  title?: InputMaybe<Scalars['String']>;
+  /** The body of the draft issue. */
+  body?: InputMaybe<Scalars['String']>;
+  /** The IDs of the assignees of the draft issue. */
+  assigneeIds?: InputMaybe<Array<Scalars['ID']>>;
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+};
+
+/** Autogenerated return type of UpdateProjectDraftIssue */
+export type GitHub_UpdateProjectDraftIssuePayload = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** The draft issue updated in the project. */
+  draftIssue?: Maybe<GitHub_DraftIssue>;
+};
+
 /** Autogenerated input type of UpdateProject */
 export type GitHub_UpdateProjectInput = {
   /** The Project ID to update. */
   projectId: Scalars['ID'];
   /** The name of project. */
-  name?: Maybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
   /** The description of project. */
-  body?: Maybe<Scalars['String']>;
+  body?: InputMaybe<Scalars['String']>;
   /** Whether the project is open or closed. */
-  state?: Maybe<GitHub_ProjectState>;
+  state?: InputMaybe<GitHub_ProjectState>;
   /** Whether the project is public or not. */
-  public?: Maybe<Scalars['Boolean']>;
+  public?: InputMaybe<Scalars['Boolean']>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated input type of UpdateProjectNext */
@@ -20991,17 +20596,17 @@ export type GitHub_UpdateProjectNextInput = {
   /** The ID of the Project to update. */
   projectId: Scalars['ID'];
   /** Set the title of the project. */
-  title?: Maybe<Scalars['String']>;
+  title?: InputMaybe<Scalars['String']>;
   /** Set the readme description of the project. */
-  description?: Maybe<Scalars['String']>;
+  description?: InputMaybe<Scalars['String']>;
   /** Set the short description of the project. */
-  shortDescription?: Maybe<Scalars['String']>;
+  shortDescription?: InputMaybe<Scalars['String']>;
   /** Set the project to closed or open. */
-  closed?: Maybe<Scalars['Boolean']>;
+  closed?: InputMaybe<Scalars['Boolean']>;
   /** Set the project to public or private. */
-  public?: Maybe<Scalars['Boolean']>;
+  public?: InputMaybe<Scalars['Boolean']>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated input type of UpdateProjectNextItemField */
@@ -21011,11 +20616,11 @@ export type GitHub_UpdateProjectNextItemFieldInput = {
   /** The id of the item to be updated. */
   itemId: Scalars['ID'];
   /** The id of the field to be updated. */
-  fieldId?: Maybe<Scalars['ID']>;
+  fieldId?: InputMaybe<Scalars['ID']>;
   /** The value which will be set on the field. */
   value: Scalars['String'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UpdateProjectNextItemField */
@@ -21047,9 +20652,9 @@ export type GitHub_UpdatePullRequestBranchInput = {
   /** The Node ID of the pull request. */
   pullRequestId: Scalars['ID'];
   /** The head ref oid for the upstream branch. */
-  expectedHeadOid?: Maybe<Scalars['GitHub_GitObjectID']>;
+  expectedHeadOid?: InputMaybe<Scalars['GitHub_GitObjectID']>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UpdatePullRequestBranch */
@@ -21068,25 +20673,25 @@ export type GitHub_UpdatePullRequestInput = {
    * The name of the branch you want your changes pulled into. This should be an existing branch
    * on the current repository.
    */
-  baseRefName?: Maybe<Scalars['String']>;
+  baseRefName?: InputMaybe<Scalars['String']>;
   /** The title of the pull request. */
-  title?: Maybe<Scalars['String']>;
+  title?: InputMaybe<Scalars['String']>;
   /** The contents of the pull request. */
-  body?: Maybe<Scalars['String']>;
+  body?: InputMaybe<Scalars['String']>;
   /** The target state of the pull request. */
-  state?: Maybe<GitHub_PullRequestUpdateState>;
+  state?: InputMaybe<GitHub_PullRequestUpdateState>;
   /** Indicates whether maintainers can modify the pull request. */
-  maintainerCanModify?: Maybe<Scalars['Boolean']>;
+  maintainerCanModify?: InputMaybe<Scalars['Boolean']>;
   /** An array of Node IDs of users for this pull request. */
-  assigneeIds?: Maybe<Array<Scalars['ID']>>;
+  assigneeIds?: InputMaybe<Array<Scalars['ID']>>;
   /** The Node ID of the milestone for this pull request. */
-  milestoneId?: Maybe<Scalars['ID']>;
+  milestoneId?: InputMaybe<Scalars['ID']>;
   /** An array of Node IDs of labels for this pull request. */
-  labelIds?: Maybe<Array<Scalars['ID']>>;
+  labelIds?: InputMaybe<Array<Scalars['ID']>>;
   /** An array of Node IDs for projects associated with this pull request. */
-  projectIds?: Maybe<Array<Scalars['ID']>>;
+  projectIds?: InputMaybe<Array<Scalars['ID']>>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UpdatePullRequest */
@@ -21106,7 +20711,7 @@ export type GitHub_UpdatePullRequestReviewCommentInput = {
   /** The text of the comment. */
   body: Scalars['String'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UpdatePullRequestReviewComment */
@@ -21124,7 +20729,7 @@ export type GitHub_UpdatePullRequestReviewInput = {
   /** The contents of the pull request review body. */
   body: Scalars['String'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UpdatePullRequestReview */
@@ -21142,9 +20747,9 @@ export type GitHub_UpdateRefInput = {
   /** The GitObjectID that the Ref shall be updated to target. */
   oid: Scalars['GitHub_GitObjectID'];
   /** Permit updates of branch Refs that are not fast-forwards? */
-  force?: Maybe<Scalars['Boolean']>;
+  force?: InputMaybe<Scalars['Boolean']>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UpdateRef */
@@ -21160,24 +20765,21 @@ export type GitHub_UpdateRepositoryInput = {
   /** The ID of the repository to update. */
   repositoryId: Scalars['ID'];
   /** The new name of the repository. */
-  name?: Maybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
   /** A new description for the repository. Pass an empty string to erase the existing description. */
-  description?: Maybe<Scalars['String']>;
-  /**
-   * Whether this repository should be marked as a template such that anyone who
-   * can access it can create new repositories with the same files and directory structure.
-   */
-  template?: Maybe<Scalars['Boolean']>;
+  description?: InputMaybe<Scalars['String']>;
+  /** Whether this repository should be marked as a template such that anyone who can access it can create new repositories with the same files and directory structure. */
+  template?: InputMaybe<Scalars['Boolean']>;
   /** The URL for a web page about this repository. Pass an empty string to erase the existing URL. */
-  homepageUrl?: Maybe<Scalars['GitHub_URI']>;
+  homepageUrl?: InputMaybe<Scalars['GitHub_URI']>;
   /** Indicates if the repository should have the wiki feature enabled. */
-  hasWikiEnabled?: Maybe<Scalars['Boolean']>;
+  hasWikiEnabled?: InputMaybe<Scalars['Boolean']>;
   /** Indicates if the repository should have the issues feature enabled. */
-  hasIssuesEnabled?: Maybe<Scalars['Boolean']>;
+  hasIssuesEnabled?: InputMaybe<Scalars['Boolean']>;
   /** Indicates if the repository should have the project boards feature enabled. */
-  hasProjectsEnabled?: Maybe<Scalars['Boolean']>;
+  hasProjectsEnabled?: InputMaybe<Scalars['Boolean']>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UpdateRepository */
@@ -21190,29 +20792,20 @@ export type GitHub_UpdateRepositoryPayload = {
 
 /** Autogenerated input type of UpdateSponsorshipPreferences */
 export type GitHub_UpdateSponsorshipPreferencesInput = {
-  /**
-   * The ID of the user or organization who is acting as the sponsor, paying for
-   * the sponsorship. Required if sponsorLogin is not given.
-   */
-  sponsorId?: Maybe<Scalars['ID']>;
-  /**
-   * The username of the user or organization who is acting as the sponsor, paying
-   * for the sponsorship. Required if sponsorId is not given.
-   */
-  sponsorLogin?: Maybe<Scalars['String']>;
+  /** The ID of the user or organization who is acting as the sponsor, paying for the sponsorship. Required if sponsorLogin is not given. */
+  sponsorId?: InputMaybe<Scalars['ID']>;
+  /** The username of the user or organization who is acting as the sponsor, paying for the sponsorship. Required if sponsorId is not given. */
+  sponsorLogin?: InputMaybe<Scalars['String']>;
   /** The ID of the user or organization who is receiving the sponsorship. Required if sponsorableLogin is not given. */
-  sponsorableId?: Maybe<Scalars['ID']>;
+  sponsorableId?: InputMaybe<Scalars['ID']>;
   /** The username of the user or organization who is receiving the sponsorship. Required if sponsorableId is not given. */
-  sponsorableLogin?: Maybe<Scalars['String']>;
+  sponsorableLogin?: InputMaybe<Scalars['String']>;
   /** Whether the sponsor should receive email updates from the sponsorable. */
-  receiveEmails?: Maybe<Scalars['Boolean']>;
-  /**
-   * Specify whether others should be able to see that the sponsor is sponsoring
-   * the sponsorable. Public visibility still does not reveal which tier is used.
-   */
-  privacyLevel?: Maybe<GitHub_SponsorshipPrivacy>;
+  receiveEmails?: InputMaybe<Scalars['Boolean']>;
+  /** Specify whether others should be able to see that the sponsor is sponsoring the sponsorable. Public visibility still does not reveal which tier is used. */
+  privacyLevel?: InputMaybe<GitHub_SponsorshipPrivacy>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UpdateSponsorshipPreferences */
@@ -21230,7 +20823,7 @@ export type GitHub_UpdateSubscriptionInput = {
   /** The new state of the subscription. */
   state: GitHub_SubscriptionState;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UpdateSubscription */
@@ -21248,9 +20841,9 @@ export type GitHub_UpdateTeamDiscussionCommentInput = {
   /** The updated text of the comment. */
   body: Scalars['String'];
   /** The current version of the body content. */
-  bodyVersion?: Maybe<Scalars['String']>;
+  bodyVersion?: InputMaybe<Scalars['String']>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UpdateTeamDiscussionComment */
@@ -21266,18 +20859,15 @@ export type GitHub_UpdateTeamDiscussionInput = {
   /** The Node ID of the discussion to modify. */
   id: Scalars['ID'];
   /** The updated title of the discussion. */
-  title?: Maybe<Scalars['String']>;
+  title?: InputMaybe<Scalars['String']>;
   /** The updated text of the discussion. */
-  body?: Maybe<Scalars['String']>;
-  /**
-   * The current version of the body content. If provided, this update operation
-   * will be rejected if the given version does not match the latest version on the server.
-   */
-  bodyVersion?: Maybe<Scalars['String']>;
+  body?: InputMaybe<Scalars['String']>;
+  /** The current version of the body content. If provided, this update operation will be rejected if the given version does not match the latest version on the server. */
+  bodyVersion?: InputMaybe<Scalars['String']>;
   /** If provided, sets the pinned state of the updated discussion. */
-  pinned?: Maybe<Scalars['Boolean']>;
+  pinned?: InputMaybe<Scalars['Boolean']>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UpdateTeamDiscussion */
@@ -21288,6 +20878,28 @@ export type GitHub_UpdateTeamDiscussionPayload = {
   teamDiscussion?: Maybe<GitHub_TeamDiscussion>;
 };
 
+/** Autogenerated input type of UpdateTeamsRepository */
+export type GitHub_UpdateTeamsRepositoryInput = {
+  /** Repository ID being granted access to. */
+  repositoryId: Scalars['ID'];
+  /** A list of teams being granted access. Limit: 10 */
+  teamIds: Array<Scalars['ID']>;
+  /** Permission that should be granted to the teams. */
+  permission: GitHub_RepositoryPermission;
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+};
+
+/** Autogenerated return type of UpdateTeamsRepository */
+export type GitHub_UpdateTeamsRepositoryPayload = {
+  /** A unique identifier for the client performing the mutation. */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** The repository that was updated. */
+  repository?: Maybe<GitHub_Repository>;
+  /** The teams granted permission on the repository. */
+  teams?: Maybe<Array<GitHub_Team>>;
+};
+
 /** Autogenerated input type of UpdateTopics */
 export type GitHub_UpdateTopicsInput = {
   /** The Node ID of the repository. */
@@ -21295,7 +20907,7 @@ export type GitHub_UpdateTopicsInput = {
   /** An array of topic names. */
   topicNames: Array<Scalars['String']>;
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of UpdateTopics */
@@ -21307,7 +20919,6 @@ export type GitHub_UpdateTopicsPayload = {
   /** The updated repository. */
   repository?: Maybe<GitHub_Repository>;
 };
-
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type GitHub_User = GitHub_Node & GitHub_Actor & GitHub_PackageOwner & GitHub_ProjectOwner & GitHub_ProjectNextOwner & GitHub_ProjectV2Owner & GitHub_RepositoryDiscussionAuthor & GitHub_RepositoryDiscussionCommentAuthor & GitHub_RepositoryOwner & GitHub_UniformResourceLocatable & GitHub_ProfileOwner & GitHub_Sponsorable & {
@@ -21380,10 +20991,7 @@ export type GitHub_User = GitHub_Node & GitHub_Actor & GitHub_PackageOwner & Git
   issueComments: GitHub_IssueCommentConnection;
   /** A list of issues associated with this user. */
   issues: GitHub_IssueConnection;
-  /**
-   * Showcases a selection of repositories and gists that the profile owner has
-   * either curated or that have been selected automatically based on popularity.
-   */
+  /** Showcases a selection of repositories and gists that the profile owner has either curated or that have been selected automatically based on popularity. */
   itemShowcase: GitHub_ProfileItemShowcase;
   /** The user's public profile location. */
   location?: Maybe<Scalars['String']>;
@@ -21445,15 +21053,9 @@ export type GitHub_User = GitHub_Node & GitHub_Actor & GitHub_PackageOwner & Git
   sponsorsActivities: GitHub_SponsorsActivityConnection;
   /** The GitHub Sponsors listing for this user or organization. */
   sponsorsListing?: Maybe<GitHub_SponsorsListing>;
-  /**
-   * The sponsorship from the viewer to this user/organization; that is, the
-   * sponsorship where you're the sponsor. Only returns a sponsorship if it is active.
-   */
+  /** The sponsorship from the viewer to this user/organization; that is, the sponsorship where you're the sponsor. Only returns a sponsorship if it is active. */
   sponsorshipForViewerAsSponsor?: Maybe<GitHub_Sponsorship>;
-  /**
-   * The sponsorship from this user/organization to the viewer; that is, the
-   * sponsorship you're receiving. Only returns a sponsorship if it is active.
-   */
+  /** The sponsorship from this user/organization to the viewer; that is, the sponsorship you're receiving. Only returns a sponsorship if it is active. */
   sponsorshipForViewerAsSponsorable?: Maybe<GitHub_Sponsorship>;
   /** List of sponsorship updates sent from this sponsorable to sponsors. */
   sponsorshipNewsletters: GitHub_SponsorshipNewsletterConnection;
@@ -21494,13 +21096,13 @@ export type GitHub_User = GitHub_Node & GitHub_Actor & GitHub_PackageOwner & Git
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type GitHub_UserAnyPinnableItemsArgs = {
-  type?: Maybe<GitHub_PinnableItemType>;
+  type?: InputMaybe<GitHub_PinnableItemType>;
 };
 
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type GitHub_UserAvatarUrlArgs = {
-  size?: Maybe<Scalars['Int']>;
+  size?: InputMaybe<Scalars['Int']>;
 };
 
 
@@ -21512,36 +21114,36 @@ export type GitHub_UserCanReceiveOrganizationEmailsWhenNotificationsRestrictedAr
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type GitHub_UserCommitCommentsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type GitHub_UserContributionsCollectionArgs = {
-  organizationID?: Maybe<Scalars['ID']>;
-  from?: Maybe<Scalars['GitHub_DateTime']>;
-  to?: Maybe<Scalars['GitHub_DateTime']>;
+  organizationID?: InputMaybe<Scalars['ID']>;
+  from?: InputMaybe<Scalars['GitHub_DateTime']>;
+  to?: InputMaybe<Scalars['GitHub_DateTime']>;
 };
 
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type GitHub_UserFollowersArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type GitHub_UserFollowingArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
@@ -21553,27 +21155,27 @@ export type GitHub_UserGistArgs = {
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type GitHub_UserGistCommentsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type GitHub_UserGistsArgs = {
-  privacy?: Maybe<GitHub_GistPrivacy>;
-  orderBy?: Maybe<GitHub_GistOrder>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  privacy?: InputMaybe<GitHub_GistPrivacy>;
+  orderBy?: InputMaybe<GitHub_GistOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type GitHub_UserHovercardArgs = {
-  primarySubjectId?: Maybe<Scalars['ID']>;
+  primarySubjectId?: InputMaybe<Scalars['ID']>;
 };
 
 
@@ -21585,24 +21187,24 @@ export type GitHub_UserIsSponsoredByArgs = {
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type GitHub_UserIssueCommentsArgs = {
-  orderBy?: Maybe<GitHub_IssueCommentOrder>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_IssueCommentOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type GitHub_UserIssuesArgs = {
-  orderBy?: Maybe<GitHub_IssueOrder>;
-  labels?: Maybe<Array<Scalars['String']>>;
-  states?: Maybe<Array<GitHub_IssueState>>;
-  filterBy?: Maybe<GitHub_IssueFilters>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_IssueOrder>;
+  labels?: InputMaybe<Array<Scalars['String']>>;
+  states?: InputMaybe<Array<GitHub_IssueState>>;
+  filterBy?: InputMaybe<GitHub_IssueFilters>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
@@ -21620,43 +21222,43 @@ export type GitHub_UserOrganizationVerifiedDomainEmailsArgs = {
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type GitHub_UserOrganizationsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type GitHub_UserPackagesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  names?: Maybe<Array<Maybe<Scalars['String']>>>;
-  repositoryId?: Maybe<Scalars['ID']>;
-  packageType?: Maybe<GitHub_PackageType>;
-  orderBy?: Maybe<GitHub_PackageOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  names?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  repositoryId?: InputMaybe<Scalars['ID']>;
+  packageType?: InputMaybe<GitHub_PackageType>;
+  orderBy?: InputMaybe<GitHub_PackageOrder>;
 };
 
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type GitHub_UserPinnableItemsArgs = {
-  types?: Maybe<Array<GitHub_PinnableItemType>>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  types?: InputMaybe<Array<GitHub_PinnableItemType>>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type GitHub_UserPinnedItemsArgs = {
-  types?: Maybe<Array<GitHub_PinnableItemType>>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  types?: InputMaybe<Array<GitHub_PinnableItemType>>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
@@ -21674,219 +21276,219 @@ export type GitHub_UserProjectNextArgs = {
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type GitHub_UserProjectsArgs = {
-  orderBy?: Maybe<GitHub_ProjectOrder>;
-  search?: Maybe<Scalars['String']>;
-  states?: Maybe<Array<GitHub_ProjectState>>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_ProjectOrder>;
+  search?: InputMaybe<Scalars['String']>;
+  states?: InputMaybe<Array<GitHub_ProjectState>>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type GitHub_UserProjectsNextArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  query?: Maybe<Scalars['String']>;
-  sortBy?: Maybe<GitHub_ProjectNextOrderField>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  query?: InputMaybe<Scalars['String']>;
+  sortBy?: InputMaybe<GitHub_ProjectNextOrderField>;
 };
 
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type GitHub_UserPublicKeysArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type GitHub_UserPullRequestsArgs = {
-  states?: Maybe<Array<GitHub_PullRequestState>>;
-  labels?: Maybe<Array<Scalars['String']>>;
-  headRefName?: Maybe<Scalars['String']>;
-  baseRefName?: Maybe<Scalars['String']>;
-  orderBy?: Maybe<GitHub_IssueOrder>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  states?: InputMaybe<Array<GitHub_PullRequestState>>;
+  labels?: InputMaybe<Array<Scalars['String']>>;
+  headRefName?: InputMaybe<Scalars['String']>;
+  baseRefName?: InputMaybe<Scalars['String']>;
+  orderBy?: InputMaybe<GitHub_IssueOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type GitHub_UserRepositoriesArgs = {
-  privacy?: Maybe<GitHub_RepositoryPrivacy>;
-  orderBy?: Maybe<GitHub_RepositoryOrder>;
-  affiliations?: Maybe<Array<Maybe<GitHub_RepositoryAffiliation>>>;
-  ownerAffiliations?: Maybe<Array<Maybe<GitHub_RepositoryAffiliation>>>;
-  isLocked?: Maybe<Scalars['Boolean']>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  isFork?: Maybe<Scalars['Boolean']>;
+  privacy?: InputMaybe<GitHub_RepositoryPrivacy>;
+  orderBy?: InputMaybe<GitHub_RepositoryOrder>;
+  affiliations?: InputMaybe<Array<InputMaybe<GitHub_RepositoryAffiliation>>>;
+  ownerAffiliations?: InputMaybe<Array<InputMaybe<GitHub_RepositoryAffiliation>>>;
+  isLocked?: InputMaybe<Scalars['Boolean']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  isFork?: InputMaybe<Scalars['Boolean']>;
 };
 
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type GitHub_UserRepositoriesContributedToArgs = {
-  privacy?: Maybe<GitHub_RepositoryPrivacy>;
-  orderBy?: Maybe<GitHub_RepositoryOrder>;
-  isLocked?: Maybe<Scalars['Boolean']>;
-  includeUserRepositories?: Maybe<Scalars['Boolean']>;
-  contributionTypes?: Maybe<Array<Maybe<GitHub_RepositoryContributionType>>>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  privacy?: InputMaybe<GitHub_RepositoryPrivacy>;
+  orderBy?: InputMaybe<GitHub_RepositoryOrder>;
+  isLocked?: InputMaybe<Scalars['Boolean']>;
+  includeUserRepositories?: InputMaybe<Scalars['Boolean']>;
+  contributionTypes?: InputMaybe<Array<InputMaybe<GitHub_RepositoryContributionType>>>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type GitHub_UserRepositoryArgs = {
   name: Scalars['String'];
-  followRenames?: Maybe<Scalars['Boolean']>;
+  followRenames?: InputMaybe<Scalars['Boolean']>;
 };
 
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type GitHub_UserRepositoryDiscussionCommentsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  repositoryId?: Maybe<Scalars['ID']>;
-  onlyAnswers?: Maybe<Scalars['Boolean']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  repositoryId?: InputMaybe<Scalars['ID']>;
+  onlyAnswers?: InputMaybe<Scalars['Boolean']>;
 };
 
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type GitHub_UserRepositoryDiscussionsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  orderBy?: Maybe<GitHub_DiscussionOrder>;
-  repositoryId?: Maybe<Scalars['ID']>;
-  answered?: Maybe<Scalars['Boolean']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_DiscussionOrder>;
+  repositoryId?: InputMaybe<Scalars['ID']>;
+  answered?: InputMaybe<Scalars['Boolean']>;
 };
 
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type GitHub_UserSavedRepliesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  orderBy?: Maybe<GitHub_SavedReplyOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_SavedReplyOrder>;
 };
 
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type GitHub_UserSponsoringArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  orderBy?: Maybe<GitHub_SponsorOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_SponsorOrder>;
 };
 
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type GitHub_UserSponsorsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  tierId?: Maybe<Scalars['ID']>;
-  orderBy?: Maybe<GitHub_SponsorOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  tierId?: InputMaybe<Scalars['ID']>;
+  orderBy?: InputMaybe<GitHub_SponsorOrder>;
 };
 
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type GitHub_UserSponsorsActivitiesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  period?: Maybe<GitHub_SponsorsActivityPeriod>;
-  orderBy?: Maybe<GitHub_SponsorsActivityOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  period?: InputMaybe<GitHub_SponsorsActivityPeriod>;
+  orderBy?: InputMaybe<GitHub_SponsorsActivityOrder>;
 };
 
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type GitHub_UserSponsorshipNewslettersArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  orderBy?: Maybe<GitHub_SponsorshipNewsletterOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_SponsorshipNewsletterOrder>;
 };
 
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type GitHub_UserSponsorshipsAsMaintainerArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  includePrivate?: Maybe<Scalars['Boolean']>;
-  orderBy?: Maybe<GitHub_SponsorshipOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  includePrivate?: InputMaybe<Scalars['Boolean']>;
+  orderBy?: InputMaybe<GitHub_SponsorshipOrder>;
 };
 
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type GitHub_UserSponsorshipsAsSponsorArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  orderBy?: Maybe<GitHub_SponsorshipOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_SponsorshipOrder>;
 };
 
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type GitHub_UserStarredRepositoriesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
-  ownedByViewer?: Maybe<Scalars['Boolean']>;
-  orderBy?: Maybe<GitHub_StarOrder>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  ownedByViewer?: InputMaybe<Scalars['Boolean']>;
+  orderBy?: InputMaybe<GitHub_StarOrder>;
 };
 
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type GitHub_UserTopRepositoriesArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
   orderBy: GitHub_RepositoryOrder;
-  since?: Maybe<Scalars['GitHub_DateTime']>;
+  since?: InputMaybe<Scalars['GitHub_DateTime']>;
 };
 
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type GitHub_UserWatchingArgs = {
-  privacy?: Maybe<GitHub_RepositoryPrivacy>;
-  orderBy?: Maybe<GitHub_RepositoryOrder>;
-  affiliations?: Maybe<Array<Maybe<GitHub_RepositoryAffiliation>>>;
-  ownerAffiliations?: Maybe<Array<Maybe<GitHub_RepositoryAffiliation>>>;
-  isLocked?: Maybe<Scalars['Boolean']>;
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  privacy?: InputMaybe<GitHub_RepositoryPrivacy>;
+  orderBy?: InputMaybe<GitHub_RepositoryOrder>;
+  affiliations?: InputMaybe<Array<InputMaybe<GitHub_RepositoryAffiliation>>>;
+  ownerAffiliations?: InputMaybe<Array<InputMaybe<GitHub_RepositoryAffiliation>>>;
+  isLocked?: InputMaybe<Scalars['Boolean']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 /** The possible durations that a user can be blocked for. */
-export type GitHub_UserBlockDuration = 
+export type GitHub_UserBlockDuration =
   /** The user was blocked for 1 day */
   | 'ONE_DAY'
   /** The user was blocked for 3 days */
@@ -22032,7 +21634,7 @@ export type GitHub_UserStatusOrder = {
 };
 
 /** Properties by which user status connections can be ordered. */
-export type GitHub_UserStatusOrderField = 
+export type GitHub_UserStatusOrderField =
   /** Order user statuses by when they were updated. */
   | 'UPDATED_AT';
 
@@ -22098,7 +21700,7 @@ export type GitHub_VerifiableDomainOrder = {
 };
 
 /** Properties by which verifiable domain connections can be ordered. */
-export type GitHub_VerifiableDomainOrderField = 
+export type GitHub_VerifiableDomainOrderField =
   /** Order verifiable domains by the domain name. */
   | 'DOMAIN'
   /** Order verifiable domains by their creation date. */
@@ -22112,7 +21714,7 @@ export type GitHub_VerifyVerifiableDomainInput = {
   /** The ID of the verifiable domain to verify. */
   id: Scalars['ID'];
   /** A unique identifier for the client performing the mutation. */
-  clientMutationId?: Maybe<Scalars['String']>;
+  clientMutationId?: InputMaybe<Scalars['String']>;
 };
 
 /** Autogenerated return type of VerifyVerifiableDomain */
@@ -22184,59 +21786,969 @@ export type GitHub_WorkflowRun = GitHub_Node & {
 
 /** A workflow run. */
 export type GitHub_WorkflowRunDeploymentReviewsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
 /** A workflow run. */
 export type GitHub_WorkflowRunPendingDeploymentRequestsArgs = {
-  after?: Maybe<Scalars['String']>;
-  before?: Maybe<Scalars['String']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+};
+
+/** The query root of GitHub's GraphQL interface. */
+export type GitHub = {
+  /** Look up a code of conduct by its key */
+  codeOfConduct?: Maybe<GitHub_CodeOfConduct>;
+  /** Look up a code of conduct by its key */
+  codesOfConduct?: Maybe<Array<Maybe<GitHub_CodeOfConduct>>>;
+  /** Look up an enterprise by URL slug. */
+  enterprise?: Maybe<GitHub_Enterprise>;
+  /** Look up a pending enterprise administrator invitation by invitee, enterprise and role. */
+  enterpriseAdministratorInvitation?: Maybe<GitHub_EnterpriseAdministratorInvitation>;
+  /** Look up a pending enterprise administrator invitation by invitation token. */
+  enterpriseAdministratorInvitationByToken?: Maybe<GitHub_EnterpriseAdministratorInvitation>;
+  /** Look up an open source license by its key */
+  license?: Maybe<GitHub_License>;
+  /** Return a list of known open source licenses */
+  licenses: Array<Maybe<GitHub_License>>;
+  /** Get alphabetically sorted list of Marketplace categories */
+  marketplaceCategories: Array<GitHub_MarketplaceCategory>;
+  /** Look up a Marketplace category by its slug. */
+  marketplaceCategory?: Maybe<GitHub_MarketplaceCategory>;
+  /** Look up a single Marketplace listing */
+  marketplaceListing?: Maybe<GitHub_MarketplaceListing>;
+  /** Look up Marketplace listings */
+  marketplaceListings: GitHub_MarketplaceListingConnection;
+  /** Return information about the GitHub instance */
+  meta: GitHub_GitHubMetadata;
+  /** Fetches an object given its ID. */
+  node?: Maybe<GitHub_Node>;
+  /** Lookup nodes by a list of IDs. */
+  nodes: Array<Maybe<GitHub_Node>>;
+  /** Lookup a organization by login. */
+  organization?: Maybe<GitHub_Organization>;
+  /** The client's rate limit information. */
+  rateLimit?: Maybe<GitHub_RateLimit>;
+  /** Hack to workaround https://github.com/facebook/relay/issues/112 re-exposing the root query object */
+  relay: Query;
+  /** Lookup a given repository by the owner and repository name. */
+  repository?: Maybe<GitHub_Repository>;
+  /** Lookup a repository owner (ie. either a User or an Organization) by login. */
+  repositoryOwner?: Maybe<GitHub_RepositoryOwner>;
+  /** Lookup resource by a URL. */
+  resource?: Maybe<GitHub_UniformResourceLocatable>;
+  /** Perform a search across resources. */
+  search: GitHub_SearchResultItemConnection;
+  /** GitHub Security Advisories */
+  securityAdvisories: GitHub_SecurityAdvisoryConnection;
+  /** Fetch a Security Advisory by its GHSA ID */
+  securityAdvisory?: Maybe<GitHub_SecurityAdvisory>;
+  /** Software Vulnerabilities documented by GitHub Security Advisories */
+  securityVulnerabilities: GitHub_SecurityVulnerabilityConnection;
+  /** Users and organizations who can be sponsored via GitHub Sponsors. */
+  sponsorables: GitHub_SponsorableItemConnection;
+  /** Look up a topic by name. */
+  topic?: Maybe<GitHub_Topic>;
+  /** Lookup a user by login. */
+  user?: Maybe<GitHub_User>;
+  /** The currently authenticated user. */
+  viewer: GitHub_User;
 };
 
 
-export type GraphQlSource = Node & {
+/** The query root of GitHub's GraphQL interface. */
+export type GitHubCodeOfConductArgs = {
+  key: Scalars['String'];
+};
+
+
+/** The query root of GitHub's GraphQL interface. */
+export type GitHubEnterpriseArgs = {
+  slug: Scalars['String'];
+  invitationToken?: InputMaybe<Scalars['String']>;
+};
+
+
+/** The query root of GitHub's GraphQL interface. */
+export type GitHubEnterpriseAdministratorInvitationArgs = {
+  userLogin: Scalars['String'];
+  enterpriseSlug: Scalars['String'];
+  role: GitHub_EnterpriseAdministratorRole;
+};
+
+
+/** The query root of GitHub's GraphQL interface. */
+export type GitHubEnterpriseAdministratorInvitationByTokenArgs = {
+  invitationToken: Scalars['String'];
+};
+
+
+/** The query root of GitHub's GraphQL interface. */
+export type GitHubLicenseArgs = {
+  key: Scalars['String'];
+};
+
+
+/** The query root of GitHub's GraphQL interface. */
+export type GitHubMarketplaceCategoriesArgs = {
+  includeCategories?: InputMaybe<Array<Scalars['String']>>;
+  excludeEmpty?: InputMaybe<Scalars['Boolean']>;
+  excludeSubcategories?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+/** The query root of GitHub's GraphQL interface. */
+export type GitHubMarketplaceCategoryArgs = {
+  slug: Scalars['String'];
+  useTopicAliases?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+/** The query root of GitHub's GraphQL interface. */
+export type GitHubMarketplaceListingArgs = {
+  slug: Scalars['String'];
+};
+
+
+/** The query root of GitHub's GraphQL interface. */
+export type GitHubMarketplaceListingsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  categorySlug?: InputMaybe<Scalars['String']>;
+  useTopicAliases?: InputMaybe<Scalars['Boolean']>;
+  viewerCanAdmin?: InputMaybe<Scalars['Boolean']>;
+  adminId?: InputMaybe<Scalars['ID']>;
+  organizationId?: InputMaybe<Scalars['ID']>;
+  allStates?: InputMaybe<Scalars['Boolean']>;
+  slugs?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  primaryCategoryOnly?: InputMaybe<Scalars['Boolean']>;
+  withFreeTrialsOnly?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+/** The query root of GitHub's GraphQL interface. */
+export type GitHubNodeArgs = {
   id: Scalars['ID'];
-  parent?: Maybe<Node>;
-  children: Array<Node>;
-  internal: Internal;
-  typeName?: Maybe<Scalars['String']>;
-  fieldName?: Maybe<Scalars['String']>;
 };
 
-export type GraphQlSourceConnection = {
+
+/** The query root of GitHub's GraphQL interface. */
+export type GitHubNodesArgs = {
+  ids: Array<Scalars['ID']>;
+};
+
+
+/** The query root of GitHub's GraphQL interface. */
+export type GitHubOrganizationArgs = {
+  login: Scalars['String'];
+};
+
+
+/** The query root of GitHub's GraphQL interface. */
+export type GitHubRateLimitArgs = {
+  dryRun?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+/** The query root of GitHub's GraphQL interface. */
+export type GitHubRepositoryArgs = {
+  owner: Scalars['String'];
+  name: Scalars['String'];
+  followRenames?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+/** The query root of GitHub's GraphQL interface. */
+export type GitHubRepositoryOwnerArgs = {
+  login: Scalars['String'];
+};
+
+
+/** The query root of GitHub's GraphQL interface. */
+export type GitHubResourceArgs = {
+  url: Scalars['GitHub_URI'];
+};
+
+
+/** The query root of GitHub's GraphQL interface. */
+export type GitHubSearchArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  query: Scalars['String'];
+  type: GitHub_SearchType;
+};
+
+
+/** The query root of GitHub's GraphQL interface. */
+export type GitHubSecurityAdvisoriesArgs = {
+  orderBy?: InputMaybe<GitHub_SecurityAdvisoryOrder>;
+  identifier?: InputMaybe<GitHub_SecurityAdvisoryIdentifierFilter>;
+  publishedSince?: InputMaybe<Scalars['GitHub_DateTime']>;
+  updatedSince?: InputMaybe<Scalars['GitHub_DateTime']>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+};
+
+
+/** The query root of GitHub's GraphQL interface. */
+export type GitHubSecurityAdvisoryArgs = {
+  ghsaId: Scalars['String'];
+};
+
+
+/** The query root of GitHub's GraphQL interface. */
+export type GitHubSecurityVulnerabilitiesArgs = {
+  orderBy?: InputMaybe<GitHub_SecurityVulnerabilityOrder>;
+  ecosystem?: InputMaybe<GitHub_SecurityAdvisoryEcosystem>;
+  package?: InputMaybe<Scalars['String']>;
+  severities?: InputMaybe<Array<GitHub_SecurityAdvisorySeverity>>;
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+};
+
+
+/** The query root of GitHub's GraphQL interface. */
+export type GitHubSponsorablesArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GitHub_SponsorableOrder>;
+  onlyDependencies?: InputMaybe<Scalars['Boolean']>;
+  orgLoginForDependencies?: InputMaybe<Scalars['String']>;
+  dependencyEcosystem?: InputMaybe<GitHub_SecurityAdvisoryEcosystem>;
+  ecosystem?: InputMaybe<GitHub_DependencyGraphEcosystem>;
+};
+
+
+/** The query root of GitHub's GraphQL interface. */
+export type GitHubTopicArgs = {
+  name: Scalars['String'];
+};
+
+
+/** The query root of GitHub's GraphQL interface. */
+export type GitHubUserArgs = {
+  login: Scalars['String'];
+};
+
+export type Query = {
+  file?: Maybe<File>;
+  allFile: FileConnection;
+  directory?: Maybe<Directory>;
+  allDirectory: DirectoryConnection;
+  site?: Maybe<Site>;
+  allSite: SiteConnection;
+  siteFunction?: Maybe<SiteFunction>;
+  allSiteFunction: SiteFunctionConnection;
+  sitePage?: Maybe<SitePage>;
+  allSitePage: SitePageConnection;
+  sitePlugin?: Maybe<SitePlugin>;
+  allSitePlugin: SitePluginConnection;
+  siteBuildMetadata?: Maybe<SiteBuildMetadata>;
+  allSiteBuildMetadata: SiteBuildMetadataConnection;
+  imageSharp?: Maybe<ImageSharp>;
+  allImageSharp: ImageSharpConnection;
+  qiitaPost?: Maybe<QiitaPost>;
+  allQiitaPost: QiitaPostConnection;
+  microcmsPosts?: Maybe<MicrocmsPosts>;
+  allMicrocmsPosts: MicrocmsPostsConnection;
+  graphQlSource?: Maybe<GraphQlSource>;
+  allGraphQlSource: GraphQlSourceConnection;
+  github: GitHub;
+};
+
+
+export type QueryFileArgs = {
+  sourceInstanceName?: InputMaybe<StringQueryOperatorInput>;
+  absolutePath?: InputMaybe<StringQueryOperatorInput>;
+  relativePath?: InputMaybe<StringQueryOperatorInput>;
+  extension?: InputMaybe<StringQueryOperatorInput>;
+  size?: InputMaybe<IntQueryOperatorInput>;
+  prettySize?: InputMaybe<StringQueryOperatorInput>;
+  modifiedTime?: InputMaybe<DateQueryOperatorInput>;
+  accessTime?: InputMaybe<DateQueryOperatorInput>;
+  changeTime?: InputMaybe<DateQueryOperatorInput>;
+  birthTime?: InputMaybe<DateQueryOperatorInput>;
+  root?: InputMaybe<StringQueryOperatorInput>;
+  dir?: InputMaybe<StringQueryOperatorInput>;
+  base?: InputMaybe<StringQueryOperatorInput>;
+  ext?: InputMaybe<StringQueryOperatorInput>;
+  name?: InputMaybe<StringQueryOperatorInput>;
+  relativeDirectory?: InputMaybe<StringQueryOperatorInput>;
+  dev?: InputMaybe<IntQueryOperatorInput>;
+  mode?: InputMaybe<IntQueryOperatorInput>;
+  nlink?: InputMaybe<IntQueryOperatorInput>;
+  uid?: InputMaybe<IntQueryOperatorInput>;
+  gid?: InputMaybe<IntQueryOperatorInput>;
+  rdev?: InputMaybe<IntQueryOperatorInput>;
+  ino?: InputMaybe<FloatQueryOperatorInput>;
+  atimeMs?: InputMaybe<FloatQueryOperatorInput>;
+  mtimeMs?: InputMaybe<FloatQueryOperatorInput>;
+  ctimeMs?: InputMaybe<FloatQueryOperatorInput>;
+  atime?: InputMaybe<DateQueryOperatorInput>;
+  mtime?: InputMaybe<DateQueryOperatorInput>;
+  ctime?: InputMaybe<DateQueryOperatorInput>;
+  birthtime?: InputMaybe<DateQueryOperatorInput>;
+  birthtimeMs?: InputMaybe<FloatQueryOperatorInput>;
+  blksize?: InputMaybe<IntQueryOperatorInput>;
+  blocks?: InputMaybe<IntQueryOperatorInput>;
+  publicURL?: InputMaybe<StringQueryOperatorInput>;
+  childrenImageSharp?: InputMaybe<ImageSharpFilterListInput>;
+  childImageSharp?: InputMaybe<ImageSharpFilterInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+};
+
+
+export type QueryAllFileArgs = {
+  filter?: InputMaybe<FileFilterInput>;
+  sort?: InputMaybe<FileSortInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type QueryDirectoryArgs = {
+  sourceInstanceName?: InputMaybe<StringQueryOperatorInput>;
+  absolutePath?: InputMaybe<StringQueryOperatorInput>;
+  relativePath?: InputMaybe<StringQueryOperatorInput>;
+  extension?: InputMaybe<StringQueryOperatorInput>;
+  size?: InputMaybe<IntQueryOperatorInput>;
+  prettySize?: InputMaybe<StringQueryOperatorInput>;
+  modifiedTime?: InputMaybe<DateQueryOperatorInput>;
+  accessTime?: InputMaybe<DateQueryOperatorInput>;
+  changeTime?: InputMaybe<DateQueryOperatorInput>;
+  birthTime?: InputMaybe<DateQueryOperatorInput>;
+  root?: InputMaybe<StringQueryOperatorInput>;
+  dir?: InputMaybe<StringQueryOperatorInput>;
+  base?: InputMaybe<StringQueryOperatorInput>;
+  ext?: InputMaybe<StringQueryOperatorInput>;
+  name?: InputMaybe<StringQueryOperatorInput>;
+  relativeDirectory?: InputMaybe<StringQueryOperatorInput>;
+  dev?: InputMaybe<IntQueryOperatorInput>;
+  mode?: InputMaybe<IntQueryOperatorInput>;
+  nlink?: InputMaybe<IntQueryOperatorInput>;
+  uid?: InputMaybe<IntQueryOperatorInput>;
+  gid?: InputMaybe<IntQueryOperatorInput>;
+  rdev?: InputMaybe<IntQueryOperatorInput>;
+  ino?: InputMaybe<FloatQueryOperatorInput>;
+  atimeMs?: InputMaybe<FloatQueryOperatorInput>;
+  mtimeMs?: InputMaybe<FloatQueryOperatorInput>;
+  ctimeMs?: InputMaybe<FloatQueryOperatorInput>;
+  atime?: InputMaybe<DateQueryOperatorInput>;
+  mtime?: InputMaybe<DateQueryOperatorInput>;
+  ctime?: InputMaybe<DateQueryOperatorInput>;
+  birthtime?: InputMaybe<DateQueryOperatorInput>;
+  birthtimeMs?: InputMaybe<FloatQueryOperatorInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+};
+
+
+export type QueryAllDirectoryArgs = {
+  filter?: InputMaybe<DirectoryFilterInput>;
+  sort?: InputMaybe<DirectorySortInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type QuerySiteArgs = {
+  buildTime?: InputMaybe<DateQueryOperatorInput>;
+  siteMetadata?: InputMaybe<SiteSiteMetadataFilterInput>;
+  port?: InputMaybe<IntQueryOperatorInput>;
+  host?: InputMaybe<StringQueryOperatorInput>;
+  polyfill?: InputMaybe<BooleanQueryOperatorInput>;
+  pathPrefix?: InputMaybe<StringQueryOperatorInput>;
+  jsxRuntime?: InputMaybe<StringQueryOperatorInput>;
+  trailingSlash?: InputMaybe<StringQueryOperatorInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+};
+
+
+export type QueryAllSiteArgs = {
+  filter?: InputMaybe<SiteFilterInput>;
+  sort?: InputMaybe<SiteSortInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type QuerySiteFunctionArgs = {
+  functionRoute?: InputMaybe<StringQueryOperatorInput>;
+  pluginName?: InputMaybe<StringQueryOperatorInput>;
+  originalAbsoluteFilePath?: InputMaybe<StringQueryOperatorInput>;
+  originalRelativeFilePath?: InputMaybe<StringQueryOperatorInput>;
+  relativeCompiledFilePath?: InputMaybe<StringQueryOperatorInput>;
+  absoluteCompiledFilePath?: InputMaybe<StringQueryOperatorInput>;
+  matchPath?: InputMaybe<StringQueryOperatorInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+};
+
+
+export type QueryAllSiteFunctionArgs = {
+  filter?: InputMaybe<SiteFunctionFilterInput>;
+  sort?: InputMaybe<SiteFunctionSortInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type QuerySitePageArgs = {
+  path?: InputMaybe<StringQueryOperatorInput>;
+  component?: InputMaybe<StringQueryOperatorInput>;
+  internalComponentName?: InputMaybe<StringQueryOperatorInput>;
+  componentChunkName?: InputMaybe<StringQueryOperatorInput>;
+  matchPath?: InputMaybe<StringQueryOperatorInput>;
+  pageContext?: InputMaybe<JsonQueryOperatorInput>;
+  pluginCreator?: InputMaybe<SitePluginFilterInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+};
+
+
+export type QueryAllSitePageArgs = {
+  filter?: InputMaybe<SitePageFilterInput>;
+  sort?: InputMaybe<SitePageSortInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type QuerySitePluginArgs = {
+  resolve?: InputMaybe<StringQueryOperatorInput>;
+  name?: InputMaybe<StringQueryOperatorInput>;
+  version?: InputMaybe<StringQueryOperatorInput>;
+  nodeAPIs?: InputMaybe<StringQueryOperatorInput>;
+  browserAPIs?: InputMaybe<StringQueryOperatorInput>;
+  ssrAPIs?: InputMaybe<StringQueryOperatorInput>;
+  pluginFilepath?: InputMaybe<StringQueryOperatorInput>;
+  pluginOptions?: InputMaybe<JsonQueryOperatorInput>;
+  packageJson?: InputMaybe<JsonQueryOperatorInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+};
+
+
+export type QueryAllSitePluginArgs = {
+  filter?: InputMaybe<SitePluginFilterInput>;
+  sort?: InputMaybe<SitePluginSortInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type QuerySiteBuildMetadataArgs = {
+  buildTime?: InputMaybe<DateQueryOperatorInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+};
+
+
+export type QueryAllSiteBuildMetadataArgs = {
+  filter?: InputMaybe<SiteBuildMetadataFilterInput>;
+  sort?: InputMaybe<SiteBuildMetadataSortInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type QueryImageSharpArgs = {
+  fixed?: InputMaybe<ImageSharpFixedFilterInput>;
+  fluid?: InputMaybe<ImageSharpFluidFilterInput>;
+  gatsbyImageData?: InputMaybe<JsonQueryOperatorInput>;
+  original?: InputMaybe<ImageSharpOriginalFilterInput>;
+  resize?: InputMaybe<ImageSharpResizeFilterInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+};
+
+
+export type QueryAllImageSharpArgs = {
+  filter?: InputMaybe<ImageSharpFilterInput>;
+  sort?: InputMaybe<ImageSharpSortInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type QueryQiitaPostArgs = {
+  id?: InputMaybe<StringQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+  rendered_body?: InputMaybe<StringQueryOperatorInput>;
+  body?: InputMaybe<StringQueryOperatorInput>;
+  coediting?: InputMaybe<BooleanQueryOperatorInput>;
+  comments_count?: InputMaybe<IntQueryOperatorInput>;
+  created_at?: InputMaybe<DateQueryOperatorInput>;
+  likes_count?: InputMaybe<IntQueryOperatorInput>;
+  private?: InputMaybe<BooleanQueryOperatorInput>;
+  reactions_count?: InputMaybe<IntQueryOperatorInput>;
+  tags?: InputMaybe<QiitaPostTagsFilterListInput>;
+  title?: InputMaybe<StringQueryOperatorInput>;
+  updated_at?: InputMaybe<DateQueryOperatorInput>;
+  url?: InputMaybe<StringQueryOperatorInput>;
+  user?: InputMaybe<QiitaPostUserFilterInput>;
+  page_views_count?: InputMaybe<IntQueryOperatorInput>;
+  headings?: InputMaybe<QiitaHeadingFilterListInput>;
+};
+
+
+export type QueryAllQiitaPostArgs = {
+  filter?: InputMaybe<QiitaPostFilterInput>;
+  sort?: InputMaybe<QiitaPostSortInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type QueryMicrocmsPostsArgs = {
+  id?: InputMaybe<StringQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+  createdAt?: InputMaybe<DateQueryOperatorInput>;
+  updatedAt?: InputMaybe<DateQueryOperatorInput>;
+  publishedAt?: InputMaybe<DateQueryOperatorInput>;
+  revisedAt?: InputMaybe<DateQueryOperatorInput>;
+  title?: InputMaybe<StringQueryOperatorInput>;
+  body?: InputMaybe<StringQueryOperatorInput>;
+  _embedded?: InputMaybe<MicrocmsPosts_EmbeddedFilterInput>;
+  author?: InputMaybe<MicrocmsPostsAuthorFilterInput>;
+  sortIndex?: InputMaybe<IntQueryOperatorInput>;
+  postsId?: InputMaybe<StringQueryOperatorInput>;
+};
+
+
+export type QueryAllMicrocmsPostsArgs = {
+  filter?: InputMaybe<MicrocmsPostsFilterInput>;
+  sort?: InputMaybe<MicrocmsPostsSortInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type QueryGraphQlSourceArgs = {
+  id?: InputMaybe<StringQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+  typeName?: InputMaybe<StringQueryOperatorInput>;
+  fieldName?: InputMaybe<StringQueryOperatorInput>;
+};
+
+
+export type QueryAllGraphQlSourceArgs = {
+  filter?: InputMaybe<GraphQlSourceFilterInput>;
+  sort?: InputMaybe<GraphQlSourceSortInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+};
+
+export type StringQueryOperatorInput = {
+  eq?: InputMaybe<Scalars['String']>;
+  ne?: InputMaybe<Scalars['String']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  nin?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  regex?: InputMaybe<Scalars['String']>;
+  glob?: InputMaybe<Scalars['String']>;
+};
+
+export type IntQueryOperatorInput = {
+  eq?: InputMaybe<Scalars['Int']>;
+  ne?: InputMaybe<Scalars['Int']>;
+  gt?: InputMaybe<Scalars['Int']>;
+  gte?: InputMaybe<Scalars['Int']>;
+  lt?: InputMaybe<Scalars['Int']>;
+  lte?: InputMaybe<Scalars['Int']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
+  nin?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
+};
+
+export type DateQueryOperatorInput = {
+  eq?: InputMaybe<Scalars['Date']>;
+  ne?: InputMaybe<Scalars['Date']>;
+  gt?: InputMaybe<Scalars['Date']>;
+  gte?: InputMaybe<Scalars['Date']>;
+  lt?: InputMaybe<Scalars['Date']>;
+  lte?: InputMaybe<Scalars['Date']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['Date']>>>;
+  nin?: InputMaybe<Array<InputMaybe<Scalars['Date']>>>;
+};
+
+export type FloatQueryOperatorInput = {
+  eq?: InputMaybe<Scalars['Float']>;
+  ne?: InputMaybe<Scalars['Float']>;
+  gt?: InputMaybe<Scalars['Float']>;
+  gte?: InputMaybe<Scalars['Float']>;
+  lt?: InputMaybe<Scalars['Float']>;
+  lte?: InputMaybe<Scalars['Float']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
+  nin?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
+};
+
+export type ImageSharpFilterListInput = {
+  elemMatch?: InputMaybe<ImageSharpFilterInput>;
+};
+
+export type ImageSharpFilterInput = {
+  fixed?: InputMaybe<ImageSharpFixedFilterInput>;
+  fluid?: InputMaybe<ImageSharpFluidFilterInput>;
+  gatsbyImageData?: InputMaybe<JsonQueryOperatorInput>;
+  original?: InputMaybe<ImageSharpOriginalFilterInput>;
+  resize?: InputMaybe<ImageSharpResizeFilterInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+};
+
+export type ImageSharpFixedFilterInput = {
+  base64?: InputMaybe<StringQueryOperatorInput>;
+  tracedSVG?: InputMaybe<StringQueryOperatorInput>;
+  aspectRatio?: InputMaybe<FloatQueryOperatorInput>;
+  width?: InputMaybe<FloatQueryOperatorInput>;
+  height?: InputMaybe<FloatQueryOperatorInput>;
+  src?: InputMaybe<StringQueryOperatorInput>;
+  srcSet?: InputMaybe<StringQueryOperatorInput>;
+  srcWebp?: InputMaybe<StringQueryOperatorInput>;
+  srcSetWebp?: InputMaybe<StringQueryOperatorInput>;
+  originalName?: InputMaybe<StringQueryOperatorInput>;
+};
+
+export type ImageSharpFluidFilterInput = {
+  base64?: InputMaybe<StringQueryOperatorInput>;
+  tracedSVG?: InputMaybe<StringQueryOperatorInput>;
+  aspectRatio?: InputMaybe<FloatQueryOperatorInput>;
+  src?: InputMaybe<StringQueryOperatorInput>;
+  srcSet?: InputMaybe<StringQueryOperatorInput>;
+  srcWebp?: InputMaybe<StringQueryOperatorInput>;
+  srcSetWebp?: InputMaybe<StringQueryOperatorInput>;
+  sizes?: InputMaybe<StringQueryOperatorInput>;
+  originalImg?: InputMaybe<StringQueryOperatorInput>;
+  originalName?: InputMaybe<StringQueryOperatorInput>;
+  presentationWidth?: InputMaybe<IntQueryOperatorInput>;
+  presentationHeight?: InputMaybe<IntQueryOperatorInput>;
+};
+
+export type JsonQueryOperatorInput = {
+  eq?: InputMaybe<Scalars['JSON']>;
+  ne?: InputMaybe<Scalars['JSON']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>;
+  nin?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>;
+  regex?: InputMaybe<Scalars['JSON']>;
+  glob?: InputMaybe<Scalars['JSON']>;
+};
+
+export type ImageSharpOriginalFilterInput = {
+  width?: InputMaybe<FloatQueryOperatorInput>;
+  height?: InputMaybe<FloatQueryOperatorInput>;
+  src?: InputMaybe<StringQueryOperatorInput>;
+};
+
+export type ImageSharpResizeFilterInput = {
+  src?: InputMaybe<StringQueryOperatorInput>;
+  tracedSVG?: InputMaybe<StringQueryOperatorInput>;
+  width?: InputMaybe<IntQueryOperatorInput>;
+  height?: InputMaybe<IntQueryOperatorInput>;
+  aspectRatio?: InputMaybe<FloatQueryOperatorInput>;
+  originalName?: InputMaybe<StringQueryOperatorInput>;
+};
+
+export type NodeFilterInput = {
+  id?: InputMaybe<StringQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+};
+
+export type NodeFilterListInput = {
+  elemMatch?: InputMaybe<NodeFilterInput>;
+};
+
+export type InternalFilterInput = {
+  content?: InputMaybe<StringQueryOperatorInput>;
+  contentDigest?: InputMaybe<StringQueryOperatorInput>;
+  description?: InputMaybe<StringQueryOperatorInput>;
+  fieldOwners?: InputMaybe<StringQueryOperatorInput>;
+  ignoreType?: InputMaybe<BooleanQueryOperatorInput>;
+  mediaType?: InputMaybe<StringQueryOperatorInput>;
+  owner?: InputMaybe<StringQueryOperatorInput>;
+  type?: InputMaybe<StringQueryOperatorInput>;
+};
+
+export type BooleanQueryOperatorInput = {
+  eq?: InputMaybe<Scalars['Boolean']>;
+  ne?: InputMaybe<Scalars['Boolean']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['Boolean']>>>;
+  nin?: InputMaybe<Array<InputMaybe<Scalars['Boolean']>>>;
+};
+
+export type FileConnection = {
   totalCount: Scalars['Int'];
-  edges: Array<GraphQlSourceEdge>;
-  nodes: Array<GraphQlSource>;
+  edges: Array<FileEdge>;
+  nodes: Array<File>;
   pageInfo: PageInfo;
   distinct: Array<Scalars['String']>;
-  group: Array<GraphQlSourceGroupConnection>;
+  max?: Maybe<Scalars['Float']>;
+  min?: Maybe<Scalars['Float']>;
+  sum?: Maybe<Scalars['Float']>;
+  group: Array<FileGroupConnection>;
 };
 
 
-export type GraphQlSourceConnectionDistinctArgs = {
-  field: GraphQlSourceFieldsEnum;
+export type FileConnectionDistinctArgs = {
+  field: FileFieldsEnum;
 };
 
 
-export type GraphQlSourceConnectionGroupArgs = {
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-  field: GraphQlSourceFieldsEnum;
+export type FileConnectionMaxArgs = {
+  field: FileFieldsEnum;
 };
 
-export type GraphQlSourceEdge = {
-  next?: Maybe<GraphQlSource>;
-  node: GraphQlSource;
-  previous?: Maybe<GraphQlSource>;
+
+export type FileConnectionMinArgs = {
+  field: FileFieldsEnum;
 };
 
-export type GraphQlSourceFieldsEnum = 
+
+export type FileConnectionSumArgs = {
+  field: FileFieldsEnum;
+};
+
+
+export type FileConnectionGroupArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  field: FileFieldsEnum;
+};
+
+export type FileEdge = {
+  next?: Maybe<File>;
+  node: File;
+  previous?: Maybe<File>;
+};
+
+export type PageInfo = {
+  currentPage: Scalars['Int'];
+  hasPreviousPage: Scalars['Boolean'];
+  hasNextPage: Scalars['Boolean'];
+  itemCount: Scalars['Int'];
+  pageCount: Scalars['Int'];
+  perPage?: Maybe<Scalars['Int']>;
+  totalCount: Scalars['Int'];
+};
+
+export type FileFieldsEnum =
+  | 'sourceInstanceName'
+  | 'absolutePath'
+  | 'relativePath'
+  | 'extension'
+  | 'size'
+  | 'prettySize'
+  | 'modifiedTime'
+  | 'accessTime'
+  | 'changeTime'
+  | 'birthTime'
+  | 'root'
+  | 'dir'
+  | 'base'
+  | 'ext'
+  | 'name'
+  | 'relativeDirectory'
+  | 'dev'
+  | 'mode'
+  | 'nlink'
+  | 'uid'
+  | 'gid'
+  | 'rdev'
+  | 'ino'
+  | 'atimeMs'
+  | 'mtimeMs'
+  | 'ctimeMs'
+  | 'atime'
+  | 'mtime'
+  | 'ctime'
+  | 'birthtime'
+  | 'birthtimeMs'
+  | 'blksize'
+  | 'blocks'
+  | 'publicURL'
+  | 'childrenImageSharp'
+  | 'childrenImageSharp___fixed___base64'
+  | 'childrenImageSharp___fixed___tracedSVG'
+  | 'childrenImageSharp___fixed___aspectRatio'
+  | 'childrenImageSharp___fixed___width'
+  | 'childrenImageSharp___fixed___height'
+  | 'childrenImageSharp___fixed___src'
+  | 'childrenImageSharp___fixed___srcSet'
+  | 'childrenImageSharp___fixed___srcWebp'
+  | 'childrenImageSharp___fixed___srcSetWebp'
+  | 'childrenImageSharp___fixed___originalName'
+  | 'childrenImageSharp___fluid___base64'
+  | 'childrenImageSharp___fluid___tracedSVG'
+  | 'childrenImageSharp___fluid___aspectRatio'
+  | 'childrenImageSharp___fluid___src'
+  | 'childrenImageSharp___fluid___srcSet'
+  | 'childrenImageSharp___fluid___srcWebp'
+  | 'childrenImageSharp___fluid___srcSetWebp'
+  | 'childrenImageSharp___fluid___sizes'
+  | 'childrenImageSharp___fluid___originalImg'
+  | 'childrenImageSharp___fluid___originalName'
+  | 'childrenImageSharp___fluid___presentationWidth'
+  | 'childrenImageSharp___fluid___presentationHeight'
+  | 'childrenImageSharp___gatsbyImageData'
+  | 'childrenImageSharp___original___width'
+  | 'childrenImageSharp___original___height'
+  | 'childrenImageSharp___original___src'
+  | 'childrenImageSharp___resize___src'
+  | 'childrenImageSharp___resize___tracedSVG'
+  | 'childrenImageSharp___resize___width'
+  | 'childrenImageSharp___resize___height'
+  | 'childrenImageSharp___resize___aspectRatio'
+  | 'childrenImageSharp___resize___originalName'
+  | 'childrenImageSharp___id'
+  | 'childrenImageSharp___parent___id'
+  | 'childrenImageSharp___parent___parent___id'
+  | 'childrenImageSharp___parent___parent___children'
+  | 'childrenImageSharp___parent___children'
+  | 'childrenImageSharp___parent___children___id'
+  | 'childrenImageSharp___parent___children___children'
+  | 'childrenImageSharp___parent___internal___content'
+  | 'childrenImageSharp___parent___internal___contentDigest'
+  | 'childrenImageSharp___parent___internal___description'
+  | 'childrenImageSharp___parent___internal___fieldOwners'
+  | 'childrenImageSharp___parent___internal___ignoreType'
+  | 'childrenImageSharp___parent___internal___mediaType'
+  | 'childrenImageSharp___parent___internal___owner'
+  | 'childrenImageSharp___parent___internal___type'
+  | 'childrenImageSharp___children'
+  | 'childrenImageSharp___children___id'
+  | 'childrenImageSharp___children___parent___id'
+  | 'childrenImageSharp___children___parent___children'
+  | 'childrenImageSharp___children___children'
+  | 'childrenImageSharp___children___children___id'
+  | 'childrenImageSharp___children___children___children'
+  | 'childrenImageSharp___children___internal___content'
+  | 'childrenImageSharp___children___internal___contentDigest'
+  | 'childrenImageSharp___children___internal___description'
+  | 'childrenImageSharp___children___internal___fieldOwners'
+  | 'childrenImageSharp___children___internal___ignoreType'
+  | 'childrenImageSharp___children___internal___mediaType'
+  | 'childrenImageSharp___children___internal___owner'
+  | 'childrenImageSharp___children___internal___type'
+  | 'childrenImageSharp___internal___content'
+  | 'childrenImageSharp___internal___contentDigest'
+  | 'childrenImageSharp___internal___description'
+  | 'childrenImageSharp___internal___fieldOwners'
+  | 'childrenImageSharp___internal___ignoreType'
+  | 'childrenImageSharp___internal___mediaType'
+  | 'childrenImageSharp___internal___owner'
+  | 'childrenImageSharp___internal___type'
+  | 'childImageSharp___fixed___base64'
+  | 'childImageSharp___fixed___tracedSVG'
+  | 'childImageSharp___fixed___aspectRatio'
+  | 'childImageSharp___fixed___width'
+  | 'childImageSharp___fixed___height'
+  | 'childImageSharp___fixed___src'
+  | 'childImageSharp___fixed___srcSet'
+  | 'childImageSharp___fixed___srcWebp'
+  | 'childImageSharp___fixed___srcSetWebp'
+  | 'childImageSharp___fixed___originalName'
+  | 'childImageSharp___fluid___base64'
+  | 'childImageSharp___fluid___tracedSVG'
+  | 'childImageSharp___fluid___aspectRatio'
+  | 'childImageSharp___fluid___src'
+  | 'childImageSharp___fluid___srcSet'
+  | 'childImageSharp___fluid___srcWebp'
+  | 'childImageSharp___fluid___srcSetWebp'
+  | 'childImageSharp___fluid___sizes'
+  | 'childImageSharp___fluid___originalImg'
+  | 'childImageSharp___fluid___originalName'
+  | 'childImageSharp___fluid___presentationWidth'
+  | 'childImageSharp___fluid___presentationHeight'
+  | 'childImageSharp___gatsbyImageData'
+  | 'childImageSharp___original___width'
+  | 'childImageSharp___original___height'
+  | 'childImageSharp___original___src'
+  | 'childImageSharp___resize___src'
+  | 'childImageSharp___resize___tracedSVG'
+  | 'childImageSharp___resize___width'
+  | 'childImageSharp___resize___height'
+  | 'childImageSharp___resize___aspectRatio'
+  | 'childImageSharp___resize___originalName'
+  | 'childImageSharp___id'
+  | 'childImageSharp___parent___id'
+  | 'childImageSharp___parent___parent___id'
+  | 'childImageSharp___parent___parent___children'
+  | 'childImageSharp___parent___children'
+  | 'childImageSharp___parent___children___id'
+  | 'childImageSharp___parent___children___children'
+  | 'childImageSharp___parent___internal___content'
+  | 'childImageSharp___parent___internal___contentDigest'
+  | 'childImageSharp___parent___internal___description'
+  | 'childImageSharp___parent___internal___fieldOwners'
+  | 'childImageSharp___parent___internal___ignoreType'
+  | 'childImageSharp___parent___internal___mediaType'
+  | 'childImageSharp___parent___internal___owner'
+  | 'childImageSharp___parent___internal___type'
+  | 'childImageSharp___children'
+  | 'childImageSharp___children___id'
+  | 'childImageSharp___children___parent___id'
+  | 'childImageSharp___children___parent___children'
+  | 'childImageSharp___children___children'
+  | 'childImageSharp___children___children___id'
+  | 'childImageSharp___children___children___children'
+  | 'childImageSharp___children___internal___content'
+  | 'childImageSharp___children___internal___contentDigest'
+  | 'childImageSharp___children___internal___description'
+  | 'childImageSharp___children___internal___fieldOwners'
+  | 'childImageSharp___children___internal___ignoreType'
+  | 'childImageSharp___children___internal___mediaType'
+  | 'childImageSharp___children___internal___owner'
+  | 'childImageSharp___children___internal___type'
+  | 'childImageSharp___internal___content'
+  | 'childImageSharp___internal___contentDigest'
+  | 'childImageSharp___internal___description'
+  | 'childImageSharp___internal___fieldOwners'
+  | 'childImageSharp___internal___ignoreType'
+  | 'childImageSharp___internal___mediaType'
+  | 'childImageSharp___internal___owner'
+  | 'childImageSharp___internal___type'
   | 'id'
   | 'parent___id'
   | 'parent___parent___id'
@@ -22322,191 +22834,1395 @@ export type GraphQlSourceFieldsEnum =
   | 'internal___ignoreType'
   | 'internal___mediaType'
   | 'internal___owner'
-  | 'internal___type'
-  | 'typeName'
-  | 'fieldName';
+  | 'internal___type';
 
-export type GraphQlSourceFilterInput = {
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-  typeName?: Maybe<StringQueryOperatorInput>;
-  fieldName?: Maybe<StringQueryOperatorInput>;
-};
-
-export type GraphQlSourceGroupConnection = {
+export type FileGroupConnection = {
   totalCount: Scalars['Int'];
-  edges: Array<GraphQlSourceEdge>;
-  nodes: Array<GraphQlSource>;
+  edges: Array<FileEdge>;
+  nodes: Array<File>;
   pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  max?: Maybe<Scalars['Float']>;
+  min?: Maybe<Scalars['Float']>;
+  sum?: Maybe<Scalars['Float']>;
+  group: Array<FileGroupConnection>;
   field: Scalars['String'];
   fieldValue?: Maybe<Scalars['String']>;
 };
 
-export type GraphQlSourceSortInput = {
-  fields?: Maybe<Array<Maybe<GraphQlSourceFieldsEnum>>>;
-  order?: Maybe<Array<Maybe<SortOrderEnum>>>;
-};
 
-export type ImageCropFocus = 
-  | 'CENTER'
-  | 'NORTH'
-  | 'NORTHEAST'
-  | 'EAST'
-  | 'SOUTHEAST'
-  | 'SOUTH'
-  | 'SOUTHWEST'
-  | 'WEST'
-  | 'NORTHWEST'
-  | 'ENTROPY'
-  | 'ATTENTION';
-
-export type ImageFit = 
-  | 'COVER'
-  | 'CONTAIN'
-  | 'FILL'
-  | 'INSIDE'
-  | 'OUTSIDE';
-
-export type ImageFormat = 
-  | 'NO_CHANGE'
-  | 'JPG'
-  | 'PNG'
-  | 'WEBP';
-
-export type ImageSharp = Node & {
-  fixed?: Maybe<ImageSharpFixed>;
-  /** @deprecated Resolutions was deprecated in Gatsby v2. It's been renamed to "fixed" https://example.com/write-docs-and-fix-this-example-link */
-  resolutions?: Maybe<ImageSharpResolutions>;
-  fluid?: Maybe<ImageSharpFluid>;
-  /** @deprecated Sizes was deprecated in Gatsby v2. It's been renamed to "fluid" https://example.com/write-docs-and-fix-this-example-link */
-  sizes?: Maybe<ImageSharpSizes>;
-  original?: Maybe<ImageSharpOriginal>;
-  resize?: Maybe<ImageSharpResize>;
-  id: Scalars['ID'];
-  parent?: Maybe<Node>;
-  children: Array<Node>;
-  internal: Internal;
+export type FileGroupConnectionDistinctArgs = {
+  field: FileFieldsEnum;
 };
 
 
-export type ImageSharpFixedArgs = {
-  width?: Maybe<Scalars['Int']>;
-  height?: Maybe<Scalars['Int']>;
-  base64Width?: Maybe<Scalars['Int']>;
-  jpegProgressive?: Maybe<Scalars['Boolean']>;
-  pngCompressionSpeed?: Maybe<Scalars['Int']>;
-  grayscale?: Maybe<Scalars['Boolean']>;
-  duotone?: Maybe<DuotoneGradient>;
-  traceSVG?: Maybe<Potrace>;
-  quality?: Maybe<Scalars['Int']>;
-  jpegQuality?: Maybe<Scalars['Int']>;
-  pngQuality?: Maybe<Scalars['Int']>;
-  webpQuality?: Maybe<Scalars['Int']>;
-  toFormat?: Maybe<ImageFormat>;
-  toFormatBase64?: Maybe<ImageFormat>;
-  cropFocus?: Maybe<ImageCropFocus>;
-  fit?: Maybe<ImageFit>;
-  background?: Maybe<Scalars['String']>;
-  rotate?: Maybe<Scalars['Int']>;
-  trim?: Maybe<Scalars['Float']>;
+export type FileGroupConnectionMaxArgs = {
+  field: FileFieldsEnum;
 };
 
 
-export type ImageSharpResolutionsArgs = {
-  width?: Maybe<Scalars['Int']>;
-  height?: Maybe<Scalars['Int']>;
-  base64Width?: Maybe<Scalars['Int']>;
-  jpegProgressive?: Maybe<Scalars['Boolean']>;
-  pngCompressionSpeed?: Maybe<Scalars['Int']>;
-  grayscale?: Maybe<Scalars['Boolean']>;
-  duotone?: Maybe<DuotoneGradient>;
-  traceSVG?: Maybe<Potrace>;
-  quality?: Maybe<Scalars['Int']>;
-  jpegQuality?: Maybe<Scalars['Int']>;
-  pngQuality?: Maybe<Scalars['Int']>;
-  webpQuality?: Maybe<Scalars['Int']>;
-  toFormat?: Maybe<ImageFormat>;
-  toFormatBase64?: Maybe<ImageFormat>;
-  cropFocus?: Maybe<ImageCropFocus>;
-  fit?: Maybe<ImageFit>;
-  background?: Maybe<Scalars['String']>;
-  rotate?: Maybe<Scalars['Int']>;
-  trim?: Maybe<Scalars['Float']>;
+export type FileGroupConnectionMinArgs = {
+  field: FileFieldsEnum;
 };
 
 
-export type ImageSharpFluidArgs = {
-  maxWidth?: Maybe<Scalars['Int']>;
-  maxHeight?: Maybe<Scalars['Int']>;
-  base64Width?: Maybe<Scalars['Int']>;
-  grayscale?: Maybe<Scalars['Boolean']>;
-  jpegProgressive?: Maybe<Scalars['Boolean']>;
-  pngCompressionSpeed?: Maybe<Scalars['Int']>;
-  duotone?: Maybe<DuotoneGradient>;
-  traceSVG?: Maybe<Potrace>;
-  quality?: Maybe<Scalars['Int']>;
-  jpegQuality?: Maybe<Scalars['Int']>;
-  pngQuality?: Maybe<Scalars['Int']>;
-  webpQuality?: Maybe<Scalars['Int']>;
-  toFormat?: Maybe<ImageFormat>;
-  toFormatBase64?: Maybe<ImageFormat>;
-  cropFocus?: Maybe<ImageCropFocus>;
-  fit?: Maybe<ImageFit>;
-  background?: Maybe<Scalars['String']>;
-  rotate?: Maybe<Scalars['Int']>;
-  trim?: Maybe<Scalars['Float']>;
-  sizes?: Maybe<Scalars['String']>;
-  srcSetBreakpoints?: Maybe<Array<Maybe<Scalars['Int']>>>;
+export type FileGroupConnectionSumArgs = {
+  field: FileFieldsEnum;
 };
 
 
-export type ImageSharpSizesArgs = {
-  maxWidth?: Maybe<Scalars['Int']>;
-  maxHeight?: Maybe<Scalars['Int']>;
-  base64Width?: Maybe<Scalars['Int']>;
-  grayscale?: Maybe<Scalars['Boolean']>;
-  jpegProgressive?: Maybe<Scalars['Boolean']>;
-  pngCompressionSpeed?: Maybe<Scalars['Int']>;
-  duotone?: Maybe<DuotoneGradient>;
-  traceSVG?: Maybe<Potrace>;
-  quality?: Maybe<Scalars['Int']>;
-  jpegQuality?: Maybe<Scalars['Int']>;
-  pngQuality?: Maybe<Scalars['Int']>;
-  webpQuality?: Maybe<Scalars['Int']>;
-  toFormat?: Maybe<ImageFormat>;
-  toFormatBase64?: Maybe<ImageFormat>;
-  cropFocus?: Maybe<ImageCropFocus>;
-  fit?: Maybe<ImageFit>;
-  background?: Maybe<Scalars['String']>;
-  rotate?: Maybe<Scalars['Int']>;
-  trim?: Maybe<Scalars['Float']>;
-  sizes?: Maybe<Scalars['String']>;
-  srcSetBreakpoints?: Maybe<Array<Maybe<Scalars['Int']>>>;
+export type FileGroupConnectionGroupArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  field: FileFieldsEnum;
+};
+
+export type FileFilterInput = {
+  sourceInstanceName?: InputMaybe<StringQueryOperatorInput>;
+  absolutePath?: InputMaybe<StringQueryOperatorInput>;
+  relativePath?: InputMaybe<StringQueryOperatorInput>;
+  extension?: InputMaybe<StringQueryOperatorInput>;
+  size?: InputMaybe<IntQueryOperatorInput>;
+  prettySize?: InputMaybe<StringQueryOperatorInput>;
+  modifiedTime?: InputMaybe<DateQueryOperatorInput>;
+  accessTime?: InputMaybe<DateQueryOperatorInput>;
+  changeTime?: InputMaybe<DateQueryOperatorInput>;
+  birthTime?: InputMaybe<DateQueryOperatorInput>;
+  root?: InputMaybe<StringQueryOperatorInput>;
+  dir?: InputMaybe<StringQueryOperatorInput>;
+  base?: InputMaybe<StringQueryOperatorInput>;
+  ext?: InputMaybe<StringQueryOperatorInput>;
+  name?: InputMaybe<StringQueryOperatorInput>;
+  relativeDirectory?: InputMaybe<StringQueryOperatorInput>;
+  dev?: InputMaybe<IntQueryOperatorInput>;
+  mode?: InputMaybe<IntQueryOperatorInput>;
+  nlink?: InputMaybe<IntQueryOperatorInput>;
+  uid?: InputMaybe<IntQueryOperatorInput>;
+  gid?: InputMaybe<IntQueryOperatorInput>;
+  rdev?: InputMaybe<IntQueryOperatorInput>;
+  ino?: InputMaybe<FloatQueryOperatorInput>;
+  atimeMs?: InputMaybe<FloatQueryOperatorInput>;
+  mtimeMs?: InputMaybe<FloatQueryOperatorInput>;
+  ctimeMs?: InputMaybe<FloatQueryOperatorInput>;
+  atime?: InputMaybe<DateQueryOperatorInput>;
+  mtime?: InputMaybe<DateQueryOperatorInput>;
+  ctime?: InputMaybe<DateQueryOperatorInput>;
+  birthtime?: InputMaybe<DateQueryOperatorInput>;
+  birthtimeMs?: InputMaybe<FloatQueryOperatorInput>;
+  blksize?: InputMaybe<IntQueryOperatorInput>;
+  blocks?: InputMaybe<IntQueryOperatorInput>;
+  publicURL?: InputMaybe<StringQueryOperatorInput>;
+  childrenImageSharp?: InputMaybe<ImageSharpFilterListInput>;
+  childImageSharp?: InputMaybe<ImageSharpFilterInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+};
+
+export type FileSortInput = {
+  fields?: InputMaybe<Array<InputMaybe<FileFieldsEnum>>>;
+  order?: InputMaybe<Array<InputMaybe<SortOrderEnum>>>;
+};
+
+export type SortOrderEnum =
+  | 'ASC'
+  | 'DESC';
+
+export type DirectoryConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<DirectoryEdge>;
+  nodes: Array<Directory>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  max?: Maybe<Scalars['Float']>;
+  min?: Maybe<Scalars['Float']>;
+  sum?: Maybe<Scalars['Float']>;
+  group: Array<DirectoryGroupConnection>;
 };
 
 
-export type ImageSharpResizeArgs = {
-  width?: Maybe<Scalars['Int']>;
-  height?: Maybe<Scalars['Int']>;
-  quality?: Maybe<Scalars['Int']>;
-  jpegQuality?: Maybe<Scalars['Int']>;
-  pngQuality?: Maybe<Scalars['Int']>;
-  webpQuality?: Maybe<Scalars['Int']>;
-  jpegProgressive?: Maybe<Scalars['Boolean']>;
-  pngCompressionLevel?: Maybe<Scalars['Int']>;
-  pngCompressionSpeed?: Maybe<Scalars['Int']>;
-  grayscale?: Maybe<Scalars['Boolean']>;
-  duotone?: Maybe<DuotoneGradient>;
-  base64?: Maybe<Scalars['Boolean']>;
-  traceSVG?: Maybe<Potrace>;
-  toFormat?: Maybe<ImageFormat>;
-  cropFocus?: Maybe<ImageCropFocus>;
-  fit?: Maybe<ImageFit>;
-  background?: Maybe<Scalars['String']>;
-  rotate?: Maybe<Scalars['Int']>;
-  trim?: Maybe<Scalars['Float']>;
+export type DirectoryConnectionDistinctArgs = {
+  field: DirectoryFieldsEnum;
+};
+
+
+export type DirectoryConnectionMaxArgs = {
+  field: DirectoryFieldsEnum;
+};
+
+
+export type DirectoryConnectionMinArgs = {
+  field: DirectoryFieldsEnum;
+};
+
+
+export type DirectoryConnectionSumArgs = {
+  field: DirectoryFieldsEnum;
+};
+
+
+export type DirectoryConnectionGroupArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  field: DirectoryFieldsEnum;
+};
+
+export type DirectoryEdge = {
+  next?: Maybe<Directory>;
+  node: Directory;
+  previous?: Maybe<Directory>;
+};
+
+export type DirectoryFieldsEnum =
+  | 'sourceInstanceName'
+  | 'absolutePath'
+  | 'relativePath'
+  | 'extension'
+  | 'size'
+  | 'prettySize'
+  | 'modifiedTime'
+  | 'accessTime'
+  | 'changeTime'
+  | 'birthTime'
+  | 'root'
+  | 'dir'
+  | 'base'
+  | 'ext'
+  | 'name'
+  | 'relativeDirectory'
+  | 'dev'
+  | 'mode'
+  | 'nlink'
+  | 'uid'
+  | 'gid'
+  | 'rdev'
+  | 'ino'
+  | 'atimeMs'
+  | 'mtimeMs'
+  | 'ctimeMs'
+  | 'atime'
+  | 'mtime'
+  | 'ctime'
+  | 'birthtime'
+  | 'birthtimeMs'
+  | 'id'
+  | 'parent___id'
+  | 'parent___parent___id'
+  | 'parent___parent___parent___id'
+  | 'parent___parent___parent___children'
+  | 'parent___parent___children'
+  | 'parent___parent___children___id'
+  | 'parent___parent___children___children'
+  | 'parent___parent___internal___content'
+  | 'parent___parent___internal___contentDigest'
+  | 'parent___parent___internal___description'
+  | 'parent___parent___internal___fieldOwners'
+  | 'parent___parent___internal___ignoreType'
+  | 'parent___parent___internal___mediaType'
+  | 'parent___parent___internal___owner'
+  | 'parent___parent___internal___type'
+  | 'parent___children'
+  | 'parent___children___id'
+  | 'parent___children___parent___id'
+  | 'parent___children___parent___children'
+  | 'parent___children___children'
+  | 'parent___children___children___id'
+  | 'parent___children___children___children'
+  | 'parent___children___internal___content'
+  | 'parent___children___internal___contentDigest'
+  | 'parent___children___internal___description'
+  | 'parent___children___internal___fieldOwners'
+  | 'parent___children___internal___ignoreType'
+  | 'parent___children___internal___mediaType'
+  | 'parent___children___internal___owner'
+  | 'parent___children___internal___type'
+  | 'parent___internal___content'
+  | 'parent___internal___contentDigest'
+  | 'parent___internal___description'
+  | 'parent___internal___fieldOwners'
+  | 'parent___internal___ignoreType'
+  | 'parent___internal___mediaType'
+  | 'parent___internal___owner'
+  | 'parent___internal___type'
+  | 'children'
+  | 'children___id'
+  | 'children___parent___id'
+  | 'children___parent___parent___id'
+  | 'children___parent___parent___children'
+  | 'children___parent___children'
+  | 'children___parent___children___id'
+  | 'children___parent___children___children'
+  | 'children___parent___internal___content'
+  | 'children___parent___internal___contentDigest'
+  | 'children___parent___internal___description'
+  | 'children___parent___internal___fieldOwners'
+  | 'children___parent___internal___ignoreType'
+  | 'children___parent___internal___mediaType'
+  | 'children___parent___internal___owner'
+  | 'children___parent___internal___type'
+  | 'children___children'
+  | 'children___children___id'
+  | 'children___children___parent___id'
+  | 'children___children___parent___children'
+  | 'children___children___children'
+  | 'children___children___children___id'
+  | 'children___children___children___children'
+  | 'children___children___internal___content'
+  | 'children___children___internal___contentDigest'
+  | 'children___children___internal___description'
+  | 'children___children___internal___fieldOwners'
+  | 'children___children___internal___ignoreType'
+  | 'children___children___internal___mediaType'
+  | 'children___children___internal___owner'
+  | 'children___children___internal___type'
+  | 'children___internal___content'
+  | 'children___internal___contentDigest'
+  | 'children___internal___description'
+  | 'children___internal___fieldOwners'
+  | 'children___internal___ignoreType'
+  | 'children___internal___mediaType'
+  | 'children___internal___owner'
+  | 'children___internal___type'
+  | 'internal___content'
+  | 'internal___contentDigest'
+  | 'internal___description'
+  | 'internal___fieldOwners'
+  | 'internal___ignoreType'
+  | 'internal___mediaType'
+  | 'internal___owner'
+  | 'internal___type';
+
+export type DirectoryGroupConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<DirectoryEdge>;
+  nodes: Array<Directory>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  max?: Maybe<Scalars['Float']>;
+  min?: Maybe<Scalars['Float']>;
+  sum?: Maybe<Scalars['Float']>;
+  group: Array<DirectoryGroupConnection>;
+  field: Scalars['String'];
+  fieldValue?: Maybe<Scalars['String']>;
+};
+
+
+export type DirectoryGroupConnectionDistinctArgs = {
+  field: DirectoryFieldsEnum;
+};
+
+
+export type DirectoryGroupConnectionMaxArgs = {
+  field: DirectoryFieldsEnum;
+};
+
+
+export type DirectoryGroupConnectionMinArgs = {
+  field: DirectoryFieldsEnum;
+};
+
+
+export type DirectoryGroupConnectionSumArgs = {
+  field: DirectoryFieldsEnum;
+};
+
+
+export type DirectoryGroupConnectionGroupArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  field: DirectoryFieldsEnum;
+};
+
+export type DirectoryFilterInput = {
+  sourceInstanceName?: InputMaybe<StringQueryOperatorInput>;
+  absolutePath?: InputMaybe<StringQueryOperatorInput>;
+  relativePath?: InputMaybe<StringQueryOperatorInput>;
+  extension?: InputMaybe<StringQueryOperatorInput>;
+  size?: InputMaybe<IntQueryOperatorInput>;
+  prettySize?: InputMaybe<StringQueryOperatorInput>;
+  modifiedTime?: InputMaybe<DateQueryOperatorInput>;
+  accessTime?: InputMaybe<DateQueryOperatorInput>;
+  changeTime?: InputMaybe<DateQueryOperatorInput>;
+  birthTime?: InputMaybe<DateQueryOperatorInput>;
+  root?: InputMaybe<StringQueryOperatorInput>;
+  dir?: InputMaybe<StringQueryOperatorInput>;
+  base?: InputMaybe<StringQueryOperatorInput>;
+  ext?: InputMaybe<StringQueryOperatorInput>;
+  name?: InputMaybe<StringQueryOperatorInput>;
+  relativeDirectory?: InputMaybe<StringQueryOperatorInput>;
+  dev?: InputMaybe<IntQueryOperatorInput>;
+  mode?: InputMaybe<IntQueryOperatorInput>;
+  nlink?: InputMaybe<IntQueryOperatorInput>;
+  uid?: InputMaybe<IntQueryOperatorInput>;
+  gid?: InputMaybe<IntQueryOperatorInput>;
+  rdev?: InputMaybe<IntQueryOperatorInput>;
+  ino?: InputMaybe<FloatQueryOperatorInput>;
+  atimeMs?: InputMaybe<FloatQueryOperatorInput>;
+  mtimeMs?: InputMaybe<FloatQueryOperatorInput>;
+  ctimeMs?: InputMaybe<FloatQueryOperatorInput>;
+  atime?: InputMaybe<DateQueryOperatorInput>;
+  mtime?: InputMaybe<DateQueryOperatorInput>;
+  ctime?: InputMaybe<DateQueryOperatorInput>;
+  birthtime?: InputMaybe<DateQueryOperatorInput>;
+  birthtimeMs?: InputMaybe<FloatQueryOperatorInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+};
+
+export type DirectorySortInput = {
+  fields?: InputMaybe<Array<InputMaybe<DirectoryFieldsEnum>>>;
+  order?: InputMaybe<Array<InputMaybe<SortOrderEnum>>>;
+};
+
+export type SiteSiteMetadataFilterInput = {
+  title?: InputMaybe<StringQueryOperatorInput>;
+  description?: InputMaybe<StringQueryOperatorInput>;
+  author?: InputMaybe<StringQueryOperatorInput>;
+};
+
+export type SiteConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<SiteEdge>;
+  nodes: Array<Site>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  max?: Maybe<Scalars['Float']>;
+  min?: Maybe<Scalars['Float']>;
+  sum?: Maybe<Scalars['Float']>;
+  group: Array<SiteGroupConnection>;
+};
+
+
+export type SiteConnectionDistinctArgs = {
+  field: SiteFieldsEnum;
+};
+
+
+export type SiteConnectionMaxArgs = {
+  field: SiteFieldsEnum;
+};
+
+
+export type SiteConnectionMinArgs = {
+  field: SiteFieldsEnum;
+};
+
+
+export type SiteConnectionSumArgs = {
+  field: SiteFieldsEnum;
+};
+
+
+export type SiteConnectionGroupArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  field: SiteFieldsEnum;
+};
+
+export type SiteEdge = {
+  next?: Maybe<Site>;
+  node: Site;
+  previous?: Maybe<Site>;
+};
+
+export type SiteFieldsEnum =
+  | 'buildTime'
+  | 'siteMetadata___title'
+  | 'siteMetadata___description'
+  | 'siteMetadata___author'
+  | 'port'
+  | 'host'
+  | 'polyfill'
+  | 'pathPrefix'
+  | 'jsxRuntime'
+  | 'trailingSlash'
+  | 'id'
+  | 'parent___id'
+  | 'parent___parent___id'
+  | 'parent___parent___parent___id'
+  | 'parent___parent___parent___children'
+  | 'parent___parent___children'
+  | 'parent___parent___children___id'
+  | 'parent___parent___children___children'
+  | 'parent___parent___internal___content'
+  | 'parent___parent___internal___contentDigest'
+  | 'parent___parent___internal___description'
+  | 'parent___parent___internal___fieldOwners'
+  | 'parent___parent___internal___ignoreType'
+  | 'parent___parent___internal___mediaType'
+  | 'parent___parent___internal___owner'
+  | 'parent___parent___internal___type'
+  | 'parent___children'
+  | 'parent___children___id'
+  | 'parent___children___parent___id'
+  | 'parent___children___parent___children'
+  | 'parent___children___children'
+  | 'parent___children___children___id'
+  | 'parent___children___children___children'
+  | 'parent___children___internal___content'
+  | 'parent___children___internal___contentDigest'
+  | 'parent___children___internal___description'
+  | 'parent___children___internal___fieldOwners'
+  | 'parent___children___internal___ignoreType'
+  | 'parent___children___internal___mediaType'
+  | 'parent___children___internal___owner'
+  | 'parent___children___internal___type'
+  | 'parent___internal___content'
+  | 'parent___internal___contentDigest'
+  | 'parent___internal___description'
+  | 'parent___internal___fieldOwners'
+  | 'parent___internal___ignoreType'
+  | 'parent___internal___mediaType'
+  | 'parent___internal___owner'
+  | 'parent___internal___type'
+  | 'children'
+  | 'children___id'
+  | 'children___parent___id'
+  | 'children___parent___parent___id'
+  | 'children___parent___parent___children'
+  | 'children___parent___children'
+  | 'children___parent___children___id'
+  | 'children___parent___children___children'
+  | 'children___parent___internal___content'
+  | 'children___parent___internal___contentDigest'
+  | 'children___parent___internal___description'
+  | 'children___parent___internal___fieldOwners'
+  | 'children___parent___internal___ignoreType'
+  | 'children___parent___internal___mediaType'
+  | 'children___parent___internal___owner'
+  | 'children___parent___internal___type'
+  | 'children___children'
+  | 'children___children___id'
+  | 'children___children___parent___id'
+  | 'children___children___parent___children'
+  | 'children___children___children'
+  | 'children___children___children___id'
+  | 'children___children___children___children'
+  | 'children___children___internal___content'
+  | 'children___children___internal___contentDigest'
+  | 'children___children___internal___description'
+  | 'children___children___internal___fieldOwners'
+  | 'children___children___internal___ignoreType'
+  | 'children___children___internal___mediaType'
+  | 'children___children___internal___owner'
+  | 'children___children___internal___type'
+  | 'children___internal___content'
+  | 'children___internal___contentDigest'
+  | 'children___internal___description'
+  | 'children___internal___fieldOwners'
+  | 'children___internal___ignoreType'
+  | 'children___internal___mediaType'
+  | 'children___internal___owner'
+  | 'children___internal___type'
+  | 'internal___content'
+  | 'internal___contentDigest'
+  | 'internal___description'
+  | 'internal___fieldOwners'
+  | 'internal___ignoreType'
+  | 'internal___mediaType'
+  | 'internal___owner'
+  | 'internal___type';
+
+export type SiteGroupConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<SiteEdge>;
+  nodes: Array<Site>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  max?: Maybe<Scalars['Float']>;
+  min?: Maybe<Scalars['Float']>;
+  sum?: Maybe<Scalars['Float']>;
+  group: Array<SiteGroupConnection>;
+  field: Scalars['String'];
+  fieldValue?: Maybe<Scalars['String']>;
+};
+
+
+export type SiteGroupConnectionDistinctArgs = {
+  field: SiteFieldsEnum;
+};
+
+
+export type SiteGroupConnectionMaxArgs = {
+  field: SiteFieldsEnum;
+};
+
+
+export type SiteGroupConnectionMinArgs = {
+  field: SiteFieldsEnum;
+};
+
+
+export type SiteGroupConnectionSumArgs = {
+  field: SiteFieldsEnum;
+};
+
+
+export type SiteGroupConnectionGroupArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  field: SiteFieldsEnum;
+};
+
+export type SiteFilterInput = {
+  buildTime?: InputMaybe<DateQueryOperatorInput>;
+  siteMetadata?: InputMaybe<SiteSiteMetadataFilterInput>;
+  port?: InputMaybe<IntQueryOperatorInput>;
+  host?: InputMaybe<StringQueryOperatorInput>;
+  polyfill?: InputMaybe<BooleanQueryOperatorInput>;
+  pathPrefix?: InputMaybe<StringQueryOperatorInput>;
+  jsxRuntime?: InputMaybe<StringQueryOperatorInput>;
+  trailingSlash?: InputMaybe<StringQueryOperatorInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+};
+
+export type SiteSortInput = {
+  fields?: InputMaybe<Array<InputMaybe<SiteFieldsEnum>>>;
+  order?: InputMaybe<Array<InputMaybe<SortOrderEnum>>>;
+};
+
+export type SiteFunctionConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<SiteFunctionEdge>;
+  nodes: Array<SiteFunction>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  max?: Maybe<Scalars['Float']>;
+  min?: Maybe<Scalars['Float']>;
+  sum?: Maybe<Scalars['Float']>;
+  group: Array<SiteFunctionGroupConnection>;
+};
+
+
+export type SiteFunctionConnectionDistinctArgs = {
+  field: SiteFunctionFieldsEnum;
+};
+
+
+export type SiteFunctionConnectionMaxArgs = {
+  field: SiteFunctionFieldsEnum;
+};
+
+
+export type SiteFunctionConnectionMinArgs = {
+  field: SiteFunctionFieldsEnum;
+};
+
+
+export type SiteFunctionConnectionSumArgs = {
+  field: SiteFunctionFieldsEnum;
+};
+
+
+export type SiteFunctionConnectionGroupArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  field: SiteFunctionFieldsEnum;
+};
+
+export type SiteFunctionEdge = {
+  next?: Maybe<SiteFunction>;
+  node: SiteFunction;
+  previous?: Maybe<SiteFunction>;
+};
+
+export type SiteFunctionFieldsEnum =
+  | 'functionRoute'
+  | 'pluginName'
+  | 'originalAbsoluteFilePath'
+  | 'originalRelativeFilePath'
+  | 'relativeCompiledFilePath'
+  | 'absoluteCompiledFilePath'
+  | 'matchPath'
+  | 'id'
+  | 'parent___id'
+  | 'parent___parent___id'
+  | 'parent___parent___parent___id'
+  | 'parent___parent___parent___children'
+  | 'parent___parent___children'
+  | 'parent___parent___children___id'
+  | 'parent___parent___children___children'
+  | 'parent___parent___internal___content'
+  | 'parent___parent___internal___contentDigest'
+  | 'parent___parent___internal___description'
+  | 'parent___parent___internal___fieldOwners'
+  | 'parent___parent___internal___ignoreType'
+  | 'parent___parent___internal___mediaType'
+  | 'parent___parent___internal___owner'
+  | 'parent___parent___internal___type'
+  | 'parent___children'
+  | 'parent___children___id'
+  | 'parent___children___parent___id'
+  | 'parent___children___parent___children'
+  | 'parent___children___children'
+  | 'parent___children___children___id'
+  | 'parent___children___children___children'
+  | 'parent___children___internal___content'
+  | 'parent___children___internal___contentDigest'
+  | 'parent___children___internal___description'
+  | 'parent___children___internal___fieldOwners'
+  | 'parent___children___internal___ignoreType'
+  | 'parent___children___internal___mediaType'
+  | 'parent___children___internal___owner'
+  | 'parent___children___internal___type'
+  | 'parent___internal___content'
+  | 'parent___internal___contentDigest'
+  | 'parent___internal___description'
+  | 'parent___internal___fieldOwners'
+  | 'parent___internal___ignoreType'
+  | 'parent___internal___mediaType'
+  | 'parent___internal___owner'
+  | 'parent___internal___type'
+  | 'children'
+  | 'children___id'
+  | 'children___parent___id'
+  | 'children___parent___parent___id'
+  | 'children___parent___parent___children'
+  | 'children___parent___children'
+  | 'children___parent___children___id'
+  | 'children___parent___children___children'
+  | 'children___parent___internal___content'
+  | 'children___parent___internal___contentDigest'
+  | 'children___parent___internal___description'
+  | 'children___parent___internal___fieldOwners'
+  | 'children___parent___internal___ignoreType'
+  | 'children___parent___internal___mediaType'
+  | 'children___parent___internal___owner'
+  | 'children___parent___internal___type'
+  | 'children___children'
+  | 'children___children___id'
+  | 'children___children___parent___id'
+  | 'children___children___parent___children'
+  | 'children___children___children'
+  | 'children___children___children___id'
+  | 'children___children___children___children'
+  | 'children___children___internal___content'
+  | 'children___children___internal___contentDigest'
+  | 'children___children___internal___description'
+  | 'children___children___internal___fieldOwners'
+  | 'children___children___internal___ignoreType'
+  | 'children___children___internal___mediaType'
+  | 'children___children___internal___owner'
+  | 'children___children___internal___type'
+  | 'children___internal___content'
+  | 'children___internal___contentDigest'
+  | 'children___internal___description'
+  | 'children___internal___fieldOwners'
+  | 'children___internal___ignoreType'
+  | 'children___internal___mediaType'
+  | 'children___internal___owner'
+  | 'children___internal___type'
+  | 'internal___content'
+  | 'internal___contentDigest'
+  | 'internal___description'
+  | 'internal___fieldOwners'
+  | 'internal___ignoreType'
+  | 'internal___mediaType'
+  | 'internal___owner'
+  | 'internal___type';
+
+export type SiteFunctionGroupConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<SiteFunctionEdge>;
+  nodes: Array<SiteFunction>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  max?: Maybe<Scalars['Float']>;
+  min?: Maybe<Scalars['Float']>;
+  sum?: Maybe<Scalars['Float']>;
+  group: Array<SiteFunctionGroupConnection>;
+  field: Scalars['String'];
+  fieldValue?: Maybe<Scalars['String']>;
+};
+
+
+export type SiteFunctionGroupConnectionDistinctArgs = {
+  field: SiteFunctionFieldsEnum;
+};
+
+
+export type SiteFunctionGroupConnectionMaxArgs = {
+  field: SiteFunctionFieldsEnum;
+};
+
+
+export type SiteFunctionGroupConnectionMinArgs = {
+  field: SiteFunctionFieldsEnum;
+};
+
+
+export type SiteFunctionGroupConnectionSumArgs = {
+  field: SiteFunctionFieldsEnum;
+};
+
+
+export type SiteFunctionGroupConnectionGroupArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  field: SiteFunctionFieldsEnum;
+};
+
+export type SiteFunctionFilterInput = {
+  functionRoute?: InputMaybe<StringQueryOperatorInput>;
+  pluginName?: InputMaybe<StringQueryOperatorInput>;
+  originalAbsoluteFilePath?: InputMaybe<StringQueryOperatorInput>;
+  originalRelativeFilePath?: InputMaybe<StringQueryOperatorInput>;
+  relativeCompiledFilePath?: InputMaybe<StringQueryOperatorInput>;
+  absoluteCompiledFilePath?: InputMaybe<StringQueryOperatorInput>;
+  matchPath?: InputMaybe<StringQueryOperatorInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+};
+
+export type SiteFunctionSortInput = {
+  fields?: InputMaybe<Array<InputMaybe<SiteFunctionFieldsEnum>>>;
+  order?: InputMaybe<Array<InputMaybe<SortOrderEnum>>>;
+};
+
+export type SitePluginFilterInput = {
+  resolve?: InputMaybe<StringQueryOperatorInput>;
+  name?: InputMaybe<StringQueryOperatorInput>;
+  version?: InputMaybe<StringQueryOperatorInput>;
+  nodeAPIs?: InputMaybe<StringQueryOperatorInput>;
+  browserAPIs?: InputMaybe<StringQueryOperatorInput>;
+  ssrAPIs?: InputMaybe<StringQueryOperatorInput>;
+  pluginFilepath?: InputMaybe<StringQueryOperatorInput>;
+  pluginOptions?: InputMaybe<JsonQueryOperatorInput>;
+  packageJson?: InputMaybe<JsonQueryOperatorInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+};
+
+export type SitePageConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<SitePageEdge>;
+  nodes: Array<SitePage>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  max?: Maybe<Scalars['Float']>;
+  min?: Maybe<Scalars['Float']>;
+  sum?: Maybe<Scalars['Float']>;
+  group: Array<SitePageGroupConnection>;
+};
+
+
+export type SitePageConnectionDistinctArgs = {
+  field: SitePageFieldsEnum;
+};
+
+
+export type SitePageConnectionMaxArgs = {
+  field: SitePageFieldsEnum;
+};
+
+
+export type SitePageConnectionMinArgs = {
+  field: SitePageFieldsEnum;
+};
+
+
+export type SitePageConnectionSumArgs = {
+  field: SitePageFieldsEnum;
+};
+
+
+export type SitePageConnectionGroupArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  field: SitePageFieldsEnum;
+};
+
+export type SitePageEdge = {
+  next?: Maybe<SitePage>;
+  node: SitePage;
+  previous?: Maybe<SitePage>;
+};
+
+export type SitePageFieldsEnum =
+  | 'path'
+  | 'component'
+  | 'internalComponentName'
+  | 'componentChunkName'
+  | 'matchPath'
+  | 'pageContext'
+  | 'pluginCreator___resolve'
+  | 'pluginCreator___name'
+  | 'pluginCreator___version'
+  | 'pluginCreator___nodeAPIs'
+  | 'pluginCreator___browserAPIs'
+  | 'pluginCreator___ssrAPIs'
+  | 'pluginCreator___pluginFilepath'
+  | 'pluginCreator___pluginOptions'
+  | 'pluginCreator___packageJson'
+  | 'pluginCreator___id'
+  | 'pluginCreator___parent___id'
+  | 'pluginCreator___parent___parent___id'
+  | 'pluginCreator___parent___parent___children'
+  | 'pluginCreator___parent___children'
+  | 'pluginCreator___parent___children___id'
+  | 'pluginCreator___parent___children___children'
+  | 'pluginCreator___parent___internal___content'
+  | 'pluginCreator___parent___internal___contentDigest'
+  | 'pluginCreator___parent___internal___description'
+  | 'pluginCreator___parent___internal___fieldOwners'
+  | 'pluginCreator___parent___internal___ignoreType'
+  | 'pluginCreator___parent___internal___mediaType'
+  | 'pluginCreator___parent___internal___owner'
+  | 'pluginCreator___parent___internal___type'
+  | 'pluginCreator___children'
+  | 'pluginCreator___children___id'
+  | 'pluginCreator___children___parent___id'
+  | 'pluginCreator___children___parent___children'
+  | 'pluginCreator___children___children'
+  | 'pluginCreator___children___children___id'
+  | 'pluginCreator___children___children___children'
+  | 'pluginCreator___children___internal___content'
+  | 'pluginCreator___children___internal___contentDigest'
+  | 'pluginCreator___children___internal___description'
+  | 'pluginCreator___children___internal___fieldOwners'
+  | 'pluginCreator___children___internal___ignoreType'
+  | 'pluginCreator___children___internal___mediaType'
+  | 'pluginCreator___children___internal___owner'
+  | 'pluginCreator___children___internal___type'
+  | 'pluginCreator___internal___content'
+  | 'pluginCreator___internal___contentDigest'
+  | 'pluginCreator___internal___description'
+  | 'pluginCreator___internal___fieldOwners'
+  | 'pluginCreator___internal___ignoreType'
+  | 'pluginCreator___internal___mediaType'
+  | 'pluginCreator___internal___owner'
+  | 'pluginCreator___internal___type'
+  | 'id'
+  | 'parent___id'
+  | 'parent___parent___id'
+  | 'parent___parent___parent___id'
+  | 'parent___parent___parent___children'
+  | 'parent___parent___children'
+  | 'parent___parent___children___id'
+  | 'parent___parent___children___children'
+  | 'parent___parent___internal___content'
+  | 'parent___parent___internal___contentDigest'
+  | 'parent___parent___internal___description'
+  | 'parent___parent___internal___fieldOwners'
+  | 'parent___parent___internal___ignoreType'
+  | 'parent___parent___internal___mediaType'
+  | 'parent___parent___internal___owner'
+  | 'parent___parent___internal___type'
+  | 'parent___children'
+  | 'parent___children___id'
+  | 'parent___children___parent___id'
+  | 'parent___children___parent___children'
+  | 'parent___children___children'
+  | 'parent___children___children___id'
+  | 'parent___children___children___children'
+  | 'parent___children___internal___content'
+  | 'parent___children___internal___contentDigest'
+  | 'parent___children___internal___description'
+  | 'parent___children___internal___fieldOwners'
+  | 'parent___children___internal___ignoreType'
+  | 'parent___children___internal___mediaType'
+  | 'parent___children___internal___owner'
+  | 'parent___children___internal___type'
+  | 'parent___internal___content'
+  | 'parent___internal___contentDigest'
+  | 'parent___internal___description'
+  | 'parent___internal___fieldOwners'
+  | 'parent___internal___ignoreType'
+  | 'parent___internal___mediaType'
+  | 'parent___internal___owner'
+  | 'parent___internal___type'
+  | 'children'
+  | 'children___id'
+  | 'children___parent___id'
+  | 'children___parent___parent___id'
+  | 'children___parent___parent___children'
+  | 'children___parent___children'
+  | 'children___parent___children___id'
+  | 'children___parent___children___children'
+  | 'children___parent___internal___content'
+  | 'children___parent___internal___contentDigest'
+  | 'children___parent___internal___description'
+  | 'children___parent___internal___fieldOwners'
+  | 'children___parent___internal___ignoreType'
+  | 'children___parent___internal___mediaType'
+  | 'children___parent___internal___owner'
+  | 'children___parent___internal___type'
+  | 'children___children'
+  | 'children___children___id'
+  | 'children___children___parent___id'
+  | 'children___children___parent___children'
+  | 'children___children___children'
+  | 'children___children___children___id'
+  | 'children___children___children___children'
+  | 'children___children___internal___content'
+  | 'children___children___internal___contentDigest'
+  | 'children___children___internal___description'
+  | 'children___children___internal___fieldOwners'
+  | 'children___children___internal___ignoreType'
+  | 'children___children___internal___mediaType'
+  | 'children___children___internal___owner'
+  | 'children___children___internal___type'
+  | 'children___internal___content'
+  | 'children___internal___contentDigest'
+  | 'children___internal___description'
+  | 'children___internal___fieldOwners'
+  | 'children___internal___ignoreType'
+  | 'children___internal___mediaType'
+  | 'children___internal___owner'
+  | 'children___internal___type'
+  | 'internal___content'
+  | 'internal___contentDigest'
+  | 'internal___description'
+  | 'internal___fieldOwners'
+  | 'internal___ignoreType'
+  | 'internal___mediaType'
+  | 'internal___owner'
+  | 'internal___type';
+
+export type SitePageGroupConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<SitePageEdge>;
+  nodes: Array<SitePage>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  max?: Maybe<Scalars['Float']>;
+  min?: Maybe<Scalars['Float']>;
+  sum?: Maybe<Scalars['Float']>;
+  group: Array<SitePageGroupConnection>;
+  field: Scalars['String'];
+  fieldValue?: Maybe<Scalars['String']>;
+};
+
+
+export type SitePageGroupConnectionDistinctArgs = {
+  field: SitePageFieldsEnum;
+};
+
+
+export type SitePageGroupConnectionMaxArgs = {
+  field: SitePageFieldsEnum;
+};
+
+
+export type SitePageGroupConnectionMinArgs = {
+  field: SitePageFieldsEnum;
+};
+
+
+export type SitePageGroupConnectionSumArgs = {
+  field: SitePageFieldsEnum;
+};
+
+
+export type SitePageGroupConnectionGroupArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  field: SitePageFieldsEnum;
+};
+
+export type SitePageFilterInput = {
+  path?: InputMaybe<StringQueryOperatorInput>;
+  component?: InputMaybe<StringQueryOperatorInput>;
+  internalComponentName?: InputMaybe<StringQueryOperatorInput>;
+  componentChunkName?: InputMaybe<StringQueryOperatorInput>;
+  matchPath?: InputMaybe<StringQueryOperatorInput>;
+  pageContext?: InputMaybe<JsonQueryOperatorInput>;
+  pluginCreator?: InputMaybe<SitePluginFilterInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+};
+
+export type SitePageSortInput = {
+  fields?: InputMaybe<Array<InputMaybe<SitePageFieldsEnum>>>;
+  order?: InputMaybe<Array<InputMaybe<SortOrderEnum>>>;
+};
+
+export type SitePluginConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<SitePluginEdge>;
+  nodes: Array<SitePlugin>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  max?: Maybe<Scalars['Float']>;
+  min?: Maybe<Scalars['Float']>;
+  sum?: Maybe<Scalars['Float']>;
+  group: Array<SitePluginGroupConnection>;
+};
+
+
+export type SitePluginConnectionDistinctArgs = {
+  field: SitePluginFieldsEnum;
+};
+
+
+export type SitePluginConnectionMaxArgs = {
+  field: SitePluginFieldsEnum;
+};
+
+
+export type SitePluginConnectionMinArgs = {
+  field: SitePluginFieldsEnum;
+};
+
+
+export type SitePluginConnectionSumArgs = {
+  field: SitePluginFieldsEnum;
+};
+
+
+export type SitePluginConnectionGroupArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  field: SitePluginFieldsEnum;
+};
+
+export type SitePluginEdge = {
+  next?: Maybe<SitePlugin>;
+  node: SitePlugin;
+  previous?: Maybe<SitePlugin>;
+};
+
+export type SitePluginFieldsEnum =
+  | 'resolve'
+  | 'name'
+  | 'version'
+  | 'nodeAPIs'
+  | 'browserAPIs'
+  | 'ssrAPIs'
+  | 'pluginFilepath'
+  | 'pluginOptions'
+  | 'packageJson'
+  | 'id'
+  | 'parent___id'
+  | 'parent___parent___id'
+  | 'parent___parent___parent___id'
+  | 'parent___parent___parent___children'
+  | 'parent___parent___children'
+  | 'parent___parent___children___id'
+  | 'parent___parent___children___children'
+  | 'parent___parent___internal___content'
+  | 'parent___parent___internal___contentDigest'
+  | 'parent___parent___internal___description'
+  | 'parent___parent___internal___fieldOwners'
+  | 'parent___parent___internal___ignoreType'
+  | 'parent___parent___internal___mediaType'
+  | 'parent___parent___internal___owner'
+  | 'parent___parent___internal___type'
+  | 'parent___children'
+  | 'parent___children___id'
+  | 'parent___children___parent___id'
+  | 'parent___children___parent___children'
+  | 'parent___children___children'
+  | 'parent___children___children___id'
+  | 'parent___children___children___children'
+  | 'parent___children___internal___content'
+  | 'parent___children___internal___contentDigest'
+  | 'parent___children___internal___description'
+  | 'parent___children___internal___fieldOwners'
+  | 'parent___children___internal___ignoreType'
+  | 'parent___children___internal___mediaType'
+  | 'parent___children___internal___owner'
+  | 'parent___children___internal___type'
+  | 'parent___internal___content'
+  | 'parent___internal___contentDigest'
+  | 'parent___internal___description'
+  | 'parent___internal___fieldOwners'
+  | 'parent___internal___ignoreType'
+  | 'parent___internal___mediaType'
+  | 'parent___internal___owner'
+  | 'parent___internal___type'
+  | 'children'
+  | 'children___id'
+  | 'children___parent___id'
+  | 'children___parent___parent___id'
+  | 'children___parent___parent___children'
+  | 'children___parent___children'
+  | 'children___parent___children___id'
+  | 'children___parent___children___children'
+  | 'children___parent___internal___content'
+  | 'children___parent___internal___contentDigest'
+  | 'children___parent___internal___description'
+  | 'children___parent___internal___fieldOwners'
+  | 'children___parent___internal___ignoreType'
+  | 'children___parent___internal___mediaType'
+  | 'children___parent___internal___owner'
+  | 'children___parent___internal___type'
+  | 'children___children'
+  | 'children___children___id'
+  | 'children___children___parent___id'
+  | 'children___children___parent___children'
+  | 'children___children___children'
+  | 'children___children___children___id'
+  | 'children___children___children___children'
+  | 'children___children___internal___content'
+  | 'children___children___internal___contentDigest'
+  | 'children___children___internal___description'
+  | 'children___children___internal___fieldOwners'
+  | 'children___children___internal___ignoreType'
+  | 'children___children___internal___mediaType'
+  | 'children___children___internal___owner'
+  | 'children___children___internal___type'
+  | 'children___internal___content'
+  | 'children___internal___contentDigest'
+  | 'children___internal___description'
+  | 'children___internal___fieldOwners'
+  | 'children___internal___ignoreType'
+  | 'children___internal___mediaType'
+  | 'children___internal___owner'
+  | 'children___internal___type'
+  | 'internal___content'
+  | 'internal___contentDigest'
+  | 'internal___description'
+  | 'internal___fieldOwners'
+  | 'internal___ignoreType'
+  | 'internal___mediaType'
+  | 'internal___owner'
+  | 'internal___type';
+
+export type SitePluginGroupConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<SitePluginEdge>;
+  nodes: Array<SitePlugin>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  max?: Maybe<Scalars['Float']>;
+  min?: Maybe<Scalars['Float']>;
+  sum?: Maybe<Scalars['Float']>;
+  group: Array<SitePluginGroupConnection>;
+  field: Scalars['String'];
+  fieldValue?: Maybe<Scalars['String']>;
+};
+
+
+export type SitePluginGroupConnectionDistinctArgs = {
+  field: SitePluginFieldsEnum;
+};
+
+
+export type SitePluginGroupConnectionMaxArgs = {
+  field: SitePluginFieldsEnum;
+};
+
+
+export type SitePluginGroupConnectionMinArgs = {
+  field: SitePluginFieldsEnum;
+};
+
+
+export type SitePluginGroupConnectionSumArgs = {
+  field: SitePluginFieldsEnum;
+};
+
+
+export type SitePluginGroupConnectionGroupArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  field: SitePluginFieldsEnum;
+};
+
+export type SitePluginSortInput = {
+  fields?: InputMaybe<Array<InputMaybe<SitePluginFieldsEnum>>>;
+  order?: InputMaybe<Array<InputMaybe<SortOrderEnum>>>;
+};
+
+export type SiteBuildMetadataConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<SiteBuildMetadataEdge>;
+  nodes: Array<SiteBuildMetadata>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  max?: Maybe<Scalars['Float']>;
+  min?: Maybe<Scalars['Float']>;
+  sum?: Maybe<Scalars['Float']>;
+  group: Array<SiteBuildMetadataGroupConnection>;
+};
+
+
+export type SiteBuildMetadataConnectionDistinctArgs = {
+  field: SiteBuildMetadataFieldsEnum;
+};
+
+
+export type SiteBuildMetadataConnectionMaxArgs = {
+  field: SiteBuildMetadataFieldsEnum;
+};
+
+
+export type SiteBuildMetadataConnectionMinArgs = {
+  field: SiteBuildMetadataFieldsEnum;
+};
+
+
+export type SiteBuildMetadataConnectionSumArgs = {
+  field: SiteBuildMetadataFieldsEnum;
+};
+
+
+export type SiteBuildMetadataConnectionGroupArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  field: SiteBuildMetadataFieldsEnum;
+};
+
+export type SiteBuildMetadataEdge = {
+  next?: Maybe<SiteBuildMetadata>;
+  node: SiteBuildMetadata;
+  previous?: Maybe<SiteBuildMetadata>;
+};
+
+export type SiteBuildMetadataFieldsEnum =
+  | 'buildTime'
+  | 'id'
+  | 'parent___id'
+  | 'parent___parent___id'
+  | 'parent___parent___parent___id'
+  | 'parent___parent___parent___children'
+  | 'parent___parent___children'
+  | 'parent___parent___children___id'
+  | 'parent___parent___children___children'
+  | 'parent___parent___internal___content'
+  | 'parent___parent___internal___contentDigest'
+  | 'parent___parent___internal___description'
+  | 'parent___parent___internal___fieldOwners'
+  | 'parent___parent___internal___ignoreType'
+  | 'parent___parent___internal___mediaType'
+  | 'parent___parent___internal___owner'
+  | 'parent___parent___internal___type'
+  | 'parent___children'
+  | 'parent___children___id'
+  | 'parent___children___parent___id'
+  | 'parent___children___parent___children'
+  | 'parent___children___children'
+  | 'parent___children___children___id'
+  | 'parent___children___children___children'
+  | 'parent___children___internal___content'
+  | 'parent___children___internal___contentDigest'
+  | 'parent___children___internal___description'
+  | 'parent___children___internal___fieldOwners'
+  | 'parent___children___internal___ignoreType'
+  | 'parent___children___internal___mediaType'
+  | 'parent___children___internal___owner'
+  | 'parent___children___internal___type'
+  | 'parent___internal___content'
+  | 'parent___internal___contentDigest'
+  | 'parent___internal___description'
+  | 'parent___internal___fieldOwners'
+  | 'parent___internal___ignoreType'
+  | 'parent___internal___mediaType'
+  | 'parent___internal___owner'
+  | 'parent___internal___type'
+  | 'children'
+  | 'children___id'
+  | 'children___parent___id'
+  | 'children___parent___parent___id'
+  | 'children___parent___parent___children'
+  | 'children___parent___children'
+  | 'children___parent___children___id'
+  | 'children___parent___children___children'
+  | 'children___parent___internal___content'
+  | 'children___parent___internal___contentDigest'
+  | 'children___parent___internal___description'
+  | 'children___parent___internal___fieldOwners'
+  | 'children___parent___internal___ignoreType'
+  | 'children___parent___internal___mediaType'
+  | 'children___parent___internal___owner'
+  | 'children___parent___internal___type'
+  | 'children___children'
+  | 'children___children___id'
+  | 'children___children___parent___id'
+  | 'children___children___parent___children'
+  | 'children___children___children'
+  | 'children___children___children___id'
+  | 'children___children___children___children'
+  | 'children___children___internal___content'
+  | 'children___children___internal___contentDigest'
+  | 'children___children___internal___description'
+  | 'children___children___internal___fieldOwners'
+  | 'children___children___internal___ignoreType'
+  | 'children___children___internal___mediaType'
+  | 'children___children___internal___owner'
+  | 'children___children___internal___type'
+  | 'children___internal___content'
+  | 'children___internal___contentDigest'
+  | 'children___internal___description'
+  | 'children___internal___fieldOwners'
+  | 'children___internal___ignoreType'
+  | 'children___internal___mediaType'
+  | 'children___internal___owner'
+  | 'children___internal___type'
+  | 'internal___content'
+  | 'internal___contentDigest'
+  | 'internal___description'
+  | 'internal___fieldOwners'
+  | 'internal___ignoreType'
+  | 'internal___mediaType'
+  | 'internal___owner'
+  | 'internal___type';
+
+export type SiteBuildMetadataGroupConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<SiteBuildMetadataEdge>;
+  nodes: Array<SiteBuildMetadata>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  max?: Maybe<Scalars['Float']>;
+  min?: Maybe<Scalars['Float']>;
+  sum?: Maybe<Scalars['Float']>;
+  group: Array<SiteBuildMetadataGroupConnection>;
+  field: Scalars['String'];
+  fieldValue?: Maybe<Scalars['String']>;
+};
+
+
+export type SiteBuildMetadataGroupConnectionDistinctArgs = {
+  field: SiteBuildMetadataFieldsEnum;
+};
+
+
+export type SiteBuildMetadataGroupConnectionMaxArgs = {
+  field: SiteBuildMetadataFieldsEnum;
+};
+
+
+export type SiteBuildMetadataGroupConnectionMinArgs = {
+  field: SiteBuildMetadataFieldsEnum;
+};
+
+
+export type SiteBuildMetadataGroupConnectionSumArgs = {
+  field: SiteBuildMetadataFieldsEnum;
+};
+
+
+export type SiteBuildMetadataGroupConnectionGroupArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  field: SiteBuildMetadataFieldsEnum;
+};
+
+export type SiteBuildMetadataFilterInput = {
+  buildTime?: InputMaybe<DateQueryOperatorInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+};
+
+export type SiteBuildMetadataSortInput = {
+  fields?: InputMaybe<Array<InputMaybe<SiteBuildMetadataFieldsEnum>>>;
+  order?: InputMaybe<Array<InputMaybe<SortOrderEnum>>>;
 };
 
 export type ImageSharpConnection = {
@@ -22515,6 +24231,9 @@ export type ImageSharpConnection = {
   nodes: Array<ImageSharp>;
   pageInfo: PageInfo;
   distinct: Array<Scalars['String']>;
+  max?: Maybe<Scalars['Float']>;
+  min?: Maybe<Scalars['Float']>;
+  sum?: Maybe<Scalars['Float']>;
   group: Array<ImageSharpGroupConnection>;
 };
 
@@ -22524,9 +24243,24 @@ export type ImageSharpConnectionDistinctArgs = {
 };
 
 
+export type ImageSharpConnectionMaxArgs = {
+  field: ImageSharpFieldsEnum;
+};
+
+
+export type ImageSharpConnectionMinArgs = {
+  field: ImageSharpFieldsEnum;
+};
+
+
+export type ImageSharpConnectionSumArgs = {
+  field: ImageSharpFieldsEnum;
+};
+
+
 export type ImageSharpConnectionGroupArgs = {
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
   field: ImageSharpFieldsEnum;
 };
 
@@ -22536,7 +24270,7 @@ export type ImageSharpEdge = {
   previous?: Maybe<ImageSharp>;
 };
 
-export type ImageSharpFieldsEnum = 
+export type ImageSharpFieldsEnum =
   | 'fixed___base64'
   | 'fixed___tracedSVG'
   | 'fixed___aspectRatio'
@@ -22547,16 +24281,6 @@ export type ImageSharpFieldsEnum =
   | 'fixed___srcWebp'
   | 'fixed___srcSetWebp'
   | 'fixed___originalName'
-  | 'resolutions___base64'
-  | 'resolutions___tracedSVG'
-  | 'resolutions___aspectRatio'
-  | 'resolutions___width'
-  | 'resolutions___height'
-  | 'resolutions___src'
-  | 'resolutions___srcSet'
-  | 'resolutions___srcWebp'
-  | 'resolutions___srcSetWebp'
-  | 'resolutions___originalName'
   | 'fluid___base64'
   | 'fluid___tracedSVG'
   | 'fluid___aspectRatio'
@@ -22569,18 +24293,7 @@ export type ImageSharpFieldsEnum =
   | 'fluid___originalName'
   | 'fluid___presentationWidth'
   | 'fluid___presentationHeight'
-  | 'sizes___base64'
-  | 'sizes___tracedSVG'
-  | 'sizes___aspectRatio'
-  | 'sizes___src'
-  | 'sizes___srcSet'
-  | 'sizes___srcWebp'
-  | 'sizes___srcSetWebp'
-  | 'sizes___sizes'
-  | 'sizes___originalImg'
-  | 'sizes___originalName'
-  | 'sizes___presentationWidth'
-  | 'sizes___presentationHeight'
+  | 'gatsbyImageData'
   | 'original___width'
   | 'original___height'
   | 'original___src'
@@ -22677,595 +24390,98 @@ export type ImageSharpFieldsEnum =
   | 'internal___owner'
   | 'internal___type';
 
-export type ImageSharpFilterInput = {
-  fixed?: Maybe<ImageSharpFixedFilterInput>;
-  resolutions?: Maybe<ImageSharpResolutionsFilterInput>;
-  fluid?: Maybe<ImageSharpFluidFilterInput>;
-  sizes?: Maybe<ImageSharpSizesFilterInput>;
-  original?: Maybe<ImageSharpOriginalFilterInput>;
-  resize?: Maybe<ImageSharpResizeFilterInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-};
-
-export type ImageSharpFixed = {
-  base64?: Maybe<Scalars['String']>;
-  tracedSVG?: Maybe<Scalars['String']>;
-  aspectRatio?: Maybe<Scalars['Float']>;
-  width: Scalars['Float'];
-  height: Scalars['Float'];
-  src: Scalars['String'];
-  srcSet: Scalars['String'];
-  srcWebp?: Maybe<Scalars['String']>;
-  srcSetWebp?: Maybe<Scalars['String']>;
-  originalName?: Maybe<Scalars['String']>;
-};
-
-export type ImageSharpFixedFilterInput = {
-  base64?: Maybe<StringQueryOperatorInput>;
-  tracedSVG?: Maybe<StringQueryOperatorInput>;
-  aspectRatio?: Maybe<FloatQueryOperatorInput>;
-  width?: Maybe<FloatQueryOperatorInput>;
-  height?: Maybe<FloatQueryOperatorInput>;
-  src?: Maybe<StringQueryOperatorInput>;
-  srcSet?: Maybe<StringQueryOperatorInput>;
-  srcWebp?: Maybe<StringQueryOperatorInput>;
-  srcSetWebp?: Maybe<StringQueryOperatorInput>;
-  originalName?: Maybe<StringQueryOperatorInput>;
-};
-
-export type ImageSharpFluid = {
-  base64?: Maybe<Scalars['String']>;
-  tracedSVG?: Maybe<Scalars['String']>;
-  aspectRatio: Scalars['Float'];
-  src: Scalars['String'];
-  srcSet: Scalars['String'];
-  srcWebp?: Maybe<Scalars['String']>;
-  srcSetWebp?: Maybe<Scalars['String']>;
-  sizes: Scalars['String'];
-  originalImg?: Maybe<Scalars['String']>;
-  originalName?: Maybe<Scalars['String']>;
-  presentationWidth?: Maybe<Scalars['Int']>;
-  presentationHeight?: Maybe<Scalars['Int']>;
-};
-
-export type ImageSharpFluidFilterInput = {
-  base64?: Maybe<StringQueryOperatorInput>;
-  tracedSVG?: Maybe<StringQueryOperatorInput>;
-  aspectRatio?: Maybe<FloatQueryOperatorInput>;
-  src?: Maybe<StringQueryOperatorInput>;
-  srcSet?: Maybe<StringQueryOperatorInput>;
-  srcWebp?: Maybe<StringQueryOperatorInput>;
-  srcSetWebp?: Maybe<StringQueryOperatorInput>;
-  sizes?: Maybe<StringQueryOperatorInput>;
-  originalImg?: Maybe<StringQueryOperatorInput>;
-  originalName?: Maybe<StringQueryOperatorInput>;
-  presentationWidth?: Maybe<IntQueryOperatorInput>;
-  presentationHeight?: Maybe<IntQueryOperatorInput>;
-};
-
 export type ImageSharpGroupConnection = {
   totalCount: Scalars['Int'];
   edges: Array<ImageSharpEdge>;
   nodes: Array<ImageSharp>;
   pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  max?: Maybe<Scalars['Float']>;
+  min?: Maybe<Scalars['Float']>;
+  sum?: Maybe<Scalars['Float']>;
+  group: Array<ImageSharpGroupConnection>;
   field: Scalars['String'];
   fieldValue?: Maybe<Scalars['String']>;
 };
 
-export type ImageSharpOriginal = {
-  width?: Maybe<Scalars['Float']>;
-  height?: Maybe<Scalars['Float']>;
-  src?: Maybe<Scalars['String']>;
+
+export type ImageSharpGroupConnectionDistinctArgs = {
+  field: ImageSharpFieldsEnum;
 };
 
-export type ImageSharpOriginalFilterInput = {
-  width?: Maybe<FloatQueryOperatorInput>;
-  height?: Maybe<FloatQueryOperatorInput>;
-  src?: Maybe<StringQueryOperatorInput>;
+
+export type ImageSharpGroupConnectionMaxArgs = {
+  field: ImageSharpFieldsEnum;
 };
 
-export type ImageSharpResize = {
-  src?: Maybe<Scalars['String']>;
-  tracedSVG?: Maybe<Scalars['String']>;
-  width?: Maybe<Scalars['Int']>;
-  height?: Maybe<Scalars['Int']>;
-  aspectRatio?: Maybe<Scalars['Float']>;
-  originalName?: Maybe<Scalars['String']>;
+
+export type ImageSharpGroupConnectionMinArgs = {
+  field: ImageSharpFieldsEnum;
 };
 
-export type ImageSharpResizeFilterInput = {
-  src?: Maybe<StringQueryOperatorInput>;
-  tracedSVG?: Maybe<StringQueryOperatorInput>;
-  width?: Maybe<IntQueryOperatorInput>;
-  height?: Maybe<IntQueryOperatorInput>;
-  aspectRatio?: Maybe<FloatQueryOperatorInput>;
-  originalName?: Maybe<StringQueryOperatorInput>;
+
+export type ImageSharpGroupConnectionSumArgs = {
+  field: ImageSharpFieldsEnum;
 };
 
-export type ImageSharpResolutions = {
-  base64?: Maybe<Scalars['String']>;
-  tracedSVG?: Maybe<Scalars['String']>;
-  aspectRatio?: Maybe<Scalars['Float']>;
-  width: Scalars['Float'];
-  height: Scalars['Float'];
-  src: Scalars['String'];
-  srcSet: Scalars['String'];
-  srcWebp?: Maybe<Scalars['String']>;
-  srcSetWebp?: Maybe<Scalars['String']>;
-  originalName?: Maybe<Scalars['String']>;
-};
 
-export type ImageSharpResolutionsFilterInput = {
-  base64?: Maybe<StringQueryOperatorInput>;
-  tracedSVG?: Maybe<StringQueryOperatorInput>;
-  aspectRatio?: Maybe<FloatQueryOperatorInput>;
-  width?: Maybe<FloatQueryOperatorInput>;
-  height?: Maybe<FloatQueryOperatorInput>;
-  src?: Maybe<StringQueryOperatorInput>;
-  srcSet?: Maybe<StringQueryOperatorInput>;
-  srcWebp?: Maybe<StringQueryOperatorInput>;
-  srcSetWebp?: Maybe<StringQueryOperatorInput>;
-  originalName?: Maybe<StringQueryOperatorInput>;
-};
-
-export type ImageSharpSizes = {
-  base64?: Maybe<Scalars['String']>;
-  tracedSVG?: Maybe<Scalars['String']>;
-  aspectRatio: Scalars['Float'];
-  src: Scalars['String'];
-  srcSet: Scalars['String'];
-  srcWebp?: Maybe<Scalars['String']>;
-  srcSetWebp?: Maybe<Scalars['String']>;
-  sizes: Scalars['String'];
-  originalImg?: Maybe<Scalars['String']>;
-  originalName?: Maybe<Scalars['String']>;
-  presentationWidth?: Maybe<Scalars['Int']>;
-  presentationHeight?: Maybe<Scalars['Int']>;
-};
-
-export type ImageSharpSizesFilterInput = {
-  base64?: Maybe<StringQueryOperatorInput>;
-  tracedSVG?: Maybe<StringQueryOperatorInput>;
-  aspectRatio?: Maybe<FloatQueryOperatorInput>;
-  src?: Maybe<StringQueryOperatorInput>;
-  srcSet?: Maybe<StringQueryOperatorInput>;
-  srcWebp?: Maybe<StringQueryOperatorInput>;
-  srcSetWebp?: Maybe<StringQueryOperatorInput>;
-  sizes?: Maybe<StringQueryOperatorInput>;
-  originalImg?: Maybe<StringQueryOperatorInput>;
-  originalName?: Maybe<StringQueryOperatorInput>;
-  presentationWidth?: Maybe<IntQueryOperatorInput>;
-  presentationHeight?: Maybe<IntQueryOperatorInput>;
+export type ImageSharpGroupConnectionGroupArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  field: ImageSharpFieldsEnum;
 };
 
 export type ImageSharpSortInput = {
-  fields?: Maybe<Array<Maybe<ImageSharpFieldsEnum>>>;
-  order?: Maybe<Array<Maybe<SortOrderEnum>>>;
+  fields?: InputMaybe<Array<InputMaybe<ImageSharpFieldsEnum>>>;
+  order?: InputMaybe<Array<InputMaybe<SortOrderEnum>>>;
 };
 
-export type Internal = {
-  content?: Maybe<Scalars['String']>;
-  contentDigest: Scalars['String'];
-  description?: Maybe<Scalars['String']>;
-  fieldOwners?: Maybe<Array<Maybe<Scalars['String']>>>;
-  ignoreType?: Maybe<Scalars['Boolean']>;
-  mediaType?: Maybe<Scalars['String']>;
-  owner: Scalars['String'];
-  type: Scalars['String'];
+export type QiitaPostTagsFilterListInput = {
+  elemMatch?: InputMaybe<QiitaPostTagsFilterInput>;
 };
 
-export type InternalFilterInput = {
-  content?: Maybe<StringQueryOperatorInput>;
-  contentDigest?: Maybe<StringQueryOperatorInput>;
-  description?: Maybe<StringQueryOperatorInput>;
-  fieldOwners?: Maybe<StringQueryOperatorInput>;
-  ignoreType?: Maybe<BooleanQueryOperatorInput>;
-  mediaType?: Maybe<StringQueryOperatorInput>;
-  owner?: Maybe<StringQueryOperatorInput>;
-  type?: Maybe<StringQueryOperatorInput>;
+export type QiitaPostTagsFilterInput = {
+  name?: InputMaybe<StringQueryOperatorInput>;
 };
 
-export type IntQueryOperatorInput = {
-  eq?: Maybe<Scalars['Int']>;
-  ne?: Maybe<Scalars['Int']>;
-  gt?: Maybe<Scalars['Int']>;
-  gte?: Maybe<Scalars['Int']>;
-  lt?: Maybe<Scalars['Int']>;
-  lte?: Maybe<Scalars['Int']>;
-  in?: Maybe<Array<Maybe<Scalars['Int']>>>;
-  nin?: Maybe<Array<Maybe<Scalars['Int']>>>;
-};
-
-
-export type MicrocmsPosts = Node & {
-  id: Scalars['ID'];
-  parent?: Maybe<Node>;
-  children: Array<Node>;
-  internal: Internal;
-  createdAt?: Maybe<Scalars['Date']>;
-  updatedAt?: Maybe<Scalars['Date']>;
-  revisedAt?: Maybe<Scalars['Date']>;
-  title?: Maybe<Scalars['String']>;
-  body?: Maybe<Scalars['String']>;
-  _embedded?: Maybe<MicrocmsPosts_Embedded>;
-  author?: Maybe<MicrocmsPostsAuthor>;
-  postsId?: Maybe<Scalars['String']>;
-};
-
-
-export type MicrocmsPostsCreatedAtArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-};
-
-
-export type MicrocmsPostsUpdatedAtArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-};
-
-
-export type MicrocmsPostsRevisedAtArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-};
-
-export type MicrocmsPosts_Embedded = {
-  url?: Maybe<Scalars['String']>;
-  height?: Maybe<Scalars['Int']>;
-  width?: Maybe<Scalars['Int']>;
-};
-
-export type MicrocmsPosts_EmbeddedFilterInput = {
-  url?: Maybe<StringQueryOperatorInput>;
-  height?: Maybe<IntQueryOperatorInput>;
-  width?: Maybe<IntQueryOperatorInput>;
-};
-
-export type MicrocmsPostsAuthor = {
-  id?: Maybe<Scalars['String']>;
-  createdAt?: Maybe<Scalars['Date']>;
-  updatedAt?: Maybe<Scalars['Date']>;
-  revisedAt?: Maybe<Scalars['Date']>;
-  name?: Maybe<Scalars['String']>;
-  text?: Maybe<Scalars['String']>;
-  image?: Maybe<MicrocmsPostsAuthorImage>;
-};
-
-
-export type MicrocmsPostsAuthorCreatedAtArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-};
-
-
-export type MicrocmsPostsAuthorUpdatedAtArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-};
-
-
-export type MicrocmsPostsAuthorRevisedAtArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-};
-
-export type MicrocmsPostsAuthorFilterInput = {
-  id?: Maybe<StringQueryOperatorInput>;
-  createdAt?: Maybe<DateQueryOperatorInput>;
-  updatedAt?: Maybe<DateQueryOperatorInput>;
-  revisedAt?: Maybe<DateQueryOperatorInput>;
-  name?: Maybe<StringQueryOperatorInput>;
-  text?: Maybe<StringQueryOperatorInput>;
-  image?: Maybe<MicrocmsPostsAuthorImageFilterInput>;
-};
-
-export type MicrocmsPostsAuthorImage = {
-  url?: Maybe<Scalars['String']>;
-  height?: Maybe<Scalars['Int']>;
-  width?: Maybe<Scalars['Int']>;
-};
-
-export type MicrocmsPostsAuthorImageFilterInput = {
-  url?: Maybe<StringQueryOperatorInput>;
-  height?: Maybe<IntQueryOperatorInput>;
-  width?: Maybe<IntQueryOperatorInput>;
-};
-
-export type MicrocmsPostsConnection = {
-  totalCount: Scalars['Int'];
-  edges: Array<MicrocmsPostsEdge>;
-  nodes: Array<MicrocmsPosts>;
-  pageInfo: PageInfo;
-  distinct: Array<Scalars['String']>;
-  group: Array<MicrocmsPostsGroupConnection>;
-};
-
-
-export type MicrocmsPostsConnectionDistinctArgs = {
-  field: MicrocmsPostsFieldsEnum;
-};
-
-
-export type MicrocmsPostsConnectionGroupArgs = {
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-  field: MicrocmsPostsFieldsEnum;
-};
-
-export type MicrocmsPostsEdge = {
-  next?: Maybe<MicrocmsPosts>;
-  node: MicrocmsPosts;
-  previous?: Maybe<MicrocmsPosts>;
-};
-
-export type MicrocmsPostsFieldsEnum = 
-  | 'id'
-  | 'parent___id'
-  | 'parent___parent___id'
-  | 'parent___parent___parent___id'
-  | 'parent___parent___parent___children'
-  | 'parent___parent___children'
-  | 'parent___parent___children___id'
-  | 'parent___parent___children___children'
-  | 'parent___parent___internal___content'
-  | 'parent___parent___internal___contentDigest'
-  | 'parent___parent___internal___description'
-  | 'parent___parent___internal___fieldOwners'
-  | 'parent___parent___internal___ignoreType'
-  | 'parent___parent___internal___mediaType'
-  | 'parent___parent___internal___owner'
-  | 'parent___parent___internal___type'
-  | 'parent___children'
-  | 'parent___children___id'
-  | 'parent___children___parent___id'
-  | 'parent___children___parent___children'
-  | 'parent___children___children'
-  | 'parent___children___children___id'
-  | 'parent___children___children___children'
-  | 'parent___children___internal___content'
-  | 'parent___children___internal___contentDigest'
-  | 'parent___children___internal___description'
-  | 'parent___children___internal___fieldOwners'
-  | 'parent___children___internal___ignoreType'
-  | 'parent___children___internal___mediaType'
-  | 'parent___children___internal___owner'
-  | 'parent___children___internal___type'
-  | 'parent___internal___content'
-  | 'parent___internal___contentDigest'
-  | 'parent___internal___description'
-  | 'parent___internal___fieldOwners'
-  | 'parent___internal___ignoreType'
-  | 'parent___internal___mediaType'
-  | 'parent___internal___owner'
-  | 'parent___internal___type'
-  | 'children'
-  | 'children___id'
-  | 'children___parent___id'
-  | 'children___parent___parent___id'
-  | 'children___parent___parent___children'
-  | 'children___parent___children'
-  | 'children___parent___children___id'
-  | 'children___parent___children___children'
-  | 'children___parent___internal___content'
-  | 'children___parent___internal___contentDigest'
-  | 'children___parent___internal___description'
-  | 'children___parent___internal___fieldOwners'
-  | 'children___parent___internal___ignoreType'
-  | 'children___parent___internal___mediaType'
-  | 'children___parent___internal___owner'
-  | 'children___parent___internal___type'
-  | 'children___children'
-  | 'children___children___id'
-  | 'children___children___parent___id'
-  | 'children___children___parent___children'
-  | 'children___children___children'
-  | 'children___children___children___id'
-  | 'children___children___children___children'
-  | 'children___children___internal___content'
-  | 'children___children___internal___contentDigest'
-  | 'children___children___internal___description'
-  | 'children___children___internal___fieldOwners'
-  | 'children___children___internal___ignoreType'
-  | 'children___children___internal___mediaType'
-  | 'children___children___internal___owner'
-  | 'children___children___internal___type'
-  | 'children___internal___content'
-  | 'children___internal___contentDigest'
-  | 'children___internal___description'
-  | 'children___internal___fieldOwners'
-  | 'children___internal___ignoreType'
-  | 'children___internal___mediaType'
-  | 'children___internal___owner'
-  | 'children___internal___type'
-  | 'internal___content'
-  | 'internal___contentDigest'
-  | 'internal___description'
-  | 'internal___fieldOwners'
-  | 'internal___ignoreType'
-  | 'internal___mediaType'
-  | 'internal___owner'
-  | 'internal___type'
-  | 'createdAt'
-  | 'updatedAt'
-  | 'revisedAt'
-  | 'title'
-  | 'body'
-  | '_embedded___url'
-  | '_embedded___height'
-  | '_embedded___width'
-  | 'author___id'
-  | 'author___createdAt'
-  | 'author___updatedAt'
-  | 'author___revisedAt'
-  | 'author___name'
-  | 'author___text'
-  | 'author___image___url'
-  | 'author___image___height'
-  | 'author___image___width'
-  | 'postsId';
-
-export type MicrocmsPostsFilterInput = {
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-  createdAt?: Maybe<DateQueryOperatorInput>;
-  updatedAt?: Maybe<DateQueryOperatorInput>;
-  revisedAt?: Maybe<DateQueryOperatorInput>;
-  title?: Maybe<StringQueryOperatorInput>;
-  body?: Maybe<StringQueryOperatorInput>;
-  _embedded?: Maybe<MicrocmsPosts_EmbeddedFilterInput>;
-  author?: Maybe<MicrocmsPostsAuthorFilterInput>;
-  postsId?: Maybe<StringQueryOperatorInput>;
-};
-
-export type MicrocmsPostsGroupConnection = {
-  totalCount: Scalars['Int'];
-  edges: Array<MicrocmsPostsEdge>;
-  nodes: Array<MicrocmsPosts>;
-  pageInfo: PageInfo;
-  field: Scalars['String'];
-  fieldValue?: Maybe<Scalars['String']>;
-};
-
-export type MicrocmsPostsSortInput = {
-  fields?: Maybe<Array<Maybe<MicrocmsPostsFieldsEnum>>>;
-  order?: Maybe<Array<Maybe<SortOrderEnum>>>;
-};
-
-/** Node Interface */
-export type Node = {
-  id: Scalars['ID'];
-  parent?: Maybe<Node>;
-  children: Array<Node>;
-  internal: Internal;
-};
-
-export type NodeFilterInput = {
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-};
-
-export type NodeFilterListInput = {
-  elemMatch?: Maybe<NodeFilterInput>;
-};
-
-export type PageInfo = {
-  currentPage: Scalars['Int'];
-  hasPreviousPage: Scalars['Boolean'];
-  hasNextPage: Scalars['Boolean'];
-  itemCount: Scalars['Int'];
-  pageCount: Scalars['Int'];
-  perPage?: Maybe<Scalars['Int']>;
-};
-
-export type Potrace = {
-  turnPolicy?: Maybe<PotraceTurnPolicy>;
-  turdSize?: Maybe<Scalars['Float']>;
-  alphaMax?: Maybe<Scalars['Float']>;
-  optCurve?: Maybe<Scalars['Boolean']>;
-  optTolerance?: Maybe<Scalars['Float']>;
-  threshold?: Maybe<Scalars['Int']>;
-  blackOnWhite?: Maybe<Scalars['Boolean']>;
-  color?: Maybe<Scalars['String']>;
-  background?: Maybe<Scalars['String']>;
-};
-
-export type PotraceTurnPolicy = 
-  | 'TURNPOLICY_BLACK'
-  | 'TURNPOLICY_WHITE'
-  | 'TURNPOLICY_LEFT'
-  | 'TURNPOLICY_RIGHT'
-  | 'TURNPOLICY_MINORITY'
-  | 'TURNPOLICY_MAJORITY';
-
-export type QiitaHeading = {
-  value?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
-  depth?: Maybe<Scalars['Int']>;
-  parents?: Maybe<Array<Maybe<QiitaParentHeadings>>>;
-};
-
-export type QiitaHeadingFilterInput = {
-  value?: Maybe<StringQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  depth?: Maybe<IntQueryOperatorInput>;
-  parents?: Maybe<QiitaParentHeadingsFilterListInput>;
+export type QiitaPostUserFilterInput = {
+  description?: InputMaybe<StringQueryOperatorInput>;
+  facebook_id?: InputMaybe<StringQueryOperatorInput>;
+  followees_count?: InputMaybe<IntQueryOperatorInput>;
+  followers_count?: InputMaybe<IntQueryOperatorInput>;
+  github_login_name?: InputMaybe<StringQueryOperatorInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  items_count?: InputMaybe<IntQueryOperatorInput>;
+  linkedin_id?: InputMaybe<StringQueryOperatorInput>;
+  location?: InputMaybe<StringQueryOperatorInput>;
+  name?: InputMaybe<StringQueryOperatorInput>;
+  organization?: InputMaybe<StringQueryOperatorInput>;
+  permanent_id?: InputMaybe<IntQueryOperatorInput>;
+  profile_image_url?: InputMaybe<StringQueryOperatorInput>;
+  team_only?: InputMaybe<BooleanQueryOperatorInput>;
+  twitter_screen_name?: InputMaybe<StringQueryOperatorInput>;
+  website_url?: InputMaybe<StringQueryOperatorInput>;
 };
 
 export type QiitaHeadingFilterListInput = {
-  elemMatch?: Maybe<QiitaHeadingFilterInput>;
+  elemMatch?: InputMaybe<QiitaHeadingFilterInput>;
 };
 
-export type QiitaParentHeadings = {
-  value?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
-  depth?: Maybe<Scalars['Int']>;
-};
-
-export type QiitaParentHeadingsFilterInput = {
-  value?: Maybe<StringQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  depth?: Maybe<IntQueryOperatorInput>;
+export type QiitaHeadingFilterInput = {
+  value?: InputMaybe<StringQueryOperatorInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  depth?: InputMaybe<IntQueryOperatorInput>;
+  parents?: InputMaybe<QiitaParentHeadingsFilterListInput>;
 };
 
 export type QiitaParentHeadingsFilterListInput = {
-  elemMatch?: Maybe<QiitaParentHeadingsFilterInput>;
+  elemMatch?: InputMaybe<QiitaParentHeadingsFilterInput>;
 };
 
-export type QiitaPost = Node & {
-  id: Scalars['ID'];
-  parent?: Maybe<Node>;
-  children: Array<Node>;
-  internal: Internal;
-  rendered_body?: Maybe<Scalars['String']>;
-  body?: Maybe<Scalars['String']>;
-  coediting?: Maybe<Scalars['Boolean']>;
-  comments_count?: Maybe<Scalars['Int']>;
-  created_at?: Maybe<Scalars['Date']>;
-  likes_count?: Maybe<Scalars['Int']>;
-  private?: Maybe<Scalars['Boolean']>;
-  reactions_count?: Maybe<Scalars['Int']>;
-  tags?: Maybe<Array<Maybe<QiitaPostTags>>>;
-  title?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['Date']>;
-  url?: Maybe<Scalars['String']>;
-  user?: Maybe<QiitaPostUser>;
-  headings?: Maybe<Array<Maybe<QiitaHeading>>>;
-};
-
-
-export type QiitaPostCreated_AtArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-};
-
-
-export type QiitaPostUpdated_AtArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
+export type QiitaParentHeadingsFilterInput = {
+  value?: InputMaybe<StringQueryOperatorInput>;
+  id?: InputMaybe<StringQueryOperatorInput>;
+  depth?: InputMaybe<IntQueryOperatorInput>;
 };
 
 export type QiitaPostConnection = {
@@ -23274,6 +24490,9 @@ export type QiitaPostConnection = {
   nodes: Array<QiitaPost>;
   pageInfo: PageInfo;
   distinct: Array<Scalars['String']>;
+  max?: Maybe<Scalars['Float']>;
+  min?: Maybe<Scalars['Float']>;
+  sum?: Maybe<Scalars['Float']>;
   group: Array<QiitaPostGroupConnection>;
 };
 
@@ -23283,9 +24502,24 @@ export type QiitaPostConnectionDistinctArgs = {
 };
 
 
+export type QiitaPostConnectionMaxArgs = {
+  field: QiitaPostFieldsEnum;
+};
+
+
+export type QiitaPostConnectionMinArgs = {
+  field: QiitaPostFieldsEnum;
+};
+
+
+export type QiitaPostConnectionSumArgs = {
+  field: QiitaPostFieldsEnum;
+};
+
+
 export type QiitaPostConnectionGroupArgs = {
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
   field: QiitaPostFieldsEnum;
 };
 
@@ -23295,7 +24529,7 @@ export type QiitaPostEdge = {
   previous?: Maybe<QiitaPost>;
 };
 
-export type QiitaPostFieldsEnum = 
+export type QiitaPostFieldsEnum =
   | 'id'
   | 'parent___id'
   | 'parent___parent___id'
@@ -23411,6 +24645,7 @@ export type QiitaPostFieldsEnum =
   | 'user___team_only'
   | 'user___twitter_screen_name'
   | 'user___website_url'
+  | 'page_views_count'
   | 'headings'
   | 'headings___value'
   | 'headings___id'
@@ -23420,464 +24655,142 @@ export type QiitaPostFieldsEnum =
   | 'headings___parents___id'
   | 'headings___parents___depth';
 
-export type QiitaPostFilterInput = {
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-  rendered_body?: Maybe<StringQueryOperatorInput>;
-  body?: Maybe<StringQueryOperatorInput>;
-  coediting?: Maybe<BooleanQueryOperatorInput>;
-  comments_count?: Maybe<IntQueryOperatorInput>;
-  created_at?: Maybe<DateQueryOperatorInput>;
-  likes_count?: Maybe<IntQueryOperatorInput>;
-  private?: Maybe<BooleanQueryOperatorInput>;
-  reactions_count?: Maybe<IntQueryOperatorInput>;
-  tags?: Maybe<QiitaPostTagsFilterListInput>;
-  title?: Maybe<StringQueryOperatorInput>;
-  updated_at?: Maybe<DateQueryOperatorInput>;
-  url?: Maybe<StringQueryOperatorInput>;
-  user?: Maybe<QiitaPostUserFilterInput>;
-  headings?: Maybe<QiitaHeadingFilterListInput>;
-};
-
 export type QiitaPostGroupConnection = {
   totalCount: Scalars['Int'];
   edges: Array<QiitaPostEdge>;
   nodes: Array<QiitaPost>;
   pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  max?: Maybe<Scalars['Float']>;
+  min?: Maybe<Scalars['Float']>;
+  sum?: Maybe<Scalars['Float']>;
+  group: Array<QiitaPostGroupConnection>;
   field: Scalars['String'];
   fieldValue?: Maybe<Scalars['String']>;
+};
+
+
+export type QiitaPostGroupConnectionDistinctArgs = {
+  field: QiitaPostFieldsEnum;
+};
+
+
+export type QiitaPostGroupConnectionMaxArgs = {
+  field: QiitaPostFieldsEnum;
+};
+
+
+export type QiitaPostGroupConnectionMinArgs = {
+  field: QiitaPostFieldsEnum;
+};
+
+
+export type QiitaPostGroupConnectionSumArgs = {
+  field: QiitaPostFieldsEnum;
+};
+
+
+export type QiitaPostGroupConnectionGroupArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  field: QiitaPostFieldsEnum;
+};
+
+export type QiitaPostFilterInput = {
+  id?: InputMaybe<StringQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+  rendered_body?: InputMaybe<StringQueryOperatorInput>;
+  body?: InputMaybe<StringQueryOperatorInput>;
+  coediting?: InputMaybe<BooleanQueryOperatorInput>;
+  comments_count?: InputMaybe<IntQueryOperatorInput>;
+  created_at?: InputMaybe<DateQueryOperatorInput>;
+  likes_count?: InputMaybe<IntQueryOperatorInput>;
+  private?: InputMaybe<BooleanQueryOperatorInput>;
+  reactions_count?: InputMaybe<IntQueryOperatorInput>;
+  tags?: InputMaybe<QiitaPostTagsFilterListInput>;
+  title?: InputMaybe<StringQueryOperatorInput>;
+  updated_at?: InputMaybe<DateQueryOperatorInput>;
+  url?: InputMaybe<StringQueryOperatorInput>;
+  user?: InputMaybe<QiitaPostUserFilterInput>;
+  page_views_count?: InputMaybe<IntQueryOperatorInput>;
+  headings?: InputMaybe<QiitaHeadingFilterListInput>;
 };
 
 export type QiitaPostSortInput = {
-  fields?: Maybe<Array<Maybe<QiitaPostFieldsEnum>>>;
-  order?: Maybe<Array<Maybe<SortOrderEnum>>>;
+  fields?: InputMaybe<Array<InputMaybe<QiitaPostFieldsEnum>>>;
+  order?: InputMaybe<Array<InputMaybe<SortOrderEnum>>>;
 };
 
-export type QiitaPostTags = {
-  name?: Maybe<Scalars['String']>;
+export type MicrocmsPosts_EmbeddedFilterInput = {
+  url?: InputMaybe<StringQueryOperatorInput>;
+  height?: InputMaybe<IntQueryOperatorInput>;
+  width?: InputMaybe<IntQueryOperatorInput>;
 };
 
-export type QiitaPostTagsFilterInput = {
-  name?: Maybe<StringQueryOperatorInput>;
+export type MicrocmsPostsAuthorFilterInput = {
+  id?: InputMaybe<StringQueryOperatorInput>;
+  createdAt?: InputMaybe<DateQueryOperatorInput>;
+  updatedAt?: InputMaybe<DateQueryOperatorInput>;
+  revisedAt?: InputMaybe<DateQueryOperatorInput>;
+  name?: InputMaybe<StringQueryOperatorInput>;
+  text?: InputMaybe<StringQueryOperatorInput>;
+  image?: InputMaybe<MicrocmsPostsAuthorImageFilterInput>;
 };
 
-export type QiitaPostTagsFilterListInput = {
-  elemMatch?: Maybe<QiitaPostTagsFilterInput>;
+export type MicrocmsPostsAuthorImageFilterInput = {
+  url?: InputMaybe<StringQueryOperatorInput>;
+  height?: InputMaybe<IntQueryOperatorInput>;
+  width?: InputMaybe<IntQueryOperatorInput>;
 };
 
-export type QiitaPostUser = {
-  description?: Maybe<Scalars['String']>;
-  facebook_id?: Maybe<Scalars['String']>;
-  followees_count?: Maybe<Scalars['Int']>;
-  followers_count?: Maybe<Scalars['Int']>;
-  github_login_name?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
-  items_count?: Maybe<Scalars['Int']>;
-  linkedin_id?: Maybe<Scalars['String']>;
-  location?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-  organization?: Maybe<Scalars['String']>;
-  permanent_id?: Maybe<Scalars['Int']>;
-  profile_image_url?: Maybe<Scalars['String']>;
-  team_only?: Maybe<Scalars['Boolean']>;
-  twitter_screen_name?: Maybe<Scalars['String']>;
-  website_url?: Maybe<Scalars['String']>;
-};
-
-export type QiitaPostUserFilterInput = {
-  description?: Maybe<StringQueryOperatorInput>;
-  facebook_id?: Maybe<StringQueryOperatorInput>;
-  followees_count?: Maybe<IntQueryOperatorInput>;
-  followers_count?: Maybe<IntQueryOperatorInput>;
-  github_login_name?: Maybe<StringQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  items_count?: Maybe<IntQueryOperatorInput>;
-  linkedin_id?: Maybe<StringQueryOperatorInput>;
-  location?: Maybe<StringQueryOperatorInput>;
-  name?: Maybe<StringQueryOperatorInput>;
-  organization?: Maybe<StringQueryOperatorInput>;
-  permanent_id?: Maybe<IntQueryOperatorInput>;
-  profile_image_url?: Maybe<StringQueryOperatorInput>;
-  team_only?: Maybe<BooleanQueryOperatorInput>;
-  twitter_screen_name?: Maybe<StringQueryOperatorInput>;
-  website_url?: Maybe<StringQueryOperatorInput>;
-};
-
-export type Query = {
-  file?: Maybe<File>;
-  allFile: FileConnection;
-  directory?: Maybe<Directory>;
-  allDirectory: DirectoryConnection;
-  sitePage?: Maybe<SitePage>;
-  allSitePage: SitePageConnection;
-  site?: Maybe<Site>;
-  allSite: SiteConnection;
-  imageSharp?: Maybe<ImageSharp>;
-  allImageSharp: ImageSharpConnection;
-  graphQlSource?: Maybe<GraphQlSource>;
-  allGraphQlSource: GraphQlSourceConnection;
-  qiitaPost?: Maybe<QiitaPost>;
-  allQiitaPost: QiitaPostConnection;
-  microcmsPosts?: Maybe<MicrocmsPosts>;
-  allMicrocmsPosts: MicrocmsPostsConnection;
-  siteBuildMetadata?: Maybe<SiteBuildMetadata>;
-  allSiteBuildMetadata: SiteBuildMetadataConnection;
-  sitePlugin?: Maybe<SitePlugin>;
-  allSitePlugin: SitePluginConnection;
-  github: GitHub;
-};
-
-
-export type QueryFileArgs = {
-  sourceInstanceName?: Maybe<StringQueryOperatorInput>;
-  absolutePath?: Maybe<StringQueryOperatorInput>;
-  relativePath?: Maybe<StringQueryOperatorInput>;
-  extension?: Maybe<StringQueryOperatorInput>;
-  size?: Maybe<IntQueryOperatorInput>;
-  prettySize?: Maybe<StringQueryOperatorInput>;
-  modifiedTime?: Maybe<DateQueryOperatorInput>;
-  accessTime?: Maybe<DateQueryOperatorInput>;
-  changeTime?: Maybe<DateQueryOperatorInput>;
-  birthTime?: Maybe<DateQueryOperatorInput>;
-  root?: Maybe<StringQueryOperatorInput>;
-  dir?: Maybe<StringQueryOperatorInput>;
-  base?: Maybe<StringQueryOperatorInput>;
-  ext?: Maybe<StringQueryOperatorInput>;
-  name?: Maybe<StringQueryOperatorInput>;
-  relativeDirectory?: Maybe<StringQueryOperatorInput>;
-  dev?: Maybe<IntQueryOperatorInput>;
-  mode?: Maybe<IntQueryOperatorInput>;
-  nlink?: Maybe<IntQueryOperatorInput>;
-  uid?: Maybe<IntQueryOperatorInput>;
-  gid?: Maybe<IntQueryOperatorInput>;
-  rdev?: Maybe<IntQueryOperatorInput>;
-  ino?: Maybe<FloatQueryOperatorInput>;
-  atimeMs?: Maybe<FloatQueryOperatorInput>;
-  mtimeMs?: Maybe<FloatQueryOperatorInput>;
-  ctimeMs?: Maybe<FloatQueryOperatorInput>;
-  atime?: Maybe<DateQueryOperatorInput>;
-  mtime?: Maybe<DateQueryOperatorInput>;
-  ctime?: Maybe<DateQueryOperatorInput>;
-  birthtime?: Maybe<DateQueryOperatorInput>;
-  birthtimeMs?: Maybe<FloatQueryOperatorInput>;
-  blksize?: Maybe<IntQueryOperatorInput>;
-  blocks?: Maybe<IntQueryOperatorInput>;
-  publicURL?: Maybe<StringQueryOperatorInput>;
-  childImageSharp?: Maybe<ImageSharpFilterInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-};
-
-
-export type QueryAllFileArgs = {
-  filter?: Maybe<FileFilterInput>;
-  sort?: Maybe<FileSortInput>;
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-};
-
-
-export type QueryDirectoryArgs = {
-  sourceInstanceName?: Maybe<StringQueryOperatorInput>;
-  absolutePath?: Maybe<StringQueryOperatorInput>;
-  relativePath?: Maybe<StringQueryOperatorInput>;
-  extension?: Maybe<StringQueryOperatorInput>;
-  size?: Maybe<IntQueryOperatorInput>;
-  prettySize?: Maybe<StringQueryOperatorInput>;
-  modifiedTime?: Maybe<DateQueryOperatorInput>;
-  accessTime?: Maybe<DateQueryOperatorInput>;
-  changeTime?: Maybe<DateQueryOperatorInput>;
-  birthTime?: Maybe<DateQueryOperatorInput>;
-  root?: Maybe<StringQueryOperatorInput>;
-  dir?: Maybe<StringQueryOperatorInput>;
-  base?: Maybe<StringQueryOperatorInput>;
-  ext?: Maybe<StringQueryOperatorInput>;
-  name?: Maybe<StringQueryOperatorInput>;
-  relativeDirectory?: Maybe<StringQueryOperatorInput>;
-  dev?: Maybe<IntQueryOperatorInput>;
-  mode?: Maybe<IntQueryOperatorInput>;
-  nlink?: Maybe<IntQueryOperatorInput>;
-  uid?: Maybe<IntQueryOperatorInput>;
-  gid?: Maybe<IntQueryOperatorInput>;
-  rdev?: Maybe<IntQueryOperatorInput>;
-  ino?: Maybe<FloatQueryOperatorInput>;
-  atimeMs?: Maybe<FloatQueryOperatorInput>;
-  mtimeMs?: Maybe<FloatQueryOperatorInput>;
-  ctimeMs?: Maybe<FloatQueryOperatorInput>;
-  atime?: Maybe<DateQueryOperatorInput>;
-  mtime?: Maybe<DateQueryOperatorInput>;
-  ctime?: Maybe<DateQueryOperatorInput>;
-  birthtime?: Maybe<DateQueryOperatorInput>;
-  birthtimeMs?: Maybe<FloatQueryOperatorInput>;
-  blksize?: Maybe<IntQueryOperatorInput>;
-  blocks?: Maybe<IntQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-};
-
-
-export type QueryAllDirectoryArgs = {
-  filter?: Maybe<DirectoryFilterInput>;
-  sort?: Maybe<DirectorySortInput>;
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-};
-
-
-export type QuerySitePageArgs = {
-  path?: Maybe<StringQueryOperatorInput>;
-  component?: Maybe<StringQueryOperatorInput>;
-  internalComponentName?: Maybe<StringQueryOperatorInput>;
-  componentChunkName?: Maybe<StringQueryOperatorInput>;
-  matchPath?: Maybe<StringQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-  isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>;
-  context?: Maybe<SitePageContextFilterInput>;
-  pluginCreator?: Maybe<SitePluginFilterInput>;
-  pluginCreatorId?: Maybe<StringQueryOperatorInput>;
-  componentPath?: Maybe<StringQueryOperatorInput>;
-};
-
-
-export type QueryAllSitePageArgs = {
-  filter?: Maybe<SitePageFilterInput>;
-  sort?: Maybe<SitePageSortInput>;
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-};
-
-
-export type QuerySiteArgs = {
-  buildTime?: Maybe<DateQueryOperatorInput>;
-  siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
-  port?: Maybe<IntQueryOperatorInput>;
-  host?: Maybe<StringQueryOperatorInput>;
-  polyfill?: Maybe<BooleanQueryOperatorInput>;
-  pathPrefix?: Maybe<StringQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-};
-
-
-export type QueryAllSiteArgs = {
-  filter?: Maybe<SiteFilterInput>;
-  sort?: Maybe<SiteSortInput>;
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-};
-
-
-export type QueryImageSharpArgs = {
-  fixed?: Maybe<ImageSharpFixedFilterInput>;
-  resolutions?: Maybe<ImageSharpResolutionsFilterInput>;
-  fluid?: Maybe<ImageSharpFluidFilterInput>;
-  sizes?: Maybe<ImageSharpSizesFilterInput>;
-  original?: Maybe<ImageSharpOriginalFilterInput>;
-  resize?: Maybe<ImageSharpResizeFilterInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-};
-
-
-export type QueryAllImageSharpArgs = {
-  filter?: Maybe<ImageSharpFilterInput>;
-  sort?: Maybe<ImageSharpSortInput>;
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-};
-
-
-export type QueryGraphQlSourceArgs = {
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-  typeName?: Maybe<StringQueryOperatorInput>;
-  fieldName?: Maybe<StringQueryOperatorInput>;
-};
-
-
-export type QueryAllGraphQlSourceArgs = {
-  filter?: Maybe<GraphQlSourceFilterInput>;
-  sort?: Maybe<GraphQlSourceSortInput>;
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-};
-
-
-export type QueryQiitaPostArgs = {
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-  rendered_body?: Maybe<StringQueryOperatorInput>;
-  body?: Maybe<StringQueryOperatorInput>;
-  coediting?: Maybe<BooleanQueryOperatorInput>;
-  comments_count?: Maybe<IntQueryOperatorInput>;
-  created_at?: Maybe<DateQueryOperatorInput>;
-  likes_count?: Maybe<IntQueryOperatorInput>;
-  private?: Maybe<BooleanQueryOperatorInput>;
-  reactions_count?: Maybe<IntQueryOperatorInput>;
-  tags?: Maybe<QiitaPostTagsFilterListInput>;
-  title?: Maybe<StringQueryOperatorInput>;
-  updated_at?: Maybe<DateQueryOperatorInput>;
-  url?: Maybe<StringQueryOperatorInput>;
-  user?: Maybe<QiitaPostUserFilterInput>;
-  headings?: Maybe<QiitaHeadingFilterListInput>;
-};
-
-
-export type QueryAllQiitaPostArgs = {
-  filter?: Maybe<QiitaPostFilterInput>;
-  sort?: Maybe<QiitaPostSortInput>;
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-};
-
-
-export type QueryMicrocmsPostsArgs = {
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-  createdAt?: Maybe<DateQueryOperatorInput>;
-  updatedAt?: Maybe<DateQueryOperatorInput>;
-  revisedAt?: Maybe<DateQueryOperatorInput>;
-  title?: Maybe<StringQueryOperatorInput>;
-  body?: Maybe<StringQueryOperatorInput>;
-  _embedded?: Maybe<MicrocmsPosts_EmbeddedFilterInput>;
-  author?: Maybe<MicrocmsPostsAuthorFilterInput>;
-  postsId?: Maybe<StringQueryOperatorInput>;
-};
-
-
-export type QueryAllMicrocmsPostsArgs = {
-  filter?: Maybe<MicrocmsPostsFilterInput>;
-  sort?: Maybe<MicrocmsPostsSortInput>;
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-};
-
-
-export type QuerySiteBuildMetadataArgs = {
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-  buildTime?: Maybe<DateQueryOperatorInput>;
-};
-
-
-export type QueryAllSiteBuildMetadataArgs = {
-  filter?: Maybe<SiteBuildMetadataFilterInput>;
-  sort?: Maybe<SiteBuildMetadataSortInput>;
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-};
-
-
-export type QuerySitePluginArgs = {
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-  resolve?: Maybe<StringQueryOperatorInput>;
-  name?: Maybe<StringQueryOperatorInput>;
-  version?: Maybe<StringQueryOperatorInput>;
-  pluginOptions?: Maybe<SitePluginPluginOptionsFilterInput>;
-  nodeAPIs?: Maybe<StringQueryOperatorInput>;
-  browserAPIs?: Maybe<StringQueryOperatorInput>;
-  ssrAPIs?: Maybe<StringQueryOperatorInput>;
-  pluginFilepath?: Maybe<StringQueryOperatorInput>;
-  packageJson?: Maybe<SitePluginPackageJsonFilterInput>;
-};
-
-
-export type QueryAllSitePluginArgs = {
-  filter?: Maybe<SitePluginFilterInput>;
-  sort?: Maybe<SitePluginSortInput>;
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-};
-
-export type Site = Node & {
-  buildTime?: Maybe<Scalars['Date']>;
-  siteMetadata?: Maybe<SiteSiteMetadata>;
-  port?: Maybe<Scalars['Int']>;
-  host?: Maybe<Scalars['String']>;
-  polyfill?: Maybe<Scalars['Boolean']>;
-  pathPrefix?: Maybe<Scalars['String']>;
-  id: Scalars['ID'];
-  parent?: Maybe<Node>;
-  children: Array<Node>;
-  internal: Internal;
-};
-
-
-export type SiteBuildTimeArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-};
-
-export type SiteBuildMetadata = Node & {
-  id: Scalars['ID'];
-  parent?: Maybe<Node>;
-  children: Array<Node>;
-  internal: Internal;
-  buildTime?: Maybe<Scalars['Date']>;
-};
-
-
-export type SiteBuildMetadataBuildTimeArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-};
-
-export type SiteBuildMetadataConnection = {
+export type MicrocmsPostsConnection = {
   totalCount: Scalars['Int'];
-  edges: Array<SiteBuildMetadataEdge>;
-  nodes: Array<SiteBuildMetadata>;
+  edges: Array<MicrocmsPostsEdge>;
+  nodes: Array<MicrocmsPosts>;
   pageInfo: PageInfo;
   distinct: Array<Scalars['String']>;
-  group: Array<SiteBuildMetadataGroupConnection>;
+  max?: Maybe<Scalars['Float']>;
+  min?: Maybe<Scalars['Float']>;
+  sum?: Maybe<Scalars['Float']>;
+  group: Array<MicrocmsPostsGroupConnection>;
 };
 
 
-export type SiteBuildMetadataConnectionDistinctArgs = {
-  field: SiteBuildMetadataFieldsEnum;
+export type MicrocmsPostsConnectionDistinctArgs = {
+  field: MicrocmsPostsFieldsEnum;
 };
 
 
-export type SiteBuildMetadataConnectionGroupArgs = {
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-  field: SiteBuildMetadataFieldsEnum;
+export type MicrocmsPostsConnectionMaxArgs = {
+  field: MicrocmsPostsFieldsEnum;
 };
 
-export type SiteBuildMetadataEdge = {
-  next?: Maybe<SiteBuildMetadata>;
-  node: SiteBuildMetadata;
-  previous?: Maybe<SiteBuildMetadata>;
+
+export type MicrocmsPostsConnectionMinArgs = {
+  field: MicrocmsPostsFieldsEnum;
 };
 
-export type SiteBuildMetadataFieldsEnum = 
+
+export type MicrocmsPostsConnectionSumArgs = {
+  field: MicrocmsPostsFieldsEnum;
+};
+
+
+export type MicrocmsPostsConnectionGroupArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  field: MicrocmsPostsFieldsEnum;
+};
+
+export type MicrocmsPostsEdge = {
+  next?: Maybe<MicrocmsPosts>;
+  node: MicrocmsPosts;
+  previous?: Maybe<MicrocmsPosts>;
+};
+
+export type MicrocmsPostsFieldsEnum =
   | 'id'
   | 'parent___id'
   | 'parent___parent___id'
@@ -23964,233 +24877,136 @@ export type SiteBuildMetadataFieldsEnum =
   | 'internal___mediaType'
   | 'internal___owner'
   | 'internal___type'
-  | 'buildTime';
+  | 'createdAt'
+  | 'updatedAt'
+  | 'publishedAt'
+  | 'revisedAt'
+  | 'title'
+  | 'body'
+  | '_embedded___url'
+  | '_embedded___height'
+  | '_embedded___width'
+  | 'author___id'
+  | 'author___createdAt'
+  | 'author___updatedAt'
+  | 'author___revisedAt'
+  | 'author___name'
+  | 'author___text'
+  | 'author___image___url'
+  | 'author___image___height'
+  | 'author___image___width'
+  | 'sortIndex'
+  | 'postsId';
 
-export type SiteBuildMetadataFilterInput = {
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-  buildTime?: Maybe<DateQueryOperatorInput>;
-};
-
-export type SiteBuildMetadataGroupConnection = {
+export type MicrocmsPostsGroupConnection = {
   totalCount: Scalars['Int'];
-  edges: Array<SiteBuildMetadataEdge>;
-  nodes: Array<SiteBuildMetadata>;
+  edges: Array<MicrocmsPostsEdge>;
+  nodes: Array<MicrocmsPosts>;
   pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  max?: Maybe<Scalars['Float']>;
+  min?: Maybe<Scalars['Float']>;
+  sum?: Maybe<Scalars['Float']>;
+  group: Array<MicrocmsPostsGroupConnection>;
   field: Scalars['String'];
   fieldValue?: Maybe<Scalars['String']>;
 };
 
-export type SiteBuildMetadataSortInput = {
-  fields?: Maybe<Array<Maybe<SiteBuildMetadataFieldsEnum>>>;
-  order?: Maybe<Array<Maybe<SortOrderEnum>>>;
+
+export type MicrocmsPostsGroupConnectionDistinctArgs = {
+  field: MicrocmsPostsFieldsEnum;
 };
 
-export type SiteConnection = {
+
+export type MicrocmsPostsGroupConnectionMaxArgs = {
+  field: MicrocmsPostsFieldsEnum;
+};
+
+
+export type MicrocmsPostsGroupConnectionMinArgs = {
+  field: MicrocmsPostsFieldsEnum;
+};
+
+
+export type MicrocmsPostsGroupConnectionSumArgs = {
+  field: MicrocmsPostsFieldsEnum;
+};
+
+
+export type MicrocmsPostsGroupConnectionGroupArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  field: MicrocmsPostsFieldsEnum;
+};
+
+export type MicrocmsPostsFilterInput = {
+  id?: InputMaybe<StringQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+  createdAt?: InputMaybe<DateQueryOperatorInput>;
+  updatedAt?: InputMaybe<DateQueryOperatorInput>;
+  publishedAt?: InputMaybe<DateQueryOperatorInput>;
+  revisedAt?: InputMaybe<DateQueryOperatorInput>;
+  title?: InputMaybe<StringQueryOperatorInput>;
+  body?: InputMaybe<StringQueryOperatorInput>;
+  _embedded?: InputMaybe<MicrocmsPosts_EmbeddedFilterInput>;
+  author?: InputMaybe<MicrocmsPostsAuthorFilterInput>;
+  sortIndex?: InputMaybe<IntQueryOperatorInput>;
+  postsId?: InputMaybe<StringQueryOperatorInput>;
+};
+
+export type MicrocmsPostsSortInput = {
+  fields?: InputMaybe<Array<InputMaybe<MicrocmsPostsFieldsEnum>>>;
+  order?: InputMaybe<Array<InputMaybe<SortOrderEnum>>>;
+};
+
+export type GraphQlSourceConnection = {
   totalCount: Scalars['Int'];
-  edges: Array<SiteEdge>;
-  nodes: Array<Site>;
+  edges: Array<GraphQlSourceEdge>;
+  nodes: Array<GraphQlSource>;
   pageInfo: PageInfo;
   distinct: Array<Scalars['String']>;
-  group: Array<SiteGroupConnection>;
+  max?: Maybe<Scalars['Float']>;
+  min?: Maybe<Scalars['Float']>;
+  sum?: Maybe<Scalars['Float']>;
+  group: Array<GraphQlSourceGroupConnection>;
 };
 
 
-export type SiteConnectionDistinctArgs = {
-  field: SiteFieldsEnum;
+export type GraphQlSourceConnectionDistinctArgs = {
+  field: GraphQlSourceFieldsEnum;
 };
 
 
-export type SiteConnectionGroupArgs = {
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-  field: SiteFieldsEnum;
-};
-
-export type SiteEdge = {
-  next?: Maybe<Site>;
-  node: Site;
-  previous?: Maybe<Site>;
-};
-
-export type SiteFieldsEnum = 
-  | 'buildTime'
-  | 'siteMetadata___title'
-  | 'siteMetadata___description'
-  | 'siteMetadata___author'
-  | 'port'
-  | 'host'
-  | 'polyfill'
-  | 'pathPrefix'
-  | 'id'
-  | 'parent___id'
-  | 'parent___parent___id'
-  | 'parent___parent___parent___id'
-  | 'parent___parent___parent___children'
-  | 'parent___parent___children'
-  | 'parent___parent___children___id'
-  | 'parent___parent___children___children'
-  | 'parent___parent___internal___content'
-  | 'parent___parent___internal___contentDigest'
-  | 'parent___parent___internal___description'
-  | 'parent___parent___internal___fieldOwners'
-  | 'parent___parent___internal___ignoreType'
-  | 'parent___parent___internal___mediaType'
-  | 'parent___parent___internal___owner'
-  | 'parent___parent___internal___type'
-  | 'parent___children'
-  | 'parent___children___id'
-  | 'parent___children___parent___id'
-  | 'parent___children___parent___children'
-  | 'parent___children___children'
-  | 'parent___children___children___id'
-  | 'parent___children___children___children'
-  | 'parent___children___internal___content'
-  | 'parent___children___internal___contentDigest'
-  | 'parent___children___internal___description'
-  | 'parent___children___internal___fieldOwners'
-  | 'parent___children___internal___ignoreType'
-  | 'parent___children___internal___mediaType'
-  | 'parent___children___internal___owner'
-  | 'parent___children___internal___type'
-  | 'parent___internal___content'
-  | 'parent___internal___contentDigest'
-  | 'parent___internal___description'
-  | 'parent___internal___fieldOwners'
-  | 'parent___internal___ignoreType'
-  | 'parent___internal___mediaType'
-  | 'parent___internal___owner'
-  | 'parent___internal___type'
-  | 'children'
-  | 'children___id'
-  | 'children___parent___id'
-  | 'children___parent___parent___id'
-  | 'children___parent___parent___children'
-  | 'children___parent___children'
-  | 'children___parent___children___id'
-  | 'children___parent___children___children'
-  | 'children___parent___internal___content'
-  | 'children___parent___internal___contentDigest'
-  | 'children___parent___internal___description'
-  | 'children___parent___internal___fieldOwners'
-  | 'children___parent___internal___ignoreType'
-  | 'children___parent___internal___mediaType'
-  | 'children___parent___internal___owner'
-  | 'children___parent___internal___type'
-  | 'children___children'
-  | 'children___children___id'
-  | 'children___children___parent___id'
-  | 'children___children___parent___children'
-  | 'children___children___children'
-  | 'children___children___children___id'
-  | 'children___children___children___children'
-  | 'children___children___internal___content'
-  | 'children___children___internal___contentDigest'
-  | 'children___children___internal___description'
-  | 'children___children___internal___fieldOwners'
-  | 'children___children___internal___ignoreType'
-  | 'children___children___internal___mediaType'
-  | 'children___children___internal___owner'
-  | 'children___children___internal___type'
-  | 'children___internal___content'
-  | 'children___internal___contentDigest'
-  | 'children___internal___description'
-  | 'children___internal___fieldOwners'
-  | 'children___internal___ignoreType'
-  | 'children___internal___mediaType'
-  | 'children___internal___owner'
-  | 'children___internal___type'
-  | 'internal___content'
-  | 'internal___contentDigest'
-  | 'internal___description'
-  | 'internal___fieldOwners'
-  | 'internal___ignoreType'
-  | 'internal___mediaType'
-  | 'internal___owner'
-  | 'internal___type';
-
-export type SiteFilterInput = {
-  buildTime?: Maybe<DateQueryOperatorInput>;
-  siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
-  port?: Maybe<IntQueryOperatorInput>;
-  host?: Maybe<StringQueryOperatorInput>;
-  polyfill?: Maybe<BooleanQueryOperatorInput>;
-  pathPrefix?: Maybe<StringQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-};
-
-export type SiteGroupConnection = {
-  totalCount: Scalars['Int'];
-  edges: Array<SiteEdge>;
-  nodes: Array<Site>;
-  pageInfo: PageInfo;
-  field: Scalars['String'];
-  fieldValue?: Maybe<Scalars['String']>;
-};
-
-export type SitePage = Node & {
-  path: Scalars['String'];
-  component: Scalars['String'];
-  internalComponentName: Scalars['String'];
-  componentChunkName: Scalars['String'];
-  matchPath?: Maybe<Scalars['String']>;
-  id: Scalars['ID'];
-  parent?: Maybe<Node>;
-  children: Array<Node>;
-  internal: Internal;
-  isCreatedByStatefulCreatePages?: Maybe<Scalars['Boolean']>;
-  context?: Maybe<SitePageContext>;
-  pluginCreator?: Maybe<SitePlugin>;
-  pluginCreatorId?: Maybe<Scalars['String']>;
-  componentPath?: Maybe<Scalars['String']>;
-};
-
-export type SitePageConnection = {
-  totalCount: Scalars['Int'];
-  edges: Array<SitePageEdge>;
-  nodes: Array<SitePage>;
-  pageInfo: PageInfo;
-  distinct: Array<Scalars['String']>;
-  group: Array<SitePageGroupConnection>;
+export type GraphQlSourceConnectionMaxArgs = {
+  field: GraphQlSourceFieldsEnum;
 };
 
 
-export type SitePageConnectionDistinctArgs = {
-  field: SitePageFieldsEnum;
+export type GraphQlSourceConnectionMinArgs = {
+  field: GraphQlSourceFieldsEnum;
 };
 
 
-export type SitePageConnectionGroupArgs = {
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-  field: SitePageFieldsEnum;
+export type GraphQlSourceConnectionSumArgs = {
+  field: GraphQlSourceFieldsEnum;
 };
 
-export type SitePageContext = {
-  slug?: Maybe<Scalars['String']>;
+
+export type GraphQlSourceConnectionGroupArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  field: GraphQlSourceFieldsEnum;
 };
 
-export type SitePageContextFilterInput = {
-  slug?: Maybe<StringQueryOperatorInput>;
+export type GraphQlSourceEdge = {
+  next?: Maybe<GraphQlSource>;
+  node: GraphQlSource;
+  previous?: Maybe<GraphQlSource>;
 };
 
-export type SitePageEdge = {
-  next?: Maybe<SitePage>;
-  node: SitePage;
-  previous?: Maybe<SitePage>;
-};
-
-export type SitePageFieldsEnum = 
-  | 'path'
-  | 'component'
-  | 'internalComponentName'
-  | 'componentChunkName'
-  | 'matchPath'
+export type GraphQlSourceFieldsEnum =
   | 'id'
   | 'parent___id'
   | 'parent___parent___id'
@@ -24277,553 +25093,108 @@ export type SitePageFieldsEnum =
   | 'internal___mediaType'
   | 'internal___owner'
   | 'internal___type'
-  | 'isCreatedByStatefulCreatePages'
-  | 'context___slug'
-  | 'pluginCreator___id'
-  | 'pluginCreator___parent___id'
-  | 'pluginCreator___parent___parent___id'
-  | 'pluginCreator___parent___parent___children'
-  | 'pluginCreator___parent___children'
-  | 'pluginCreator___parent___children___id'
-  | 'pluginCreator___parent___children___children'
-  | 'pluginCreator___parent___internal___content'
-  | 'pluginCreator___parent___internal___contentDigest'
-  | 'pluginCreator___parent___internal___description'
-  | 'pluginCreator___parent___internal___fieldOwners'
-  | 'pluginCreator___parent___internal___ignoreType'
-  | 'pluginCreator___parent___internal___mediaType'
-  | 'pluginCreator___parent___internal___owner'
-  | 'pluginCreator___parent___internal___type'
-  | 'pluginCreator___children'
-  | 'pluginCreator___children___id'
-  | 'pluginCreator___children___parent___id'
-  | 'pluginCreator___children___parent___children'
-  | 'pluginCreator___children___children'
-  | 'pluginCreator___children___children___id'
-  | 'pluginCreator___children___children___children'
-  | 'pluginCreator___children___internal___content'
-  | 'pluginCreator___children___internal___contentDigest'
-  | 'pluginCreator___children___internal___description'
-  | 'pluginCreator___children___internal___fieldOwners'
-  | 'pluginCreator___children___internal___ignoreType'
-  | 'pluginCreator___children___internal___mediaType'
-  | 'pluginCreator___children___internal___owner'
-  | 'pluginCreator___children___internal___type'
-  | 'pluginCreator___internal___content'
-  | 'pluginCreator___internal___contentDigest'
-  | 'pluginCreator___internal___description'
-  | 'pluginCreator___internal___fieldOwners'
-  | 'pluginCreator___internal___ignoreType'
-  | 'pluginCreator___internal___mediaType'
-  | 'pluginCreator___internal___owner'
-  | 'pluginCreator___internal___type'
-  | 'pluginCreator___resolve'
-  | 'pluginCreator___name'
-  | 'pluginCreator___version'
-  | 'pluginCreator___pluginOptions___fileName'
-  | 'pluginCreator___pluginOptions___name'
-  | 'pluginCreator___pluginOptions___path'
-  | 'pluginCreator___pluginOptions___short_name'
-  | 'pluginCreator___pluginOptions___start_url'
-  | 'pluginCreator___pluginOptions___background_color'
-  | 'pluginCreator___pluginOptions___theme_color'
-  | 'pluginCreator___pluginOptions___display'
-  | 'pluginCreator___pluginOptions___icon'
-  | 'pluginCreator___pluginOptions___apiKey'
-  | 'pluginCreator___pluginOptions___serviceId'
-  | 'pluginCreator___pluginOptions___endpoint'
-  | 'pluginCreator___pluginOptions___accessToken'
-  | 'pluginCreator___pluginOptions___userName'
-  | 'pluginCreator___pluginOptions___typeName'
-  | 'pluginCreator___pluginOptions___fieldName'
-  | 'pluginCreator___pluginOptions___url'
-  | 'pluginCreator___pluginOptions___headers___Authorization'
-  | 'pluginCreator___pluginOptions___trackingIds'
-  | 'pluginCreator___pluginOptions___pathCheck'
-  | 'pluginCreator___nodeAPIs'
-  | 'pluginCreator___browserAPIs'
-  | 'pluginCreator___ssrAPIs'
-  | 'pluginCreator___pluginFilepath'
-  | 'pluginCreator___packageJson___name'
-  | 'pluginCreator___packageJson___description'
-  | 'pluginCreator___packageJson___version'
-  | 'pluginCreator___packageJson___main'
-  | 'pluginCreator___packageJson___license'
-  | 'pluginCreator___packageJson___dependencies'
-  | 'pluginCreator___packageJson___dependencies___name'
-  | 'pluginCreator___packageJson___dependencies___version'
-  | 'pluginCreator___packageJson___devDependencies'
-  | 'pluginCreator___packageJson___devDependencies___name'
-  | 'pluginCreator___packageJson___devDependencies___version'
-  | 'pluginCreator___packageJson___peerDependencies'
-  | 'pluginCreator___packageJson___peerDependencies___name'
-  | 'pluginCreator___packageJson___peerDependencies___version'
-  | 'pluginCreator___packageJson___keywords'
-  | 'pluginCreatorId'
-  | 'componentPath';
+  | 'typeName'
+  | 'fieldName';
 
-export type SitePageFilterInput = {
-  path?: Maybe<StringQueryOperatorInput>;
-  component?: Maybe<StringQueryOperatorInput>;
-  internalComponentName?: Maybe<StringQueryOperatorInput>;
-  componentChunkName?: Maybe<StringQueryOperatorInput>;
-  matchPath?: Maybe<StringQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-  isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>;
-  context?: Maybe<SitePageContextFilterInput>;
-  pluginCreator?: Maybe<SitePluginFilterInput>;
-  pluginCreatorId?: Maybe<StringQueryOperatorInput>;
-  componentPath?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePageGroupConnection = {
+export type GraphQlSourceGroupConnection = {
   totalCount: Scalars['Int'];
-  edges: Array<SitePageEdge>;
-  nodes: Array<SitePage>;
-  pageInfo: PageInfo;
-  field: Scalars['String'];
-  fieldValue?: Maybe<Scalars['String']>;
-};
-
-export type SitePageSortInput = {
-  fields?: Maybe<Array<Maybe<SitePageFieldsEnum>>>;
-  order?: Maybe<Array<Maybe<SortOrderEnum>>>;
-};
-
-export type SitePlugin = Node & {
-  id: Scalars['ID'];
-  parent?: Maybe<Node>;
-  children: Array<Node>;
-  internal: Internal;
-  resolve?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-  version?: Maybe<Scalars['String']>;
-  pluginOptions?: Maybe<SitePluginPluginOptions>;
-  nodeAPIs?: Maybe<Array<Maybe<Scalars['String']>>>;
-  browserAPIs?: Maybe<Array<Maybe<Scalars['String']>>>;
-  ssrAPIs?: Maybe<Array<Maybe<Scalars['String']>>>;
-  pluginFilepath?: Maybe<Scalars['String']>;
-  packageJson?: Maybe<SitePluginPackageJson>;
-};
-
-export type SitePluginConnection = {
-  totalCount: Scalars['Int'];
-  edges: Array<SitePluginEdge>;
-  nodes: Array<SitePlugin>;
+  edges: Array<GraphQlSourceEdge>;
+  nodes: Array<GraphQlSource>;
   pageInfo: PageInfo;
   distinct: Array<Scalars['String']>;
-  group: Array<SitePluginGroupConnection>;
-};
-
-
-export type SitePluginConnectionDistinctArgs = {
-  field: SitePluginFieldsEnum;
-};
-
-
-export type SitePluginConnectionGroupArgs = {
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-  field: SitePluginFieldsEnum;
-};
-
-export type SitePluginEdge = {
-  next?: Maybe<SitePlugin>;
-  node: SitePlugin;
-  previous?: Maybe<SitePlugin>;
-};
-
-export type SitePluginFieldsEnum = 
-  | 'id'
-  | 'parent___id'
-  | 'parent___parent___id'
-  | 'parent___parent___parent___id'
-  | 'parent___parent___parent___children'
-  | 'parent___parent___children'
-  | 'parent___parent___children___id'
-  | 'parent___parent___children___children'
-  | 'parent___parent___internal___content'
-  | 'parent___parent___internal___contentDigest'
-  | 'parent___parent___internal___description'
-  | 'parent___parent___internal___fieldOwners'
-  | 'parent___parent___internal___ignoreType'
-  | 'parent___parent___internal___mediaType'
-  | 'parent___parent___internal___owner'
-  | 'parent___parent___internal___type'
-  | 'parent___children'
-  | 'parent___children___id'
-  | 'parent___children___parent___id'
-  | 'parent___children___parent___children'
-  | 'parent___children___children'
-  | 'parent___children___children___id'
-  | 'parent___children___children___children'
-  | 'parent___children___internal___content'
-  | 'parent___children___internal___contentDigest'
-  | 'parent___children___internal___description'
-  | 'parent___children___internal___fieldOwners'
-  | 'parent___children___internal___ignoreType'
-  | 'parent___children___internal___mediaType'
-  | 'parent___children___internal___owner'
-  | 'parent___children___internal___type'
-  | 'parent___internal___content'
-  | 'parent___internal___contentDigest'
-  | 'parent___internal___description'
-  | 'parent___internal___fieldOwners'
-  | 'parent___internal___ignoreType'
-  | 'parent___internal___mediaType'
-  | 'parent___internal___owner'
-  | 'parent___internal___type'
-  | 'children'
-  | 'children___id'
-  | 'children___parent___id'
-  | 'children___parent___parent___id'
-  | 'children___parent___parent___children'
-  | 'children___parent___children'
-  | 'children___parent___children___id'
-  | 'children___parent___children___children'
-  | 'children___parent___internal___content'
-  | 'children___parent___internal___contentDigest'
-  | 'children___parent___internal___description'
-  | 'children___parent___internal___fieldOwners'
-  | 'children___parent___internal___ignoreType'
-  | 'children___parent___internal___mediaType'
-  | 'children___parent___internal___owner'
-  | 'children___parent___internal___type'
-  | 'children___children'
-  | 'children___children___id'
-  | 'children___children___parent___id'
-  | 'children___children___parent___children'
-  | 'children___children___children'
-  | 'children___children___children___id'
-  | 'children___children___children___children'
-  | 'children___children___internal___content'
-  | 'children___children___internal___contentDigest'
-  | 'children___children___internal___description'
-  | 'children___children___internal___fieldOwners'
-  | 'children___children___internal___ignoreType'
-  | 'children___children___internal___mediaType'
-  | 'children___children___internal___owner'
-  | 'children___children___internal___type'
-  | 'children___internal___content'
-  | 'children___internal___contentDigest'
-  | 'children___internal___description'
-  | 'children___internal___fieldOwners'
-  | 'children___internal___ignoreType'
-  | 'children___internal___mediaType'
-  | 'children___internal___owner'
-  | 'children___internal___type'
-  | 'internal___content'
-  | 'internal___contentDigest'
-  | 'internal___description'
-  | 'internal___fieldOwners'
-  | 'internal___ignoreType'
-  | 'internal___mediaType'
-  | 'internal___owner'
-  | 'internal___type'
-  | 'resolve'
-  | 'name'
-  | 'version'
-  | 'pluginOptions___fileName'
-  | 'pluginOptions___name'
-  | 'pluginOptions___path'
-  | 'pluginOptions___short_name'
-  | 'pluginOptions___start_url'
-  | 'pluginOptions___background_color'
-  | 'pluginOptions___theme_color'
-  | 'pluginOptions___display'
-  | 'pluginOptions___icon'
-  | 'pluginOptions___apiKey'
-  | 'pluginOptions___serviceId'
-  | 'pluginOptions___endpoint'
-  | 'pluginOptions___accessToken'
-  | 'pluginOptions___userName'
-  | 'pluginOptions___typeName'
-  | 'pluginOptions___fieldName'
-  | 'pluginOptions___url'
-  | 'pluginOptions___headers___Authorization'
-  | 'pluginOptions___trackingIds'
-  | 'pluginOptions___pathCheck'
-  | 'nodeAPIs'
-  | 'browserAPIs'
-  | 'ssrAPIs'
-  | 'pluginFilepath'
-  | 'packageJson___name'
-  | 'packageJson___description'
-  | 'packageJson___version'
-  | 'packageJson___main'
-  | 'packageJson___license'
-  | 'packageJson___dependencies'
-  | 'packageJson___dependencies___name'
-  | 'packageJson___dependencies___version'
-  | 'packageJson___devDependencies'
-  | 'packageJson___devDependencies___name'
-  | 'packageJson___devDependencies___version'
-  | 'packageJson___peerDependencies'
-  | 'packageJson___peerDependencies___name'
-  | 'packageJson___peerDependencies___version'
-  | 'packageJson___keywords';
-
-export type SitePluginFilterInput = {
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-  resolve?: Maybe<StringQueryOperatorInput>;
-  name?: Maybe<StringQueryOperatorInput>;
-  version?: Maybe<StringQueryOperatorInput>;
-  pluginOptions?: Maybe<SitePluginPluginOptionsFilterInput>;
-  nodeAPIs?: Maybe<StringQueryOperatorInput>;
-  browserAPIs?: Maybe<StringQueryOperatorInput>;
-  ssrAPIs?: Maybe<StringQueryOperatorInput>;
-  pluginFilepath?: Maybe<StringQueryOperatorInput>;
-  packageJson?: Maybe<SitePluginPackageJsonFilterInput>;
-};
-
-export type SitePluginGroupConnection = {
-  totalCount: Scalars['Int'];
-  edges: Array<SitePluginEdge>;
-  nodes: Array<SitePlugin>;
-  pageInfo: PageInfo;
+  max?: Maybe<Scalars['Float']>;
+  min?: Maybe<Scalars['Float']>;
+  sum?: Maybe<Scalars['Float']>;
+  group: Array<GraphQlSourceGroupConnection>;
   field: Scalars['String'];
   fieldValue?: Maybe<Scalars['String']>;
 };
 
-export type SitePluginPackageJson = {
-  name?: Maybe<Scalars['String']>;
-  description?: Maybe<Scalars['String']>;
-  version?: Maybe<Scalars['String']>;
-  main?: Maybe<Scalars['String']>;
-  license?: Maybe<Scalars['String']>;
-  dependencies?: Maybe<Array<Maybe<SitePluginPackageJsonDependencies>>>;
-  devDependencies?: Maybe<Array<Maybe<SitePluginPackageJsonDevDependencies>>>;
-  peerDependencies?: Maybe<Array<Maybe<SitePluginPackageJsonPeerDependencies>>>;
-  keywords?: Maybe<Array<Maybe<Scalars['String']>>>;
+
+export type GraphQlSourceGroupConnectionDistinctArgs = {
+  field: GraphQlSourceFieldsEnum;
 };
 
-export type SitePluginPackageJsonDependencies = {
-  name?: Maybe<Scalars['String']>;
-  version?: Maybe<Scalars['String']>;
+
+export type GraphQlSourceGroupConnectionMaxArgs = {
+  field: GraphQlSourceFieldsEnum;
 };
 
-export type SitePluginPackageJsonDependenciesFilterInput = {
-  name?: Maybe<StringQueryOperatorInput>;
-  version?: Maybe<StringQueryOperatorInput>;
+
+export type GraphQlSourceGroupConnectionMinArgs = {
+  field: GraphQlSourceFieldsEnum;
 };
 
-export type SitePluginPackageJsonDependenciesFilterListInput = {
-  elemMatch?: Maybe<SitePluginPackageJsonDependenciesFilterInput>;
+
+export type GraphQlSourceGroupConnectionSumArgs = {
+  field: GraphQlSourceFieldsEnum;
 };
 
-export type SitePluginPackageJsonDevDependencies = {
-  name?: Maybe<Scalars['String']>;
-  version?: Maybe<Scalars['String']>;
+
+export type GraphQlSourceGroupConnectionGroupArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  field: GraphQlSourceFieldsEnum;
 };
 
-export type SitePluginPackageJsonDevDependenciesFilterInput = {
-  name?: Maybe<StringQueryOperatorInput>;
-  version?: Maybe<StringQueryOperatorInput>;
+export type GraphQlSourceFilterInput = {
+  id?: InputMaybe<StringQueryOperatorInput>;
+  parent?: InputMaybe<NodeFilterInput>;
+  children?: InputMaybe<NodeFilterListInput>;
+  internal?: InputMaybe<InternalFilterInput>;
+  typeName?: InputMaybe<StringQueryOperatorInput>;
+  fieldName?: InputMaybe<StringQueryOperatorInput>;
 };
 
-export type SitePluginPackageJsonDevDependenciesFilterListInput = {
-  elemMatch?: Maybe<SitePluginPackageJsonDevDependenciesFilterInput>;
+export type GraphQlSourceSortInput = {
+  fields?: InputMaybe<Array<InputMaybe<GraphQlSourceFieldsEnum>>>;
+  order?: InputMaybe<Array<InputMaybe<SortOrderEnum>>>;
 };
 
-export type SitePluginPackageJsonFilterInput = {
-  name?: Maybe<StringQueryOperatorInput>;
-  description?: Maybe<StringQueryOperatorInput>;
-  version?: Maybe<StringQueryOperatorInput>;
-  main?: Maybe<StringQueryOperatorInput>;
-  license?: Maybe<StringQueryOperatorInput>;
-  dependencies?: Maybe<SitePluginPackageJsonDependenciesFilterListInput>;
-  devDependencies?: Maybe<SitePluginPackageJsonDevDependenciesFilterListInput>;
-  peerDependencies?: Maybe<SitePluginPackageJsonPeerDependenciesFilterListInput>;
-  keywords?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePluginPackageJsonPeerDependencies = {
-  name?: Maybe<Scalars['String']>;
-  version?: Maybe<Scalars['String']>;
-};
-
-export type SitePluginPackageJsonPeerDependenciesFilterInput = {
-  name?: Maybe<StringQueryOperatorInput>;
-  version?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
-  elemMatch?: Maybe<SitePluginPackageJsonPeerDependenciesFilterInput>;
-};
-
-export type SitePluginPluginOptions = {
-  fileName?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-  path?: Maybe<Scalars['String']>;
-  short_name?: Maybe<Scalars['String']>;
-  start_url?: Maybe<Scalars['String']>;
-  background_color?: Maybe<Scalars['String']>;
-  theme_color?: Maybe<Scalars['String']>;
-  display?: Maybe<Scalars['String']>;
-  icon?: Maybe<Scalars['String']>;
-  apiKey?: Maybe<Scalars['String']>;
-  serviceId?: Maybe<Scalars['String']>;
-  endpoint?: Maybe<Scalars['String']>;
-  accessToken?: Maybe<Scalars['String']>;
-  userName?: Maybe<Scalars['String']>;
-  typeName?: Maybe<Scalars['String']>;
-  fieldName?: Maybe<Scalars['String']>;
-  url?: Maybe<Scalars['String']>;
-  headers?: Maybe<SitePluginPluginOptionsHeaders>;
-  trackingIds?: Maybe<Array<Maybe<Scalars['String']>>>;
-  pathCheck?: Maybe<Scalars['Boolean']>;
-};
-
-export type SitePluginPluginOptionsFilterInput = {
-  fileName?: Maybe<StringQueryOperatorInput>;
-  name?: Maybe<StringQueryOperatorInput>;
-  path?: Maybe<StringQueryOperatorInput>;
-  short_name?: Maybe<StringQueryOperatorInput>;
-  start_url?: Maybe<StringQueryOperatorInput>;
-  background_color?: Maybe<StringQueryOperatorInput>;
-  theme_color?: Maybe<StringQueryOperatorInput>;
-  display?: Maybe<StringQueryOperatorInput>;
-  icon?: Maybe<StringQueryOperatorInput>;
-  apiKey?: Maybe<StringQueryOperatorInput>;
-  serviceId?: Maybe<StringQueryOperatorInput>;
-  endpoint?: Maybe<StringQueryOperatorInput>;
-  accessToken?: Maybe<StringQueryOperatorInput>;
-  userName?: Maybe<StringQueryOperatorInput>;
-  typeName?: Maybe<StringQueryOperatorInput>;
-  fieldName?: Maybe<StringQueryOperatorInput>;
-  url?: Maybe<StringQueryOperatorInput>;
-  headers?: Maybe<SitePluginPluginOptionsHeadersFilterInput>;
-  trackingIds?: Maybe<StringQueryOperatorInput>;
-  pathCheck?: Maybe<BooleanQueryOperatorInput>;
-};
-
-export type SitePluginPluginOptionsHeaders = {
-  Authorization?: Maybe<Scalars['String']>;
-};
-
-export type SitePluginPluginOptionsHeadersFilterInput = {
-  Authorization?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePluginSortInput = {
-  fields?: Maybe<Array<Maybe<SitePluginFieldsEnum>>>;
-  order?: Maybe<Array<Maybe<SortOrderEnum>>>;
-};
-
-export type SiteSiteMetadata = {
-  title?: Maybe<Scalars['String']>;
-  description?: Maybe<Scalars['String']>;
-  author?: Maybe<Scalars['String']>;
-};
-
-export type SiteSiteMetadataFilterInput = {
-  title?: Maybe<StringQueryOperatorInput>;
-  description?: Maybe<StringQueryOperatorInput>;
-  author?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SiteSortInput = {
-  fields?: Maybe<Array<Maybe<SiteFieldsEnum>>>;
-  order?: Maybe<Array<Maybe<SortOrderEnum>>>;
-};
-
-export type SortOrderEnum = 
-  | 'ASC'
-  | 'DESC';
-
-export type StringQueryOperatorInput = {
-  eq?: Maybe<Scalars['String']>;
-  ne?: Maybe<Scalars['String']>;
-  in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  nin?: Maybe<Array<Maybe<Scalars['String']>>>;
-  regex?: Maybe<Scalars['String']>;
-  glob?: Maybe<Scalars['String']>;
-};
-
-export type SiteTitleQueryQueryVariables = {};
+export type SiteTitleQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type SiteTitleQueryQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
+export type SiteTitleQueryQuery = { site?: { siteMetadata?: { title?: string | null } | null } | null };
 
-export type Unnamed_1_QueryVariables = {};
-
-
-export type Unnamed_1_Query = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
-
-export type HomeQueryQueryVariables = {};
+export type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type HomeQueryQuery = { allMicrocmsPosts: { edges: Array<{ node: (
-        Pick<MicrocmsPosts, 'id' | 'title' | 'createdAt'>
-        & { _embedded?: Maybe<Pick<MicrocmsPosts_Embedded, 'url'>> }
-      ) }> }, allQiitaPost: { edges: Array<{ node: Pick<QiitaPost, 'id' | 'title' | 'url' | 'likes_count' | 'created_at'> }> }, github: { viewer: { contributionsCollection: { commitContributionsByRepository: Array<{ repository: (
-            Pick<GitHub_Repository, 'id' | 'url' | 'name' | 'updatedAt' | 'forkCount'>
-            & { stargazers: Pick<GitHub_StargazerConnection, 'totalCount'> }
-          ), contributions: Pick<GitHub_CreatedCommitContributionConnection, 'totalCount'> }>, user: { starredRepositories: Pick<GitHub_StarredRepositoryConnection, 'totalCount'>, contributionsCollection: Pick<GitHub_ContributionsCollection, 'totalCommitContributions'> } } } } };
+export type Unnamed_1_Query = { site?: { siteMetadata?: { title?: string | null, description?: string | null, author?: string | null } | null } | null };
 
-export type Unnamed_2_QueryVariables = {
+export type HomeQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type HomeQueryQuery = { allMicrocmsPosts: { edges: Array<{ node: { id: string, title?: string | null, createdAt?: any | null, _embedded?: { url?: string | null } | null } }> }, allQiitaPost: { edges: Array<{ node: { id: string, title?: string | null, url?: string | null, likes_count?: number | null, created_at?: any | null } }> }, github: { viewer: { contributionsCollection: { commitContributionsByRepository: Array<{ repository: { id: string, url: any, name: string, updatedAt: any, forkCount: number, stargazers: { totalCount: number } }, contributions: { totalCount: number } }>, user: { starredRepositories: { totalCount: number }, contributionsCollection: { totalCommitContributions: number } } } } } };
+
+export type Unnamed_2_QueryVariables = Exact<{
   slug: Scalars['String'];
-};
+}>;
 
 
-export type Unnamed_2_Query = { microcmsPosts?: Maybe<(
-    Pick<MicrocmsPosts, 'title' | 'body' | 'createdAt' | 'updatedAt'>
-    & { _embedded?: Maybe<Pick<MicrocmsPosts_Embedded, 'url'>>, author?: Maybe<(
-      Pick<MicrocmsPostsAuthor, 'name' | 'text'>
-      & { image?: Maybe<Pick<MicrocmsPostsAuthorImage, 'url'>> }
-    )> }
-  )> };
+export type Unnamed_2_Query = { microcmsPosts?: { title?: string | null, body?: string | null, createdAt?: any | null, updatedAt?: any | null, _embedded?: { url?: string | null } | null, author?: { name?: string | null, text?: string | null, image?: { url?: string | null } | null } | null } | null };
 
-export type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
+export type GatsbyImageSharpFixedFragment = { base64?: string | null, width: number, height: number, src: string, srcSet: string };
 
-export type GatsbyImageSharpFixed_TracedSvgFragment = Pick<ImageSharpFixed, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet'>;
+export type GatsbyImageSharpFixed_TracedSvgFragment = { tracedSVG?: string | null, width: number, height: number, src: string, srcSet: string };
 
-export type GatsbyImageSharpFixed_WithWebpFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>;
+export type GatsbyImageSharpFixed_WithWebpFragment = { base64?: string | null, width: number, height: number, src: string, srcSet: string, srcWebp?: string | null, srcSetWebp?: string | null };
 
-export type GatsbyImageSharpFixed_WithWebp_TracedSvgFragment = Pick<ImageSharpFixed, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>;
+export type GatsbyImageSharpFixed_WithWebp_TracedSvgFragment = { tracedSVG?: string | null, width: number, height: number, src: string, srcSet: string, srcWebp?: string | null, srcSetWebp?: string | null };
 
-export type GatsbyImageSharpFixed_NoBase64Fragment = Pick<ImageSharpFixed, 'width' | 'height' | 'src' | 'srcSet'>;
+export type GatsbyImageSharpFixed_NoBase64Fragment = { width: number, height: number, src: string, srcSet: string };
 
-export type GatsbyImageSharpFixed_WithWebp_NoBase64Fragment = Pick<ImageSharpFixed, 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>;
+export type GatsbyImageSharpFixed_WithWebp_NoBase64Fragment = { width: number, height: number, src: string, srcSet: string, srcWebp?: string | null, srcSetWebp?: string | null };
 
-export type GatsbyImageSharpFluidFragment = Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
+export type GatsbyImageSharpFluidFragment = { base64?: string | null, aspectRatio: number, src: string, srcSet: string, sizes: string };
 
-export type GatsbyImageSharpFluid_TracedSvgFragment = Pick<ImageSharpFluid, 'tracedSVG' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
+export type GatsbyImageSharpFluidLimitPresentationSizeFragment = { maxHeight: number, maxWidth: number };
 
-export type GatsbyImageSharpFluid_WithWebpFragment = Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
+export type GatsbyImageSharpFluid_TracedSvgFragment = { tracedSVG?: string | null, aspectRatio: number, src: string, srcSet: string, sizes: string };
 
-export type GatsbyImageSharpFluid_WithWebp_TracedSvgFragment = Pick<ImageSharpFluid, 'tracedSVG' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
+export type GatsbyImageSharpFluid_WithWebpFragment = { base64?: string | null, aspectRatio: number, src: string, srcSet: string, srcWebp?: string | null, srcSetWebp?: string | null, sizes: string };
 
-export type GatsbyImageSharpFluid_NoBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
+export type GatsbyImageSharpFluid_WithWebp_TracedSvgFragment = { tracedSVG?: string | null, aspectRatio: number, src: string, srcSet: string, srcWebp?: string | null, srcSetWebp?: string | null, sizes: string };
 
-export type GatsbyImageSharpFluid_WithWebp_NoBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
+export type GatsbyImageSharpFluid_NoBase64Fragment = { aspectRatio: number, src: string, srcSet: string, sizes: string };
 
-export type GatsbyImageSharpResolutionsFragment = Pick<ImageSharpResolutions, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
-
-export type GatsbyImageSharpResolutions_TracedSvgFragment = Pick<ImageSharpResolutions, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet'>;
-
-export type GatsbyImageSharpResolutions_WithWebpFragment = Pick<ImageSharpResolutions, 'base64' | 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>;
-
-export type GatsbyImageSharpResolutions_WithWebp_TracedSvgFragment = Pick<ImageSharpResolutions, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>;
-
-export type GatsbyImageSharpResolutions_NoBase64Fragment = Pick<ImageSharpResolutions, 'width' | 'height' | 'src' | 'srcSet'>;
-
-export type GatsbyImageSharpResolutions_WithWebp_NoBase64Fragment = Pick<ImageSharpResolutions, 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>;
-
-export type GatsbyImageSharpSizesFragment = Pick<ImageSharpSizes, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
-
-export type GatsbyImageSharpSizes_TracedSvgFragment = Pick<ImageSharpSizes, 'tracedSVG' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
-
-export type GatsbyImageSharpSizes_WithWebpFragment = Pick<ImageSharpSizes, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
-
-export type GatsbyImageSharpSizes_WithWebp_TracedSvgFragment = Pick<ImageSharpSizes, 'tracedSVG' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
-
-export type GatsbyImageSharpSizes_NoBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
-
-export type GatsbyImageSharpSizes_WithWebp_NoBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
+export type GatsbyImageSharpFluid_WithWebp_NoBase64Fragment = { aspectRatio: number, src: string, srcSet: string, srcWebp?: string | null, srcSetWebp?: string | null, sizes: string };
